@@ -3,7 +3,7 @@ description: Matthias Werners selten gepflegtes Blog über Computer und Menschen
 author: Matthias Werner
 logo: /static/img/avatar.png
 github: https://werner-matthias.github.com/SysOp
-about: Über mich
+about: Systems Operational
 
 baseurl: ""
 url: ""
@@ -17,6 +17,8 @@ allowsearch: true
 #  twitter_username: \#
 #  fb_appid: 000000000000
 
+
+brand-color: #3d61af
 
 enableTags: true
 tagarray: []

@@ -19,6 +19,7 @@ Bevor wir uns dem Design des Kernels widmen, wollen wir Informationen über das 
 
 Glücklicherweise kümmert sich um das alles die GPU. Diese hat auch eine Schnittstelle, über die es mit dem ARM reden kann, das sogenannte [Mailbox-System][1]. Mailboxes sind FIFO-Speicher mit einer Breite von 28 Bit. Jede Mailbox ist in Kanäle unterteilt, die für unterschiedliche Arten von Informationen vorgesehen ist. Es kann pro Mailbox maximal 16 Kanäle geben. Daten und Kanalinformationen werden mit einem Datenwort übergeben, wobei die Kanalnummer die untersten vier Bit einnimmt und das zu übertragende Datum die oberen 28. Auch wenn die &#8222;größeren&#8220; Raspberries eine ganze Menge von Mailboxen haben, interessiert uns im Moment nur die Mailbox 0 (bzw. Mailbox 1 für die Rückantwort). Mailbox 0 hat 9 Kanäle. Für die Datenübertragung muss jeweils auf den entsprechenden Status gewartet werden. Wir machen das im Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter einen Interrupt auslösen lassen, wenn Daten bereit stehen.
 
+~~~ Rust
 use core::intrinsics::volatile_load;
 use core::mem::transmute;
     
@@ -79,9 +80,8 @@ pub fn mailbox(nr: u8) -&gt; &'static mut Mailbox {
         _ =&gt; panic!()
     }
 }
+~~~
 
-
-&nbsp;
 
 # Property Tags
 
@@ -89,6 +89,7 @@ Der für uns interessante ist Kanal 8. Über ihn werden Eigenschaften abgefragt 
 
 Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags &#8222;auf Vorrat&#8220; in einem enum:
 
+~~~ Rust
 #[derive(Clone,Copy)]
 #[repr(u32)]
 pub enum Tag {
@@ -174,10 +175,10 @@ pub enum Tag {
     SetCursorInfo = 0x8011,
     SetCursorState = 0x8010
 }
-
+~~~
 
 Bei der Antwort auf einen Request wird der Frage-Puffer überschrieben. Es muss also dafür gesorgt werden, dass genügend Platz für die Antwort zur Verfügung steht. Je nach [Tag-Typ][4] ist das unterschiedlich:
-
+~~~ Rust
 struct ReqProperty {
     pub tag:  Tag,
     pub buf_size: usize,
@@ -274,15 +275,15 @@ impl ReqProperty {
         ReqProperty{ tag: tag, buf_size: buf_size, param_size: param_size}
     }
 }
-
+~~~
 
 Da für die über den Kanal ausgetauschte Information wenige Bytes mitunter nicht ausreichen, werden über die Mailbox Adressen eine Puffers kommuniziert, die die eigentliche Information enthalten. Selbst eine solche Adresse kann mit 28 Bit nicht vollständig dargestellt werden: Es werden nur die obersten 28 Bit der Adresse werden übertragen, der Rest als 0 angenommen. Damit muss ein solcher Puffer ein entsprechendes Alignment haben, d.h., seine Adresse muss mit 0000 enden.
 
 ## Alignment
 
-In Standard-Rust ein bestimmtes Alignment zu erreichen, ist ohne externe Hilfe unmöglich.1 Natürlich können wir im Linkerfile einen statischen Speicherbereich mit entsprechenden Alignment anlegen und von Rust aus nutzen, aber das ist erstens unsicher und zweitens ist dieser Speicher dann für diesen Zweck reserviert. Schöner wäre es, wenn wir den Puffer dynamisch anlegen können, und &#8211; da wir noch keine Heap-Verwaltung haben &#8211; natürlich auf dem Stack.
+In Standard-Rust ein bestimmtes Alignment zu erreichen, ist ohne externe Hilfe unmöglich.1 Natürlich können wir im Linkerfile einen statischen Speicherbereich mit entsprechenden Alignment anlegen und von Rust aus nutzen, aber das ist erstens unsicher und zweitens ist dieser Speicher dann für diesen Zweck reserviert. Schöner wäre es, wenn wir den Puffer dynamisch anlegen können, und -- da wir noch keine Heap-Verwaltung haben -- natürlich auf dem Stack.
 
-EGlücklicherweise bietet nightly Rust hier Möglichkeiten. Bis vor kurzem musste man tricksen und mit Hilfe von #[repr(simd)]  behaupten, dass eine Vektorverarbeitung vorgenommen wird. Seit neuesten2  steht ein eigenes Alignment-Attribut zur Verfügung. Bei seiner Nutzung muss man beachten, dass die Syntax aus dem entsprechenden [RFC 1358][5] falsch ist, statt z.B. #[repr(align=&#8220;16&#8243;)]  wird das Alignment als (ebenfalls relativ neues) &#8222;Attribut-Literal&#8220; angegeben:  #[repr(align(16))]. Es müssen also gleich zwei Featuregates freigeschaltet werden, #![feature(repr_align)] und #![feature(attr_literals)].
+Glücklicherweise bietet nightly Rust hier Möglichkeiten. Bis vor kurzem musste man tricksen und mit Hilfe von `#[repr(simd)]`  behaupten, dass eine Vektorverarbeitung vorgenommen wird. Seit neuesten[^2] steht ein eigenes Alignment-Attribut zur Verfügung. Bei seiner Nutzung muss man beachten, dass die Syntax aus dem entsprechenden [RFC 1358][5] falsch ist, statt z.B. #[repr(align=&#8220;16&#8243;)]  wird das Alignment als (ebenfalls relativ neues) &#8222;Attribut-Literal&#8220; angegeben:  #[repr(align(16))]. Es müssen also gleich zwei Featuregates freigeschaltet werden, `#![feature(repr_align)]` und `#![feature(attr_literals)]`.
 
 ## Tag-Puffer
 
