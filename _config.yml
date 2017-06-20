@@ -52,7 +52,7 @@ paginate_path: "blog/page:num"
 
 markdown: kramdown
 permalink: /:categories/:title/
-highlight: rouge
+highlighter: rouge
 
 plugins: [jekyll-paginate]
 

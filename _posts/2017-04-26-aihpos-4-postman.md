@@ -40,7 +40,7 @@ Mailbox maximal 16 Kanäle geben. Daten und Kanalinformationen werden mit einem 
 (bzw. Mailbox 1 für die Rückantwort). Mailbox 0 hat 9 Kanäle. Für die Datenübertragung muss jeweils auf den passenden Status gewartet werden. Wir machen das im
 Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter einen Interrupt auslösen lassen, wenn Daten bereit stehen. 
 
-~~~ rust
+{% highlight rust %}
 use core::intrinsics::volatile_load;
 use core::mem::transmute;
     
@@ -101,8 +101,7 @@ pub fn mailbox(nr: u8) -> &'static mut Mailbox {
         _ => panic!()
     }
 }
-~~~
-
+{% endhighlight %}
 
 # Property Tags
 
@@ -110,7 +109,7 @@ Der für uns interessante ist Kanal 8. Über ihn werden Eigenschaften abgefragt 
 
 Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags "auf Vorrat"in einem enum:
 
-~~~ rust
+{% highlight rust %}
 #[derive(Clone,Copy)]
 #[repr(u32)]
 pub enum Tag {
@@ -196,7 +195,7 @@ pub enum Tag {
     SetCursorInfo = 0x8011,
     SetCursorState = 0x8010
 }
-~~~
+{% endhighlight %}
 
 Bei der Antwort auf einen Request wird der Frage-Puffer überschrieben. Es muss also dafür gesorgt werden, dass genügend Platz für die Antwort zur Verfügung steht. Je nach [Tag-Typ][4] ist das unterschiedlich:
 ~~~ rust
@@ -302,7 +301,7 @@ Da für die über den Kanal ausgetauschte Information wenige Bytes mitunter nich
 
 ## Alignment
 
-In Standard-Rust ein bestimmtes Alignment zu erreichen, ist ohne externe Hilfe unmöglich.1 Natürlich können wir im Linkerfile einen statischen Speicherbereich mit entsprechenden Alignment anlegen und von Rust aus nutzen, aber das ist erstens unsicher und zweitens ist dieser Speicher dann für diesen Zweck reserviert. Schöner wäre es, wenn wir den Puffer dynamisch anlegen können, und -- da wir noch keine Heap-Verwaltung haben -- natürlich auf dem Stack.
+In Standard-Rust ein bestimmtes Alignment zu erreichen, ist ohne externe Hilfe unmöglich.[^1] Natürlich können wir im Linkerfile einen statischen Speicherbereich mit entsprechenden Alignment anlegen und von Rust aus nutzen, aber das ist erstens unsicher und zweitens ist dieser Speicher dann für diesen Zweck reserviert. Schöner wäre es, wenn wir den Puffer dynamisch anlegen können, und -- da wir noch keine Heap-Verwaltung haben -- natürlich auf dem Stack.
 
 Glücklicherweise bietet nightly Rust hier Möglichkeiten. Bis vor kurzem musste man tricksen und mit Hilfe von `#[repr(simd)]`  behaupten, dass eine Vektorverarbeitung vorgenommen wird. Seit neuesten[^2] steht ein eigenes Alignment-Attribut zur Verfügung. Bei seiner Nutzung muss man beachten, dass die Syntax aus dem entsprechenden [RFC 1358][5] falsch ist, statt z.B. #[repr(align=&#8220;16&#8243;)]  wird das Alignment als (ebenfalls relativ neues) "Attribut-Literal"angegeben:  #[repr(align(16))]. Es müssen also gleich zwei Featuregates freigeschaltet werden, `#![feature(repr_align)]` und `#![feature(attr_literals)]`.
 
@@ -784,22 +783,6 @@ Nun habe ich schon zwei Rust-Bibliotheken (core und compiler-buildins), die hän
   
   
     
-      Das ist nicht ganz präzise: Rust hält das "natürliche"Alignment ein, das ggf. durch repr(packed) unterlaufen werden kann. &#8629;
-    
-    
-      Version 6d841da vom 22. April 2017 &#8629;
-    
-    
-      Eine weitere Alternative für das Debuggen wäre auch noch die Nutzung der UART, Kanal 2. &#8629;
-    
-    
-      Diese Darstellung ist etwas vereinfacht. &#8629;
-    
-    
-      Genau genommen bräuchte man dafür nur ein oder zwei "Reservezeilen&#8220;, aber so sind wir etwas flexibler. &#8629;
-    
-    
-      Es wäre dann vermutlich besser, wenn ein u8-Array genutzt würde. &#8629;
     
   
 
@@ -815,3 +798,10 @@ Nun habe ich schon zwei Rust-Bibliotheken (core und compiler-buildins), die hän
  [9]: http://sysop.matthias-werner.net/wp-content/uploads/2017/04/virphys-fb.png
  [10]: http://stackoverflow.com/a/23130671
  [11]: https://github.com/rust-lang-nursery/compiler-builtins
+
+[^1]: Das ist nicht ganz präzise: Rust hält das "natürliche"Alignment ein, das ggf. durch repr(packed) unterlaufen werden kann. 
+[^2]: Version 6d841da vom 22. April 2017 
+[^3]: Eine weitere Alternative für das Debuggen wäre auch noch die Nutzung der UART, Kanal 2. 
+[^4]: Diese Darstellung ist etwas vereinfacht. 
+[^5]: Genau genommen bräuchte man dafür nur ein oder zwei "Reservezeilen&#8220;, aber so sind wir etwas flexibler. 
+[^6]: Es wäre dann vermutlich besser, wenn ein u8-Array genutzt würde. 
