@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: Vollständig
 published: true
 author: mwerner
