@@ -8,7 +8,7 @@ comments: true
 date: 2017-05-21 12:05:22
 tags: [ ]
 categories:
-    - computer
+    - computer 
     - menschen
 permalink: /2017/05/21/computer-science
 ---
