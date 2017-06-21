@@ -1,0 +1,248 @@
+<h1 id="hintergrund">Hintergrund</h1>
+
+<p>In meinem Kurs <a href="http://osg.informatik.tu-chemnitz.de/lehre/os">Betriebssysteme</a> verwende ich ab und zu Code-Abschnitte, die die Implementation verschiedener Konzepte des Betriebssystementwurfs demonstrieren. Diese Code-Abschnitte sind bisher sehr uneinheitlich, und setzen sich aus verschiedenen Quellen zusammen:</p>
+
+<ul>
+  <li>Freier Code aus „echten“ Betriebssystemen wie z.B. Linux;</li>
+  <li>„Unechter“ Code (Code, zwar prinzipiell funktioniert, aber so nie einem Betriebsystem eingesetzt wurde), vornehmlich in C und Modula-2;</li>
+  <li>Pseudocode.</li>
+</ul>
+
+<p>Um die Didaktik des Kurses zu verbessern, möchte ich ein Betriebssystem extra für diese Veranstaltung schreiben, so dass möglichst viele Konzepte direkt im Code wiederzufinden sind. Außerdem soll  <strong>aihPOS</strong> — so der Name des Projekts — später als Codebasis bei verschiedenen Forschungsprojekten in unser Gruppe nützlich sein.</p>
+
+<p>„aihPOS“ steht für _<strong>a</strong>nother <strong>i</strong>ncompatible and <strong>h</strong>ackneyed <strong>P</strong>i <strong>O</strong>perating <strong>S</strong>ystem. _Obwohl dieses Akronym einiges über das Betriebssystem aussagt, habe ich es doch in erster Linie gewählt, weil es rückwärts geschrieben den Name meiner Tochter ergibt: Sophia. Daher werde ich den Betriebssystemnamen ab sofort so schreiben: SOPHIA. 🙂</p>
+
+<h1 id="ziele">Ziele</h1>
+
+<p>Bevor man ein Projekt der Größe eines Betriebssystems beginnt, und sei es auch nur ein so kleines wie SOPHIA, muss man sich über die Designziele im Klaren sein. Ich nenne zunächst einmal einige Ziele, die ich ausdrücklich <strong>nicht </strong>habe:</p>
+
+<ul>
+  <li>Geschwindigkeit: immer, wenn es einen Widerspruch zwischen <strong>Performance</strong> und einem klaren Design gibt, werde ich das klare Design bevorzugen. Schließlich soll SOPHIA niemals produktiv eingesetzt werden, sondern zur Demonstrations- und Testzwecken dienen.</li>
+  <li><strong>Kompatibilität</strong> zu POSIX, Windows o.ä.</li>
+  <li>Einsatz auf komplexer Hardware wie z.B. <strong>x86</strong>-PCs.</li>
+</ul>
+
+<p>Vielmehr habe ich folgende Designziele:</p>
+
+<ol>
+  <li>Wesentliche Konzepte von Betriebssystemen sollen entsprechende <strong>Abstraktionen</strong> im Code wiederfinden.</li>
+  <li>Das Betriebssystem soll eine <strong>klare Struktur</strong> haben und dem <strong><a href="https://en.wikipedia.org/wiki/Microkernel">Mikrokernel</a></strong>-Ansatz folgen.</li>
+  <li>Als Zielhardware wird der <strong>Raspberry Pi</strong> benutzt. Er ist günstig zu haben, so dass Studierende leicht mit Modifikationen des Codes herumspielen können, ohne ihren teuren Laptop oder Desktop zu riskieren. Außerdem besitzt unser Labor bereits einen Klassensatz Raspberry Pi 1B+ (mit einer <a href="https://www.gertbot.com">Gertboard</a>-Erweiterung).</li>
+</ol>
+
+<h1 id="sprache">Sprache</h1>
+
+<p>Traditionell werden Betriebssysteme in Assembler oder C geschrieben. Theoretisch kann für das Schreiben von Betriebssysteme nahezu jede Sprache genutzt werden (und z.T. werden sie auch tatsächlich genutzt). Häufig muss zwar  „im Notfall“ etwas Assembler-Code eingebunden werden (völlig ohne geht es in der Regel sowieso nicht, da viele Feinheiten der unterliegenden Maschine sich nicht in höheren Programmiersprachen abbilden), aber es gibt Betriebssysteme in Java oder Lisp. Jedoch eignen sich die meisten Sprachen nicht sonderlich gut für eine Bare-Metal-Entwicklung, wie ein Betriebssystem sie erfordert: Die Sprachen bringen ihr eigenes Laufzeitsystem mit, das wiederum Systemrufe des Betriebssystem nutzt. Diese stehen aber bei der Entwicklung eines Betriebssystems ja gar nicht zur Verfügung. Entsprechend können einige Sprachkonzept nicht genutzt werden. Noch mehr Systemrufe sind meist in den Bibliotheken zu finden, so dass viele Bibliotheksfunktionen ebenfalls nicht genutzt werden können und ggf. nachimplementiert werden müssen.</p>
+
+<p>Trotzdem werde ich für SOPHIA <strong>nicht</strong> C benutzen, und das im wesentlichen aus drei Gründen:</p>
+
+<ul>
+  <li>Entsprechend der obigen Anforderungen sollen sich Betriebssystemkonzept gut in Code-Abstraktionen wiederfinden. Dies ist bei C fast so wenig der Fall, wie in Assembler.1</li>
+  <li>C ist eine alte Sprache, die viele modernen Konzepte der <a href="http://joeduffyblog.com/2015/11/03/a-tale-of-three-safeties/">Typen- und Speicher- und Nebenläufigkeitssicherheit</a> nicht kennt.  Daher ist das „Rumspielen“ mit dem Code (vergleiche Designziel 3) relativ gefährlich.</li>
+  <li>So ein Projekt ist immer eine gute Gelegenheit, eine neue Sprache zu erlernen (oder wenigstens zu vertiefen)</li>
+</ul>
+
+<p>Es stellt sich die Frage, welche anderen Sprachen möglich wären. Die beiden derzeitigen Mainstream-Sprachen Java2 und Python kommen hier nicht infrage, da sie soweit von der Maschine entfernt sind, dass die Brücke zwischen Maschinen- und Sprachabstraktionen nicht sehr intuitiv wäre. Es gibt in meiner Gruppe zwar ein Projekt, ein Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es den hier gestellten Designzielen entspricht.</p>
+
+<p>Es gibt einige Sprachen, die für sich in Anspruch nehmen systemnahe zu sein. Die bekanntesten sind wohl C++, D, Forth, Go und Rust. Von diesen scheidet Forth aus, da es ein bißchen <strong>zu</strong> maschinennah ist. Außerdem werden Abstraktionen in der Regel auf Datenstrukturen abgebildet, wo Forth etwas limitiert ist. Die anderen vier Sprachen sind aus dieser Perspektive zweifellos alle geeignet.</p>
+
+<p>Daher habe ich weitere Kriterien betrachtet, die sicherlich sowohl in Auswahl als auch Attribuierung z.T. etwas subjektiv sind:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  C++
+
+
+
+   D
+
+
+
+   Go
+
+
+
+   Rust
+
+  
+  
+  
+
+  Bare-metal Programmierung
+
+
+
+  +
+
+
+
+
+
+
+  &amp;#8211;
+
+
+
+  +
+
+  
+  
+  
+
+  Speichersicherheit
+
+
+
+  &amp;#8211;3
+
+
+
+  +
+
+
+
+  4
+
+
+
+  +
+
+  
+  
+  
+
+  Nebenläufigkeitssicherheit
+
+
+
+  &amp;#8211;
+
+
+
+
+
+
+  +
+
+
+
+  +
+
+  
+  
+  
+
+  Toolstabilität
+
+
+
+  +
+
+
+
+  &amp;#8211;
+
+
+
+   +
+
+
+
+
+  
+  
+  
+
+  Subjektive Neuheit
+
+
+
+  5,
+
+
+
+  &amp;#8211;
+
+
+
+   +
+</code></pre>
+</div>
+
+<p>Als Ergebnis dieser Betrachtungen werde ich SOPHIA in Rust schreiben. Mir erscheint auch Rust am meisten eine neue Sichtweise zu vermitteln.6  Es gibt ein bekanntes Zitat von <a href="https://de.wikipedia.org/wiki/Alan_J._Perlis">Alan J. Perlis</a>:</p>
+
+<p>A language that doesn’t affect the way you think about programming is not worth knowing.- Alan J. Perlis</p>
+
+<p>Dies ist der persönliche Hintergrund dieser Entscheidung. C++ mit Programmierdisziplin hätte es genauso gut — und vermutlich an manchen Stellen einfacher — gemacht, aber Rust bringt mir neue Ideen bei.</p>
+
+<h1 id="betriebssystementwicklung">Betriebssystementwicklung</h1>
+
+<p>An dieser Stelle will ich nochmal auflisten, bei der Betriebssystementwicklung anders ist, als bei der Entwicklung (vieler) anderer Software:</p>
+
+<ul>
+  <li>Man hat es nicht mit abstrakter, sondern konkreter Hardware zu tun. Dadurch muss man sich mit vielen technischen Details des Prozessors und der Gesamtplattform beschäftigen, die man sonst ignorieren kann.</li>
+  <li>Die Dienste eines Betriebssystems stehen nicht zur Verfügung. Es gibt keine z.B. Speicherverwaltung und oder Dateisysteme. Daher stehen die meisten Funktionen der Standardbibliothek nicht zur Verfügung, weil diese letztendlich Systemfunktionen rufen.</li>
+  <li>Durch die beiden obigen Umstände werden im Design keine Abstraktionen „aufgezwungen“. Sie müssen erst erschaffen werden.</li>
+  <li>Damit ein Betriebssystem auch zum Laufen kommt, muss man sich Gedanken über den Bootstrapping-Prozess und damit über Binärformate und die Toolchain machen.</li>
+</ul>
+
+<p>In den nächsten Folgen zu SOPHIA werde ich diese Aspekte besprechen. Was ich dagegen hier nicht machen werde, ist eine Einführung in die Rust- oder die Assembler-Programmierung. Jedoch sind dazu nützliche Informationen in den folgenden Links zu finden.</p>
+
+<h1 id="links">Links</h1>
+
+<ul>
+  <li><strong>Rust</strong>
+    <ul>
+      <li><a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> (the book)</li>
+      <li><a href="https://doc.rust-lang.org/reference.html">Rust Referenz</a></li>
+      <li><a href="https://doc.rust-lang.org/core/index.html">Rust Core Library</a></li>
+      <li><a href="https://doc.rust-lang.org/nomicon/">The Rustonomicon</a> („Unsafe“ Programmierung in Rust)</li>
+    </ul>
+  </li>
+  <li><strong>ARM</strong>
+    <ul>
+      <li><a href="http://infocenter.arm.com/help/topic/com.arm.doc.ddi0301h/ddi0301h_arm1176jzfs_r0p7_trm.pdf">ARM1176JZF-S Technical Reference Manual – ARM Infocenter</a></li>
+      <li><a href="http://mazsola.iit.uni-miskolc.hu/~drdani/docs_arm/36_Elsevier-ARM_Sy.pdf">ARM Systems Developer Guide</a> (etwas veraltet, aber trotzdem sehr hilfreich)</li>
+      <li><a href="http://thinkingeek.com/arm-assembler-raspberry-pi/">ARM assembler in Raspberry Pi</a></li>
+      <li><a href="http://embed.rs/articles/2016/arm-inline-assembly-rust/">Exploring ARM inline assembly in Rust</a></li>
+    </ul>
+  </li>
+  <li><strong>Raspberry Pi</strong>
+    <ul>
+      <li><a href="https://www.raspberrypi.org">Seite der Raspberry Pi Foundation</a></li>
+      <li>Broadcom: <a href="https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf">BCM2835 ARM Peripherals</a></li>
+      <li>David Welch: <a href="https://github.com/dwelch67/raspberrypi">Raspberry Pi ARM based bare metal examples</a></li>
+    </ul>
+  </li>
+  <li><strong>Betriebssystemprojekte in Rust</strong>
+    <ul>
+      <li><a href="https://www.redox-os.org">Redox</a> – ein schon ziemlich ausgewachsenes UNIX-ähnliches Betriebssystem (x86 7)</li>
+      <li><a href="https://github.com/wbthomason/ironkernel">Ironkernel</a> (wohl erster BS-Ansatz in Rust, ARM)</li>
+      <li>Philipp Oppermann’s blog: <a href="http://os.phil-opp.com">Writing an OS in Rust</a> (x86)</li>
+      <li><a href="http://intermezzos.github.io">IntermezzOS</a> (x86)</li>
+    </ul>
+  </li>
+</ul>
+
+<p> </p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  Man kann schließlich auch in den meisten Assemblern so etwas wie Structs definieren. &amp;#8629;
+
+
+   Nein, ich habe Java nie ernsthaft in Betrachtung gezogen, was aber auch an meiner Abneigung gegenüber dieser Sprache liegen mag. &amp;#8629;
+
+
+   Man kann in C++ sehr sicher schreiben, wenn man eine ausreichende Selbstdisziplin an den Tag legt und verschiedene Idiome nicht benutzt. Im Gegensatz dazu erzwingt z.B. Rust sicheren Code. Dort, wo man unsichere (weil mächtigere) Konstrukte braucht, muss es explizit gemacht werden. &amp;#8629;
+
+
+  Go bekommt in dieser Kategorie bei mir Punktabzug für den vorhandenen Null-Pointer &amp;#8629;
+
+
+  Eigentlich wollte ich hier erst ein Minuszeichen setzen, habe es mir dann anders überlegt: Ich habe C++ lange vor Boost und C++11 gelernt, und seitdem nie grundlegend &amp;#8222;aufgeholt&amp;#8220;. &amp;#8629;
+
+
+  Go landet da auf Platz 2, zumal ich schon mal in Occam reingeschnuppert hatte, und D erscheint mir z.T. bewußt &amp;#8222;unoriginell&amp;#8220; zu entworfen zu sein (was in anderen Kontext einen Vorteil darstellt). &amp;#8629;
+
+
+  ARM ist geplant, aber bisher nur teilweise implementiert. &amp;#8629;
+</code></pre>
+</div>
+
