@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Computer Science
-subtitle: Zitate des Tages
+subheadline: Zitate des Tages
 published: true
 author: mwerner
 comments: true

@@ -10,13 +10,11 @@
 # Title of your website
 title: "Systems Operational"
 
-
 # The slogan describes your website and is used on homepage in <title> and other important places
 slogan: "Matthias Werners selten gepflegtes Blog über Computer und Menschen"
 
-
 # The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
-description: "Matthias Werners Blog."
+description: "Matthias Werners Blog. "
 
 # Main author of the website
 # See > authors.yml
@@ -25,11 +23,11 @@ author: mwerner
 # This URL is the main address for absolute links. Don't include a slash at the end.
 #
 url: 'https://werner-matthias.github.io'
-baseurl: ''
+baseurl: '/SysOp'
 
 # This is for the editing function in _/includes/improve_content
 # Leave it empty if your site is not on GitHub/GitHub Pages
-improve_content: # https://github.com/Phlow/feeling-responsive/edit/gh-pages
+#improve_content: # https://github.com/Phlow/feeling-responsive/edit/gh-pages
 
 # This URL points directly to the images directory making
 # things easier to link to images in posts and templates. It needs a slash at the end.
@@ -101,7 +99,7 @@ defaults:
       show_meta: true   # Show metadata for all posts
       # sidebar:        # Possible values › left, right › by default there will be no sidebar
       comments: false
-      author: werner-matthias     # Default author for posts
+      author: mwerner     # Default author for posts
 #       __  _
 #      / | / /___ __   __(_)___ _____ _/ /_(_)___  ____
 #     /  |/ / __ `/ | / / / __ `/ __ `/ __/ / __ \/ __ \
@@ -111,8 +109,6 @@ defaults:
 #
 #  Open _data/navigation.yml to adjust the left and right topbar navigation
 #
-
-
 
 #     _____ __________
 #    / ___// ____/ __ \
@@ -124,8 +120,6 @@ defaults:
 # google_site_verification:  ""
 # bing_webmastertools_id:    ""
 # alexa_verify_id:           ""
-
-
 
 #       ______            _
 #      / ____/___ __   __(_)________  ____  _____

@@ -3,7 +3,7 @@
 ------------------------------------------------------------------- */
 
 .highlight {
-    background: #fff;
+    background: #e3d2d2;
     .c     { color: #998; font-style: italic } // Comment
     .err   { color: #a61717; background-color: #e3d2d2 } // Error
     .k     { font-weight: bold } // Keyword
@@ -63,4 +63,8 @@
     .vg    { color: #008080 } // Name.Variable.Global
     .vi    { color: #008080 } // Name.Variable.Instance
     .il    { color: #099 } // Literal.Number.Integer.Long
+    table  {padding: 0; border: none}
+    table tr td {padding: 0; border: none}
+    pre    { margin-bottom: 0}
+    pre.lineno { color: #7f7f7f }
 }
