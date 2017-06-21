@@ -76,6 +76,7 @@ compress_html:
   comments: ["<!-- ", " -->"]
   endings: all
   profile: false
+  debugging: false
   ignore:
     envs: [development]
 
@@ -90,7 +91,7 @@ defaults:
       show_meta: false 	# Hide metadata for all pages
       # sidebar:    		# Possible values › left, right › by default there will be no sidebar
       comments: false
-      author: werner-matthias     # Default author for pages
+      author: mwerner     # Default author for pages
   -
     scope:
       path: ""
