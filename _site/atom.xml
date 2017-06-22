@@ -2,9 +2,9 @@
 <?xml-stylesheet type="text/xsl" href="/assets/xslt/atom.xslt" ?>
 <?xml-stylesheet type="text/css" href="/assets/css/atom.css" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<id>http://localhost:4000/</id>
+	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-06-22T14:41:26+02:00</updated>
+	<updated>2017-06-22T14:49:31+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -23,16 +23,16 @@
 		</author>
 	
 
-	<link href="http://localhost:4000/atom.xml" rel="self" type="application/rss+xml" />
-	<link href="http://localhost:4000/" rel="alternate" type="text/html" />
+	<link href="https://werner-matthias.github.io/SysOp/atom.xml" rel="self" type="application/rss+xml" />
+	<link href="https://werner-matthias.github.io/SysOp/" rel="alternate" type="text/html" />
 
 	<generator uri="http://jekyllrb.com" version="3.5.0">Jekyll</generator>
 
 	
 		<entry>
-			<id>http://localhost:4000/2017/05/21/computer-science</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</id>
 			<title>Computer Science</title>
-			<link href="http://localhost:4000/2017/05/21/computer-science" rel="alternate" type="text/html" title="Computer Science" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/05/21/computer-science" rel="alternate" type="text/html" title="Computer Science" />
 			<updated>2017-05-21T14:05:22+02:00</updated>
 
 			
@@ -50,7 +50,7 @@
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/05/21/computer-science">&lt;blockquote&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/05/21/computer-science">&lt;blockquote&gt;
   &lt;p&gt;In science, we reserve our highest honors for those who prove we were wrong. But in computer science…
 &lt;cite&gt;Rob Pike&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -73,9 +73,9 @@
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/05/14/aihpos5-umrustung</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/05/14/aihpos5-umrustung</id>
 			<title>Um-Rust-ung</title>
-			<link href="http://localhost:4000/2017/05/14/aihpos5-umrustung" rel="alternate" type="text/html" title="Um-Rust-ung" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/05/14/aihpos5-umrustung" rel="alternate" type="text/html" title="Um-Rust-ung" />
 			<updated>2017-05-14T14:05:04+02:00</updated>
 
 			
@@ -93,7 +93,7 @@
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/05/14/aihpos5-umrustung">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/05/14/aihpos5-umrustung">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#rust-auf-nicht-standard-plattformen&quot; id=&quot;markdown-toc-rust-auf-nicht-standard-plattformen&quot;&gt;Rust auf Nicht-Standard-Plattformen&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#xargo&quot; id=&quot;markdown-toc-xargo&quot;&gt;Xargo&lt;/a&gt;&lt;/li&gt;
@@ -275,9 +275,9 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/04/26/aihpos-4-postman</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/04/26/aihpos-4-postman</id>
 			<title>Please Mr. Postman</title>
-			<link href="http://localhost:4000/2017/04/26/aihpos-4-postman" rel="alternate" type="text/html" title="Please Mr. Postman" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/04/26/aihpos-4-postman" rel="alternate" type="text/html" title="Please Mr. Postman" />
 			<updated>2017-04-26T13:04:55+02:00</updated>
 
 			
@@ -295,7 +295,7 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/04/26/aihpos-4-postman">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/04/26/aihpos-4-postman">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#mailboxen&quot; id=&quot;markdown-toc-mailboxen&quot;&gt;Mailboxen&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#property-tags&quot; id=&quot;markdown-toc-property-tags&quot;&gt;Property Tags&lt;/a&gt;    &lt;ul&gt;
@@ -1803,9 +1803,9 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/04/20/march-for-science</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</id>
 			<title>March for Science</title>
-			<link href="http://localhost:4000/2017/04/20/march-for-science" rel="alternate" type="text/html" title="March for Science" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science" rel="alternate" type="text/html" title="March for Science" />
 			<updated>2017-04-20T11:04:46+02:00</updated>
 
 			
@@ -1823,7 +1823,7 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/04/20/march-for-science">&lt;ul&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science">&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.marchforscience.com&quot;&gt;March for Science&lt;/a&gt; (International)&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://marchforscience.de&quot;&gt;March for Science Deutschland&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -1841,9 +1841,9 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</id>
 			<title>Lebenszeichen</title>
-			<link href="http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen" rel="alternate" type="text/html" title="Lebenszeichen" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen" rel="alternate" type="text/html" title="Lebenszeichen" />
 			<updated>2017-04-10T11:04:10+02:00</updated>
 
 			
@@ -1861,7 +1861,7 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen">&lt;p&gt;Nachdem wir unsere &lt;a href=&quot;http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/&quot;&gt;Toolchain&lt;/a&gt; installiert haben, wollen wir den ersten „Kernel“ bauen. Er soll nichts anderes machen, als den Pi für JTAG vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der &lt;a href=&quot;https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf&quot;&gt;I/O-Hardware&lt;/a&gt;, dem Speicher-Layout und dem Boot-Prozess.&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen">&lt;p&gt;Nachdem wir unsere &lt;a href=&quot;http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/&quot;&gt;Toolchain&lt;/a&gt; installiert haben, wollen wir den ersten „Kernel“ bauen. Er soll nichts anderes machen, als den Pi für JTAG vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der &lt;a href=&quot;https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf&quot;&gt;I/O-Hardware&lt;/a&gt;, dem Speicher-Layout und dem Boot-Prozess.&lt;/p&gt;
 
 &lt;h1 id=&quot;boot-prozess&quot;&gt;Boot-Prozess&lt;/h1&gt;
 
@@ -2421,9 +2421,9 @@ fn sleep(value: u32) {&lt;br /&gt;
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/04/07/pointer</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/04/07/pointer</id>
 			<title>Pointer</title>
-			<link href="http://localhost:4000/2017/04/07/pointer" rel="alternate" type="text/html" title="Pointer" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/04/07/pointer" rel="alternate" type="text/html" title="Pointer" />
 			<updated>2017-04-07T14:04:47+02:00</updated>
 
 			
@@ -2441,7 +2441,7 @@ fn sleep(value: u32) {&lt;br /&gt;
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/04/07/pointer">&lt;p&gt;Playing with pointers is like playing with fire. Fire is perhaps the most important tool known to man. Carefully used, fire brings enormous benefits; but when fire gets out of control, disaster strikes.- John Barnes&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/04/07/pointer">&lt;p&gt;Playing with pointers is like playing with fire. Fire is perhaps the most important tool known to man. Carefully used, fire brings enormous benefits; but when fire gets out of control, disaster strikes.- John Barnes&lt;/p&gt;
 
 &lt;p&gt;You can either have software quality or you can have pointer arithmetic, but you cannot have both at the same time.- Bertrand Meyer&lt;/p&gt;
 </content>
@@ -2457,9 +2457,9 @@ fn sleep(value: u32) {&lt;br /&gt;
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/03/31/aihpos-2-ausrustung</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/03/31/aihpos-2-ausrustung</id>
 			<title>Ausr(ü/u)stung</title>
-			<link href="http://localhost:4000/2017/03/31/aihpos-2-ausrustung" rel="alternate" type="text/html" title="Ausr(ü/u)stung" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/03/31/aihpos-2-ausrustung" rel="alternate" type="text/html" title="Ausr(ü/u)stung" />
 			<updated>2017-03-31T04:03:29+02:00</updated>
 
 			
@@ -2477,7 +2477,7 @@ fn sleep(value: u32) {&lt;br /&gt;
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/03/31/aihpos-2-ausrustung">&lt;p&gt;Nachdem im &lt;a href=&quot;http://sysop.matthias-werner.net/aihpos-ein-betriebssystem-fuer-die-lehre-teil-1/&quot;&gt;letzten Teil&lt;/a&gt; die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/03/31/aihpos-2-ausrustung">&lt;p&gt;Nachdem im &lt;a href=&quot;http://sysop.matthias-werner.net/aihpos-ein-betriebssystem-fuer-die-lehre-teil-1/&quot;&gt;letzten Teil&lt;/a&gt; die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.&lt;/p&gt;
 
 &lt;h1 id=&quot;setup-rust&quot;&gt;Setup Rust&lt;/h1&gt;
 
@@ -2881,9 +2881,9 @@ Finished&amp;amp;nbsp;release&amp;amp;nbsp;[optimized]&amp;amp;nbsp;target(s)&am
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/03/19/aihpos-1</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</id>
 			<title>aihPOS - another incompatible and hackneyed Pi Operating System</title>
-			<link href="http://localhost:4000/2017/03/19/aihpos-1" rel="alternate" type="text/html" title="aihPOS - another incompatible and hackneyed Pi Operating System" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1" rel="alternate" type="text/html" title="aihPOS - another incompatible and hackneyed Pi Operating System" />
 			<updated>2017-03-19T13:03:55+01:00</updated>
 
 			
@@ -2901,7 +2901,7 @@ Finished&amp;amp;nbsp;release&amp;amp;nbsp;[optimized]&amp;amp;nbsp;target(s)&am
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/03/19/aihpos-1">&lt;h1 id=&quot;hintergrund&quot;&gt;Hintergrund&lt;/h1&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1">&lt;h1 id=&quot;hintergrund&quot;&gt;Hintergrund&lt;/h1&gt;
 
 &lt;p&gt;In meinem Kurs &lt;a href=&quot;http://osg.informatik.tu-chemnitz.de/lehre/os&quot;&gt;Betriebssysteme&lt;/a&gt; verwende ich ab und zu Code-Abschnitte, die die Implementation verschiedener Konzepte des Betriebssystementwurfs demonstrieren. Diese Code-Abschnitte sind bisher sehr uneinheitlich, und setzen sich aus verschiedenen Quellen zusammen:&lt;/p&gt;
 
@@ -3166,9 +3166,9 @@ Finished&amp;amp;nbsp;release&amp;amp;nbsp;[optimized]&amp;amp;nbsp;target(s)&am
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2016/05/29/schluesselwortsuche-fuer-safari</id>
+			<id>https://werner-matthias.github.io/SysOp/2016/05/29/schluesselwortsuche-fuer-safari</id>
 			<title>Schlüsselwortsuche für Safari</title>
-			<link href="http://localhost:4000/2016/05/29/schluesselwortsuche-fuer-safari" rel="alternate" type="text/html" title="Schlüsselwortsuche für Safari" />
+			<link href="https://werner-matthias.github.io/SysOp/2016/05/29/schluesselwortsuche-fuer-safari" rel="alternate" type="text/html" title="Schlüsselwortsuche für Safari" />
 			<updated>2016-05-29T12:05:04+02:00</updated>
 
 			
@@ -3186,7 +3186,7 @@ Finished&amp;amp;nbsp;release&amp;amp;nbsp;[optimized]&amp;amp;nbsp;target(s)&am
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2016/05/29/schluesselwortsuche-fuer-safari">&lt;p&gt;Eines der Features, die ich bei Safari gegenüber Firefox immer vermisst habe, sind Schlüsselwortsuchen. Beispielsweise erhalte ich bei meiner Firefox-Installation, wenn ich&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2016/05/29/schluesselwortsuche-fuer-safari">&lt;p&gt;Eines der Features, die ich bei Safari gegenüber Firefox immer vermisst habe, sind Schlüsselwortsuchen. Beispielsweise erhalte ich bei meiner Firefox-Installation, wenn ich&lt;/p&gt;
 
 &lt;p&gt;ctan beamer&lt;/p&gt;
 
@@ -3246,9 +3246,9 @@ Finished&amp;amp;nbsp;release&amp;amp;nbsp;[optimized]&amp;amp;nbsp;target(s)&am
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2016/02/02/arroganz</id>
+			<id>https://werner-matthias.github.io/SysOp/2016/02/02/arroganz</id>
 			<title>Dijkstra vs. Kay</title>
-			<link href="http://localhost:4000/2016/02/02/arroganz" rel="alternate" type="text/html" title="Dijkstra vs. Kay" />
+			<link href="https://werner-matthias.github.io/SysOp/2016/02/02/arroganz" rel="alternate" type="text/html" title="Dijkstra vs. Kay" />
 			<updated>2016-02-02T06:02:52+01:00</updated>
 
 			
@@ -3266,7 +3266,7 @@ Finished&amp;amp;nbsp;release&amp;amp;nbsp;[optimized]&amp;amp;nbsp;target(s)&am
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2016/02/02/arroganz">&lt;blockquote&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2016/02/02/arroganz">&lt;blockquote&gt;
   &lt;p&gt;Don’t blame me for the fact that competent programming, as I view it as an intellectual possibility, will be too difficult for ‘the average programmer’ — you must not fall into the trap of rejecting a surgical technique because it is beyond the capabilities of the barber in his shop around the corner.
 &lt;cite&gt;Edsger W. Dijkstra&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
