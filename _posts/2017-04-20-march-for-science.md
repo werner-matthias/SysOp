@@ -1,16 +1,19 @@
 ---
-layout: post
+layout: page-fullwidth
 title: March for Science
 published: true
 author: mwerner
 comments: true
 date: 2017-04-20 09:04:46
-tags: [ ]
+tags: Wissenschaft
 categories:
-    - menschen
+  - menschen
+image:
+  title: sciencemarch.jpeg
+
 permalink: /2017/04/20/march-for-science
 ---
-[][1]
+
 
   * [March for Science][2] (International)
   * [March for Science Deutschland][1]

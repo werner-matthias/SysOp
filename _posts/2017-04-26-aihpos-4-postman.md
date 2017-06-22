@@ -1,29 +1,30 @@
 ---
 layout: page-fullwidth
-sidebar: right
 title: Please Mr. Postman
 subheadline: aihPOS - Ein Betriebsystem für die Lehre
-teaser: "Bevor wir uns dem Design des Kernels widmen, wollen wir Informationen über das System einsammeln. Auch wenn mein Testboard ein Raspberry Pi 1B+ ist, sollte ein Betriebssystem dafür doch mindestens so portabel sein, dass es auf verschiedenen Raspberries laufen kann. Dazu wäre es wichtig zu erfahren, welchen Raspberry-Typ wir haben, wieviel Speicher zur Verfügung steht. Außerdem nutzen wir die Gelegenheit, das Debugging nochmal zu verbessern."
+meta_description: "Bevor wir uns dem Design des Kernels widmen, wollen wir Informationen über das System einsammeln:  welchen Raspberry-Typ haben wir, wieviel Speicher
+steht zur Verfügung, etc.. Außerdem nutzen wir die Gelegenheit, das Debugging nochmal zu verbessern."
 published: true
 author: mwerner
 comments: true
 date: 2017-04-26 11:04:55
 tags:
     - Rust
-    - SOPHIA
+    - aihPOS
 categories:
     - aihpos
     - computer
 show_meta: true	
 permalink: /2017/04/26/aihpos-4-postman
 ---
+**Inhalt**
 - TOC
 {:toc}
 Bevor wir uns dem Design des Kernels widmen, wollen wir Informationen über das System einsammeln. Auch wenn mein Testboard ein Raspberry Pi 1B+ ist, sollte ein
 Betriebssystem dafür doch mindestens so portabel sein, dass es auf verschiedenen Raspberries laufen kann. Dazu wäre es z.B. wichtig zu erfahren, welchen Raspberry-Typ wir
 haben, wieviel Speicher zur Verfügung steht und wo die I/O-Hardware liegt.
 
-# Mailboxen
+## Mailboxen
 
 Glücklicherweise kümmert sich um das alles die GPU. Diese hat auch eine Schnittstelle, über die es mit dem ARM reden kann, das sogenannte [Mailbox-System][1]. Mailboxes
 sind FIFO-Speicher mit einer Breite von 28 Bit. Jede Mailbox ist in Kanäle unterteilt, die für unterschiedliche Arten von Informationen vorgesehen ist. Es kann pro
@@ -33,265 +34,33 @@ Mailbox maximal 16 Kanäle geben. Daten und Kanalinformationen werden mit einem 
 Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgehen und einen Interrupt auslösen lassen, wenn Daten bereit stehen. 
 
 {% highlight rust linenos %}
-use core::intrinsics::volatile_load;
-use core::mem::transmute;
-    
-const MAILBOX_BASE: u32 = 0x2000B880;
-
-#[allow(dead_code)]
-#[derive(Clone,Copy)]
-#[repr(u32)]
-pub enum Channel {
-    PowerManagement = 0,
-    Framebuffer,
-    VirtualUart,
-    Vchiq,
-    Leds,
-    Buttons,
-    Touchscreen,
-    Unused,
-    ATags,
-    IATags
-}
-
-const MAILBOX_FULL:  u32 = 1 << 31;
-const MAILBOX_EMPTY: u32 = 1 << 30;
-
-#[allow(dead_code)]
-#[repr(C)]
-pub struct Mailbox {
-    pub read:    u32,      // 0x00
-    _unused: [u32; 3],     // 0x04 0x08 0x0C
-    pub poll:    u32,      // 0x10 
-    pub sender:  u32,      // 0x14
-    pub status:  u32,      // 0x18
-    pub configuration: u32,// 0x1C
-    pub write:   u32,      // 0x20 Mailbox 1!
-}
-
-impl Mailbox {
-    pub fn write(&mut self, channel: Channel, addr: u32) {
-        assert!(addr & 0x0Fu32 == 0);
-        loop{ 
-            if unsafe{volatile_load(&mut self.status)} & MAILBOX_FULL == 0 { break }; 
-        }
-        self.write =addr | channel as u32; 
-    }
-
-    pub fn read(&mut self, channel: Channel) -> u32 {
-        loop {
-            if (unsafe{volatile_load(&mut self.status)} & MAILBOX_EMPTY == 0) && (self.read & 0xF == channel as u32)
-                { break };
-        }
-        self.read >> 4 
-    }
-}
-
-pub fn mailbox(nr: u8) -> &'static mut Mailbox {
-    match nr{
-        0 => unsafe{transmute(MAILBOX_BASE)},
-        _ => panic!()
-    }
-}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/mailbox.rs 0 -1 %}
 {% endhighlight %}
 
-# Property Tags
+## Property Tags
 
-Der für uns interessante ist Kanal 8. Über ihn werden Eigenschaften abgefragt und gesetzt, jeweils über einen _property tag_. Einige dieser Tags werden auch als [ATAG][2] dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Diese Property Tag werden &#8211; sowohl bei der Abfrage als auch bei der Antwort über eine verkettete Liste übertragen, die folgende Struktur hat:[][3]
+Der für uns interessante ist Kanal 8. Über ihn werden Eigenschaften abgefragt und gesetzt, jeweils über einen _property tag_. Einige dieser Tags werden auch als [ATAG][2]
+dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Diese Property Tag werden -- sowohl bei der Abfrage als auch bei der Antwort -- über eine verkettete Liste übertragen, die folgende Struktur hat:
+
+![image-title-here](/images/tag-list.png){:class="img-responsive"}
 
 Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags "auf Vorrat"in einem enum:
 
 {% highlight rust linenos %}
-#[derive(Clone,Copy)]
-#[repr(u32)]
-pub enum Tag {
-    /// Ende der Liste
-    None = 0,
-    /// Firmware
-    GetFirmwareVersion = 0x1,
-
-    /// Board
-    GetBoardModel = 0x10001,
-    GetBoardRevision,
-    GetBoardMacAddress,
-    GetBoardSerial,
-    GetArmMemory,
-    GetVcMemory,
-    GetClocks,
-
-    /// Befehlszeile
-    GetCommandLine = 0x50001,
-
-    /// DMA
-    GetDmaChannels = 0x60001,
-
-    /// Powermanagement
-    GetPowerState = 0x20001,
-    GetTiming = 0x20002,
-    SetPowerState = 0x28001,
-
-    /// Uhren
-    GetClockState = 0x30001,
-    SetClockState = 0x38001,
-    GetClockRate = 0x30002,
-    SetClockRate = 0x38002,
-    GetMaxClockRate = 0x30004,
-    GetMinClockRate = 0x30007,
-    GetTurbo = 0x30009,
-    SetTurbo = 0x38009,
-
-    /// Spannungsregelung
-    GetVoltage = 0x30003,
-    SetVoltage = 0x38003,
-    GetMaxVoltage = 0x30005,
-    GetMinVoltage = 0x30008,
-    GetTemperature = 0x30006,
-    GetMaxTemperature = 0x3000A,
-    AllocateMemory = 0x3000C,
-    LockMemory = 0x3000D,
-    UnlockMemory = 0x3000E,
-    ReleaseMemory = 0x3000F,
-    ExecuteCode = 0x30010,
-    GetDispmanxResHandle = 0x30014,
-    GetEDIDBlock = 0x30020,
-
-    /// Framebuffer
-    AllocateFrameBuffer = 0x40001,
-    ReleaseFrameBuffer = 0x48001,
-    BlankScreen = 0x40002,
-    GetPhysicalDisplaySize = 0x40003,
-    TestPhysicalDisplaySize = 0x44003,
-    SetPhysicalDisplaySize = 0x48003,
-    GetVirtualDisplaySize = 0x40004,
-    TestVirtualDisplaySize = 0x44004,
-    SetVirtualDisplaySize = 0x48004,
-    GetDepth = 0x40005,
-    TestDepth = 0x44005,
-    SetDepth = 0x48005,
-    GetPixelOrder = 0x40006,
-    TestPixelOrder = 0x44006,
-    SetPixelOrder = 0x48006,
-    GetAlphaMode = 0x40007,
-    TestAlphaMode = 0x44007,
-    SetAlphaMode = 0x48007,
-    GetPitch = 0x40008,
-    GetVirtualOffset = 0x40009,
-    TestVirtualOffset = 0x44009,
-    SetVirtualOffset = 0x48009,
-    GetOverscan = 0x4000A,
-    TestOverscan = 0x4400A,
-    SetOverscan = 0x4800A,
-    GetPalette = 0x4000B,
-    TestPalette = 0x4400B,
-    SetPalette = 0x4800B,
-    SetCursorInfo = 0x8011,
-    SetCursorState = 0x8010
-}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/propertytags.rs 8 93 %}
 {% endhighlight %}
 
-Bei der Antwort auf einen Request wird der Frage-Puffer überschrieben. Es muss also dafür gesorgt werden, dass genügend Platz für die Antwort zur Verfügung steht. Je nach [Tag-Typ][4] ist das unterschiedlich:
+Bei der Antwort auf einen Request wird der Frage-Puffer überschrieben. Es muss also dafür gesorgt werden, dass genügend Platz für die Antwort zur Verfügung steht. Je nach
+[Tag-Typ][4] ist das unterschiedlich:
 {% highlight rust linenos %}
-struct ReqProperty {
-    pub tag:  Tag,
-    pub buf_size: usize,
-    pub param_size: usize,
-}
-
-impl ReqProperty {
-    fn new(tag: Tag) -> ReqProperty {
-        let (buf_size, param_size) = // buf_size ist in Bytes, param_size in u32
-            match tag {
-                Tag::GetFirmwareVersion|
-                Tag::GetBoardModel |
-                Tag::GetBoardRevision |
-                Tag::GetBoardMacAddress |
-                Tag::GetBoardSerial |
-                Tag::GetArmMemory |
-                Tag::GetVcMemory |
-                Tag::GetDmaChannels |
-                Tag::GetPhysicalDisplaySize |
-                Tag::GetVirtualDisplaySize |
-                Tag::GetVirtualOffset
-                => (8,0),
-                Tag::GetClocks |
-                Tag::GetCommandLine
-                => (256,0),
-                Tag::GetPowerState |
-                Tag::GetTiming |
-                Tag::GetClockState |
-                Tag::GetClockRate |
-                Tag::GetMaxClockRate |
-                Tag::GetMinClockRate |
-                Tag::GetTurbo |
-                Tag::GetVoltage |
-                Tag::GetMaxVoltage |
-                Tag::GetMinVoltage |
-                Tag::GetTemperature |
-                Tag::GetMaxTemperature |
-                Tag::GetDispmanxResHandle |
-                Tag::AllocateFrameBuffer
-                => (8,1),
-                Tag::TestPhysicalDisplaySize |
-                Tag::SetPhysicalDisplaySize |
-                Tag::TestVirtualDisplaySize |
-                Tag::SetVirtualDisplaySize |
-                Tag::TestVirtualOffset |
-                Tag::SetVirtualOffset |
-                Tag::SetPowerState |
-                Tag::SetClockState |
-                Tag::SetTurbo |
-                Tag::SetVoltage
-                => (8,2),
-                Tag::SetAlphaMode |
-                Tag::SetPixelOrder |
-                Tag::SetDepth |
-                Tag::LockMemory |
-                Tag::ReleaseMemory |
-                Tag::UnlockMemory |
-                Tag::BlankScreen |
-                Tag::TestDepth |
-                Tag::TestPixelOrder |
-                Tag::TestAlphaMode
-                => (4,1),
-                Tag::GetAlphaMode |
-                Tag::GetPixelOrder |
-                Tag::GetPitch |
-                Tag::GetDepth
-                => (4,0),
-                Tag::GetOverscan  
-                => (16,0),
-                Tag::SetOverscan |
-                Tag::TestOverscan
-                => (16,4),
-                Tag::SetClockRate
-                => (12,3),  // Antwortgröße: 8
-                Tag::AllocateMemory
-                => (12,3),  // Antwortgröße: 4
-                Tag::ExecuteCode
-                => (28,1),
-                Tag::GetEDIDBlock
-                => (136,1),
-                Tag::ReleaseFrameBuffer
-                => (0,0),
-                Tag::GetPalette
-                => (1024,0),
-                Tag::TestPalette |
-                Tag::SetPalette
-                => (1032,258),  // maximale Größe
-                Tag::SetCursorInfo
-                => (24,6),
-                Tag::SetCursorState
-                => (16,4),
-                Tag::None => (0,0)
-        };
-        ReqProperty{ tag: tag, buf_size: buf_size, param_size: param_size}
-    }
-}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/propertytags.rs 95 190 %}
 {% endhighlight %}
 
-Da für die über den Kanal ausgetauschte Information wenige Bytes mitunter nicht ausreichen, werden über die Mailbox Adressen eine Puffers kommuniziert, die die eigentliche Information enthalten. Selbst eine solche Adresse kann mit 28 Bit nicht vollständig dargestellt werden: Es werden nur die obersten 28 Bit der Adresse werden übertragen, der Rest als 0 angenommen. Damit muss ein solcher Puffer ein entsprechendes Alignment haben, d.h., seine Adresse muss mit 0000 enden.
+Da für die über den Kanal ausgetauschte Information wenige Bytes mitunter nicht ausreichen, werden über die Mailbox Adressen eine Puffers kommuniziert, die die
+eigentliche Information enthalten. Selbst eine solche Adresse kann mit 28 Bit nicht vollständig dargestellt werden: Es werden nur die obersten 28 Bit der Adresse werden
+übertragen, der Rest als 0 angenommen. Damit muss ein solcher Puffer ein entsprechendes Alignment haben, d.h., seine Adresse muss mit 0000 enden. 
 
-## Alignment
+### Alignment
 
 In Standard-Rust ein bestimmtes Alignment zu erreichen, ist ohne externe Hilfe unmöglich.[^1] Natürlich können wir im Linkerfile einen statischen Speicherbereich mit entsprechenden Alignment anlegen und von Rust aus nutzen, aber das ist erstens unsicher und zweitens ist dieser Speicher dann für diesen Zweck reserviert. Schöner wäre es, wenn wir den Puffer dynamisch anlegen können, und -- da wir noch keine Heap-Verwaltung haben -- natürlich auf dem Stack.
 
@@ -300,170 +69,32 @@ vorgenommen wird. Seit neuesten[^2] steht ein eigenes Alignment-Attribut zur Ver
 [RFC 1358][5] falsch ist, statt z.B. `#[repr(align="16")]` wird das Alignment als (ebenfalls relativ neues) "Attribut-Literal"angegeben:
 `#[repr(align(16))]`. Es müssen also gleich zwei Featuregates freigeschaltet werden, `#![feature(repr_align)]` und `#![feature(attr_literals)]`. 
 
-## Tag-Puffer
+### Tag-Puffer
 
-Die Implementation des Tag-Puffers ist unkompliziert. Man muss lediglich darauf achten, dass die Daten u32-Wörter sind, aber die Größen stets in Byte gemessen werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwendig, die durch die Shift-Operatoren `<<` realisiert werden.
+Die Implementation des Tag-Puffers ist unkompliziert. Man muss lediglich darauf achten, dass die Daten `u32`-Wörter sind, aber die Größen stets in Byte gemessen werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwendig, die durch die Shift-Operatoren `<<` realisiert werden.
 
 {% highlight rust linenos %}
-enum TagReqResp {
-    Request = 0,
-    Response = 1 << 31
-}
-
-enum PbOffset {
-    Size = 0,
-    Code = 1
-}
-
-enum TagOffset {
-    Id = 0,
-    Size = 1,
-    ReqResp = 2,
-    StartVal = 3,
-}
-
-#[repr(C)]
-#[repr(align(16))]
-pub struct PropertyTagBuffer {
-    pub data: [u32; BUFFER_SIZE],
-    pub index:    usize,
-}
-
-impl PropertyTagBuffer {
-
-    pub fn new() -> PropertyTagBuffer {
-        PropertyTagBuffer{
-            data: [0; BUFFER_SIZE],
-            index: 2,
-        }
-    }
-
-    pub fn init(&mut self)  {
-        self.index = 2;
-        self.data[PbOffset::Size as usize] = 12; // Size + Code + Endtag
-        self.data[PbOffset::Code as usize] = ReqResCode::Request as u32;
-        self.data[self.index] = Tag::None as u32;
-    }
-
-    fn write(&mut self, data: u32){
-        self.data[self.index] = data;
-        self.data[PbOffset::Size as usize] += mem::size_of::<u32> as u32;
-        self.index += 1;
-    }
-
-    pub fn add_tag_with_param(&mut self, tag: Tag,  params: Option<&[u32]>) {
-        let old_index = self.index;
-        let prop = ReqProperty::new(tag);
-        self.write(prop.tag as u32);
-        self.write(prop.buf_size as u32);
-        self.write(TagReqResp::Request as u32);
-        match params {
-            Some(array) => {
-                assert!(array.len() == prop.param_size); // ToDo: Überprüfung zur Compilezeit wäre besser
-                for p in array.into_iter() {
-                    self.write(*p);
-                }
-            },
-            None => {}
-        }
-        self.index = old_index + 3 + (prop.buf_size >> 2) ;
-        self.data[self.index] = Tag::None as u32; 
-        self.data[PbOffset::Size as usize] = ((self.index +1) << 2) as u32; 
-    }
-
-    fn read(&mut self) -> u32 {
-        self.index + 1;
-        self.data[self.index - 1]
-    }
-
-    pub fn get_answer(&self, tag: Tag) -> Option<&[u32]> {
-        if self.data[PbOffset::Code as usize] != ReqResCode::Success as u32 {
-            return None
-        }
-        // Es wird ein lokaler Index benutzt, so dass der PropertyTagBuffer nicht geändert wird
-        let mut index: usize = 2;
-
-        while (index as u32) < (self.data[PbOffset::Size as usize]) {
-            if (self.data[index] == tag as u32) &&
-                (self.data[index + TagOffset::ReqResp as usize] & TagReqResp::Response as u32 == TagReqResp::Response as u32) {
-                let to = index + TagOffset::StartVal as usize +
-                    ((self.data[index + TagOffset::Size as usize] & !(TagReqResp::Response as u32)) >> 2) as usize;
-                let ret = self.data.get(index + TagOffset::StartVal as usize .. to);
-                return ret;
-            }
-            index += (self.data[index+TagOffset::Size as usize] >> 2) as usize + 3;
-        }
-        None
-    }
-}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/propertytags.rs 192 -1 %}
 {% endhighlight %}
 
-## Zuwenig Speicher?
+### Zuwenig Speicher?
 
-Mit Hilfe der Property-Tags können jetzt gewünschte Informationen erlangt werden. Um nicht mit den "rohen"Puffer-Daten umgehen zu müssen, habe ich Schnittstellenfunktionen geschrieben:
+Mit Hilfe der Property-Tags können jetzt gewünschte Informationen erlangt werden. Um nicht mit den "rohen" Puffer-Daten umgehen zu müssen, habe ich
+Schnittstellenfunktionen geschrieben:
+
 {% highlight rust linenos %}
-pub enum BoardReport {
-    FirmwareVersion,
-    BoardModel,
-    BoardRevision,
-    SerialNumber
-}
-
-pub fn report_board_info(kind: BoardReport) -> u32 {  
-    let mut prob_tag_buf: PropertyTagBuffer = PropertyTagBuffer::new();
-    prob_tag_buf.init();
-    let tag = match kind {
-        BoardReport::FirmwareVersion => Tag::GetFirmwareVersion,
-        BoardReport::BoardModel      => Tag::GetBoardModel,
-        BoardReport::BoardRevision   => Tag::GetBoardRevision,
-        BoardReport::SerialNumber    => Tag::GetBoardSerial
-    };
-    prob_tag_buf.add_tag_with_param(tag,None);
-    let mb = mailbox(0);
-    mb.write(Channel::ATags, &prob_tag_buf.data as *const [u32; self::propertytags::BUFFER_SIZE] as u32);
-    mb.read(Channel::ATags);
-    match prob_tag_buf.get_answer(tag) {
-        Some(n) => n[0],
-        _       => 0
-    }
-}
-
-#[allow(dead_code)]
-pub enum MemReport {
-    ArmStart,
-    ArmSize,
-    VcStart,
-    VcSize,
-}
-
-pub fn report_memory(kind: MemReport) -> u32 {
-    let mut prob_tag_buf = PropertyTagBuffer::new();
-    prob_tag_buf.init();
-    let tag = match kind {
-        MemReport::ArmStart | MemReport::ArmSize => Tag::GetArmMemory,
-        MemReport::VcStart  | MemReport::VcSize  => Tag::GetVcMemory
-    };    
-    prob_tag_buf.add_tag_with_param(tag,None);
-    let mb = mailbox(0);
-    mb.write(Channel::ATags, &prob_tag_buf.data as *const [u32; self::propertytags::BUFFER_SIZE] as u32);
-    mb.read(Channel::ATags);
-    let array = prob_tag_buf.get_answer(tag);
-    match array {
-        Some(a) => match kind {
-            MemReport::ArmStart | MemReport::VcStart => a[0],
-            MemReport::ArmSize  | MemReport::VcSize  => a[1]
-        },
-        None => 0
-    }
-}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/mod.rs 0 -1 %}
 {% endhighlight %}
+
 Die Nutzung dieser Funktionen gab für mich zwei Überraschungen:
 
-  1. Bei der Revisionsnummer des Boards hatte ich bei einem Raspberry Pi 1B+ den Wert 0x10 erwartet. Tatsächlich erhielt ich 0x13, der in einigen Verzeichnissen nicht gelistet ist. [Hier][6] ist eine vermutlich vollständige Liste, demnach handelt es sich tatsächlich um einen 1B+, aber mit geänderten Leiterplattenlayout.
-  2. Es wurden 256 MByte Speicher berichtet, obwohl der 1B+ doch 512 MByte haben sollte, von denen die GPU standardmäßig lediglich 64 MByte "abzweigt&#8220;. Eine kurze Web-Recherche ergab, dass es sich dabei um einen bekannten Bug der Firmware handelt, für den auch ein entsprechender Bugfix existiert. Wenn man in das Boot-Verzeichnis die Datei fixup.dat aus dem originalen Boot-Verzeichnis kopiert, werden korrekt 448 MByte verfügbarer Speicher gemeldet.
+  1. Bei der Revisionsnummer des Boards hatte ich bei einem Raspberry Pi 1B+ den Wert 0x10 erwartet. Tatsächlich erhielt ich 0x13, der in einigen Verzeichnissen nicht
+     gelistet ist. [Hier][6] ist eine vermutlich vollständige Liste; demnach handelt es sich tatsächlich um einen 1B+, aber mit geänderten Leiterplattenlayout. 
+  2. Es wurden 256 MByte Speicher berichtet, obwohl der 1B+ doch 512 MByte haben sollte, von denen die GPU standardmäßig lediglich 64 MByte "abzweigt". Eine kurze
+     Web-Recherche ergab, dass es sich dabei um einen bekannten Bug der Firmware handelt, für den auch ein entsprechender Bugfix existiert. Wenn man in das
+     Boot-Verzeichnis die Datei fixup.dat aus dem originalen Boot-Verzeichnis kopiert, werden korrekt 448 MByte verfügbarer Speicher gemeldet. 
 
-# Kprint
-
+## Kprint
 Der Property-Tags-Kanal der Mailbox hat noch viel mehr parat: Mit Hilfe der Property Tags kann nämlich der Framebuffer konfiguriert werden. [Blinksignale][7] zum Debuggen
 sind ja gut und schön, aber ein richtiger Text ist doch bequemer.  Zwar hat die Mailbox dafür auch einen eigenen Kanal, aber der existierte bevor die Property Tags hinzu
 kamen und kann nicht ganz soviel wie diese.[^3] 
@@ -475,94 +106,29 @@ positioniert werden kann.
 
 Zunächst definieren wir eine Struktur:
 {% highlight rust linenos %}
-#[allow(dead_code)]
-pub struct Framebuffer<'a> {
-    screen: &'a mut[u32],
-    width: u32,
-    height: u32,
-    depth: u32,
-    row: u32,
-    col: u32,
-    pitch: u32,
-    fg_color: u32,
-    bg_color: u32,
-    virtual_width:  u32,
-    virtual_height: u32,
-    x_offset: u32,
-    y_offset: u32,
-    size: u32,
-}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 12 29 %}
 {% endhighlight %}
-`screen` ist dabei die Referenz auf den eigentlichen Framebuffer-Speicherbereich, die anderen Felder sollten selbsterklärend sein. `screen` und die resultierende Speicherzeilenlänge (`pitch`) werden bei der Initialisierung abgefragt, nachdem die Grundparameter vorgegeben werden:
-{% highlight rust linenos %}
-pub fn new() ->  Framebuffer<'a> {
-        /* Die Voreinstellung des Bootloaders wird ignoriert.
-           Gegebenenfalls sollten die Einstellungen abgefragt und verwendet werden. Allerdings erfordert dies mindestens
-           bei der Farbtiefe größere Änderungen. */
-        let mut prob_tag_buf: PropertyTagBuffer = PropertyTagBuffer::new();
-        prob_tag_buf.init();
-        prob_tag_buf.add_tag_with_param(Tag::SetPhysicalDisplaySize,Some(&[FB_WIDTH,FB_HEIGHT]));
-        prob_tag_buf.add_tag_with_param(Tag::SetVirtualDisplaySize,Some(&[FB_WIDTH,2*FB_HEIGHT]));
-        prob_tag_buf.add_tag_with_param(Tag::SetDepth,Some(&[FB_COLOR_DEP]));
-        prob_tag_buf.add_tag_with_param(Tag::AllocateFrameBuffer,Some(&[16]));
-        prob_tag_buf.add_tag_with_param(Tag::GetPitch,None);
-        let mb = mailbox(0);
-        mb.write(Channel::ATags, &prob_tag_buf.data as *const [u32; BUFFER_SIZE] as u32);
-        mb.read(Channel::ATags);
-        let ret = prob_tag_buf.get_answer(Tag::AllocateFrameBuffer);
-        let mut adr: &'a mut[u32];
-        let size: usize;
-        match ret {
-            Some(a) => {
-                size = a[1] as usize;
-                adr  = unsafe{ slice::from_raw_parts_mut(a[0] as *mut u32, size)};
-            }
-            _   => {
-                blink::blink(blink::BS_SOS);
-                unreachable!();
-                
-            }
-        };
-        
-        let pitch: u32;
-        let ret = prob_tag_buf.get_answer(Tag::GetPitch);
-        match ret {
-            Some(a) => {
-                pitch = a[0];
-            }
-            _ => {
-                blink::blink(blink::BS_SOS);
-                unreachable!();
-            }
-        }        
-        let fb = Framebuffer {
-            screen: adr,
-            width: FB_WIDTH,
-            height: FB_HEIGHT,
-            depth: FB_COLOR_DEP,
-            row: 0, col: 0,
-            pitch: pitch,
-            fg_color: DEF_COLOR, bg_color: DEF_BG_COLOR,
-            virtual_width: FB_WIDTH,
-            virtual_height: 2*FB_HEIGHT,
-            x_offset: 0,
-            y_offset: 0,
-            size: size as u32,
-        };
-        fb
-    }
-{% endhighlight %}
-Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,[^5] indem wir einen virtuellen Ringpuffer aufbauen, siehe Abschnitt "[Scrollen][8]".[][9]
 
-## Vom Pixel zum String
+`screen` ist dabei die Referenz auf den eigentlichen Framebuffer-Speicherbereich, die anderen Felder sollten selbsterklärend sein. `screen` und die resultierende
+Speicherzeilenlänge (`pitch`) werden bei der Initialisierung abgefragt, nachdem die Grundparameter vorgegeben werden:
+
+{% highlight rust linenos %}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 33 87 %}
+{% endhighlight %}
+
+Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,[^5] indem wir einen virtuellen Ringpuffer aufbauen, siehe Abschnitt "[Scrollen][8]".
+
+![image-title-here](/images/virphys-fb.png){:class="img-responsive"}
+### Vom Pixel zum String
 
 Wenn jetzt ein Pixel in einer bestimmten Farbe dargestellt werden soll, muss entsprechender Wert in den Puffer geschrieben werden. Der Farbwert (im eingestellten Modus) setzt sich folgendermaßen zusammen:
 
-[table id=1 /]
+| **Bit** | **24 -- 31** | **16 -- 23** | **8 -- 15** | **0 -- 7** |
+|------|:----------:|:-----------:|:---------:|:---------|
+|            | Transparenz  | Rotanteil         | Grünanteil  | Blauanteil   |
+|            | (nicht genutzt) | (0--255) | (0--255) | (0--255) |
 {% highlight rust linenos %}
-fn draw_pixel(&mut self, color: u32, x: u32, y: u32) {
-        self.screen[(y*self.width + x) as usize] =  color;
-    }
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 89 91 %}
 {% endhighlight %}
 
 Jetzt zeigt es sich von Vorteil, dass wir eine Farbtiefe gewählt haben, die der Wortbreite entspricht: Dadurch wird die Indexierung sehr einfach. Bei 24 Bit Farbtiefe,
@@ -677,7 +243,7 @@ impl<'a> fmt::Write for Framebuffer<'a> {
 }
 {% endhighlight %}
 
-## Scrollen {#scrollen}
+### Scrollen {#scrollen}
 
 Nun muss noch die Scroll-Logik implementiert werden. Die Idee ist sehr einfach: Die eigentliche Verschiebung erfolgt auch die Änderung von `y_offset`, wofür wieder die Mailbox benutzt wird. Sobald das sichtbare Fenster nach unten geschoben wurde, wird eine Bildschirmzeile nach oben in den jetzt verstecken Bereich kopiert. Der noch nicht sichtbare Bereich unten wird von evtl. vorhandenen alten Daten bereinigt. Wenn die maximale Verschiebung erreicht ist, springt der sichtbare Ausschnitt wieder nach oben, was durch das vorherige Kopieren aber wie ein einfaches Scrollen aussieht.
 
@@ -721,7 +287,7 @@ pub fn scroll(&mut self) {
 {% endhighlight %}
 
 
-## (No) Race Codition
+### (No) Race Codition
 
 Um den Framebuffer zum Debuggen zu nutzen, muss er initialisiert werden. Wo und wann soll das geschehen? Offensichtlich soll er überall zur Verfügung stehen. Da es nicht
 sinnvoll ist, eine entsprechende Variable als Funktionsparameter an sämtliche Funktionen weiterzureichen, muss dies Variable global sein, in Rust seit das statisch
@@ -771,7 +337,7 @@ impl<'b, T> NoConcurrency<T>{
 }
 {% endhighlight %}
 
-# Der Linker zickt mal wieder
+## Der Linker zickt mal wieder
 
 Bei der Übersetzung des Codes entsteht ein Linkerfehler:
 

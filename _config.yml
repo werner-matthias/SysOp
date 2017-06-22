@@ -52,7 +52,9 @@ markdown: kramdown
 permalink: /:categories/:title/
 highlighter: rouge
 
-plugins: [jekyll-paginate]
+plugins:
+  - jekyll-paginate
+  - jekyll_github_sample
 
 excerpt_separator: "<!--more-->"
 
@@ -88,10 +90,10 @@ defaults:
       path: "" 				# an empty string here means all files in the project
       type: "pages"
     values:
-      show_meta: false 	# Hide metadata for all pages
+      show_meta: true 	        # Show metadata for all pages
       # sidebar:    		# Possible values › left, right › by default there will be no sidebar
       comments: false
-      author: mwerner     # Default author for pages
+      author: mwerner           # Default author for pages
   -
     scope:
       path: ""
