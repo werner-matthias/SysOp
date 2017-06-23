@@ -193,7 +193,6 @@ pub fn print(&mut self, s: &str) {
         if (self.row+1) * SystemFont::glyph_height() - self.y_offset > self.height {
             self.scroll();
         }
-
         match c as char {
             '\n' => {
                 self.row += 1;
@@ -214,7 +213,6 @@ pub fn print(&mut self, s: &str) {
                     self.col = 0;
                 }
             }
-
         }
     }
 
@@ -367,9 +365,9 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
  [10]: http://stackoverflow.com/a/23130671
  [11]: https://github.com/rust-lang-nursery/compiler-builtins
 
-[^1]: Das ist nicht ganz präzise: Rust hält das "natürliche"Alignment ein, das ggf. durch repr(packed) unterlaufen werden kann. 
+[^1]: Das ist nicht ganz präzise: Rust hält das "natürliche" Alignment ein, das ggf. durch `#[repr(packed)]` unterlaufen werden kann.
 [^2]: Version 6d841da vom 22. April 2017 
-[^3]: Eine weitere Alternative für das Debuggen wäre auch noch die Nutzung der UART, Kanal 2. 
+[^3]: Eine weitere Alternative für das Debuggen wäre auch noch die Nutzung der UART. 
 [^4]: Diese Darstellung ist etwas vereinfacht. 
 [^5]: Genau genommen bräuchte man dafür nur ein oder zwei "Reservezeilen", aber so sind wir etwas flexibler. 
-[^6]: Es wäre dann vermutlich besser, wenn ein u8-Array genutzt würde. 
+[^6]: Es wäre dann vermutlich besser, wenn ein `u8`-Array genutzt würde. 

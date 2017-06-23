@@ -62,8 +62,12 @@
     .vg    { color: #008080 } // Name.Variable.Global
     .vi    { color: #008080 } // Name.Variable.Instance
     .il    { color: #099 } // Literal.Number.Integer.Long
-    table  {padding: 0; border: none}
+    table  {padding: 0; border: none }
     table tr td {padding: 0; border: none}
     pre    { margin-bottom: 0}
     pre.lineno { color: #7f7f7f }
+    pre code   { padding: 0 0 0 0 }
+    code table { margin-bottom: 0 }
 }
+
+figure.highlight { margin-bottom: 0 }

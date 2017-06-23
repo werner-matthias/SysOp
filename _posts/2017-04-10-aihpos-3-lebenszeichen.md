@@ -15,6 +15,9 @@ categories:
     - computer
 permalink: /2017/04/10/aihpos-3-lebenszeichen
 ---
+**Inhalt**
+- TOC
+{:toc}
 Nachdem wir unsere [Toolchain][1] installiert haben, wollen wir den ersten &#8222;Kernel&#8220; bauen. Er soll nichts anderes machen, als den Pi für JTAG
 vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der [I/O-Hardware][2], dem Speicher-Layout und dem
 Boot-Prozess. 

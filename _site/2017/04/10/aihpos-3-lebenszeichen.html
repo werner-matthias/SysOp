@@ -298,7 +298,31 @@
 			
 
 			<span itemprop="articleSection">
-	                <p>Nachdem wir unsere <a href="http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/">Toolchain</a> installiert haben, wollen wir den ersten „Kernel“ bauen. Er soll nichts anderes machen, als den Pi für JTAG
+	                <p><strong>Inhalt</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#boot-prozess" id="markdown-toc-boot-prozess">Boot-Prozess</a></li>
+  <li><a href="#speicher-und-formate" id="markdown-toc-speicher-und-formate">Speicher und Formate</a>    <ul>
+      <li><a href="#layout-und-linker" id="markdown-toc-layout-und-linker">Layout und Linker</a></li>
+      <li><a href="#binärfile" id="markdown-toc-binärfile">Binärfile</a></li>
+      <li><a href="#makefile" id="markdown-toc-makefile">Makefile</a></li>
+    </ul>
+  </li>
+  <li><a href="#hardware" id="markdown-toc-hardware">Hardware</a>    <ul>
+      <li><a href="#jtag" id="markdown-toc-jtag">JTAG</a></li>
+      <li><a href="#led" id="markdown-toc-led">LED</a></li>
+    </ul>
+  </li>
+  <li><a href="#software" id="markdown-toc-software">Software</a>    <ul>
+      <li><a href="#das-erste-rust-programm" id="markdown-toc-das-erste-rust-programm">Das erste Rust-Programm</a></li>
+      <li><a href="#panik" id="markdown-toc-panik">Panik!</a></li>
+    </ul>
+  </li>
+  <li><a href="#mit-dem-pireden" id="markdown-toc-mit-dem-pireden">Mit dem Pi reden</a>    <ul>
+      <li><a href="#morsezeichen" id="markdown-toc-morsezeichen">Morsezeichen</a></li>
+    </ul>
+  </li>
+</ul>
+<p>Nachdem wir unsere <a href="http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/">Toolchain</a> installiert haben, wollen wir den ersten „Kernel“ bauen. Er soll nichts anderes machen, als den Pi für JTAG
 vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der <a href="https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf">I/O-Hardware</a>, dem Speicher-Layout und dem
 Boot-Prozess.</p>
 
