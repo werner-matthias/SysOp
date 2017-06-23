@@ -1,7 +1,8 @@
 ---
 layout: page-fullwidth
 title: Ausr(ü/u)stung
-meta_description: 
+subheadline: aihPOS - Ein Betriebsystem für die Lehre
+meta_description: "Bevor wir mit dem Code-Schreiben beginnen, brauchen wir die Entwickler-Werkzeuge."
 published: true
 author: mwerner
 comments: true
