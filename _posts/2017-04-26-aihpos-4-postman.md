@@ -42,7 +42,7 @@ Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgeh
 Der für uns interessante ist Kanal 8. Über ihn werden Eigenschaften abgefragt und gesetzt, jeweils über einen _property tag_. Einige dieser Tags werden auch als [ATAG][2]
 dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Diese Property Tag werden -- sowohl bei der Abfrage als auch bei der Antwort -- über eine verkettete Liste übertragen, die folgende Struktur hat:
 
-![](/images/tag-list.png){:class="img-responsive"}
+![]({{site.urlimg}}/tag-list.png){:class="img-responsive"}
 
 Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags "auf Vorrat"in einem enum:
 
@@ -118,7 +118,7 @@ Speicherzeilenlänge (`pitch`) werden bei der Initialisierung abgefragt, nachde
 
 Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,[^5] indem wir einen virtuellen Ringpuffer aufbauen, siehe Abschnitt "[Scrollen][8]".
 
-![image-title-here](/images/virphys-fb.png){:class="img-responsive"}
+![]({{site.urlimg}}/virphys-fb.png){:class="img-responsive"}
 ### Vom Pixel zum String
 
 Wenn jetzt ein Pixel in einer bestimmten Farbe dargestellt werden soll, muss entsprechender Wert in den Puffer geschrieben werden. Der Farbwert (im eingestellten Modus) setzt sich folgendermaßen zusammen:

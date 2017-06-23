@@ -464,7 +464,7 @@ Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgeh
 <p>Der für uns interessante ist Kanal 8. Über ihn werden Eigenschaften abgefragt und gesetzt, jeweils über einen <em>property tag</em>. Einige dieser Tags werden auch als <a href="http://www.simtec.co.uk/products/SWLINUX/files/booting_article.html#appendix_tag_reference">ATAG</a>
 dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Diese Property Tag werden – sowohl bei der Abfrage als auch bei der Antwort – über eine verkettete Liste übertragen, die folgende Struktur hat:</p>
 
-<p><img src="/images/tag-list.png" alt="" class="img-responsive" /></p>
+<p><img src="https://werner-matthias.github.io/SysOp/images/tag-list.png" alt="" class="img-responsive" /></p>
 
 <p>Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags “auf Vorrat”in einem enum:</p>
 
@@ -1338,7 +1338,7 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
 
 <p>Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> indem wir einen virtuellen Ringpuffer aufbauen, siehe Abschnitt “<a href="#scrollen">Scrollen</a>”.</p>
 
-<p><img src="/images/virphys-fb.png" alt="image-title-here" class="img-responsive" /></p>
+<p><img src="https://werner-matthias.github.io/SysOp/images/virphys-fb.png" alt="" class="img-responsive" /></p>
 <h3 id="vom-pixel-zum-string">Vom Pixel zum String</h3>
 
 <p>Wenn jetzt ein Pixel in einer bestimmten Farbe dargestellt werden soll, muss entsprechender Wert in den Puffer geschrieben werden. Der Farbwert (im eingestellten Modus) setzt sich folgendermaßen zusammen:</p>
