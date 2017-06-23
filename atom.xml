@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-06-23T10:59:59+02:00</updated>
+	<updated>2017-06-23T11:09:08+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -2269,7 +2269,7 @@ darf nicht der lokale Debugger genutzt werden&lt;sup id=&quot;fnref:5&quot;&gt;&
         &lt;/div&gt;
 
 &lt;p&gt;Wer will, kann den Debugger auch in eine GUI oder IDE einbinden, z.B. mit der &lt;a href=&quot;https://pypi.python.org/pypi/gdbgui/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gdbgui&lt;/code&gt;&lt;/a&gt;.
-&lt;img src=&quot;/images/debug.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;images/debug.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Nun kann man auch ohne Betriebssystem (fast) so bequem debuggen, wie man es von der Entwicklung von Desktop-Programmen gewohnt ist. Zwar ist die Arbeit über das
 JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständig die SD-Karte wechselt.&lt;/p&gt;
