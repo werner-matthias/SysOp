@@ -42,7 +42,7 @@ Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgeh
 Der für uns interessante ist Kanal 8. Über ihn werden Eigenschaften abgefragt und gesetzt, jeweils über einen _property tag_. Einige dieser Tags werden auch als [ATAG][2]
 dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Diese Property Tag werden -- sowohl bei der Abfrage als auch bei der Antwort -- über eine verkettete Liste übertragen, die folgende Struktur hat:
 
-![image-title-here](/images/tag-list.png){:class="img-responsive"}
+![](/images/tag-list.png){:class="img-responsive"}
 
 Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags "auf Vorrat"in einem enum:
 

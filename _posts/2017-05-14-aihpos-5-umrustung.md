@@ -3,6 +3,7 @@ layout: page-fullwidth
 title: Um-Rust-ung
 subheadline: aihPOS - Ein Betriebsystem für die Lehre
 published: true
+meta_description: "Das Build-System wird auf Rust-Tools umgestellt - make hat ausgedient."
 author: mwerner
 comments: true
 toc: true
@@ -57,7 +58,7 @@ Die Trennung der Steuerung von Compiler-Optionen (in den `[profile.*]`-Abschnit
 
 ### Post-Linker Aktionen
 
-Wenn man sich das bisherige **Makefile** anschaut, dann sieht man, dass der Building-Prozess nicht &#8212; wie sonst meist üblich &#8212; mit dem Linken endet. Dies ist
+Wenn man sich das bisherige **<tt>Makefile</tt>** anschaut, dann sieht man, dass der Building-Prozess nicht &#8212; wie sonst meist üblich &#8212; mit dem Linken endet. Dies ist
 in `cargo` nicht vorgesehen. Zwar kennt `cargo` die Möglichkeit, mit Hilfe eines Build-Scriptes Schritte **vor** der Übersetzung auszuführen; etwas ähnliches für danach
 wird zwar in unter den Entwicklern diskutiert, wurde aber bisher nicht umgesetzt. Man kann zwar den Linker (in der Target-Datei) umdefinieren, aber ich fürchte, dass eine
 solche Lösung schnell unübersichtlich wird. Es ein häufig genutzter und sogar empfohlener[^1] Ansatz ist daher, `cargo` wiederum von einem `Makefile` aufrufen lassen. Das
