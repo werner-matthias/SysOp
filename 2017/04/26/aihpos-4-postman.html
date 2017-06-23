@@ -1510,9 +1510,7 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"
 42
 43
 44
-45
-46
-47</pre></td><td class="code"><pre><span class="k">pub</span> <span class="k">fn</span> <span class="nf">print</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="p">{</span>
+45</pre></td><td class="code"><pre><span class="k">pub</span> <span class="k">fn</span> <span class="nf">print</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="n">c</span> <span class="n">in</span> <span class="n">s</span><span class="nf">.chars</span><span class="p">()</span> <span class="p">{</span>
                 <span class="k">self</span><span class="nf">.putchar</span><span class="p">(</span><span class="n">c</span> <span class="k">as</span> <span class="nb">u8</span><span class="p">);</span>
         <span class="p">}</span>
@@ -1522,7 +1520,6 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"
         <span class="k">if</span> <span class="p">(</span><span class="k">self</span><span class="py">.row</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="o">-</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">&gt;</span> <span class="k">self</span><span class="py">.height</span> <span class="p">{</span>
             <span class="k">self</span><span class="nf">.scroll</span><span class="p">();</span>
         <span class="p">}</span>
-
         <span class="k">match</span> <span class="n">c</span> <span class="k">as</span> <span class="nb">char</span> <span class="p">{</span>
             <span class="sc">'\n'</span> <span class="k">=&gt;</span> <span class="p">{</span>
                 <span class="k">self</span><span class="py">.row</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
@@ -1534,8 +1531,7 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"
                 <span class="p">}</span>
             <span class="p">},</span>
             <span class="n">_</span> <span class="k">=&gt;</span> <span class="p">{</span>
-                <span class="k">let</span> <span class="p">(</span><span class="n">icol</span><span class="p">,</span><span class="n">irow</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="k">self</span><span class="py">.col</span><span class="p">,</span> <span class="k">self</span><span class="py">.row</span><span class="p">);</span> <span class="c">// Copy 
-</span>
+                <span class="k">let</span> <span class="p">(</span><span class="n">icol</span><span class="p">,</span><span class="n">irow</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="k">self</span><span class="py">.col</span><span class="p">,</span> <span class="k">self</span><span class="py">.row</span><span class="p">);</span> <span class="c">// Copy </span>
                 <span class="k">self</span><span class="nf">.draw_glyph</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">icol</span> <span class="o">*</span> <span class="p">(</span><span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_width</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">irow</span> <span class="o">*</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">());</span>
                 
                 <span class="k">self</span><span class="py">.col</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
@@ -1544,7 +1540,6 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"
                     <span class="k">self</span><span class="py">.col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
-
         <span class="p">}</span>
     <span class="p">}</span>
 
@@ -1617,8 +1612,7 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"
 34
 35
 36</pre></td><td class="code"><pre><span class="k">pub</span> <span class="k">fn</span> <span class="nf">scroll</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c">// kopiere letzte Zeile
-</span>
+        <span class="c">// kopiere letzte Zeile</span>
         <span class="k">if</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">&gt;</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="p">{</span>
             <span class="k">for</span> <span class="n">y</span> <span class="n">in</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span><span class="err">.</span><span class="py">.self.y_offset</span> <span class="o">-</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="p">{</span>
                 <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">0</span><span class="err">.</span><span class="py">.self.width</span> <span class="p">{</span>
@@ -1626,25 +1620,20 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
-        <span class="k">if</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">+</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="o">&lt;</span> <span class="k">self</span><span class="py">.height</span> <span class="p">{</span> <span class="c">// solange das Fenster noch nicht das Ende des Puffers erreicht hat...
-</span>
-            <span class="c">// lösche ggf. alten Inhalt
-</span>
+        <span class="k">if</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">+</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="o">&lt;</span> <span class="k">self</span><span class="py">.height</span> <span class="p">{</span> <span class="c">// solange das Fenster noch nicht das Ende des Puffers erreicht hat...</span>
+            <span class="c">// lösche ggf. alten Inhalt</span>
             <span class="k">for</span> <span class="n">y</span> <span class="nf">in</span> <span class="p">(</span><span class="k">self</span><span class="py">.height</span><span class="o">+</span><span class="k">self</span><span class="py">.y_offset</span><span class="p">)</span><span class="err">.</span><span class="py">.cmp</span><span class="p">::</span><span class="nf">min</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="k">self</span><span class="py">.height</span><span class="p">,</span><span class="k">self</span><span class="py">.height</span><span class="o">+</span><span class="k">self</span><span class="py">.y_offset</span><span class="o">+</span> <span class="mi">2</span><span class="o">*</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">())</span> <span class="p">{</span>
                 <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">0</span><span class="err">.</span><span class="py">.self.width</span> <span class="p">{</span>
                     <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span><span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span> <span class="k">self</span><span class="py">.bg_color</span><span class="p">;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
-            <span class="c">// versetze Fenster um eine Zeilenhöhe, 
-</span>
+            <span class="c">// versetze Fenster um eine Zeilenhöhe, </span>
             <span class="k">self</span><span class="py">.y_offset</span> <span class="o">=</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">+</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">();</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="c">// sonst gehe zum Pufferbeginn
-</span>
+            <span class="c">// sonst gehe zum Pufferbeginn</span>
             <span class="k">self</span><span class="py">.row</span> <span class="o">=</span> <span class="k">self</span><span class="py">.row</span> <span class="o">-</span> <span class="p">(</span><span class="k">self</span><span class="py">.height</span> <span class="err">/</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">())</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
             <span class="k">self</span><span class="py">.y_offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="c">// lösche letzte Zeile
-</span>
+            <span class="c">// lösche letzte Zeile</span>
             <span class="k">for</span> <span class="n">y</span> <span class="n">in</span> <span class="k">self</span><span class="py">.height</span> <span class="o">-</span> <span class="p">(</span><span class="k">self</span><span class="py">.height</span> <span class="o">%</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">())</span><span class="err">.</span><span class="py">.self.height</span> <span class="p">{</span>
                 <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">0</span><span class="err">.</span><span class="py">.self.width</span> <span class="p">{</span>
                     <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span><span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span> <span class="k">self</span><span class="py">.bg_color</span><span class="p">;</span>
@@ -1762,13 +1751,13 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Das ist nicht ganz präzise: Rust hält das “natürliche”Alignment ein, das ggf. durch repr(packed) unterlaufen werden kann.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>Das ist nicht ganz präzise: Rust hält das “natürliche” Alignment ein, das ggf. durch <code class="highlighter-rouge">#[repr(packed)]</code> unterlaufen werden kann.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
       <p>Version 6d841da vom 22. April 2017&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>Eine weitere Alternative für das Debuggen wäre auch noch die Nutzung der UART, Kanal 2.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>Eine weitere Alternative für das Debuggen wäre auch noch die Nutzung der UART.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
       <p>Diese Darstellung ist etwas vereinfacht.&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
@@ -1777,7 +1766,7 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
       <p>Genau genommen bräuchte man dafür nur ein oder zwei “Reservezeilen”, aber so sind wir etwas flexibler.&nbsp;<a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:6">
-      <p>Es wäre dann vermutlich besser, wenn ein u8-Array genutzt würde.&nbsp;<a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+      <p>Es wäre dann vermutlich besser, wenn ein <code class="highlighter-rouge">u8</code>-Array genutzt würde.&nbsp;<a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

@@ -6164,6 +6164,13 @@ img.lazy {
   margin-bottom: 0; }
 .highlight pre.lineno {
   color: #7f7f7f; }
+.highlight pre code {
+  padding: 0 0 0 0; }
+.highlight code table {
+  margin-bottom: 0; }
+
+figure.highlight {
+  margin-bottom: 0; }
 
 /*-----------------------------------------------------------------------------------*/
 /* Window
