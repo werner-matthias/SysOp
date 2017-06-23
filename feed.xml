@@ -373,7 +373,7 @@ Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgeh
 &lt;p&gt;Der für uns interessante ist Kanal 8. Über ihn werden Eigenschaften abgefragt und gesetzt, jeweils über einen &lt;em&gt;property tag&lt;/em&gt;. Einige dieser Tags werden auch als &lt;a href=&quot;http://www.simtec.co.uk/products/SWLINUX/files/booting_article.html#appendix_tag_reference&quot;&gt;ATAG&lt;/a&gt;
 dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Diese Property Tag werden – sowohl bei der Abfrage als auch bei der Antwort – über eine verkettete Liste übertragen, die folgende Struktur hat:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/tag-list.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/tag-list.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags “auf Vorrat”in einem enum:&lt;/p&gt;
 
@@ -1247,7 +1247,7 @@ Speicherzeilenlänge (&lt;code class=&quot;highlighter-rouge&quot;&gt;pitch&lt;/
 
 &lt;p&gt;Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; indem wir einen virtuellen Ringpuffer aufbauen, siehe Abschnitt “&lt;a href=&quot;#scrollen&quot;&gt;Scrollen&lt;/a&gt;”.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/virphys-fb.png&quot; alt=&quot;image-title-here&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/virphys-fb.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 &lt;h3 id=&quot;vom-pixel-zum-string&quot;&gt;Vom Pixel zum String&lt;/h3&gt;
 
 &lt;p&gt;Wenn jetzt ein Pixel in einer bestimmten Farbe dargestellt werden soll, muss entsprechender Wert in den Puffer geschrieben werden. Der Farbwert (im eingestellten Modus) setzt sich folgendermaßen zusammen:&lt;/p&gt;
