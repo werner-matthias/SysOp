@@ -128,7 +128,7 @@ Wenn jetzt ein Pixel in einer bestimmten Farbe dargestellt werden soll, muss ent
 |            | Transparenz  | Rotanteil         | Grünanteil  | Blauanteil   |
 |            | (nicht genutzt) | (0--255) | (0--255) | (0--255) |
 {% highlight rust linenos %}
-{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 89 91 %}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 88 90 %}
 {% endhighlight %}
 
 Jetzt zeigt es sich von Vorteil, dass wir eine Farbtiefe gewählt haben, die der Wortbreite entspricht: Dadurch wird die Indexierung sehr einfach. Bei 24 Bit Farbtiefe,

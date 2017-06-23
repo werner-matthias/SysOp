@@ -1372,7 +1372,9 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
 </table>
 
 <figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>    <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span>  <span class="n">color</span><span class="p">;</span>
+2
+3</pre></td><td class="code"><pre><span class="k">fn</span> <span class="nf">draw_pixel</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span>  <span class="n">color</span><span class="p">;</span>
 <span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
