@@ -5,12 +5,12 @@
 	<channel>
 		<title>Systems Operational</title>
 		<description>Matthias Werners Blog. </description>
-		<link>http://localhost:4000/</link>
-		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+		<link>https://werner-matthias.github.io/SysOp/</link>
+		<atom:link href="https://werner-matthias.github.io/SysOp/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Computer Science</title>
-				<link>http://localhost:4000/2017/05/21/computer-science</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</link>
 				<pubDate>Sun, 21 May 2017 12:05:22 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;In science, we reserve our highest honors for those who prove we were wrong. But in computer science…
@@ -23,12 +23,12 @@
 &lt;cite&gt;Fred Brooks&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/05/21/computer-science</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</guid>
 			</item>
 		
 			<item>
 				<title>Um-Rust-ung</title>
-				<link>http://localhost:4000/2017/05/14/aihpos5-umrustung</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/05/14/aihpos5-umrustung</link>
 				<pubDate>Sun, 14 May 2017 12:05:04 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -200,12 +200,12 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/05/14/aihpos5-umrustung</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/05/14/aihpos5-umrustung</guid>
 			</item>
 		
 			<item>
 				<title>Please Mr. Postman</title>
-				<link>http://localhost:4000/2017/04/26/aihpos-4-postman</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/04/26/aihpos-4-postman</link>
 				<pubDate>Wed, 26 Apr 2017 11:04:55 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -643,16 +643,7 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
 92
 93
 94
-95
-96&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ReqResCode&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;Success&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0x80000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0x80000001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ReqProperty&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;Tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+95&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;Tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buf_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
@@ -739,7 +730,14 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
                 &lt;span class=&quot;nn&quot;&gt;Tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetPalette&lt;/span&gt;
                 &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1032&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;258&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;// maximale Größe&lt;/span&gt;
                 &lt;span class=&quot;nn&quot;&gt;Tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetCursorInfo&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                &lt;span class=&quot;nn&quot;&gt;Tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetCursorState&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                &lt;span class=&quot;nn&quot;&gt;Tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ReqProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buf_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buf_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Da für die über den Kanal ausgetauschte Information wenige Bytes mitunter nicht ausreichen, werden über die Mailbox Adressen eine Puffers kommuniziert, die die
@@ -855,14 +853,10 @@ vorgenommen wird. Seit neuesten&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quo
 94
 95
 96
-97
-98
-99&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;                &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-                &lt;span class=&quot;nn&quot;&gt;Tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ReqProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buf_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buf_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
+97&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ReqResCode&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;Success&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0x80000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0x80000001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TagReqResp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -1195,8 +1189,7 @@ Speicherzeilenlänge (&lt;code class=&quot;highlighter-rouge&quot;&gt;pitch&lt;/
 51
 52
 53
-54
-55&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;cm&quot;&gt;/* Die Voreinstellung des Bootloaders wird ignoriert.
+54&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;cm&quot;&gt;/* Die Voreinstellung des Bootloaders wird ignoriert.
        Gegebenenfalls sollten die Einstellungen abgefragt und verwendet werden. Allerdings erfordert dies mindestens
     bei der Farbtiefe größere Änderungen. */&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prob_tag_buf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PropertyTagBuffer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PropertyTagBuffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
@@ -1220,7 +1213,6 @@ Speicherzeilenlänge (&lt;code class=&quot;highlighter-rouge&quot;&gt;pitch&lt;/
         &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;   &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;nn&quot;&gt;blink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;blink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;blink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BS_SOS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
             &lt;span class=&quot;nd&quot;&gt;unreachable!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-            
         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
     
@@ -1289,9 +1281,7 @@ Speicherzeilenlänge (&lt;code class=&quot;highlighter-rouge&quot;&gt;pitch&lt;/
 &lt;/table&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw_pixel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.screen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.screen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -1699,12 +1689,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/04/26/aihpos-4-postman</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/26/aihpos-4-postman</guid>
 			</item>
 		
 			<item>
 				<title>March for Science</title>
-				<link>http://localhost:4000/2017/04/20/march-for-science</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</link>
 				<pubDate>Thu, 20 Apr 2017 09:04:46 +0000</pubDate>
 				<description>&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.marchforscience.com&quot;&gt;March for Science&lt;/a&gt; (International)&lt;/li&gt;
@@ -1712,12 +1702,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 &lt;/ul&gt;
 
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/04/20/march-for-science</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</guid>
 			</item>
 		
 			<item>
 				<title>Lebenszeichen</title>
-				<link>http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</link>
 				<pubDate>Mon, 10 Apr 2017 09:04:10 +0000</pubDate>
 				<description>&lt;p&gt;Nachdem wir unsere &lt;a href=&quot;http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/&quot;&gt;Toolchain&lt;/a&gt; installiert haben, wollen wir den ersten „Kernel“ bauen. Er soll nichts anderes machen, als den Pi für JTAG
 vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der &lt;a href=&quot;https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf&quot;&gt;I/O-Hardware&lt;/a&gt;, dem Speicher-Layout und dem
@@ -2236,23 +2226,23 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</guid>
 			</item>
 		
 			<item>
 				<title>Pointer</title>
-				<link>http://localhost:4000/2017/04/07/pointer</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/04/07/pointer</link>
 				<pubDate>Fri, 07 Apr 2017 12:04:47 +0000</pubDate>
 				<description>&lt;p&gt;Playing with pointers is like playing with fire. Fire is perhaps the most important tool known to man. Carefully used, fire brings enormous benefits; but when fire gets out of control, disaster strikes.- John Barnes&lt;/p&gt;
 
 &lt;p&gt;You can either have software quality or you can have pointer arithmetic, but you cannot have both at the same time.- Bertrand Meyer&lt;/p&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/04/07/pointer</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/07/pointer</guid>
 			</item>
 		
 			<item>
 				<title>Ausr(ü/u)stung</title>
-				<link>http://localhost:4000/2017/03/31/aihpos-2-ausrustung</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/03/31/aihpos-2-ausrustung</link>
 				<pubDate>Fri, 31 Mar 2017 02:03:29 +0000</pubDate>
 				<description>&lt;p&gt;Nachdem im &lt;a href=&quot;http://sysop.matthias-werner.net/aihpos-ein-betriebssystem-fuer-die-lehre-teil-1/&quot;&gt;letzten Teil&lt;/a&gt; die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.&lt;/p&gt;
 
@@ -2642,12 +2632,12 @@ Finished&amp;amp;nbsp;release&amp;amp;nbsp;[optimized]&amp;amp;nbsp;target(s)&am
 &lt;/div&gt;
 
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/03/31/aihpos-2-ausrustung</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/03/31/aihpos-2-ausrustung</guid>
 			</item>
 		
 			<item>
 				<title>aihPOS - another incompatible and hackneyed Pi Operating System</title>
-				<link>http://localhost:4000/2017/03/19/aihpos-1</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</link>
 				<pubDate>Sun, 19 Mar 2017 12:03:55 +0000</pubDate>
 				<description>&lt;h1 id=&quot;hintergrund&quot;&gt;Hintergrund&lt;/h1&gt;
 
@@ -2898,12 +2888,12 @@ Finished&amp;amp;nbsp;release&amp;amp;nbsp;[optimized]&amp;amp;nbsp;target(s)&am
 &lt;/div&gt;
 
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/03/19/aihpos-1</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</guid>
 			</item>
 		
 			<item>
 				<title>Schlüsselwortsuche für Safari</title>
-				<link>http://localhost:4000/2016/05/29/schluesselwortsuche-fuer-safari</link>
+				<link>https://werner-matthias.github.io/SysOp/2016/05/29/schluesselwortsuche-fuer-safari</link>
 				<pubDate>Sun, 29 May 2016 10:05:04 +0000</pubDate>
 				<description>&lt;p&gt;Eines der Features, die ich bei Safari gegenüber Firefox immer vermisst habe, sind Schlüsselwortsuchen. Beispielsweise erhalte ich bei meiner Firefox-Installation, wenn ich&lt;/p&gt;
 
@@ -2953,12 +2943,12 @@ Finished&amp;amp;nbsp;release&amp;amp;nbsp;[optimized]&amp;amp;nbsp;target(s)&am
 &lt;p&gt; &lt;/p&gt;
 
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2016/05/29/schluesselwortsuche-fuer-safari</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2016/05/29/schluesselwortsuche-fuer-safari</guid>
 			</item>
 		
 			<item>
 				<title>Dijkstra vs. Kay</title>
-				<link>http://localhost:4000/2016/02/02/arroganz</link>
+				<link>https://werner-matthias.github.io/SysOp/2016/02/02/arroganz</link>
 				<pubDate>Tue, 02 Feb 2016 05:02:52 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;Don’t blame me for the fact that competent programming, as I view it as an intellectual possibility, will be too difficult for ‘the average programmer’ — you must not fall into the trap of rejecting a surgical technique because it is beyond the capabilities of the barber in his shop around the corner.
@@ -2970,7 +2960,7 @@ Finished&amp;amp;nbsp;release&amp;amp;nbsp;[optimized]&amp;amp;nbsp;target(s)&am
 &lt;cite&gt;Alan C. Kay&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2016/02/02/arroganz</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2016/02/02/arroganz</guid>
 			</item>
 		
 	</channel>
