@@ -2,7 +2,7 @@
 layout: page-fullwidth
 header: no
 image:
-  title: sciencemarch.jpeg
+  title: /sciencemarch.jpeg
 title: March for Science
 published: true
 author: mwerner
