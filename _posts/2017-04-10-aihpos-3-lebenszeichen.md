@@ -276,7 +276,7 @@ darf nicht der lokale Debugger genutzt werden[^5], sondern der ARM-Cross-Debugge
 {% endterminal %} 
   
 Wer will, kann den Debugger auch in eine GUI oder IDE einbinden, z.B. mit der [`gdbgui`][8].
-![](images/debug.png){:class="img-responsive"}
+![]({{ site.url }}/images/debug.png){:class="img-responsive"}
 
 Nun kann man auch ohne Betriebssystem (fast) so bequem debuggen, wie man es von der Entwicklung von Desktop-Programmen gewohnt ist. Zwar ist die Arbeit über das
 JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständig die SD-Karte wechselt.
