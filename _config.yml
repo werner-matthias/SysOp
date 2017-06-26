@@ -40,6 +40,8 @@ urlimg: 'https://werner-matthias.github.io/SysOp/images'
 # Logo size is 600x80 pixels
 logo: "logo.png"
 
+future: true
+
 jemoji:
    src: images/emoji
 

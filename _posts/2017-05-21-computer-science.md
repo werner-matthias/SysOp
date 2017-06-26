@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: page-fullwidth
 title: Computer Science
 subheadline: Zitate des Tages
 published: true
