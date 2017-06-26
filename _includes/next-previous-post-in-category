@@ -37,10 +37,10 @@
 {% endif %}
 {% endfor %}
 {% if prev_post %}
-<a class="left button tiny radius" href="{{ prev_post }}"><span class="icon-chevron-left"></span>{{ site.data.language.previous_post_in }} {{ cat | upcase }}</a>
+<a class="left button tiny radius" href="{{ site.url }}{{ prev_post }}"><span class="icon-chevron-left"></span>{{ site.data.language.previous_post_in }} {{ cat | upcase }}</a>
 {% endif %}
 {% if next_post %}
-<a class="right button tiny radius r15" href="{{ next_post }}">{{ site.data.language.next_post_in }} {{ cat | upcase }}<span class="icon-chevron-right"></span></a>
+<a class="right button tiny radius r15" href="{{ site.url }}{{ next_post }}">{{ site.data.language.next_post_in }} {{ cat | upcase }}<span class="icon-chevron-right"></span></a>
 {% endif %}
 <div class="row"></div>
 
