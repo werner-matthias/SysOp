@@ -189,6 +189,7 @@ msapplication_tilecolor:                "#fabb00"
 #                    /_/
 #
 # used in _includes/comments
+comments: false
 
 # disqus_shortname: 
 
@@ -202,7 +203,7 @@ msapplication_tilecolor:                "#fabb00"
 
 sass:
     sass_dir: _sass
-#    style: :compressed
+    style: :compressed
 
 
 #       ___                __      __  _
