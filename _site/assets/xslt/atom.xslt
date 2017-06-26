@@ -36,67 +36,67 @@
 
 
 	
-	<link rel="icon" sizes="32x32" href="https://werner-matthias.github.io/SysOp/assets/img/favicon-32x32.png" />
+	<link rel="icon" sizes="32x32" href="https://werner-matthias.github.io/assets/img/favicon-32x32.png" />
 
 
 
 
 	
-	<link rel="icon" sizes="192x192" href="https://werner-matthias.github.io/SysOp/assets/img/touch-icon-192x192.png" />
+	<link rel="icon" sizes="192x192" href="https://werner-matthias.github.io/assets/img/touch-icon-192x192.png" />
 
 
 
 
 	
-	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-180x180-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://werner-matthias.github.io/assets/img/apple-touch-icon-180x180-precomposed.png" />
 
 
 
 
 	
-	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-152x152-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://werner-matthias.github.io/assets/img/apple-touch-icon-152x152-precomposed.png" />
 
 
 
 
 	
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-144x144-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://werner-matthias.github.io/assets/img/apple-touch-icon-144x144-precomposed.png" />
 
 
 
 
 	
-	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-120x120-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://werner-matthias.github.io/assets/img/apple-touch-icon-120x120-precomposed.png" />
 
 
 
 
 	
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-114x114-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://werner-matthias.github.io/assets/img/apple-touch-icon-114x114-precomposed.png" />
 
 
 
 
 	
-	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-76x76-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://werner-matthias.github.io/assets/img/apple-touch-icon-76x76-precomposed.png" />
 
 
 
 
 	
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-72x72-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://werner-matthias.github.io/assets/img/apple-touch-icon-72x72-precomposed.png" />
 
 
 
 
 	
-	<link rel="apple-touch-icon-precomposed" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-precomposed.png" />	
+	<link rel="apple-touch-icon-precomposed" href="https://werner-matthias.github.io/assets/img/apple-touch-icon-precomposed.png" />	
 
 
 
 
 	
-	<meta name="msapplication-TileImage" content="https://werner-matthias.github.io/SysOp/assets/img/msapplication_tileimage.png" />
+	<meta name="msapplication-TileImage" content="https://werner-matthias.github.io/assets/img/msapplication_tileimage.png" />
 
 
 
@@ -274,7 +274,7 @@
 <div id="masthead-no-image-header">
 	<div class="row">
 		<div class="small-12 columns">
-			<a id="logo" href="https://werner-matthias.github.io/SysOp" title="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
+			<a id="logo" href="https://werner-matthias.github.io" title="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
 				<img src="https://werner-matthias.github.io/SysOp/assets/img/logo.png" alt="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
 			</a>
 		</div><!-- /.small-12.columns -->
