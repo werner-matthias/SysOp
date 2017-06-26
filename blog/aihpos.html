@@ -1,0 +1,21 @@
+---
+layout: page
+title: "aihPOS"
+---
+<div class="row">
+<div class="medium-4 medium-push-8 columns" markdown="1">
+<div class="panel radius" markdown="1">
+  <i><b>aihPOS</b> ist ein in Rust geschriebenes Demonstrations-Betriebssystem, das für den Kurs Betriebssysteme an der TU&nbsp;Chemnitz entwickelt wird.
+  <p/>
+  Die Quellen sind auf GitHub <a href="https://github.com/werner-matthias/aihPOS">veröffentlicht</a>.</i>
+</div>
+</div><!-- /.medium-4.columns -->
+
+<div class="medium-8 medium-pull-4 columns" markdown="1"> Bisher erschienen:
+
+<ol class="side-nav">
+  {% for post in site.categories.aihpos reversed %}
+    <li>{{ post.date | date: "%d.%m %Y"  }}: <a href="{{ site.url }}{{ post.url }}"><strong>{{ post.title }}</strong></a></li>
+  {% endfor %}
+  </ol>
+ </div></div> 

@@ -9,7 +9,10 @@ meta_description: 'Wir bauen den ersten "Kernel" und holen (nahezu) die Bequemli
 date: 2017-04-10 09:04:10
 tags:
     - Rust
-    - SOPHIA
+    - aihPOS
+    - Linker
+    - make
+    - openocd
 categories:
     - aihpos
     - computer
@@ -18,7 +21,9 @@ permalink: /2017/04/10/aihpos-3-lebenszeichen
 **Inhalt**
 - TOC
 {:toc}
-Nachdem wir unsere [Toolchain][1] installiert haben, wollen wir den ersten &#8222;Kernel&#8220; bauen. Er soll nichts anderes machen, als den Pi für JTAG
+{% include next-previous-post-in-category %}
+
+Nachdem wir unsere [Toolchain][1] installiert haben, wollen wir den ersten "Kernel" bauen. Er soll nichts anderes machen, als den Pi für JTAG
 vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der [I/O-Hardware][2], dem Speicher-Layout und dem
 Boot-Prozess. 
 
@@ -33,7 +38,7 @@ lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei start.elf g
 
 ### Layout und Linker
 
-Die Datei kernel.img ist ein Binärfile, das unmittelbar Maschinencode enthält, also keine ELF-Datei oder ein anderes höheres Format. Wir müssen also erstens dafür sorgen, dass unser &#8222;Kernel&#8220; von der Adresse 0x08000 lauffähig ist, und zweitens, dass er als reine Binärdatei vorliegt. Beim ersten hilft der Linker. In der &#8222;normalen&#8220; Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte Anforderungen haben, müssen wir es ihm mit einem [Linker-Skript][4] mitteilen. Unser Linker-Skript ist (noch) sehr einfach:
+Die Datei kernel.img ist ein Binärfile, das unmittelbar Maschinencode enthält, also keine ELF-Datei oder ein anderes höheres Format. Wir müssen also erstens dafür sorgen, dass unser "Kernel" von der Adresse 0x08000 lauffähig ist, und zweitens, dass er als reine Binärdatei vorliegt. Beim ersten hilft der Linker. In der "normalen" Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte Anforderungen haben, müssen wir es ihm mit einem [Linker-Skript][4] mitteilen. Unser Linker-Skript ist (noch) sehr einfach:
 
 ~~~ ld
 ENTRY(kernel_main)
@@ -130,7 +135,7 @@ Nach der Diskussion dürfte es nicht weiter überraschend sein. Einzig das Ziel 
 
 ### JTAG
 
-Der Pi hat 54  universelle Kommunikationspins, die als Ausgabe (Standard beim Einschalten), Eingabe oder mit jeweils bis zu sechs Spezialfunktionen (Alternativfunktionen 0&#8230;5) beschaltet werden kann. Für JTAG werden fünf Steuerleitungen gebraucht, die jeweils auf zwei verschiedene Pins
+Der Pi hat 54  universelle Kommunikationspins, die als Ausgabe (Standard beim Einschalten), Eingabe oder mit jeweils bis zu sechs Spezialfunktionen (Alternativfunktionen 0...5) beschaltet werden kann. Für JTAG werden fünf Steuerleitungen gebraucht, die jeweils auf zwei verschiedene Pins
 
   * Data Input (_TDI_), serieller Eingang, auf Pin 4 in der Alternativfunktion 5 oder Pin 26  in der Alternativfunktion 4
   * Test Data Output (_TDO_), serieller Ausgang,  auf Pin 5 in der Alternativfunktion 5 oder Pin 24  in der Alternativfunktion 4
@@ -144,7 +149,7 @@ Außerdem muss vorher für diese Pins die Pull-up/down-Steuerung deaktiviert wer
 
 ### LED
 
-Damit wir sehen, dass unser Programm auch läuft, wollen wir die grüne LED des Raspberrys blinken lassen. Diese ist an den GPIO-Pin 47 angeschlossen. Die GPIO-Pins sind in zwei Sätze unterteilt, Satz 1 für Pin 0&#8230;31, und Satz 2 für Pin 32&#8230;53. Pin 47 ist also Pin 15 (wenn man mit Null anfängt zu zählen) des zweiten Satzes.
+Damit wir sehen, dass unser Programm auch läuft, wollen wir die grüne LED des Raspberrys blinken lassen. Diese ist an den GPIO-Pin 47 angeschlossen. Die GPIO-Pins sind in zwei Sätze unterteilt, Satz 1 für Pin 0...31, und Satz 2 für Pin 32...53. Pin 47 ist also Pin 15 (wenn man mit Null anfängt zu zählen) des zweiten Satzes.
 
 ## Software
 
@@ -232,7 +237,7 @@ $ openocd -f jlink.cfg -f raspi.cfg
     http://openocd.org/doc/doxygen/bugs.html
     adapter speed: 1000 kHz
     none separate
-    Info : auto-selecting first available session transport &#8222;jtag&#8220;. To override use &#8218;transport select &#8218;.
+    Info : auto-selecting first available session transport "jtag". To override use &#8218;transport select &#8218;.
     raspi.arm
     Info : No device selected, using first device.
     Info : J-Link V10 compiled Jan 9 2017 17:48:51
@@ -271,7 +276,7 @@ darf nicht der lokale Debugger genutzt werden[^5], sondern der ARM-Cross-Debugge
   
 {% terminal %} 
  $ arm-none-eabi-gdb -q build/kernel.elf
-    Reading symbols from build/kernel.elf&#8230;done.
+    Reading symbols from build/kernel.elf...done.
     (gdb) target remote localhost:3333
     Remote debugging using localhost:3333
     0x000082e0 in core::mem::swap (x=0x7f98, y=0x7fd4) at ~/Development/aihPOS/Code/rust-libcore/rust/src/libcore/mem.rs:448
@@ -293,11 +298,13 @@ Manchmal will man eine schnelle Rückmeldung haben, ob eine bestimmte Stelle im 
 {%  github_sample werner-matthias/aihPOS/blob/master/kernel/src/debug/blink.rs  0 -1 %}
 ~~~
 
-Man beachte, dass die auch hier benutzte Verzögerung durch &#8222;_busy idling_&#8220; so nicht funktioniert, wenn wir die Codeoptimierung einschalten: Dann wird die
+Man beachte, dass die auch hier benutzte Verzögerung durch "_busy idling_" so nicht funktioniert, wenn wir die Codeoptimierung einschalten: Dann wird die
 Schleife zwar nicht vollständig wegoptimiert (das verhindert die Assembler-Anweisung), aber die Zeiten sind doch vollständig andere.
 Allerdings besteht bisher für eine Optimierung noch kein Grund &#8211; die Ausführungszeit ist derzeit noch egal, aber die Übersetzungszeit würde sich etwas verlängern.
 
-    
+{% include next-previous-post-in-category %}
+
+
 [^1]: Diese Darstellung des Boot-Prozesses ist etwas vereinfacht. &#8629;
 [^2]: Diese Information ist eigentlich überflüssig, da sie sich später im Binärfile nicht mehr wiederfindet. Der Linker braucht sie aber, er würde sonst das Fehlen monieren. &#8629;
 [^3]: Vielleicht werde ich in späteren Folgen nochmal cargo oder die Cross-Compile-Variante xargo einsetzen. &#8629;

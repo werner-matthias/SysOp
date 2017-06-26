@@ -10,7 +10,7 @@ comments: true
 date: 2017-04-26 11:04:55
 tags:
     - Rust
-    - aihPOS
+    - aihpos
 categories:
     - aihpos
     - computer
@@ -20,6 +20,7 @@ permalink: /2017/04/26/aihpos-4-postman
 **Inhalt**
 - TOC
 {:toc}
+{% include next-previous-post-in-category %}
 Bevor wir uns dem Design des Kernels widmen, wollen wir Informationen über das System einsammeln. Auch wenn mein Testboard ein Raspberry Pi 1B+ ist, sollte ein
 Betriebssystem dafür doch mindestens so portabel sein, dass es auf verschiedenen Raspberries laufen kann. Dazu wäre es z.B. wichtig zu erfahren, welchen Raspberry-Typ wir
 haben, wieviel Speicher zur Verfügung steht und wo die I/O-Hardware liegt.
@@ -351,7 +352,7 @@ definieren und greife auf die [Compiler-Buildins-Bibliothek][11] zurück, die in
 
 Nun habe ich schon zwei Rust-Bibliotheken (core und compiler-buildins), die händisch eingepflegt werden, wenn es zu Updates bei ihnen oder dem Compiler kommt. Höchste
 Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Dies wird das Thema des nächsten Beitrags sein. 
-
+{% include next-previous-post-in-category %}
 
  [1]: https://github.com/raspberrypi/firmware/wiki/Mailboxes
  [2]: http://www.simtec.co.uk/products/SWLINUX/files/booting_article.html#appendix_tag_reference

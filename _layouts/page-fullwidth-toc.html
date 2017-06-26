@@ -36,7 +36,7 @@ format: page-fullwidth
                        <div class="medium-8 medium-pull-4 columns" markdown="1">
 
 			<span itemprop="articleSection">
-	                {{ content }}
+	                {{ content | replace_regex: 'SOPHIA', 'ɒiʜꟼOƧ'  }}
 	                </span>
 			{% if page.show_meta == true %}
 			{% include _meta_information.html %}

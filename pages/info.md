@@ -1,15 +1,18 @@
 ---
 layout: page
 title: "Info"
-subheadline: "Über mich"
+subheadline: "Informationen über diese Webseite"
 teaser: ""
 permalink: /info/
 ---
-Ich bin Matthias Werner, lebe in Chemnitz, bin verheiratet und Vater von drei Kindern.
+<dl>
+<dt>Site generator</dt>
+<dd><a href="https://jekyllrb.com">jekyll</a>
+<dt>Web framework</dt>
+<dd><a href="http://foundation.zurb.com">Foundation</a>
+<dt>Web theme</dt>
+<dd> <a href="http://phlow.github.io/feeling-responsive">feeling responsive</a>  by <a href="http://phlow.de">Phlow</a></dd>
+<dt>Icons</dt>
+<dd><a href="http://entypo.com">Entypo</a> by Daniel Bruce</dd>
 
-Außerdem bin ich Professor für Betriebssysteme an der hiesigen TU. Ìn der Informatik treffe ich häufig auf technische Probleme oder Lösungen für Hardware oder Software,
-die nicht unbedingt einer eigenen wissenschaftlichen Publikation wert sind. Dann schreibe ich manchmal dazu in diesem Blog. Es geht dann z.B. um Tricks bei `LaTex`und
-`bash`, oder welche Maken die neuste Versin von macOS hat und wie man damit umgeht.
 
-MacOS (früher OSX)  ist übrigens mein bevorzugtes Betriebssystem, aber ich gehöre da zu der kleinen Gruppe von eher untypischer Mac-Nutzern, die einen Mac nicht nur als
-Anwendungs- sondern auch als Entwicklungssystem nutzen: Für mich steht im Vordergrund, das macOS ein sehr gutes UNIX ist, und daher habe ich praktisch ständig mindestens ein Terminal-Fenster offen.

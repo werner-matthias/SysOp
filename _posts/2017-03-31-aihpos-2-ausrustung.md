@@ -9,7 +9,9 @@ comments: true
 date: 2017-03-31 02:03:29
 tags:
     - Rust
-    - SOPHIA
+    - aihPOS
+    - JTAG
+    - EABI
 categories:
     - aihpos
     - computer
@@ -18,17 +20,18 @@ permalink: /2017/03/31/aihpos-2-ausrustung
 **Inhalt**
 - TOC
 {:toc}
-Nachdem im [letzten Teil][1] die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.
+{% include next-previous-post-in-category %}
+ Nachdem im [letzten Teil](/2017/03/19/aihpos-1) die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.
 
 ## Setup Rust
 
-Die Entwicklung von SOPHIA erfolgt nicht auf dem System, auf dem es später laufen soll &#8212; das gibt es ja noch gar nicht. Vielmehr soll die Entwicklung auf meinem
+Die Entwicklung von SOPHIA erfolgt nicht auf dem System, auf dem es später laufen soll -- das gibt es ja noch gar nicht. Vielmehr soll die Entwicklung auf meinem
 Arbeitsplatzrechner stattfinden. Das ist in diesem Fall ein MacPro von 2010 mit MacOS. Irgendein Linux-Rechner würde auch gehen, zur Not sogar eine Windows-Maschine.[^1] Wir
 können also nicht den normalen Compiler benutzen, sondern einen Crosscompiler. Ein Crosscompiler wird auf einer Plattform ausgeführt (host), und erzeugt Code für eine
-andere Plattform (target). Ein &#8222;normaler&#8220; Compiler ist also ein Crosscompiler, bei dem Host- und Targetplattform &#8222;zufällig&#8220; identisch sind. 
+andere Plattform (target). Ein "normaler" Compiler ist also ein Crosscompiler, bei dem Host- und Targetplattform "zufällig" identisch sind. 
 
-Glücklicherweise ist Rust &#8212; u.a. durch das  [LLVM-Backend][2], das ja auch von clang benutzt wird &#8212; von vornherein als Crosscompiler
-ausgelegt. Etwas komplizierter ist, dass wir _bare metal_ (also für eine Umgebung ohne Betriebssystem) entwickeln, aber dazu später. Installieren wir zunächst Rust. Dazu
+Glücklicherweise ist Rust -- u.a. durch das  [LLVM-Backend][2], das ja auch von clang benutzt wird -- von vornherein als Crosscompiler
+ausgelegt. Etwas komplizierter ist, dass wir _bare metal_ (also für eine Umgebung ohne Betriebssystem) entwickeln, aber dazu später. Installieren wir zunächst Rust. Dazu
 gibt es mehrere Wege, man kann den Paketmanager seiner Wahl benutzen. Die offiziell empfohlene Variante läuft über `rustup`. Um `rustup` selbst zu erhalten, sollte man in
 einer Shell 
 
@@ -108,7 +111,7 @@ $rustup target list
   x86_64-unknown-netbsd
 {% endterminal %}
   
-Eine Kombination wie  `x86_64-apple-darwin` nennt man das [Target-Triple][3], auch wenn diese Bezeichnung mitunter etwas irreführend anmutet, da das Target-Triple auch
+Eine Kombination wie  `x86_64-apple-darwin` nennt man das [Target-Triple][3], auch wenn diese Bezeichnung mitunter etwas irreführend anmutet, da das Target-Triple auch
 mehr (oder weniger) als drei Parameter haben kann. Die generische Form ist `<Architektur><Subarchitektur>-<Hersteller>-<Betriebssystem>-<Binärschnittstelle>`. Betrachten
 wir das für uns notwendige Target-Triple genauer.  
 
@@ -131,27 +134,29 @@ in ARM-Befehlsatz ausgeführt. Mit anderen Worten: Mindestens für den Kern sind
 dagegen mitunter in Thumb geschrieben werden. 
 
 Wenn man sich die obige Liste von Target-Triplen anschaut, dann fällt auf, dass es zwar armv7,- aber keine armv6-Einträge gibt. Die Einträge, die nur mit
-&#8222;arm&#8220; anfangen, sind eigentlich für alle 32-Bit-ARM, d.h. auch ARMv7. Allerdings kann ARMv7 noch mehr, und ist nicht vollständig abwärtskompatibel.[^5] 
+"arm" anfangen, sind eigentlich für alle 32-Bit-ARM, d.h. auch ARMv7. Allerdings kann ARMv7 noch mehr, und ist nicht vollständig abwärtskompatibel.[^5] 
 
-Die Angabe eines Herstellers ist optional. Er wird in unserem Fall ausgelassen oder erhält den Wert &#8222;unknown&#8220;.
+Die Angabe eines Herstellers ist optional. Er wird in unserem Fall ausgelassen oder erhält den Wert "unknown".
 
 ### Betriebssystem und Binärschnittstelle
 
-Was das Betriebssystem angeht, so ist die Sache einfach: wir haben keines. Durch die Angabe des Betriebssystems weiß der Compiler, welche Systemrufe möglich sind. Dazu wird z.T. die genutzte Standardbibliothek auf dem System angegeben, gegen die gelenkt wird. So benennt &#8222;i686-unknown-linux-gnu&#8220; die [GNU C Library][4], während &#8222;i686-unknown-linux-musl&#8220; die auf statisches Linken optimierte [musl libc][5].
+Was das Betriebssystem angeht, so ist die Sache einfach: wir haben keines. Durch die Angabe des Betriebssystems weiß der Compiler, welche Systemrufe möglich sind. Dazu wird z.T. die genutzte Standardbibliothek auf dem System angegeben, gegen die gelenkt wird. So benennt "i686-unknown-linux-gnu" die [GNU C Library][4], während "i686-unknown-linux-musl" die auf statisches Linken optimierte [musl libc][5].
 
-Die Binärschnittstelle beschreibt, wie z.B. die Parameterübergabe bei Funktionsrufen erfolgt. Theoretisch  könnten wir uns hier auch unsere eigenen Konventionen ausdenken; es empfiehlt sich aber, an das den EABI-Standard  ([_embedded-application binary interface_][6]) zu halten, der für verschiedene Architekturen nicht nur die Aufrufkonventionen festlegt, sondern auch noch z.B. Dateiformate. Für ARM unterscheidet man noch durch einen Suffix (&#8222;hf&#8220;) zur ABI, ob Gleitkommaoperationen durch einen (On-Chip-)Coprozessor ausgeführt werden sollen. Da ein Kernel i.d.R. keine Gleitkomma-Operationen ausführen muss, ist das eigentlich uninteressant. Da aber der Raspberry den VFPv2-Gleitkomma-Prozessor enthält, kann diese Option ruhig gewählt werden.
+Die Binärschnittstelle beschreibt, wie z.B. die Parameterübergabe bei Funktionsrufen erfolgt. Theoretisch  könnten wir uns hier auch unsere eigenen Konventionen ausdenken; es empfiehlt sich aber, an das den EABI-Standard  ([_embedded-application binary interface_][6]) zu halten, der für verschiedene Architekturen nicht nur die Aufrufkonventionen festlegt, sondern auch noch z.B. Dateiformate. Für ARM unterscheidet man noch durch einen Suffix ("hf") zur ABI, ob Gleitkommaoperationen durch einen (On-Chip-)Coprozessor ausgeführt werden sollen. Da ein Kernel i.d.R. keine Gleitkomma-Operationen ausführen muss, ist das eigentlich uninteressant. Da aber der Raspberry den VFPv2-Gleitkomma-Prozessor enthält, kann diese Option ruhig gewählt werden.
 
 ## Ein eigenes Target
 
 ### Architekturbeschreibung
 
-Nach der Diskussion im letzten Abschnitt bräuchten wird also das Target-Triple **arm-none-eabihf** (und ggf. später **arm-aihpos-eabihf** und/oder** ****thumpv6-aihpos-eabihf**). Leider gibt es dieses Triple (noch) nicht. Deshalb müssen wir eine Beschreibung dafür anlegen.[^6] Die Beschreibung ist eine JSON-Datei, und würde in unserem Fall etwa so aussehen:
+Nach der Diskussion im letzten Abschnitt bräuchten wird also das Target-Triple **arm-none-eabihf** (und ggf. später **arm-aihpos-eabihf** und/oder
+**thumpv6-aihpos-eabihf**). Leider gibt es dieses Triple (noch) nicht. Deshalb müssen wir eine Beschreibung dafür anlegen.[^6] Die Beschreibung ist eine JSON-Datei, und
+würde in unserem Fall etwa so aussehen: 
 
 ~~~ json
 {%  github_sample werner-matthias/aihPOS/blob/master/jtag/arm-none-eabihf.json  0 -1 %}
 ~~~
 
-Die meisten Punkte sollten selbsterklärend sein, außer wahrscheinlich &#8222;data-layout&#8220;. Hier werden Eigenschaften des Datenlayouts[^7], insbesondere Alignment in kompakter Form dargestellt, wobei einiges redundant zu den anderen Punkten ist:
+Die meisten Punkte sollten selbsterklärend sein, außer wahrscheinlich "data-layout". Hier werden Eigenschaften des Datenlayouts[^7], insbesondere Alignment in kompakter Form dargestellt, wobei einiges redundant zu den anderen Punkten ist:
   - e: little endiang
   - m:e: ELF-Mangling, private Symbole erhalten einen .L-Prefix
   - p:32:32: Größe und Alignment für Pointer, hier jeweils 32 Bit
@@ -164,7 +169,7 @@ Die meisten Punkte sollten selbsterklärend sein, außer wahrscheinlich &#8222;d
 
 Dieses JSON-File kopieren wir in unser Projektverzeichnis, wir werden es später ständig brauchen. In ihm haben wir auch spezifiziert, dass für das Linken der
 GCC-Arm-Cross-Linker benutzt werden soll. Diesen müssen wir installieren, genau genommen die ganze Suite von GCC-Arm-Cross-Tools, wozu z.B. auch `arm-none-eabi-objcopy`
-oder `arm-none-eabi-readelf` gehört. Ich installiere die Tools über den bei mir vorhandenen Paketmanager `brew`, YMMV: 
+oder `arm-none-eabi-readelf` gehört. Ich installiere die Tools über den bei mir vorhandenen Paketmanager `brew`, YMMV: 
 {% terminal %}
 $ brew tap nitsky/stm32
 $ brew install arm-none-eabi-gcc
@@ -172,9 +177,14 @@ $ brew install arm-none-eabi-gcc
   
 ### Core
 
-Wie schon mehrmals betont, müssen wir auf den Einsatz der Rust-Standard-Bibliothek verzichten. Damit man aber nicht ganz auf dem Trockenen sitzt, hat Rust seine
-Standard-Bibliothek so strukturiert, dass es einen Teil gibt, der frei von externen Referenzen und Betriebssystemrufen ist: `core`. Aber natürlich gibt es core nicht
-nicht für unser Taget-Triple, daher müssen wir uns die Bibliothek selbst übersetzen. Dazu holen wir uns den Quellcode in unser Projektverzeichnis: 
+Wie schon mehrmals betont, müssen wir auf den Einsatz der`Rust`-Standard-Bibliothek verzichten. Damit man aber nicht ganz auf dem Trockenen sitzt, hat Rust seine
+Standard-Bibliothek so strukturiert, dass es einen Teil gibt, der frei von externen Referenzen und Betriebssystemrufen ist: `core`. Aber natürlich gibt es core nicht
+nicht für unser Taget-Triple, daher müssen wir uns die Bibliothek selbst übersetzen.
+
+{% include alert warning=' _Die folgenden Schritte sind bei Einsatz von `xargo`, wie in der Folge ["Um-Rust-ung"](/2017/05/14/aihpos5-umrustung) wird gezeigt, unnötig.<br/>
+Ich lasse sie aber aus "historischen" Gründen stehen._' %}
+
+Dazu holen wir uns den Quellcode in unser Projektverzeichnis: 
 
 {% terminal %}
 $ cd ~/aihpos
@@ -202,17 +212,19 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
 
 ![]({{site.urlimg}}/jlink.png){:class="img-responsive"} ![]({{site.urlimg}}/adapter.png){:class="img-responsive"}
 
-Um diese Hardware nutzen zu können, brauche ich das Software-Gegenstück in Form des [OpenOCD][11] (Open On-Chip Debugger). Die Installation übernimmt wieder `brew`:
+Um diese Hardware nutzen zu können, brauche ich das Software-Gegenstück in Form des [OpenOCD][11] (Open On-Chip Debugger). Die Installation übernimmt wieder `brew`:
 {% terminal %}
 $ brew install openocd
 {% endterminal %}
-    
+
+{% include next-previous-post-in-category %}
+
 [^1]: Die Entwickler-Tools, die wir gleich besprechen, sind i.d.R. eher auf unixoide Systeme ausgerichtet, so dass es bei Windows meist etwas Mehraufwand gibt.
 [^2]: Damit können Funktionen zur Verfügung gestellt werden, die sonst die in der Standardbibliothek sind, aber refactor zur Rust-Runtime gehören.
-[^3]: Zum Vergleich: Ich war in meiner Jugend sehr stolz, dass ich den Speicher meines ersten Computers &#8212; einen ZX 81 &#8212; mit 64 kB(!) sehr weit ausgebaut hatte.
+[^3]: Zum Vergleich: Ich war in meiner Jugend sehr stolz, dass ich den Speicher meines ersten Computers -- einen ZX 81 -- mit 64 kB(!) sehr weit ausgebaut hatte.
 [^4]: Genau genommen nur die meisten, da es seit Thumb2 einige 32-Bit-Ausnahmen gibt.
 [^5]: Der Raspberry 3 hat mit einem ARMv8-Prozessor, der eine 64-Bit-Architektur hat und im 64-Bit-Modus einen völlig anderen Befehlssatz (A64), der hier aber nicht weiter betrachtet wird.
-[^6]: Eine häufig genutzte Alternative wäre, &#8222;arm-unknown-linux-gnueabihf&#8220; oder &#8222;arm-unknown-linux-musleabihf&#8220; zu nehmen und ein paar Basisfunktionen der C-Bibliothek wie z.B. memcpy nachzuimplementieren.
+[^6]: Eine häufig genutzte Alternative wäre, "arm-unknown-linux-gnueabihf" oder "arm-unknown-linux-musleabihf" zu nehmen und ein paar Basisfunktionen der C-Bibliothek wie z.B. memcpy nachzuimplementieren.
 [^7]: Eine genauere Beschreibung von möglichen Layout-Eigenschaften findet sich in der LLVM-Dokumentation
 
  [1]: http://sysop.matthias-werner.net/aihpos-ein-betriebssystem-fuer-die-lehre-teil-1/

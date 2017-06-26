@@ -5,12 +5,12 @@
 	<channel>
 		<title>Systems Operational</title>
 		<description>Matthias Werners Blog. </description>
-		<link>https://werner-matthias.github.io/SysOp/</link>
-		<atom:link href="https://werner-matthias.github.io/SysOp/feed.xml" rel="self" type="application/rss+xml" />
+		<link>http://localhost:4000/</link>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Computer Science</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</link>
+				<link>http://localhost:4000/2017/05/21/computer-science</link>
 				<pubDate>Sun, 21 May 2017 12:05:22 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;In science, we reserve our highest honors for those who prove we were wrong. But in computer science…
@@ -23,12 +23,12 @@
 &lt;cite&gt;Fred Brooks&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/05/21/computer-science</guid>
 			</item>
 		
 			<item>
 				<title>Um-Rust-ung</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/05/14/aihpos5-umrustung</link>
+				<link>http://localhost:4000/2017/05/14/aihpos5-umrustung</link>
 				<pubDate>Sun, 14 May 2017 12:05:04 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -40,10 +40,15 @@
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;/2017/04/26/aihpos-4-postman&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
 &lt;h2 id=&quot;rust-auf-nicht-standard-plattformen&quot;&gt;Rust auf Nicht-Standard-Plattformen&lt;/h2&gt;
 
 &lt;p&gt;Nachdem ich im &lt;a href=&quot;http://sysop.matthias-werner.net/?p=450&quot;&gt;letzen Teil&lt;/a&gt; schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; umzusteigen:
-Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das SOPHIA-Projekt zwei Nachteile, die die Nutzung von
+Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das :sophia:-Projekt zwei Nachteile, die die Nutzung von
 &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; erschweren:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -192,6 +197,10 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 
 &lt;p&gt;Außerdem habe ich ein &lt;a href=&quot;https://github.com/werner-matthias/aihPOS&quot;&gt;GitHub-Projekt&lt;/a&gt; für SOPHIA aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.&lt;/p&gt;
 
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;/2017/04/26/aihpos-4-postman&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
@@ -200,12 +209,12 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/05/14/aihpos5-umrustung</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/05/14/aihpos5-umrustung</guid>
 			</item>
 		
 			<item>
 				<title>Please Mr. Postman</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/26/aihpos-4-postman</link>
+				<link>http://localhost:4000/2017/04/26/aihpos-4-postman</link>
 				<pubDate>Wed, 26 Apr 2017 11:04:55 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -224,6 +233,13 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#der-linker-zickt-mal-wieder&quot; id=&quot;markdown-toc-der-linker-zickt-mal-wieder&quot;&gt;Der Linker zickt mal wieder&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;/2017/05/14/aihpos5-umrustung&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
 &lt;p&gt;Bevor wir uns dem Design des Kernels widmen, wollen wir Informationen über das System einsammeln. Auch wenn mein Testboard ein Raspberry Pi 1B+ ist, sollte ein
 Betriebssystem dafür doch mindestens so portabel sein, dass es auf verschiedenen Raspberries laufen kann. Dazu wäre es z.B. wichtig zu erfahren, welchen Raspberry-Typ wir
 haben, wieviel Speicher zur Verfügung steht und wo die I/O-Hardware liegt.&lt;/p&gt;
@@ -1657,6 +1673,12 @@ definieren und greife auf die &lt;a href=&quot;https://github.com/rust-lang-nurs
 &lt;p&gt;Nun habe ich schon zwei Rust-Bibliotheken (core und compiler-buildins), die händisch eingepflegt werden, wenn es zu Updates bei ihnen oder dem Compiler kommt. Höchste
 Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Dies wird das Thema des nächsten Beitrags sein.&lt;/p&gt;
 
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;/2017/05/14/aihpos5-umrustung&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
@@ -1680,12 +1702,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/26/aihpos-4-postman</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/04/26/aihpos-4-postman</guid>
 			</item>
 		
 			<item>
 				<title>March for Science</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</link>
+				<link>http://localhost:4000/2017/04/20/march-for-science</link>
 				<pubDate>Thu, 20 Apr 2017 09:04:46 +0000</pubDate>
 				<description>&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.marchforscience.com&quot;&gt;March for Science&lt;/a&gt; (International)&lt;/li&gt;
@@ -1693,12 +1715,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 &lt;/ul&gt;
 
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/04/20/march-for-science</guid>
 			</item>
 		
 			<item>
 				<title>Lebenszeichen</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</link>
+				<link>http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen</link>
 				<pubDate>Mon, 10 Apr 2017 09:04:10 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -1724,7 +1746,14 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Nachdem wir unsere &lt;a href=&quot;http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/&quot;&gt;Toolchain&lt;/a&gt; installiert haben, wollen wir den ersten „Kernel“ bauen. Er soll nichts anderes machen, als den Pi für JTAG
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;/2017/03/31/aihpos-2-ausrustung&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;/2017/04/26/aihpos-4-postman&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;Nachdem wir unsere &lt;a href=&quot;http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/&quot;&gt;Toolchain&lt;/a&gt; installiert haben, wollen wir den ersten “Kernel” bauen. Er soll nichts anderes machen, als den Pi für JTAG
 vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der &lt;a href=&quot;https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf&quot;&gt;I/O-Hardware&lt;/a&gt;, dem Speicher-Layout und dem
 Boot-Prozess.&lt;/p&gt;
 
@@ -1739,7 +1768,7 @@ lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei start.elf g
 
 &lt;h3 id=&quot;layout-und-linker&quot;&gt;Layout und Linker&lt;/h3&gt;
 
-&lt;p&gt;Die Datei kernel.img ist ein Binärfile, das unmittelbar Maschinencode enthält, also keine ELF-Datei oder ein anderes höheres Format. Wir müssen also erstens dafür sorgen, dass unser „Kernel“ von der Adresse 0x08000 lauffähig ist, und zweitens, dass er als reine Binärdatei vorliegt. Beim ersten hilft der Linker. In der „normalen“ Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte Anforderungen haben, müssen wir es ihm mit einem &lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Scripts.html&quot;&gt;Linker-Skript&lt;/a&gt; mitteilen. Unser Linker-Skript ist (noch) sehr einfach:&lt;/p&gt;
+&lt;p&gt;Die Datei kernel.img ist ein Binärfile, das unmittelbar Maschinencode enthält, also keine ELF-Datei oder ein anderes höheres Format. Wir müssen also erstens dafür sorgen, dass unser “Kernel” von der Adresse 0x08000 lauffähig ist, und zweitens, dass er als reine Binärdatei vorliegt. Beim ersten hilft der Linker. In der “normalen” Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte Anforderungen haben, müssen wir es ihm mit einem &lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Scripts.html&quot;&gt;Linker-Skript&lt;/a&gt; mitteilen. Unser Linker-Skript ist (noch) sehr einfach:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-ld&quot;&gt;ENTRY(kernel_main)
 SECTIONS
@@ -2065,7 +2094,7 @@ target create $_TARGETNAME arm11 -chain-position $_TARGETNAME
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    http://openocd.org/doc/doxygen/bugs.html
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    adapter speed: 1000 kHz
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    none separate
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : auto-selecting first available session transport &amp;#8222;jtag&amp;#8220;. To override use &amp;#8218;transport select &amp;#8218;.
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : auto-selecting first available session transport &quot;jtag&quot;. To override use &amp;#8218;transport select &amp;#8218;.
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    raspi.arm
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : No device selected, using first device.
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : J-Link V10 compiled Jan 9 2017 17:48:51
@@ -2134,7 +2163,7 @@ darf nicht der lokale Debugger genutzt werden&lt;sup id=&quot;fnref:5&quot;&gt;&
 &lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
 &lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
 &lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;arm-none-eabi-gdb -q build/kernel.elf&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Reading symbols from build/kernel.elf&amp;#8230;done.
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;arm-none-eabi-gdb -q build/kernel.elf&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Reading symbols from build/kernel.elf...done.
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    (gdb) target remote localhost:3333
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Remote debugging using localhost:3333
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    0x000082e0 in core::mem::swap (x=0x7f98, y=0x7fd4) at ~/Development/aihPOS/Code/rust-libcore/rust/src/libcore/mem.rs:448
@@ -2223,9 +2252,15 @@ JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständ
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Man beachte, dass die auch hier benutzte Verzögerung durch „&lt;em&gt;busy idling&lt;/em&gt;“ so nicht funktioniert, wenn wir die Codeoptimierung einschalten: Dann wird die
+&lt;p&gt;Man beachte, dass die auch hier benutzte Verzögerung durch “&lt;em&gt;busy idling&lt;/em&gt;” so nicht funktioniert, wenn wir die Codeoptimierung einschalten: Dann wird die
 Schleife zwar nicht vollständig wegoptimiert (das verhindert die Assembler-Anweisung), aber die Zeiten sind doch vollständig andere.
 Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführungszeit ist derzeit noch egal, aber die Übersetzungszeit würde sich etwas verlängern.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;/2017/03/31/aihpos-2-ausrustung&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;/2017/04/26/aihpos-4-postman&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
@@ -2241,12 +2276,12 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen</guid>
 			</item>
 		
 			<item>
 				<title>Pointer</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/07/pointer</link>
+				<link>http://localhost:4000/2017/04/07/pointer</link>
 				<pubDate>Fri, 07 Apr 2017 12:04:47 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;Playing with pointers is like playing with fire. Fire is perhaps the most important tool known to man. Carefully used, fire brings enormous benefits; but when fire
@@ -2259,12 +2294,12 @@ gets out of control, disaster strikes.
 &lt;cite&gt;Bertrand Meyer&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/07/pointer</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/04/07/pointer</guid>
 			</item>
 		
 			<item>
 				<title>Ausr(ü/u)stung</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/03/31/aihpos-2-ausrustung</link>
+				<link>http://localhost:4000/2017/03/31/aihpos-2-ausrustung</link>
 				<pubDate>Fri, 31 Mar 2017 02:03:29 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -2282,17 +2317,24 @@ gets out of control, disaster strikes.
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#debugger&quot; id=&quot;markdown-toc-debugger&quot;&gt;Debugger&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Nachdem im &lt;a href=&quot;http://sysop.matthias-werner.net/aihpos-ein-betriebssystem-fuer-die-lehre-teil-1/&quot;&gt;letzten Teil&lt;/a&gt; die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;Nachdem im &lt;a href=&quot;/2017/03/19/aihpos-1&quot;&gt;letzten Teil&lt;/a&gt; die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.&lt;/p&gt;
 
 &lt;h2 id=&quot;setup-rust&quot;&gt;Setup Rust&lt;/h2&gt;
 
-&lt;p&gt;Die Entwicklung von SOPHIA erfolgt nicht auf dem System, auf dem es später laufen soll — das gibt es ja noch gar nicht. Vielmehr soll die Entwicklung auf meinem
+&lt;p&gt;Die Entwicklung von SOPHIA erfolgt nicht auf dem System, auf dem es später laufen soll – das gibt es ja noch gar nicht. Vielmehr soll die Entwicklung auf meinem
 Arbeitsplatzrechner stattfinden. Das ist in diesem Fall ein MacPro von 2010 mit MacOS. Irgendein Linux-Rechner würde auch gehen, zur Not sogar eine Windows-Maschine.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Wir
 können also nicht den normalen Compiler benutzen, sondern einen Crosscompiler. Ein Crosscompiler wird auf einer Plattform ausgeführt (host), und erzeugt Code für eine
-andere Plattform (target). Ein „normaler“ Compiler ist also ein Crosscompiler, bei dem Host- und Targetplattform „zufällig“ identisch sind.&lt;/p&gt;
+andere Plattform (target). Ein “normaler” Compiler ist also ein Crosscompiler, bei dem Host- und Targetplattform “zufällig” identisch sind.&lt;/p&gt;
 
-&lt;p&gt;Glücklicherweise ist Rust — u.a. durch das  &lt;a href=&quot;https://de.wikipedia.org/wiki/LLVM&quot;&gt;LLVM-Backend&lt;/a&gt;, das ja auch von clang benutzt wird — von vornherein als Crosscompiler
-ausgelegt. Etwas komplizierter ist, dass wir &lt;em&gt;bare metal&lt;/em&gt; (also für eine Umgebung ohne Betriebssystem) entwickeln, aber dazu später. Installieren wir zunächst Rust. Dazu
+&lt;p&gt;Glücklicherweise ist Rust – u.a. durch das  &lt;a href=&quot;https://de.wikipedia.org/wiki/LLVM&quot;&gt;LLVM-Backend&lt;/a&gt;, das ja auch von clang benutzt wird – von vornherein als Crosscompiler
+ausgelegt. Etwas komplizierter ist, dass wir &lt;em&gt;bare metal&lt;/em&gt; (also für eine Umgebung ohne Betriebssystem) entwickeln, aber dazu später. Installieren wir zunächst Rust. Dazu
 gibt es mehrere Wege, man kann den Paketmanager seiner Wahl benutzen. Die offiziell empfohlene Variante läuft über &lt;code class=&quot;highlighter-rouge&quot;&gt;rustup&lt;/code&gt;. Um &lt;code class=&quot;highlighter-rouge&quot;&gt;rustup&lt;/code&gt; selbst zu erhalten, sollte man in
 einer Shell&lt;/p&gt;
 
@@ -2442,7 +2484,7 @@ Nightly-Version als unsere Standardversion.&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-unknown-netbsd&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 
-&lt;p&gt;Eine Kombination wie  &lt;code class=&quot;highlighter-rouge&quot;&gt;x86_64-apple-darwin&lt;/code&gt; nennt man das &lt;a href=&quot;https://clang.llvm.org/docs/CrossCompilation.html#target-triple&quot;&gt;Target-Triple&lt;/a&gt;, auch wenn diese Bezeichnung mitunter etwas irreführend anmutet, da das Target-Triple auch
+&lt;p&gt;Eine Kombination wie  &lt;code class=&quot;highlighter-rouge&quot;&gt;x86_64-apple-darwin&lt;/code&gt; nennt man das &lt;a href=&quot;https://clang.llvm.org/docs/CrossCompilation.html#target-triple&quot;&gt;Target-Triple&lt;/a&gt;, auch wenn diese Bezeichnung mitunter etwas irreführend anmutet, da das Target-Triple auch
 mehr (oder weniger) als drei Parameter haben kann. Die generische Form ist &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Architektur&amp;gt;&amp;lt;Subarchitektur&amp;gt;-&amp;lt;Hersteller&amp;gt;-&amp;lt;Betriebssystem&amp;gt;-&amp;lt;Binärschnittstelle&amp;gt;&lt;/code&gt;. Betrachten
 wir das für uns notwendige Target-Triple genauer.&lt;/p&gt;
 
@@ -2467,21 +2509,23 @@ in ARM-Befehlsatz ausgeführt. Mit anderen Worten: Mindestens für den Kern sind
 dagegen mitunter in Thumb geschrieben werden.&lt;/p&gt;
 
 &lt;p&gt;Wenn man sich die obige Liste von Target-Triplen anschaut, dann fällt auf, dass es zwar armv7,- aber keine armv6-Einträge gibt. Die Einträge, die nur mit
-„arm“ anfangen, sind eigentlich für alle 32-Bit-ARM, d.h. auch ARMv7. Allerdings kann ARMv7 noch mehr, und ist nicht vollständig abwärtskompatibel.&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+“arm” anfangen, sind eigentlich für alle 32-Bit-ARM, d.h. auch ARMv7. Allerdings kann ARMv7 noch mehr, und ist nicht vollständig abwärtskompatibel.&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
-&lt;p&gt;Die Angabe eines Herstellers ist optional. Er wird in unserem Fall ausgelassen oder erhält den Wert „unknown“.&lt;/p&gt;
+&lt;p&gt;Die Angabe eines Herstellers ist optional. Er wird in unserem Fall ausgelassen oder erhält den Wert “unknown”.&lt;/p&gt;
 
 &lt;h3 id=&quot;betriebssystem-und-binärschnittstelle&quot;&gt;Betriebssystem und Binärschnittstelle&lt;/h3&gt;
 
-&lt;p&gt;Was das Betriebssystem angeht, so ist die Sache einfach: wir haben keines. Durch die Angabe des Betriebssystems weiß der Compiler, welche Systemrufe möglich sind. Dazu wird z.T. die genutzte Standardbibliothek auf dem System angegeben, gegen die gelenkt wird. So benennt „i686-unknown-linux-gnu“ die &lt;a href=&quot;https://en.wikipedia.org/wiki/GNU_C_Library&quot;&gt;GNU C Library&lt;/a&gt;, während „i686-unknown-linux-musl“ die auf statisches Linken optimierte &lt;a href=&quot;http://www.musl-libc.org&quot;&gt;musl libc&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Was das Betriebssystem angeht, so ist die Sache einfach: wir haben keines. Durch die Angabe des Betriebssystems weiß der Compiler, welche Systemrufe möglich sind. Dazu wird z.T. die genutzte Standardbibliothek auf dem System angegeben, gegen die gelenkt wird. So benennt “i686-unknown-linux-gnu” die &lt;a href=&quot;https://en.wikipedia.org/wiki/GNU_C_Library&quot;&gt;GNU C Library&lt;/a&gt;, während “i686-unknown-linux-musl” die auf statisches Linken optimierte &lt;a href=&quot;http://www.musl-libc.org&quot;&gt;musl libc&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Die Binärschnittstelle beschreibt, wie z.B. die Parameterübergabe bei Funktionsrufen erfolgt. Theoretisch  könnten wir uns hier auch unsere eigenen Konventionen ausdenken; es empfiehlt sich aber, an das den EABI-Standard  (&lt;a href=&quot;http://infocenter.arm.com/help/topic/com.arm.doc.ihi0036b/IHI0036B_bsabi.pdf&quot;&gt;&lt;em&gt;embedded-application binary interface&lt;/em&gt;&lt;/a&gt;) zu halten, der für verschiedene Architekturen nicht nur die Aufrufkonventionen festlegt, sondern auch noch z.B. Dateiformate. Für ARM unterscheidet man noch durch einen Suffix („hf“) zur ABI, ob Gleitkommaoperationen durch einen (On-Chip-)Coprozessor ausgeführt werden sollen. Da ein Kernel i.d.R. keine Gleitkomma-Operationen ausführen muss, ist das eigentlich uninteressant. Da aber der Raspberry den VFPv2-Gleitkomma-Prozessor enthält, kann diese Option ruhig gewählt werden.&lt;/p&gt;
+&lt;p&gt;Die Binärschnittstelle beschreibt, wie z.B. die Parameterübergabe bei Funktionsrufen erfolgt. Theoretisch  könnten wir uns hier auch unsere eigenen Konventionen ausdenken; es empfiehlt sich aber, an das den EABI-Standard  (&lt;a href=&quot;http://infocenter.arm.com/help/topic/com.arm.doc.ihi0036b/IHI0036B_bsabi.pdf&quot;&gt;&lt;em&gt;embedded-application binary interface&lt;/em&gt;&lt;/a&gt;) zu halten, der für verschiedene Architekturen nicht nur die Aufrufkonventionen festlegt, sondern auch noch z.B. Dateiformate. Für ARM unterscheidet man noch durch einen Suffix (“hf”) zur ABI, ob Gleitkommaoperationen durch einen (On-Chip-)Coprozessor ausgeführt werden sollen. Da ein Kernel i.d.R. keine Gleitkomma-Operationen ausführen muss, ist das eigentlich uninteressant. Da aber der Raspberry den VFPv2-Gleitkomma-Prozessor enthält, kann diese Option ruhig gewählt werden.&lt;/p&gt;
 
 &lt;h2 id=&quot;ein-eigenes-target&quot;&gt;Ein eigenes Target&lt;/h2&gt;
 
 &lt;h3 id=&quot;architekturbeschreibung&quot;&gt;Architekturbeschreibung&lt;/h3&gt;
 
-&lt;p&gt;Nach der Diskussion im letzten Abschnitt bräuchten wird also das Target-Triple &lt;strong&gt;arm-none-eabihf&lt;/strong&gt; (und ggf. später &lt;strong&gt;arm-aihpos-eabihf&lt;/strong&gt; und/oder&lt;strong&gt; &lt;/strong&gt;&lt;strong&gt;thumpv6-aihpos-eabihf&lt;/strong&gt;). Leider gibt es dieses Triple (noch) nicht. Deshalb müssen wir eine Beschreibung dafür anlegen.&lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; Die Beschreibung ist eine JSON-Datei, und würde in unserem Fall etwa so aussehen:&lt;/p&gt;
+&lt;p&gt;Nach der Diskussion im letzten Abschnitt bräuchten wird also das Target-Triple &lt;strong&gt;arm-none-eabihf&lt;/strong&gt; (und ggf. später &lt;strong&gt;arm-aihpos-eabihf&lt;/strong&gt; und/oder
+&lt;strong&gt;thumpv6-aihpos-eabihf&lt;/strong&gt;). Leider gibt es dieses Triple (noch) nicht. Deshalb müssen wir eine Beschreibung dafür anlegen.&lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; Die Beschreibung ist eine JSON-Datei, und
+würde in unserem Fall etwa so aussehen:&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;llvm-target&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;arm-none-eabihf&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -2505,7 +2549,7 @@ dagegen mitunter in Thumb geschrieben werden.&lt;/p&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Die meisten Punkte sollten selbsterklärend sein, außer wahrscheinlich „data-layout“. Hier werden Eigenschaften des Datenlayouts&lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;, insbesondere Alignment in kompakter Form dargestellt, wobei einiges redundant zu den anderen Punkten ist:&lt;/p&gt;
+&lt;p&gt;Die meisten Punkte sollten selbsterklärend sein, außer wahrscheinlich “data-layout”. Hier werden Eigenschaften des Datenlayouts&lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;, insbesondere Alignment in kompakter Form dargestellt, wobei einiges redundant zu den anderen Punkten ist:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;e: little endiang&lt;/li&gt;
   &lt;li&gt;m:e: ELF-Mangling, private Symbole erhalten einen .L-Prefix&lt;/li&gt;
@@ -2520,7 +2564,7 @@ dagegen mitunter in Thumb geschrieben werden.&lt;/p&gt;
 
 &lt;p&gt;Dieses JSON-File kopieren wir in unser Projektverzeichnis, wir werden es später ständig brauchen. In ihm haben wir auch spezifiziert, dass für das Linken der
 GCC-Arm-Cross-Linker benutzt werden soll. Diesen müssen wir installieren, genau genommen die ganze Suite von GCC-Arm-Cross-Tools, wozu z.B. auch &lt;code class=&quot;highlighter-rouge&quot;&gt;arm-none-eabi-objcopy&lt;/code&gt;
-oder &lt;code class=&quot;highlighter-rouge&quot;&gt;arm-none-eabi-readelf&lt;/code&gt; gehört. Ich installiere die Tools über den bei mir vorhandenen Paketmanager &lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt;, YMMV:&lt;/p&gt;
+oder &lt;code class=&quot;highlighter-rouge&quot;&gt;arm-none-eabi-readelf&lt;/code&gt; gehört. Ich installiere die Tools über den bei mir vorhandenen Paketmanager &lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt;, YMMV:&lt;/p&gt;
 &lt;div class=&quot;window&quot;&gt;
           &lt;nav class=&quot;control-window&quot;&gt;
             &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
@@ -2534,9 +2578,15 @@ oder &lt;code class=&quot;highlighter-rouge&quot;&gt;arm-none-eabi-readelf&lt;/c
 
 &lt;h3 id=&quot;core&quot;&gt;Core&lt;/h3&gt;
 
-&lt;p&gt;Wie schon mehrmals betont, müssen wir auf den Einsatz der Rust-Standard-Bibliothek verzichten. Damit man aber nicht ganz auf dem Trockenen sitzt, hat Rust seine
-Standard-Bibliothek so strukturiert, dass es einen Teil gibt, der frei von externen Referenzen und Betriebssystemrufen ist: &lt;code class=&quot;highlighter-rouge&quot;&gt;core&lt;/code&gt;. Aber natürlich gibt es core nicht
-nicht für unser Taget-Triple, daher müssen wir uns die Bibliothek selbst übersetzen. Dazu holen wir uns den Quellcode in unser Projektverzeichnis:&lt;/p&gt;
+&lt;p&gt;Wie schon mehrmals betont, müssen wir auf den Einsatz der&lt;code class=&quot;highlighter-rouge&quot;&gt;Rust&lt;/code&gt;-Standard-Bibliothek verzichten. Damit man aber nicht ganz auf dem Trockenen sitzt, hat Rust seine
+Standard-Bibliothek so strukturiert, dass es einen Teil gibt, der frei von externen Referenzen und Betriebssystemrufen ist: &lt;code class=&quot;highlighter-rouge&quot;&gt;core&lt;/code&gt;. Aber natürlich gibt es core nicht
+nicht für unser Taget-Triple, daher müssen wir uns die Bibliothek selbst übersetzen.&lt;/p&gt;
+
+&lt;div class=&quot;alert-box warning radius &quot;&gt;&lt;p&gt;&lt;em&gt;Die folgenden Schritte sind bei Einsatz von &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;, wie in der Folge &lt;a href=&quot;/2017/05/14/aihpos5-umrustung&quot;&gt;“Um-Rust-ung”&lt;/a&gt; wird gezeigt, unnötig.&lt;br /&gt;
+Ich lasse sie aber aus “historischen” Gründen stehen.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Dazu holen wir uns den Quellcode in unser Projektverzeichnis:&lt;/p&gt;
 
 &lt;div class=&quot;window&quot;&gt;
           &lt;nav class=&quot;control-window&quot;&gt;
@@ -2577,7 +2627,7 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
 
 &lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/jlink.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/adapter.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Um diese Hardware nutzen zu können, brauche ich das Software-Gegenstück in Form des &lt;a href=&quot;http://openocd.org&quot;&gt;OpenOCD&lt;/a&gt; (Open On-Chip Debugger). Die Installation übernimmt wieder &lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Um diese Hardware nutzen zu können, brauche ich das Software-Gegenstück in Form des &lt;a href=&quot;http://openocd.org&quot;&gt;OpenOCD&lt;/a&gt; (Open On-Chip Debugger). Die Installation übernimmt wieder &lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;window&quot;&gt;
           &lt;nav class=&quot;control-window&quot;&gt;
             &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
@@ -2588,6 +2638,12 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
           &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;brew install openocd&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
@@ -2597,7 +2653,7 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
       &lt;p&gt;Damit können Funktionen zur Verfügung gestellt werden, die sonst die in der Standardbibliothek sind, aber refactor zur Rust-Runtime gehören.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
-      &lt;p&gt;Zum Vergleich: Ich war in meiner Jugend sehr stolz, dass ich den Speicher meines ersten Computers — einen ZX 81 — mit 64 kB(!) sehr weit ausgebaut hatte.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Zum Vergleich: Ich war in meiner Jugend sehr stolz, dass ich den Speicher meines ersten Computers – einen ZX 81 – mit 64 kB(!) sehr weit ausgebaut hatte.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:4&quot;&gt;
       &lt;p&gt;Genau genommen nur die meisten, da es seit Thumb2 einige 32-Bit-Ausnahmen gibt.&amp;nbsp;&lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
@@ -2606,7 +2662,7 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
       &lt;p&gt;Der Raspberry 3 hat mit einem ARMv8-Prozessor, der eine 64-Bit-Architektur hat und im 64-Bit-Modus einen völlig anderen Befehlssatz (A64), der hier aber nicht weiter betrachtet wird.&amp;nbsp;&lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:6&quot;&gt;
-      &lt;p&gt;Eine häufig genutzte Alternative wäre, „arm-unknown-linux-gnueabihf“ oder „arm-unknown-linux-musleabihf“ zu nehmen und ein paar Basisfunktionen der C-Bibliothek wie z.B. memcpy nachzuimplementieren.&amp;nbsp;&lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Eine häufig genutzte Alternative wäre, “arm-unknown-linux-gnueabihf” oder “arm-unknown-linux-musleabihf” zu nehmen und ein paar Basisfunktionen der C-Bibliothek wie z.B. memcpy nachzuimplementieren.&amp;nbsp;&lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:7&quot;&gt;
       &lt;p&gt;Eine genauere Beschreibung von möglichen Layout-Eigenschaften findet sich in der LLVM-Dokumentation&amp;nbsp;&lt;a href=&quot;#fnref:7&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
@@ -2614,187 +2670,145 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/03/31/aihpos-2-ausrustung</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/03/31/aihpos-2-ausrustung</guid>
 			</item>
 		
 			<item>
-				<title>aihPOS - another incompatible and hackneyed Pi Operating System</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</link>
+				<title>Another incompatible and hackneyed Pi Operating System</title>
+				<link>http://localhost:4000/2017/03/19/aihpos-1</link>
 				<pubDate>Sun, 19 Mar 2017 12:03:55 +0000</pubDate>
-				<description>&lt;h1 id=&quot;hintergrund&quot;&gt;Hintergrund&lt;/h1&gt;
+				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#hintergrund&quot; id=&quot;markdown-toc-hintergrund&quot;&gt;Hintergrund&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ziele&quot; id=&quot;markdown-toc-ziele&quot;&gt;Ziele&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sprache&quot; id=&quot;markdown-toc-sprache&quot;&gt;Sprache&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#betriebssystementwicklung&quot; id=&quot;markdown-toc-betriebssystementwicklung&quot;&gt;Betriebssystementwicklung&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#links&quot; id=&quot;markdown-toc-links&quot;&gt;Links&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;In meinem Kurs &lt;a href=&quot;http://osg.informatik.tu-chemnitz.de/lehre/os&quot;&gt;Betriebssysteme&lt;/a&gt; verwende ich ab und zu Code-Abschnitte, die die Implementation verschiedener Konzepte des Betriebssystementwurfs demonstrieren. Diese Code-Abschnitte sind bisher sehr uneinheitlich, und setzen sich aus verschiedenen Quellen zusammen:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;/2017/03/31/aihpos-2-ausrustung&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;hintergrund&quot;&gt;Hintergrund&lt;/h2&gt;
+
+&lt;p&gt;In meinem Kurs &lt;a href=&quot;http://osg.informatik.tu-chemnitz.de/lehre/os&quot;&gt;Betriebssysteme&lt;/a&gt; verwende ich ab und zu Code-Abschnitte, die die Implementation verschiedener Konzepte des Betriebssystementwurfs demonstrieren. Diese Code-Abschnitte sind bisher sehr uneinheitlich, und setzen sich aus verschiedenen Quellen zusammen:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Freier Code aus „echten“ Betriebssystemen wie z.B. Linux;&lt;/li&gt;
-  &lt;li&gt;„Unechter“ Code (Code, zwar prinzipiell funktioniert, aber so nie einem Betriebsystem eingesetzt wurde), vornehmlich in C und Modula-2;&lt;/li&gt;
+  &lt;li&gt;Freier Code aus “echten” Betriebssystemen wie z.B. Linux;&lt;/li&gt;
+  &lt;li&gt;“Unechter” Code (Code, zwar prinzipiell funktioniert, aber so nie einem Betriebsystem eingesetzt wurde), vornehmlich in C und Modula-2;&lt;/li&gt;
   &lt;li&gt;Pseudocode.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Um die Didaktik des Kurses zu verbessern, möchte ich ein Betriebssystem extra für diese Veranstaltung schreiben, so dass möglichst viele Konzepte direkt im Code wiederzufinden sind. Außerdem soll  &lt;strong&gt;aihPOS&lt;/strong&gt; — so der Name des Projekts — später als Codebasis bei verschiedenen Forschungsprojekten in unser Gruppe nützlich sein.&lt;/p&gt;
+&lt;p&gt;Um die Didaktik des Kurses zu verbessern, möchte ich ein Betriebssystem extra für diese Veranstaltung schreiben, so dass möglichst viele Konzepte direkt im Code wiederzufinden sind. Außerdem soll  &lt;strong&gt;aihPOS&lt;/strong&gt; — so der Name des Projekts — später als Codebasis bei verschiedenen Forschungsprojekten in unser Gruppe nützlich sein.&lt;/p&gt;
 
-&lt;p&gt;„aihPOS“ steht für _&lt;strong&gt;a&lt;/strong&gt;nother &lt;strong&gt;i&lt;/strong&gt;ncompatible and &lt;strong&gt;h&lt;/strong&gt;ackneyed &lt;strong&gt;P&lt;/strong&gt;i &lt;strong&gt;O&lt;/strong&gt;perating &lt;strong&gt;S&lt;/strong&gt;ystem. _Obwohl dieses Akronym einiges über das Betriebssystem aussagt, habe ich es doch in erster Linie gewählt, weil es rückwärts geschrieben den Name meiner Tochter ergibt: Sophia. Daher werde ich den Betriebssystemnamen ab sofort so schreiben: SOPHIA. 🙂&lt;/p&gt;
+&lt;p&gt;“aihPOS” steht für _&lt;strong&gt;a&lt;/strong&gt;nother &lt;strong&gt;i&lt;/strong&gt;ncompatible and &lt;strong&gt;h&lt;/strong&gt;ackneyed &lt;strong&gt;P&lt;/strong&gt;i &lt;strong&gt;O&lt;/strong&gt;perating &lt;strong&gt;S&lt;/strong&gt;ystem. Obwohl dieses Akronym einiges über das Betriebssystem
+aussagt, habe ich es doch in erster Linie gewählt, weil es rückwärts geschrieben den Name meiner Tochter ergibt: Sophia. Daher werde ich den Betriebssystemnamen ab sofort
+so schreiben: SOPHIA. 🙂&lt;/p&gt;
 
-&lt;h1 id=&quot;ziele&quot;&gt;Ziele&lt;/h1&gt;
+&lt;h2 id=&quot;ziele&quot;&gt;Ziele&lt;/h2&gt;
 
-&lt;p&gt;Bevor man ein Projekt der Größe eines Betriebssystems beginnt, und sei es auch nur ein so kleines wie SOPHIA, muss man sich über die Designziele im Klaren sein. Ich nenne zunächst einmal einige Ziele, die ich ausdrücklich &lt;strong&gt;nicht &lt;/strong&gt;habe:&lt;/p&gt;
+&lt;p&gt;Bevor man ein Projekt der Größe eines Betriebssystems beginnt, und sei es auch nur ein so kleines wie SOPHIA, muss man sich über die Designziele im Klaren sein. Ich nenne
+zunächst einmal einige Ziele, die ich ausdrücklich &lt;strong&gt;nicht&lt;/strong&gt; habe:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Geschwindigkeit: immer, wenn es einen Widerspruch zwischen &lt;strong&gt;Performance&lt;/strong&gt; und einem klaren Design gibt, werde ich das klare Design bevorzugen. Schließlich soll SOPHIA niemals produktiv eingesetzt werden, sondern zur Demonstrations- und Testzwecken dienen.&lt;/li&gt;
+  &lt;li&gt;Geschwindigkeit: immer, wenn es einen Widerspruch zwischen &lt;strong&gt;Performance&lt;/strong&gt; und einem klaren Design gibt, werde ich das klare Design bevorzugen. Schließlich soll SOPHIA niemals produktiv eingesetzt werden, sondern zur Demonstrations- und Testzwecken dienen.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Kompatibilität&lt;/strong&gt; zu POSIX, Windows o.ä.&lt;/li&gt;
   &lt;li&gt;Einsatz auf komplexer Hardware wie z.B. &lt;strong&gt;x86&lt;/strong&gt;-PCs.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Vielmehr habe ich folgende Designziele:&lt;/p&gt;
+&lt;p&gt;Vielmehr habe ich folgende Designziele:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Wesentliche Konzepte von Betriebssystemen sollen entsprechende &lt;strong&gt;Abstraktionen&lt;/strong&gt; im Code wiederfinden.&lt;/li&gt;
-  &lt;li&gt;Das Betriebssystem soll eine &lt;strong&gt;klare Struktur&lt;/strong&gt; haben und dem &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Microkernel&quot;&gt;Mikrokernel&lt;/a&gt;&lt;/strong&gt;-Ansatz folgen.&lt;/li&gt;
-  &lt;li&gt;Als Zielhardware wird der &lt;strong&gt;Raspberry Pi&lt;/strong&gt; benutzt. Er ist günstig zu haben, so dass Studierende leicht mit Modifikationen des Codes herumspielen können, ohne ihren teuren Laptop oder Desktop zu riskieren. Außerdem besitzt unser Labor bereits einen Klassensatz Raspberry Pi 1B+ (mit einer &lt;a href=&quot;https://www.gertbot.com&quot;&gt;Gertboard&lt;/a&gt;-Erweiterung).&lt;/li&gt;
+  &lt;li&gt;Wesentliche Konzepte von Betriebssystemen sollen entsprechende &lt;strong&gt;Abstraktionen&lt;/strong&gt; im Code wiederfinden.&lt;/li&gt;
+  &lt;li&gt;Das Betriebssystem soll eine &lt;strong&gt;klare Struktur&lt;/strong&gt; haben und dem &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Microkernel&quot;&gt;Mikrokernel&lt;/a&gt;&lt;/strong&gt;-Ansatz folgen.&lt;/li&gt;
+  &lt;li&gt;Als Zielhardware wird der &lt;strong&gt;Raspberry Pi&lt;/strong&gt; benutzt. Er ist günstig zu haben, so dass Studierende leicht mit Modifikationen des Codes herumspielen können, ohne ihren
+teuren Laptop oder Desktop zu riskieren. Außerdem besitzt unser Labor bereits einen Klassensatz Raspberry Pi 1B+ (mit einer &lt;a href=&quot;https://www.gertbot.com&quot;&gt;Gertboard&lt;/a&gt;-Erweiterung).&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h1 id=&quot;sprache&quot;&gt;Sprache&lt;/h1&gt;
+&lt;h2 id=&quot;sprache&quot;&gt;Sprache&lt;/h2&gt;
 
-&lt;p&gt;Traditionell werden Betriebssysteme in Assembler oder C geschrieben. Theoretisch kann für das Schreiben von Betriebssysteme nahezu jede Sprache genutzt werden (und z.T. werden sie auch tatsächlich genutzt). Häufig muss zwar  „im Notfall“ etwas Assembler-Code eingebunden werden (völlig ohne geht es in der Regel sowieso nicht, da viele Feinheiten der unterliegenden Maschine sich nicht in höheren Programmiersprachen abbilden), aber es gibt Betriebssysteme in Java oder Lisp. Jedoch eignen sich die meisten Sprachen nicht sonderlich gut für eine Bare-Metal-Entwicklung, wie ein Betriebssystem sie erfordert: Die Sprachen bringen ihr eigenes Laufzeitsystem mit, das wiederum Systemrufe des Betriebssystem nutzt. Diese stehen aber bei der Entwicklung eines Betriebssystems ja gar nicht zur Verfügung. Entsprechend können einige Sprachkonzept nicht genutzt werden. Noch mehr Systemrufe sind meist in den Bibliotheken zu finden, so dass viele Bibliotheksfunktionen ebenfalls nicht genutzt werden können und ggf. nachimplementiert werden müssen.&lt;/p&gt;
+&lt;p&gt;Traditionell werden Betriebssysteme in Assembler oder C geschrieben. Theoretisch kann für das Schreiben von Betriebssysteme nahezu jede Sprache genutzt werden (und
+z.T. werden sie auch tatsächlich genutzt). Häufig muss zwar  “im Notfall” etwas Assembler-Code eingebunden werden (völlig ohne geht es in der Regel sowieso
+nicht, da viele Feinheiten der unterliegenden Maschine sich nicht in höheren Programmiersprachen abbilden), aber es gibt Betriebssysteme in Java oder Lisp. Jedoch eignen
+sich die meisten Sprachen nicht sonderlich gut für eine Bare-Metal-Entwicklung, wie ein Betriebssystem sie erfordert: Die Sprachen bringen ihr eigenes Laufzeitsystem mit,
+das wiederum Systemrufe des Betriebssystem nutzt. Diese stehen aber bei der Entwicklung eines Betriebssystems ja gar nicht zur Verfügung. Entsprechend können einige
+Sprachkonzept nicht genutzt werden. Noch mehr Systemrufe sind meist in den Bibliotheken zu finden, so dass viele Bibliotheksfunktionen ebenfalls nicht genutzt werden
+können und ggf. nachimplementiert werden müssen.&lt;/p&gt;
 
-&lt;p&gt;Trotzdem werde ich für SOPHIA &lt;strong&gt;nicht&lt;/strong&gt; C benutzen, und das im wesentlichen aus drei Gründen:&lt;/p&gt;
+&lt;p&gt;Trotzdem werde ich für SOPHIA &lt;strong&gt;nicht&lt;/strong&gt; C benutzen, und das im wesentlichen aus drei Gründen:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Entsprechend der obigen Anforderungen sollen sich Betriebssystemkonzept gut in Code-Abstraktionen wiederfinden. Dies ist bei C fast so wenig der Fall, wie in Assembler.1&lt;/li&gt;
-  &lt;li&gt;C ist eine alte Sprache, die viele modernen Konzepte der &lt;a href=&quot;http://joeduffyblog.com/2015/11/03/a-tale-of-three-safeties/&quot;&gt;Typen- und Speicher- und Nebenläufigkeitssicherheit&lt;/a&gt; nicht kennt.  Daher ist das „Rumspielen“ mit dem Code (vergleiche Designziel 3) relativ gefährlich.&lt;/li&gt;
+  &lt;li&gt;Entsprechend der obigen Anforderungen sollen sich Betriebssystemkonzept gut in Code-Abstraktionen wiederfinden. Dies ist bei C fast so wenig der Fall, wie in Assembler.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;C ist eine alte Sprache, die viele modernen Konzepte der &lt;a href=&quot;http://joeduffyblog.com/2015/11/03/a-tale-of-three-safeties/&quot;&gt;Typen- und Speicher- und Nebenläufigkeitssicherheit&lt;/a&gt; nicht kennt.  Daher ist das “Rumspielen” mit dem Code (vergleiche Designziel 3) relativ gefährlich.&lt;/li&gt;
   &lt;li&gt;So ein Projekt ist immer eine gute Gelegenheit, eine neue Sprache zu erlernen (oder wenigstens zu vertiefen)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Es stellt sich die Frage, welche anderen Sprachen möglich wären. Die beiden derzeitigen Mainstream-Sprachen Java2 und Python kommen hier nicht infrage, da sie soweit von der Maschine entfernt sind, dass die Brücke zwischen Maschinen- und Sprachabstraktionen nicht sehr intuitiv wäre. Es gibt in meiner Gruppe zwar ein Projekt, ein Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es den hier gestellten Designzielen entspricht.&lt;/p&gt;
+&lt;p&gt;Es stellt sich die Frage, welche anderen Sprachen möglich wären. Die beiden derzeitigen Mainstream-Sprachen Java&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; und Python kommen hier nicht infrage, da sie soweit
+von der Maschine entfernt sind, dass die Brücke zwischen Maschinen- und Sprachabstraktionen nicht sehr intuitiv wäre. Es gibt in meiner Gruppe zwar ein Projekt, ein
+Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es den hier gestellten Designzielen entspricht.&lt;/p&gt;
 
-&lt;p&gt;Es gibt einige Sprachen, die für sich in Anspruch nehmen systemnahe zu sein. Die bekanntesten sind wohl C++, D, Forth, Go und Rust. Von diesen scheidet Forth aus, da es ein bißchen &lt;strong&gt;zu&lt;/strong&gt; maschinennah ist. Außerdem werden Abstraktionen in der Regel auf Datenstrukturen abgebildet, wo Forth etwas limitiert ist. Die anderen vier Sprachen sind aus dieser Perspektive zweifellos alle geeignet.&lt;/p&gt;
+&lt;p&gt;Es gibt einige Sprachen, die für sich in Anspruch nehmen systemnahe zu sein. Die bekanntesten sind wohl C++, D, Forth, Go und Rust. Von diesen scheidet Forth aus, da es ein bißchen &lt;strong&gt;zu&lt;/strong&gt; maschinennah ist. Außerdem werden Abstraktionen in der Regel auf Datenstrukturen abgebildet, wo Forth etwas limitiert ist. Die anderen vier Sprachen sind aus dieser Perspektive zweifellos alle geeignet.&lt;/p&gt;
 
 &lt;p&gt;Daher habe ich weitere Kriterien betrachtet, die sicherlich sowohl in Auswahl als auch Attribuierung z.T. etwas subjektiv sind:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  C++
-
-
-
-   D
-
-
-
-   Go
-
-
-
-   Rust
-
-  
-  
-  
-
-  Bare-metal Programmierung
-
-
-
-  +
-
-
-
-
-
-
-  &amp;amp;#8211;
-
-
-
-  +
-
-  
-  
-  
-
-  Speichersicherheit
-
-
-
-  &amp;amp;#8211;3
-
-
-
-  +
-
-
-
-  4
-
-
-
-  +
-
-  
-  
-  
-
-  Nebenläufigkeitssicherheit
-
-
-
-  &amp;amp;#8211;
-
-
-
-
-
-
-  +
-
-
-
-  +
-
-  
-  
-  
-
-  Toolstabilität
-
-
-
-  +
-
-
-
-  &amp;amp;#8211;
-
-
-
-   +
-
-
-
-
-  
-  
-  
-
-  Subjektive Neuheit
-
-
-
-  5,
-
-
-
-  &amp;amp;#8211;
-
-
-
-   +
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Als Ergebnis dieser Betrachtungen werde ich SOPHIA in Rust schreiben. Mir erscheint auch Rust am meisten eine neue Sichtweise zu vermitteln.6  Es gibt ein bekanntes Zitat von &lt;a href=&quot;https://de.wikipedia.org/wiki/Alan_J._Perlis&quot;&gt;Alan J. Perlis&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;A language that doesn’t affect the way you think about programming is not worth knowing.- Alan J. Perlis&lt;/p&gt;
-
-&lt;p&gt;Dies ist der persönliche Hintergrund dieser Entscheidung. C++ mit Programmierdisziplin hätte es genauso gut — und vermutlich an manchen Stellen einfacher — gemacht, aber Rust bringt mir neue Ideen bei.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;C++&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Go&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Rust&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bare-metal Programmierung&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;–&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Speichersicherheit&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;–&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Nebenläufigkeitssicherheit&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;–&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Toolstabilität&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;–&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Subjektive Neuheit&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0 &lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;–&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Als Ergebnis dieser Betrachtungen werde ich SOPHIA in Rust schreiben. Mir erscheint auch Rust am meisten eine neue Sichtweise zu vermitteln.&lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; Es gibt ein bekanntes Zitat von &lt;a href=&quot;https://de.wikipedia.org/wiki/Alan_J._Perlis&quot;&gt;Alan J. Perlis&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A language that doesn’t affect the way you think about programming is not worth knowing.
+&lt;cite&gt;Alan J. Perlis&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Dies ist der persönliche Hintergrund dieser Entscheidung. C++ mit etwas Programmierdisziplin hätte es genauso gut — und vermutlich an manchen Stellen einfacher — gemacht, aber Rust bringt mir neue Ideen bei.&lt;/p&gt;
 
 &lt;h1 id=&quot;betriebssystementwicklung&quot;&gt;Betriebssystementwicklung&lt;/h1&gt;
 
@@ -2803,7 +2817,7 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
 &lt;ul&gt;
   &lt;li&gt;Man hat es nicht mit abstrakter, sondern konkreter Hardware zu tun. Dadurch muss man sich mit vielen technischen Details des Prozessors und der Gesamtplattform beschäftigen, die man sonst ignorieren kann.&lt;/li&gt;
   &lt;li&gt;Die Dienste eines Betriebssystems stehen nicht zur Verfügung. Es gibt keine z.B. Speicherverwaltung und oder Dateisysteme. Daher stehen die meisten Funktionen der Standardbibliothek nicht zur Verfügung, weil diese letztendlich Systemfunktionen rufen.&lt;/li&gt;
-  &lt;li&gt;Durch die beiden obigen Umstände werden im Design keine Abstraktionen „aufgezwungen“. Sie müssen erst erschaffen werden.&lt;/li&gt;
+  &lt;li&gt;Durch die beiden obigen Umstände werden im Design keine Abstraktionen “aufgezwungen”. Sie müssen erst erschaffen werden.&lt;/li&gt;
   &lt;li&gt;Damit ein Betriebssystem auch zum Laufen kommt, muss man sich Gedanken über den Bootstrapping-Prozess und damit über Binärformate und die Toolchain machen.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2817,7 +2831,7 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
       &lt;li&gt;&lt;a href=&quot;https://doc.rust-lang.org/book/&quot;&gt;The Rust Programming Language&lt;/a&gt; (the book)&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;https://doc.rust-lang.org/reference.html&quot;&gt;Rust Referenz&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;https://doc.rust-lang.org/core/index.html&quot;&gt;Rust Core Library&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://doc.rust-lang.org/nomicon/&quot;&gt;The Rustonomicon&lt;/a&gt; („Unsafe“ Programmierung in Rust)&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://doc.rust-lang.org/nomicon/&quot;&gt;The Rustonomicon&lt;/a&gt; (“Unsafe” Programmierung in Rust)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;ARM&lt;/strong&gt;
@@ -2831,7 +2845,7 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
   &lt;li&gt;&lt;strong&gt;Raspberry Pi&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;https://www.raspberrypi.org&quot;&gt;Seite der Raspberry Pi Foundation&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;Broadcom: &lt;a href=&quot;https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf&quot;&gt;BCM2835 ARM Peripherals&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Broadcom: &lt;a href=&quot;https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf&quot;&gt;BCM2835 ARM Peripherals&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;David Welch: &lt;a href=&quot;https://github.com/dwelch67/raspberrypi&quot;&gt;Raspberry Pi ARM based bare metal examples&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -2839,98 +2853,102 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;https://www.redox-os.org&quot;&gt;Redox&lt;/a&gt; – ein schon ziemlich ausgewachsenes UNIX-ähnliches Betriebssystem (x86 7)&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;https://github.com/wbthomason/ironkernel&quot;&gt;Ironkernel&lt;/a&gt; (wohl erster BS-Ansatz in Rust, ARM)&lt;/li&gt;
-      &lt;li&gt;Philipp Oppermann’s blog: &lt;a href=&quot;http://os.phil-opp.com&quot;&gt;Writing an OS in Rust&lt;/a&gt; (x86)&lt;/li&gt;
+      &lt;li&gt;Philipp Oppermann’s blog: &lt;a href=&quot;http://os.phil-opp.com&quot;&gt;Writing an OS in Rust&lt;/a&gt; (x86)&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;http://intermezzos.github.io&quot;&gt;IntermezzOS&lt;/a&gt; (x86)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;/2017/03/31/aihpos-2-ausrustung&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  Man kann schließlich auch in den meisten Assemblern so etwas wie Structs definieren. &amp;amp;#8629;
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
-
-   Nein, ich habe Java nie ernsthaft in Betrachtung gezogen, was aber auch an meiner Abneigung gegenüber dieser Sprache liegen mag. &amp;amp;#8629;
-
-
-   Man kann in C++ sehr sicher schreiben, wenn man eine ausreichende Selbstdisziplin an den Tag legt und verschiedene Idiome nicht benutzt. Im Gegensatz dazu erzwingt z.B. Rust sicheren Code. Dort, wo man unsichere (weil mächtigere) Konstrukte braucht, muss es explizit gemacht werden. &amp;amp;#8629;
-
-
-  Go bekommt in dieser Kategorie bei mir Punktabzug für den vorhandenen Null-Pointer &amp;amp;#8629;
-
-
-  Eigentlich wollte ich hier erst ein Minuszeichen setzen, habe es mir dann anders überlegt: Ich habe C++ lange vor Boost und C++11 gelernt, und seitdem nie grundlegend &amp;amp;#8222;aufgeholt&amp;amp;#8220;. &amp;amp;#8629;
-
-
-  Go landet da auf Platz 2, zumal ich schon mal in Occam reingeschnuppert hatte, und D erscheint mir z.T. bewußt &amp;amp;#8222;unoriginell&amp;amp;#8220; zu entworfen zu sein (was in anderen Kontext einen Vorteil darstellt). &amp;amp;#8629;
-
-
-  ARM ist geplant, aber bisher nur teilweise implementiert. &amp;amp;#8629;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;Man kann schließlich auch in den meisten Assemblern so etwas wie Structs definieren.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Nein, ich habe Java nie ernsthaft in Betrachtung gezogen, was aber auch an meiner Abneigung gegenüber dieser Sprache liegen mag.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;Man kann in C++ sehr sicher schreiben, wenn man eine ausreichende Selbstdisziplin an den Tag legt und verschiedene Idiome nicht benutzt. Im Gegensatz dazu erzwingt z.B. Rust sicheren Code. Dort, wo man unsichere (weil mächtigere) Konstrukte braucht, muss es explizit gemacht werden.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot;&gt;
+      &lt;p&gt;Go bekommt in dieser Kategorie bei mir Punktabzug für den vorhandenen Null-Pointer&amp;nbsp;&lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:5&quot;&gt;
+      &lt;p&gt;Eigentlich wollte ich hier erst ein Minuszeichen setzen, habe es mir dann anders überlegt: Ich habe C++ lange vor Boost und C++11 gelernt, und seitdem nie grundlegend “aufgeholt”.&amp;nbsp;&lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:6&quot;&gt;
+      &lt;p&gt;Go landet da auf Platz 2, zumal ich schon mal in Occam reingeschnuppert hatte, und D erscheint mir z.T. bewußt “unoriginell” zu entworfen zu sein (was in anderen Kontext einen Vorteil darstellt).&amp;nbsp;&lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
 &lt;/div&gt;
-
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/03/19/aihpos-1</guid>
 			</item>
 		
 			<item>
 				<title>Schlüsselwortsuche für Safari</title>
-				<link>https://werner-matthias.github.io/SysOp/2016/05/29/schluesselwortsuche-fuer-safari</link>
+				<link>http://localhost:4000/2016/05/29/schluesselwortsuche-fuer-safari</link>
 				<pubDate>Sun, 29 May 2016 10:05:04 +0000</pubDate>
 				<description>&lt;p&gt;Eines der Features, die ich bei Safari gegenüber Firefox immer vermisst habe, sind Schlüsselwortsuchen. Beispielsweise erhalte ich bei meiner Firefox-Installation, wenn ich&lt;/p&gt;
 
-&lt;p&gt;ctan beamer&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ctan beamer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;in die Adresszeile eingebe, eine Liste mit allen LaTeX-Paketen von der Seite des &lt;a href=&quot;http://www.ctan.org/&quot;&gt;Comprehensive TEX Archive Network&lt;/a&gt;s, die etwas mit Beamer zu tun haben.&lt;/p&gt;
 
 &lt;p&gt;Zwar kennt Safari die „schnelle Website-Suche“, die auf &lt;a href=&quot;http://www.opensearch.org/Specifications/OpenSearch/1.1#OpenSearch_description_document&quot;&gt;OpenSearch&lt;/a&gt; basiert, aber diese ist&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;nur sehr umständlich lokal für neue Seiten anpassbar (es ist einfacher, wenn die Seiten-Designer selbst  ein  mitgeben);&lt;/li&gt;
+  &lt;li&gt;nur sehr umständlich lokal für neue Seiten anpassbar (es ist einfacher, wenn die Seiten-Designer selbst einen Deskriptor mitgeben);&lt;/li&gt;
   &lt;li&gt;sind die Schlüsselworte nicht frei wählbar.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Ich habe mich daher nach Plugins umgesehen. Am geeignetsten für meine Zwecke ist &lt;a href=&quot;http://safarikeywordsearch.aurlien.net&quot;&gt;SafariKeyworkSearch&lt;/a&gt;. Es ist zwar sehr schlicht, aber dafür leicht nutz- und anpassbar. Ein kleiner Nachteil ist, dass dieses Plugin seine Daten zusammen mit den Cookies und Webdaten speichert. Wenn man — wie ich das regelmäßig mache — diese Daten „global bereinigt“ (also löscht), sind auch die Sucheinstellungen futsch. Jedoch lassen sie sich auch einfach extern speichern und laden, so dass dies keine zu große Katastrophe darstellt. Irgendwann schreibe ich vielleicht mal ein Skript, welches die Sache automatisiert.&lt;/p&gt;
+&lt;p&gt;Ich habe mich daher nach Plugins umgesehen. Am geeignetsten für meine Zwecke ist &lt;a href=&quot;http://safarikeywordsearch.aurlien.net&quot;&gt;SafariKeyworkSearch&lt;/a&gt;. Es ist zwar sehr schlicht, aber dafür leicht nutz- und
+anpassbar. Ein kleiner Nachteil ist, dass dieses Plugin seine Daten zusammen mit den Cookies und Webdaten speichert. Wenn man – wie ich das regelmäßig mache–
+diese Daten „global bereinigt“ (also löscht), sind auch die Sucheinstellungen futsch. Jedoch lassen sie sich auch einfach extern speichern und laden, so dass
+dies keine zu große Katastrophe darstellt. Irgendwann schreibe ich vielleicht mal ein Skript, welches die Sache automatisiert.&lt;/p&gt;
 
 &lt;p&gt;Wen es interessiert, dies sind meine Sucheinträge:&lt;/p&gt;
-
-&lt;p&gt;{
- “gg”:”https://startpage.com/do/search?query=@@@”,”Default”:”gg”,
- “az”:”http://www.amazon.de/s/ref=nb_sb_noss?__mk_de_DE=%C5M%C5%u017D%D5%D1&amp;amp;url=search-alias%3Daps&amp;amp;field-keywords=@@@”,
- “cs”:”http://citeseer.ist.psu.edu/search?q=@@@&amp;amp;sort=rel”,
- “ctan”:”http://www.ctan.org/search/?phrase=%%%”,
- “gb”:”http://books.google.com/books?oe=UTF-8&amp;amp;um=1&amp;amp;hl=de&amp;amp;q=@@@”,
- “ggg”:”http://www.google.com/search?q=@@@”,
- “gm”:”http://maps.google.com/maps?oi=map&amp;amp;q=@@@”,
- “gn”:”https://www.google.de/search?tbm=nws&amp;amp;q=@@@”,
- “gp”:”http://images.google.de/images?hl=de&amp;amp;q=@@@&amp;amp;gbv=1”,
- “gr”:”http://www.canoo.net/services/Controller?input=%%%&amp;amp;MenuId=Search&amp;amp;service=canooNet&amp;amp;lang=de”,
- “gs”:”http://scholar.google.de/scholar?q=@@@&amp;amp;hl=de&amp;amp;lr=”,
- “l”:”http://dict.leo.org/ende?lp=ende&amp;amp;lang=de&amp;amp;searchLoc=0&amp;amp;cmpType=relaxed&amp;amp;sectHdr=on&amp;amp;spellToler=on&amp;amp;chinese=both&amp;amp;pinyin=diacritic&amp;amp;search=%%%&amp;amp;relink=on”,
- “li”:”http://www.linguee.de/deutsch-englisch/search?source=auto&amp;amp;query=%%%”,
- “lt”:”https://translate.google.com/#en/de/%%%”,
- “so”:”http://stackoverflow.com/search?q=@@@”,
- “st”:”http://de.statista.com/statistik/suche/?q=@@@”,
- “w”:”http://de.wikipedia.org/w/index.php?title=Spezial%3ASuche&amp;amp;search=%%%”,
- “wa”:”http://www.wolframalpha.com/input/?i=@@@”,
- “we”:”http://en.wikipedia.org/wiki/Special:Search/%%%”,
- “wq”:”http://de.wikiquote.org/w/index.php?title=Spezial%3ASuche&amp;amp;search=%%%”,
- “wqe”:”http://en.wikiquote.org/w/index.php?title=Special%3ASearch&amp;amp;search=%%%”,
- “yt”:”http://youtube.com/results?search_query=@@@”,
- “yy”:”http://www.yandex.com/yandsearch?text=%%%&amp;amp;lr=87”
-}&lt;/p&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt; &lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;gg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://startpage.com/do/search?query=@@@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Default&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;az&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.amazon.de/s/ref=nb_sb_noss?__mk_de_DE=%C5M%C5%u017D%D5%D1&amp;amp;url=search-alias%3Daps&amp;amp;field-keywords=@@@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;cs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://citeseer.ist.psu.edu/search?q=@@@&amp;amp;sort=rel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;ctan&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.ctan.org/search/?phrase=%%%&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;gb&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://books.google.com/books?oe=UTF-8&amp;amp;um=1&amp;amp;hl=de&amp;amp;q=@@@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;ggg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.google.com/search?q=@@@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;gm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://maps.google.com/maps?oi=map&amp;amp;q=@@@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;gn&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://www.google.de/search?tbm=nws&amp;amp;q=@@@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;gp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://images.google.de/images?hl=de&amp;amp;q=@@@&amp;amp;gbv=1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;gr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.canoo.net/services/Controller?input=%%%&amp;amp;MenuId=Search&amp;amp;service=canooNet&amp;amp;lang=de&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;gs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://scholar.google.de/scholar?q=@@@&amp;amp;hl=de&amp;amp;lr=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;l&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://dict.leo.org/ende?lp=ende&amp;amp;lang=de&amp;amp;searchLoc=0&amp;amp;cmpType=relaxed&amp;amp;sectHdr=on&amp;amp;spellToler=on&amp;amp;chinese=both&amp;amp;pinyin=diacritic&amp;amp;search=%%%&amp;amp;relink=on&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;li&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.linguee.de/deutsch-englisch/search?source=auto&amp;amp;query=%%%&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;lt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://translate.google.com/#en/de/%%%&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;so&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://stackoverflow.com/search?q=@@@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;st&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://de.statista.com/statistik/suche/?q=@@@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://de.wikipedia.org/w/index.php?title=Spezial%3ASuche&amp;amp;search=%%%&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;wa&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.wolframalpha.com/input/?i=@@@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;we&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://en.wikipedia.org/wiki/Special:Search/%%%&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;wq&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://de.wikiquote.org/w/index.php?title=Spezial%3ASuche&amp;amp;search=%%%&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;wqe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://en.wikiquote.org/w/index.php?title=Special%3ASearch&amp;amp;search=%%%&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;yt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://youtube.com/results?search_query=@@@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;yy&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.yandex.com/yandsearch?text=%%%&amp;amp;lr=87&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2016/05/29/schluesselwortsuche-fuer-safari</guid>
+				<guid isPermaLink="true">http://localhost:4000/2016/05/29/schluesselwortsuche-fuer-safari</guid>
 			</item>
 		
 			<item>
 				<title>Dijkstra vs. Kay</title>
-				<link>https://werner-matthias.github.io/SysOp/2016/02/02/arroganz</link>
+				<link>http://localhost:4000/2016/02/02/arroganz</link>
 				<pubDate>Tue, 02 Feb 2016 05:02:52 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;Don’t blame me for the fact that competent programming, as I view it as an intellectual possibility, will be too difficult for ‘the average programmer’ — you must not fall into the trap of rejecting a surgical technique because it is beyond the capabilities of the barber in his shop around the corner.
@@ -2938,11 +2956,11 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;I don’t know how many of you have ever met Dijkstra, but you probably know that arrogance in computer science is measured in nano-Dijkstras.-
+  &lt;p&gt;I don’t know how many of you have ever met Dijkstra, but you probably know that arrogance in computer science is measured in nano-Dijkstras.
 &lt;cite&gt;Alan C. Kay&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2016/02/02/arroganz</guid>
+				<guid isPermaLink="true">http://localhost:4000/2016/02/02/arroganz</guid>
 			</item>
 		
 	</channel>

@@ -3,7 +3,7 @@
 <head>
 		<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Und eins</title>
+	<title>aihPOS</title>
 	<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/styles_feeling_responsive.css" />
 	<script src="http://localhost:4000/assets/js/modernizr.min.js"></script>
 
@@ -22,7 +22,7 @@
 
   
 	
-	<meta name="description" content="LaTeX-Versionierung für Arme"/>
+	<meta name="description" content="Matthias Werners Blog. " />
 
 	
 
@@ -104,9 +104,9 @@
 	<!-- Facebook Optimization -->
 	<meta property="og:locale" content="en_EN" />
 	
-	<meta property="og:title" content="Und eins" />
-	<meta property="og:description" content="LaTeX-Versionierung für Arme" />
-	<meta property="og:url" content="http://localhost:4000//2014/07/07/und-eins" />
+	<meta property="og:title" content="aihPOS" />
+	<meta property="og:description" content="Matthias Werners Blog. " />
+	<meta property="og:url" content="http://localhost:4000//blog/aihpos/" />
 	<meta property="og:site_name" content="Systems Operational" />
 	
 
@@ -122,7 +122,7 @@
 	
 </head>
 </head>
-<body id="top-of-page" class="page-fullwidth">
+<body id="top-of-page" class="page">
 	
 	
 <div id="navigation" class="sticky">
@@ -238,7 +238,7 @@
 
             
             
-              <li><a href="http://localhost:4000/blog/aihpos/">aihPos</a></li>
+              <li class="active"><a href="http://localhost:4000/blog/aihpos/">aihPos</a></li>
               <li class="divider"></li>
 
             
@@ -285,38 +285,49 @@
 
 
 
-	
-
-
-<div class="row t30">
-	<div class="medium-12 columns">
-		<article>
+	<div class="row t30">
+	<div class="medium-8 columns medium-offset-2 end">
+		<article itemscope itemtype="http://schema.org/Article">
 			<header>
 				
-				<h1>Und eins</h1>
+
+				<span itemprop="name">
+					
+					<h1>aihPOS</h1>
+				</span>
 			</header>
+
 
 			
 
 			<span itemprop="articleSection">
-	                <p>Manchmal will man in einem LaTeX-Dokumen eine Versionsnummer haben, so dass jede Übersetzung mit einer anderen Nummer versehen ist.</p>
+			<div class="row">
+<div class="medium-4 medium-push-8 columns" markdown="1">
+<div class="panel radius" markdown="1">
+  <i><b>aihPOS</b> ist ein in Rust geschriebenes Demonstrations-Betriebssystem, das für den Kurs Betriebssysteme an der TU&nbsp;Chemnitz entwickelt wird.
+  <p/>
+  Die Quellen sind auf GitHub <a href="https://github.com/werner-matthias/aihPOS">veröffentlicht</a>.</i>
+</div>
+</div><!-- /.medium-4.columns -->
 
-<p>Evtl. reicht es aus, Tag und Datum (<code class="highlighter-rouge">\today</code> und <code class="highlighter-rouge">\the\time</code>) einzusetzen. Falls man mit einem Versionierungssystem wie Subversion arbeitet, kann die dortige Version
-  genutzt werden, indem man ins Makefile vor dem Übersetzungslauf</p>
+<div class="medium-8 medium-pull-4 columns" markdown="1"> Bisher erschienen:
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">svn info -r HEAD | grep <span class="s2">"Revision"</span> | cut -d<span class="s1">' '</span> -f2 &gt; version.tex</code></pre></figure>
+<ol class="side-nav">
+  
+    <li>19.03 2017: <a href="http://localhost:4000/2017/03/19/aihpos-1"><strong>Another incompatible and hackneyed Pi Operating System</strong></a></li>
+  
+    <li>31.03 2017: <a href="http://localhost:4000/2017/03/31/aihpos-2-ausrustung"><strong>Ausr(ü/u)stung</strong></a></li>
+  
+    <li>10.04 2017: <a href="http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen"><strong>Lebenszeichen</strong></a></li>
+  
+    <li>26.04 2017: <a href="http://localhost:4000/2017/04/26/aihpos-4-postman"><strong>Please Mr. Postman</strong></a></li>
+  
+    <li>14.05 2017: <a href="http://localhost:4000/2017/05/14/aihpos5-umrustung"><strong>Um-Rust-ung</strong></a></li>
+  
+  </ol>
+ </div></div> 
+			</span>
 
-<p>aufnimmt und <code class="highlighter-rouge">version.tex</code> im LaTeX-Dokument einbindet. Falls jedoch keine Versionierungssoftware zur Verfügung steht, kann man sich auch einfach selbst behelfen und z.B. mit <code class="highlighter-rouge">bc</code> “rechnen”. Dann könnte das Makefile Folgendes enthalten:</p>
-
-<figure class="highlight"><pre><code class="language-make" data-lang="make"><span class="c"># Versionsfile, steht am Anfang z.B. "1" drin
-</span><span class="nv">VERISON</span><span class="o">=</span>version.tex
-<span class="c"># Zähler 
-</span><span class="nv">StepRun</span><span class="o">=</span><span class="nb">echo</span> <span class="s2">"1+"</span> <span class="sb">`</span>tail -n 1 <span class="nv">$(VERISON)</span><span class="sb">`</span> | bc &lt; <span class="nv">$(VERISON)</span>.1; mv <span class="nv">$(VERISON)</span>.1 <span class="nv">$(VERISON)</span></code></pre></figure>
-
-<p>Jetzt muss bei der Übersetzung das (Pseudo-)Ziel “StepRun” in den Abhängigkeiten stehen, und schon werden die Versionen gezählt.</p>
-
-
-	                </span>
 			
 						<div id="page-meta" class="t30">
 				<p>
@@ -329,54 +340,30 @@
 				
 
 				
-				<time class="icon-calendar pr20" datetime="2014-07-07" itemprop="datePublished"> 2014-07-07</time>
-				
 
-				<span class="icon-archive pr20"> COMPUTER</span>
+				</span>
 				<br />
-				<span class="pr20"><span class="icon-price-tag pr10"> bash</span> <span class="icon-price-tag pr10"> LaTeX</span> </span>
+				<span class="pr20"></span>
 			</p>
 
 			<div id="post-nav" class="row">
 				
-				<div class="small-5 columns"><a class="button small radius prev" href="http://localhost:4000/2014/07/03/ada">&laquo; Ada</a></div><!-- /.small-4.columns -->
-				
 				<div class="small-2 columns text-center"><a class="radius button small" href="http://localhost:4000/blog/archive/" title="Blog Archiv">Archiv</a></div><!-- /.small-4.columns -->
-				
-				<div class="small-5 columns text-right"><a class="button small radius next" href="http://localhost:4000/2014/10/29/ms-curve">Yosemite und Microsoft Tastatur &raquo;</a></div><!-- /.small-4.columns -->
 				
 			</div>
 			</div><!--  /.page-meta -->
 			
 
 			
-						
-				<h3 id="comments" class="t60">Dialog &amp; Diskussion</h3>
-			
-			    <div id="disqus_thread"></div>
-			    <script type="text/javascript">
-			        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-			        var disqus_shortname = ''; 
-			        var disqus_identifier = '/2014/07/07/und-eins';
-
-			        /* * * DON'T EDIT BELOW THIS LINE * * */
-			        (function() {
-			            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-			            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			        })();
-			    </script>
-			    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-			
-
-
-
-			
 		</article>
-	</div><!-- /.medium-12.columns -->
+	</div><!-- /.medium-8.columns -->
+
+
+	
+
+
+	
 </div><!-- /.row -->
-
-
 
 
 	

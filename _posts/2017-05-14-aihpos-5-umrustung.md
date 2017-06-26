@@ -8,7 +8,10 @@ author: mwerner
 comments: true
 toc: true
 date: 2017-05-14 12:05:04
-tags: [ ]
+tags:
+    - aihpos
+    - cargo
+    - xargo
 categories:
     - aihpos
     - computer
@@ -17,10 +20,11 @@ permalink: /2017/05/14/aihpos5-umrustung
 **Inhalt**
 - TOC
 {:toc}
+{% include next-previous-post-in-category %}
 ## Rust auf Nicht-Standard-Plattformen
 
 Nachdem ich im [letzen Teil][1] schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool `cargo` umzusteigen:
-Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das SOPHIA-Projekt zwei Nachteile, die die Nutzung von
+Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das :sophia:-Projekt zwei Nachteile, die die Nutzung von
 `cargo` erschweren: 
 
   * Unsere Zielplattform wird nicht unterstützt, damit auch nicht die entsprechenden Bibliotheken
@@ -97,7 +101,7 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 Wenn ich schon bei einer Reorganisation bin, gehe ich noch einen Schritt weiter: Der alte JTAG-Kernel (siehe [Teil 3][4]) kommt in ein eigenes Verzeichnis, so dass er noch immer mit `make` übersetzt werden kann. Ich nutze ihn als Boot-Kernel, so dass ich Änderungen im Entwicklungskernel schnell über das JTAG-Interface laden und testen kann.
 
 Außerdem habe ich ein [GitHub-Projekt][5] für SOPHIA aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.
-
+{% include next-previous-post-in-category %}
 
 [^1]:  Die cargo-Entwickler betonen immer wieder, dass cargo kein komplettes Build-Management-Tool ist und auch nicht sein will.
     

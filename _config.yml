@@ -40,6 +40,9 @@ urlimg: 'https://werner-matthias.github.io/SysOp/images'
 # Logo size is 600x80 pixels
 logo: "logo.png"
 
+jemoji:
+   src: images/emoji
+
 # Paginates all X entries
 paginate: 5
 
@@ -53,12 +56,16 @@ markdown: kramdown
 kramdown:
   input: GFM
 
+  
 permalink: /:categories/:title/
 highlighter: rouge
 
 plugins:
+  - rubypants	
   - jekyll-paginate
   - jekyll_github_sample
+  - emoji_for_jekyll
+  - jekyll-typogrify
 
 excerpt_separator: "<!--more-->"
 

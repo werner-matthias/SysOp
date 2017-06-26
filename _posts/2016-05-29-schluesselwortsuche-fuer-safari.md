@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page-fullwidth
 title: Schlüsselwortsuche für Safari
 published: true
 author: mwerner
@@ -13,19 +13,24 @@ permalink: /2016/05/29/schluesselwortsuche-fuer-safari
 ---
 Eines der Features, die ich bei Safari gegenüber Firefox immer vermisst habe, sind Schlüsselwortsuchen. Beispielsweise erhalte ich bei meiner Firefox-Installation, wenn ich
 
+~~~
 ctan beamer
+~~~
 
 in die Adresszeile eingebe, eine Liste mit allen LaTeX-Paketen von der Seite des [Comprehensive TEX Archive Network][1]s, die etwas mit Beamer zu tun haben.
 
 Zwar kennt Safari die &#8222;schnelle Website-Suche&#8220;, die auf [OpenSearch][2] basiert, aber diese ist
 
-  1. nur sehr umständlich lokal für neue Seiten anpassbar (es ist einfacher, wenn die Seiten-Designer selbst  ein  mitgeben);
+  1. nur sehr umständlich lokal für neue Seiten anpassbar (es ist einfacher, wenn die Seiten-Designer selbst einen Deskriptor mitgeben);
   2. sind die Schlüsselworte nicht frei wählbar.
 
-Ich habe mich daher nach Plugins umgesehen. Am geeignetsten für meine Zwecke ist [SafariKeyworkSearch][3]. Es ist zwar sehr schlicht, aber dafür leicht nutz- und anpassbar. Ein kleiner Nachteil ist, dass dieses Plugin seine Daten zusammen mit den Cookies und Webdaten speichert. Wenn man &#8212; wie ich das regelmäßig mache &#8212; diese Daten &#8222;global bereinigt&#8220; (also löscht), sind auch die Sucheinstellungen futsch. Jedoch lassen sie sich auch einfach extern speichern und laden, so dass dies keine zu große Katastrophe darstellt. Irgendwann schreibe ich vielleicht mal ein Skript, welches die Sache automatisiert.
+Ich habe mich daher nach Plugins umgesehen. Am geeignetsten für meine Zwecke ist [SafariKeyworkSearch][3]. Es ist zwar sehr schlicht, aber dafür leicht nutz- und
+anpassbar. Ein kleiner Nachteil ist, dass dieses Plugin seine Daten zusammen mit den Cookies und Webdaten speichert. Wenn man -- wie ich das regelmäßig mache--
+diese Daten &#8222;global bereinigt&#8220; (also löscht), sind auch die Sucheinstellungen futsch. Jedoch lassen sie sich auch einfach extern speichern und laden, so dass
+dies keine zu große Katastrophe darstellt. Irgendwann schreibe ich vielleicht mal ein Skript, welches die Sache automatisiert. 
 
 Wen es interessiert, dies sind meine Sucheinträge:
-
+~~~
 {
  "gg":"https://startpage.com/do/search?query=@@@","Default":"gg",
  "az":"http://www.amazon.de/s/ref=nb_sb_noss?__mk_de_DE=%C5M%C5%u017D%D5%D1&url=search-alias%3Daps&field-keywords=@@@",
@@ -51,10 +56,7 @@ Wen es interessiert, dies sind meine Sucheinträge:
  "yt":"http://youtube.com/results?search_query=@@@",
  "yy":"http://www.yandex.com/yandsearch?text=%%%&lr=87"
 }
-
-&nbsp;
-
-&nbsp;
+~~~
 
  [1]: http://www.ctan.org/
  [2]: http://www.opensearch.org/Specifications/OpenSearch/1.1#OpenSearch_description_document

@@ -17,23 +17,27 @@
 #    url: "#"
 
 - title: Blog
-  url: "/blog/"
   side: left
+  url: "/blog/"
   dropdown:
-  - title: "Blog Archive"
+  - title: "Archive"
     url: "/blog/archive/"
 
+- title: aihPos
+  side: left
+  url: /blog/aihpos/
+  
 #
 #   Navigation to the right › side: right
 #
-- title: "Info"
-  url: "/info/"
+- title: "Über mich"
+  url: "/about/"
   side: right
 
 - title: "Search"
   url: "/search/"
   side: right
 
-- title: "Contact"
-  url: "/contact/"
-  side: right
+#- title: "Contact"
+#  url: "/contact/"
+#  side: right
