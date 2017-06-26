@@ -5,12 +5,12 @@
 	<channel>
 		<title>Systems Operational</title>
 		<description>Matthias Werners Blog. </description>
-		<link>https://werner-matthias.github.io/SysOp/</link>
-		<atom:link href="https://werner-matthias.github.io/SysOp/feed.xml" rel="self" type="application/rss+xml" />
+		<link>http://localhost:4000/</link>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Computer Science</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</link>
+				<link>http://localhost:4000/2017/05/21/computer-science</link>
 				<pubDate>Sun, 21 May 2017 12:05:22 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;In science, we reserve our highest honors for those who prove we were wrong. But in computer science…
@@ -23,12 +23,12 @@
 &lt;cite&gt;Fred Brooks&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/05/21/computer-science</guid>
 			</item>
 		
 			<item>
 				<title>Um-Rust-ung</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/05/14/aihpos5-umrustung</link>
+				<link>http://localhost:4000/2017/05/14/aihpos5-umrustung</link>
 				<pubDate>Sun, 14 May 2017 12:05:04 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -47,8 +47,8 @@
 
 &lt;h2 id=&quot;rust-auf-nicht-standard-plattformen&quot;&gt;Rust auf Nicht-Standard-Plattformen&lt;/h2&gt;
 
-&lt;p&gt;Nachdem ich im &lt;a href=&quot;http://sysop.matthias-werner.net/?p=450&quot;&gt;letzen Teil&lt;/a&gt; schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; umzusteigen:
-Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das :sophia:-Projekt zwei Nachteile, die die Nutzung von
+&lt;p&gt;Nachdem ich im &lt;a href=&quot;/2017/04/26/aihpos-4-postman&quot;&gt;letzen Teil&lt;/a&gt; schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; umzusteigen:
+Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das SOPHIA-Projekt zwei Nachteile, die die Nutzung von
 &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; erschweren:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -60,7 +60,7 @@ Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von 
 
 &lt;h3 id=&quot;xargo&quot;&gt;Xargo&lt;/h3&gt;
 
-&lt;p&gt;Zur Lösung des ersten Problems gibt es &lt;a href=&quot;https://github.com/japaric/xargo&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;&lt;/a&gt;, eine &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;-Variante für Cross-Umgebungen. Diese übersetzt automatisch die Core-Bibliothek und bei Bedarf auch andere Teile der Standard-Bibliothek und „schenkt“ dem Compiler die richtige Tool-Chain, indem &lt;code class=&quot;highlighter-rouge&quot;&gt;rootdir&lt;/code&gt; entsprechend gesetzt wird. Man kann sich damit auch angepasste Versionen der Standard-Bibliothek erstellen — mal sehen, ob ich das später brauchen werde.&lt;/p&gt;
+&lt;p&gt;Zur Lösung des ersten Problems gibt es &lt;a href=&quot;https://github.com/japaric/xargo&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;&lt;/a&gt;, eine &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;-Variante für Cross-Umgebungen. Diese übersetzt automatisch die Core-Bibliothek und bei Bedarf auch andere Teile der Standard-Bibliothek und “schenkt” dem Compiler die richtige Tool-Chain, indem &lt;code class=&quot;highlighter-rouge&quot;&gt;rootdir&lt;/code&gt; entsprechend gesetzt wird. Man kann sich damit auch angepasste Versionen der Standard-Bibliothek erstellen – mal sehen, ob ich das später brauchen werde.&lt;/p&gt;
 
 &lt;p&gt;Die Installation geht diesmal nicht über Homebrew, sondern schnell und reibungslos über &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;:&lt;/p&gt;
 
@@ -74,7 +74,7 @@ Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von 
           &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;cargo install xargo&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cargo&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; gehen von einem bestimmten Directory-Layout und der Existenz von (mindestens) einer Konfigurationsdatei &lt;strong&gt;cargo.toml&lt;/strong&gt; aus, die das sogenannte „&lt;a href=&quot;http://doc.crates.io/manifest.html&quot;&gt;Manifest&lt;/a&gt;“ enthält. Dort kann man auch benötigte Bibliotheken einbinden, die dann von &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; automatisch geladen und übersetzt werden. Wir wollten ja die &lt;strong&gt;compiler-buildins&lt;/strong&gt;-Bibliothek nutzen. Dies geschieht im &lt;strong&gt;cargo.toml&lt;/strong&gt; für unseren Kernel im Abschnitt &lt;code class=&quot;highlighter-rouge&quot;&gt;[dependencies]&lt;/code&gt; und sieht so aus:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cargo&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; gehen von einem bestimmten Directory-Layout und der Existenz von (mindestens) einer Konfigurationsdatei &lt;strong&gt;cargo.toml&lt;/strong&gt; aus, die das sogenannte “&lt;a href=&quot;http://doc.crates.io/manifest.html&quot;&gt;Manifest&lt;/a&gt;” enthält. Dort kann man auch benötigte Bibliotheken einbinden, die dann von &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; automatisch geladen und übersetzt werden. Wir wollten ja die &lt;strong&gt;compiler-buildins&lt;/strong&gt;-Bibliothek nutzen. Dies geschieht im &lt;strong&gt;cargo.toml&lt;/strong&gt; für unseren Kernel im Abschnitt &lt;code class=&quot;highlighter-rouge&quot;&gt;[dependencies]&lt;/code&gt; und sieht so aus:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-toml&quot; data-lang=&quot;toml&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[package]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aihPOS&quot;&lt;/span&gt;
@@ -105,10 +105,10 @@ Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von 
 &lt;span class=&quot;py&quot;&gt;opt-level&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Diese Datei muss sich im Wurzelverzeichnis eines Projekts oder Subprojekts befinden. Die Quelldateien sind dann in einem Unterverzeichnis &lt;strong&gt;src/&lt;/strong&gt;, das weitere
-Verzeichnisse (mit ggf. eigenen &lt;strong&gt;cargo.toml&lt;/strong&gt;-Dateien) befinden können. Beim Start einer Übersetzung mit &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo build&lt;/code&gt; wird ein Verzeichnis &lt;strong&gt;target&lt;/strong&gt; angelegt,  in dem
+Verzeichnisse (mit ggf. eigenen &lt;strong&gt;cargo.toml&lt;/strong&gt;-Dateien) befinden können. Beim Start einer Übersetzung mit &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo build&lt;/code&gt; wird ein Verzeichnis &lt;strong&gt;target&lt;/strong&gt; angelegt,  in dem
 übersetzte Dateien etc. angelegt werden.&lt;/p&gt;
 
-&lt;p&gt;Neben dem Manifest gibt es optional noch eine Konfigurationsdatei, ebenfalls im TOML-Format. Sie heißt &lt;strong&gt;config&lt;/strong&gt; und befindet sich in einem Unterverzeichnis &lt;strong&gt;.cargo/&lt;/strong&gt;. Wir brauchen sie vor allem, weil die Erstellung des Kernels Compiler- bzw. Linkeroptionen benötigt, die nicht Standard sind:&lt;/p&gt;
+&lt;p&gt;Neben dem Manifest gibt es optional noch eine Konfigurationsdatei, ebenfalls im TOML-Format. Sie heißt &lt;strong&gt;config&lt;/strong&gt; und befindet sich in einem Unterverzeichnis &lt;strong&gt;.cargo/&lt;/strong&gt;. Wir brauchen sie vor allem, weil die Erstellung des Kernels Compiler- bzw. Linkeroptionen benötigt, die nicht Standard sind:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-toml&quot; data-lang=&quot;toml&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[build]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;traget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;arm-none-eabihf&quot;&lt;/span&gt;
@@ -124,17 +124,17 @@ Verzeichnisse (mit ggf. eigenen &lt;strong&gt;cargo.toml&lt;/strong&gt;-Dateien)
   &lt;span class=&quot;s&quot;&gt;&quot;-C&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;link-arg=-ffreestanding&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Die Trennung der Steuerung von Compiler-Optionen (in den &lt;code class=&quot;highlighter-rouge&quot;&gt;[profile.*]&lt;/code&gt;-Abschnitten in &lt;strong&gt;cargo.toml&lt;/strong&gt; können auch einige Optionen gesteuert werden) ist etwas unglücklich und wird möglicherweise in künftigen Rust/Cargo-Versionen aufgehoben, aber derzeit muss man damit leben.&lt;/p&gt;
+&lt;p&gt;Die Trennung der Steuerung von Compiler-Optionen (in den &lt;code class=&quot;highlighter-rouge&quot;&gt;[profile.*]&lt;/code&gt;-Abschnitten in &lt;strong&gt;cargo.toml&lt;/strong&gt; können auch einige Optionen gesteuert werden) ist etwas unglücklich und wird möglicherweise in künftigen Rust/Cargo-Versionen aufgehoben, aber derzeit muss man damit leben.&lt;/p&gt;
 
 &lt;h3 id=&quot;post-linker-aktionen&quot;&gt;Post-Linker Aktionen&lt;/h3&gt;
 
-&lt;p&gt;Wenn man sich das bisherige &lt;strong&gt;&lt;tt&gt;Makefile&lt;/tt&gt;&lt;/strong&gt; anschaut, dann sieht man, dass der Building-Prozess nicht — wie sonst meist üblich — mit dem Linken endet. Dies ist
-in &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; nicht vorgesehen. Zwar kennt &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; die Möglichkeit, mit Hilfe eines Build-Scriptes Schritte &lt;strong&gt;vor&lt;/strong&gt; der Übersetzung auszuführen; etwas ähnliches für danach
+&lt;p&gt;Wenn man sich das bisherige &lt;strong&gt;&lt;tt&gt;Makefile&lt;/tt&gt;&lt;/strong&gt; anschaut, dann sieht man, dass der Building-Prozess nicht – wie sonst meist üblich – mit dem Linken endet. Dies ist
+in &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; nicht vorgesehen. Zwar kennt &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; die Möglichkeit, mit Hilfe eines Build-Scriptes Schritte &lt;strong&gt;vor&lt;/strong&gt; der Übersetzung auszuführen; etwas ähnliches für danach
 wird zwar in unter den Entwicklern diskutiert, wurde aber bisher nicht umgesetzt. Man kann zwar den Linker (in der Target-Datei) umdefinieren, aber ich fürchte, dass eine
-solche Lösung schnell unübersichtlich wird. Es ein häufig genutzter und sogar empfohlener&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Ansatz ist daher, &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; wiederum von einem &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt; aufrufen lassen. Das
-würde aber  dazu führen, dass Abhängigkeiten z.T. doppelt gepflegt werden müssen. Wenn &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;, dann richtig.&lt;/p&gt;
+solche Lösung schnell unübersichtlich wird. Es ein häufig genutzter und sogar empfohlener&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Ansatz ist daher, &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; wiederum von einem &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt; aufrufen lassen. Das
+würde aber  dazu führen, dass Abhängigkeiten z.T. doppelt gepflegt werden müssen. Wenn &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;, dann richtig.&lt;/p&gt;
 
-&lt;p&gt;Glücklicherweise ist &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; leicht erweiterbar: Wenn &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; (oder &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;) mit einem unbekannten Befehl gerufen wird, sucht es im Standardpfad nach einem Programm &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-&lt;/code&gt;. Dass mache ich mir zunutze und schreibe ein kleines &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;-Skript &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-kernel&lt;/code&gt;, das erst &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; aufruft und dann noch den „Rest“ erledigt:&lt;/p&gt;
+&lt;p&gt;Glücklicherweise ist &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; leicht erweiterbar: Wenn &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; (oder &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;) mit einem unbekannten Befehl gerufen wird, sucht es im Standardpfad nach einem Programm &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-&lt;/code&gt;. Dass mache ich mir zunutze und schreibe ein kleines &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;-Skript &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-kernel&lt;/code&gt;, das erst &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; aufruft und dann noch den “Rest” erledigt:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;shift
 &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROFILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;debug
@@ -183,19 +183,19 @@ xargo build &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt;
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;   Finished dev [optimized + debuginfo] target(s) in 4.8 secs&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 
-&lt;p&gt;Man beachte, dass immer noch &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; und nicht &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; aufgerufen werden muss. Zwar würde auch &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; das Shellskript finden und ausführen, jedoch hat &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; einen Lock, der die nebenläufige Ausführung blockiert. &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo kernel&lt;/code&gt;würde also hängen bleiben.&lt;/p&gt;
+&lt;p&gt;Man beachte, dass immer noch &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; und nicht &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; aufgerufen werden muss. Zwar würde auch &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; das Shellskript finden und ausführen, jedoch hat &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; einen Lock, der die nebenläufige Ausführung blockiert. &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo kernel&lt;/code&gt;würde also hängen bleiben.&lt;/p&gt;
 
 &lt;h3 id=&quot;diskussion&quot;&gt;Diskussion&lt;/h3&gt;
 
-&lt;p&gt;Bin ich nun vollständig in der Rust-Welt angekommen? Das hängt von der Betrachtung ab. Ich kann auf &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; verzichten und alles, was ich mit &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; gemacht habe nun mit
-Rust-Mitteln tun. Andererseits kennt &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; noch viele Befehle – wie z.B. für das Bauen von Tests und Dokumentationen oder die Arbeit mit Repositories – die noch nicht
+&lt;p&gt;Bin ich nun vollständig in der Rust-Welt angekommen? Das hängt von der Betrachtung ab. Ich kann auf &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; verzichten und alles, was ich mit &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; gemacht habe nun mit
+Rust-Mitteln tun. Andererseits kennt &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; noch viele Befehle – wie z.B. für das Bauen von Tests und Dokumentationen oder die Arbeit mit Repositories – die noch nicht
 berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht dafür keine Garantie.&lt;/p&gt;
 
 &lt;h2 id=&quot;github&quot;&gt;GitHub&lt;/h2&gt;
 
-&lt;p&gt;Wenn ich schon bei einer Reorganisation bin, gehe ich noch einen Schritt weiter: Der alte JTAG-Kernel (siehe &lt;a href=&quot;http://sysop.matthias-werner.net/?p=307&quot;&gt;Teil 3&lt;/a&gt;) kommt in ein eigenes Verzeichnis, so dass er noch immer mit &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; übersetzt werden kann. Ich nutze ihn als Boot-Kernel, so dass ich Änderungen im Entwicklungskernel schnell über das JTAG-Interface laden und testen kann.&lt;/p&gt;
+&lt;p&gt;Wenn ich schon bei einer Reorganisation bin, gehe ich noch einen Schritt weiter: Der alte JTAG-Kernel (siehe &lt;a href=&quot;/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Teil 3&lt;/a&gt;) kommt in ein eigenes Verzeichnis, so dass er noch immer mit &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; übersetzt werden kann. Ich nutze ihn als Boot-Kernel, so dass ich Änderungen im Entwicklungskernel schnell über das JTAG-Interface laden und testen kann.&lt;/p&gt;
 
-&lt;p&gt;Außerdem habe ich ein &lt;a href=&quot;https://github.com/werner-matthias/aihPOS&quot;&gt;GitHub-Projekt&lt;/a&gt; für SOPHIA aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.&lt;/p&gt;
+&lt;p&gt;Außerdem habe ich ein &lt;a href=&quot;https://github.com/werner-matthias/aihPOS&quot;&gt;GitHub-Projekt&lt;/a&gt; für SOPHIA aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.&lt;/p&gt;
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;/2017/04/26/aihpos-4-postman&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
@@ -204,17 +204,17 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;Die cargo-Entwickler betonen immer wieder, dass cargo kein komplettes Build-Management-Tool ist und auch nicht sein will.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Die cargo-Entwickler betonen immer wieder, dass cargo kein komplettes Build-Management-Tool ist und auch nicht sein will.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/05/14/aihpos5-umrustung</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/05/14/aihpos5-umrustung</guid>
 			</item>
 		
 			<item>
 				<title>Please Mr. Postman</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/26/aihpos-4-postman</link>
+				<link>http://localhost:4000/2017/04/26/aihpos-4-postman</link>
 				<pubDate>Wed, 26 Apr 2017 11:04:55 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -1702,12 +1702,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/26/aihpos-4-postman</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/04/26/aihpos-4-postman</guid>
 			</item>
 		
 			<item>
 				<title>March for Science</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</link>
+				<link>http://localhost:4000/2017/04/20/march-for-science</link>
 				<pubDate>Thu, 20 Apr 2017 09:04:46 +0000</pubDate>
 				<description>&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.marchforscience.com&quot;&gt;March for Science&lt;/a&gt; (International)&lt;/li&gt;
@@ -1715,12 +1715,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 &lt;/ul&gt;
 
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/04/20/march-for-science</guid>
 			</item>
 		
 			<item>
 				<title>Lebenszeichen</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</link>
+				<link>http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen</link>
 				<pubDate>Mon, 10 Apr 2017 09:04:10 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -2276,12 +2276,12 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen</guid>
 			</item>
 		
 			<item>
 				<title>Pointer</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/07/pointer</link>
+				<link>http://localhost:4000/2017/04/07/pointer</link>
 				<pubDate>Fri, 07 Apr 2017 12:04:47 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;Playing with pointers is like playing with fire. Fire is perhaps the most important tool known to man. Carefully used, fire brings enormous benefits; but when fire
@@ -2294,12 +2294,12 @@ gets out of control, disaster strikes.
 &lt;cite&gt;Bertrand Meyer&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/07/pointer</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/04/07/pointer</guid>
 			</item>
 		
 			<item>
 				<title>Ausr(ü/u)stung</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/03/31/aihpos-2-ausrustung</link>
+				<link>http://localhost:4000/2017/03/31/aihpos-2-ausrustung</link>
 				<pubDate>Fri, 31 Mar 2017 02:03:29 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -2670,12 +2670,12 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/03/31/aihpos-2-ausrustung</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/03/31/aihpos-2-ausrustung</guid>
 			</item>
 		
 			<item>
 				<title>Another incompatible and hackneyed Pi Operating System</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</link>
+				<link>http://localhost:4000/2017/03/19/aihpos-1</link>
 				<pubDate>Sun, 19 Mar 2017 12:03:55 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -2886,12 +2886,12 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</guid>
+				<guid isPermaLink="true">http://localhost:4000/2017/03/19/aihpos-1</guid>
 			</item>
 		
 			<item>
 				<title>Schlüsselwortsuche für Safari</title>
-				<link>https://werner-matthias.github.io/SysOp/2016/05/29/schluesselwortsuche-fuer-safari</link>
+				<link>http://localhost:4000/2016/05/29/schluesselwortsuche-fuer-safari</link>
 				<pubDate>Sun, 29 May 2016 10:05:04 +0000</pubDate>
 				<description>&lt;p&gt;Eines der Features, die ich bei Safari gegenüber Firefox immer vermisst habe, sind Schlüsselwortsuchen. Beispielsweise erhalte ich bei meiner Firefox-Installation, wenn ich&lt;/p&gt;
 
@@ -2943,12 +2943,12 @@ dies keine zu große Katastrophe darstellt. Irgendwann schreibe ich vielleicht m
 &lt;/div&gt;
 
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2016/05/29/schluesselwortsuche-fuer-safari</guid>
+				<guid isPermaLink="true">http://localhost:4000/2016/05/29/schluesselwortsuche-fuer-safari</guid>
 			</item>
 		
 			<item>
 				<title>Dijkstra vs. Kay</title>
-				<link>https://werner-matthias.github.io/SysOp/2016/02/02/arroganz</link>
+				<link>http://localhost:4000/2016/02/02/arroganz</link>
 				<pubDate>Tue, 02 Feb 2016 05:02:52 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;Don’t blame me for the fact that competent programming, as I view it as an intellectual possibility, will be too difficult for ‘the average programmer’ — you must not fall into the trap of rejecting a surgical technique because it is beyond the capabilities of the barber in his shop around the corner.
@@ -2960,7 +2960,7 @@ dies keine zu große Katastrophe darstellt. Irgendwann schreibe ich vielleicht m
 &lt;cite&gt;Alan C. Kay&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2016/02/02/arroganz</guid>
+				<guid isPermaLink="true">http://localhost:4000/2016/02/02/arroganz</guid>
 			</item>
 		
 	</channel>
