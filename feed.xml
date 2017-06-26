@@ -9,6 +9,34 @@
 		<atom:link href="https://werner-matthias.github.io/SysOp/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Hello Jekyll</title>
+				<link>https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll</link>
+				<pubDate>Mon, 26 Jun 2017 12:16:41 +0000</pubDate>
+				<description>&lt;p&gt;Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
+dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; umgestiegen. Jekyll ist ein Generator für statische Webseiten.&lt;/p&gt;
+
+&lt;p&gt;Es git einige Gründe, die für den Wechsel sprechen:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Das Laden einer Seite geht jetzt wesentlich schneller (nach Messungen ungefähr um den Faktor 4..5)&lt;/li&gt;
+  &lt;li&gt;Statische Seiten sind sicherer als dynamische.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;Es ist leicht, GitHup-Files mit Syntaxhighlighting einzubinden. Das erspart mir eine Menge von Copy&amp;amp;Paste.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dem steht ein Nachteil gegenüber: Das Standard-Kommentarsystem von Jekyll ist Disqus, gegen dessen Einsatz ich Bedenken habe, da es eine große Datenkrake ist.
+Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an mich oder GitHub-Issues gegeben werden.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;Ich konnte in letzter Zeit eine ganze Reihe von Versuchen beobachten, meine Wordpress-Installation zu hacken.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll</guid>
+			</item>
+		
+			<item>
 				<title>Computer Science</title>
 				<link>https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</link>
 				<pubDate>Sun, 21 May 2017 12:05:22 +0000</pubDate>
@@ -2944,23 +2972,6 @@ dies keine zu große Katastrophe darstellt. Irgendwann schreibe ich vielleicht m
 
 </description>
 				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2016/05/29/schluesselwortsuche-fuer-safari</guid>
-			</item>
-		
-			<item>
-				<title>Dijkstra vs. Kay</title>
-				<link>https://werner-matthias.github.io/SysOp/2016/02/02/arroganz</link>
-				<pubDate>Tue, 02 Feb 2016 05:02:52 +0000</pubDate>
-				<description>&lt;blockquote&gt;
-  &lt;p&gt;Don’t blame me for the fact that competent programming, as I view it as an intellectual possibility, will be too difficult for ‘the average programmer’ — you must not fall into the trap of rejecting a surgical technique because it is beyond the capabilities of the barber in his shop around the corner.
-&lt;cite&gt;Edsger W. Dijkstra&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;I don’t know how many of you have ever met Dijkstra, but you probably know that arrogance in computer science is measured in nano-Dijkstras.
-&lt;cite&gt;Alan C. Kay&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2016/02/02/arroganz</guid>
 			</item>
 		
 	</channel>
