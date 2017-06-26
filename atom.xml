@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-06-26T12:22:37+02:00</updated>
+	<updated>2017-06-26T12:28:31+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -28,53 +28,6 @@
 
 	<generator uri="http://jekyllrb.com" version="3.5.0">Jekyll</generator>
 
-	
-		<entry>
-			<id>https://werner-matthias.github.io/SysOp/hello-jekyll/</id>
-			<title>Hello Jekyll</title>
-			<link href="https://werner-matthias.github.io/SysOp/hello-jekyll/" rel="alternate" type="text/html" title="Hello Jekyll" />
-			<updated>2017-06-26T00:00:00+02:00</updated>
-
-			
-				
-				<author>
-					
-						<name>Matthias Werner</name>
-					
-					
-						<email>matthias.werner@me.com</email>
-					
-					
-						<uri>http://www.matthias-werner.net/</uri>
-					
-				</author>
-			
-			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/hello-jekyll/">&lt;p&gt;layout: page-fullwidth
-title: Hello Jekyll
-meta_description: “Ich verlasse Wordpress und wechsle zu Jekyll.”
-published: false
-author: mwerner
-comments: true
-date: 2017-06-26 12:16:41
-tags:
-    - Jekyll
-    - Wordpress
-categories:
-    - aihpos
-    - computer
-show_meta: true	
-permalink: /2017/04/26/aihpos-4-postman
-—
-Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
-dass ich mein Blog-System umgestellt habe.&lt;/p&gt;
-</content>
-
-			
-			
-
-			<published>2017-06-26T00:00:00+02:00</published>
-		</entry>
 	
 		<entry>
 			<id>https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</id>
@@ -3269,6 +3222,48 @@ dies keine zu große Katastrophe darstellt. Irgendwann schreibe ich vielleicht m
 			
 
 			<published>2016-05-29T12:05:04+02:00</published>
+		</entry>
+	
+		<entry>
+			<id>https://werner-matthias.github.io/SysOp/2016/02/02/arroganz</id>
+			<title>Dijkstra vs. Kay</title>
+			<link href="https://werner-matthias.github.io/SysOp/2016/02/02/arroganz" rel="alternate" type="text/html" title="Dijkstra vs. Kay" />
+			<updated>2016-02-02T06:02:52+01:00</updated>
+
+			
+				
+				<author>
+					
+						<name>Matthias Werner</name>
+					
+					
+						<email>matthias.werner@me.com</email>
+					
+					
+						<uri>http://www.matthias-werner.net/</uri>
+					
+				</author>
+			
+			<summary></summary>
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2016/02/02/arroganz">&lt;blockquote&gt;
+  &lt;p&gt;Don’t blame me for the fact that competent programming, as I view it as an intellectual possibility, will be too difficult for ‘the average programmer’ — you must not fall into the trap of rejecting a surgical technique because it is beyond the capabilities of the barber in his shop around the corner.
+&lt;cite&gt;Edsger W. Dijkstra&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I don’t know how many of you have ever met Dijkstra, but you probably know that arrogance in computer science is measured in nano-Dijkstras.
+&lt;cite&gt;Alan C. Kay&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+
+			
+				<category term="computer" />
+			
+				<category term="menschen" />
+			
+			
+
+			<published>2016-02-02T06:02:52+01:00</published>
 		</entry>
 	
 </feed>
