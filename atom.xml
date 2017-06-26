@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="/assets/xslt/atom.xslt" ?>
-<?xml-stylesheet type="text/css" href="/assets/css/atom.css" ?>
+<?xml-stylesheet type="text/xsl" href="/SysOp/assets/xslt/atom.xslt" ?>
+<?xml-stylesheet type="text/css" href="/SysOp/assets/css/atom.css" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-06-26T13:08:58+02:00</updated>
+	<updated>2017-06-26T15:08:21+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
