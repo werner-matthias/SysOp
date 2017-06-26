@@ -6263,7 +6263,9 @@ div.terminal {
       display: block; }
     div.terminal pre.line-numbers span {
       display: inline;
-      color: #586e75; }
+      color: #586e75;
+      font-size: 0.875rem;
+      line-height: 1.5; }
   div.terminal span.command {
     color: #FFF; }
   div.terminal span.output {
