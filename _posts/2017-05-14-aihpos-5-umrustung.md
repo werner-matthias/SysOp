@@ -7,7 +7,7 @@ meta_description: "Das Build-System wird auf Rust-Tools umgestellt - make hat au
 author: mwerner
 comments: true
 toc: true
-date: 2017-05-14 12:05:04
+date: 2017-05-14 
 tags:
     - aihpos
     - cargo

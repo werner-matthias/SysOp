@@ -6,7 +6,7 @@ meta_description: "Bevor wir mit dem Code-Schreiben beginnen, brauchen wir die E
 published: true
 author: mwerner
 comments: true
-date: 2017-03-31 02:03:29
+date: 2017-03-31 
 tags:
     - Rust
     - aihPOS
