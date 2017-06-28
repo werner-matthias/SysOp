@@ -45,12 +45,37 @@ $ cargo install xargo
 `Cargo`/`xargo` gehen von einem bestimmten Directory-Layout und der Existenz von (mindestens) einer Konfigurationsdatei **cargo.toml** aus, die das sogenannte "[Manifest][3]" enthält. Dort kann man auch benötigte Bibliotheken einbinden, die dann von `cargo` automatisch geladen und übersetzt werden. Wir wollten ja die **compiler-buildins**-Bibliothek nutzen. Dies geschieht im **cargo.toml** für unseren Kernel im Abschnitt `[dependencies]` und sieht so aus:
 
 {% highlight toml %}
-{%  github_sample werner-matthias/aihPOS/master/kernel/Cargo.toml  0 -1 %}
+[package]
+name = "aihPOS"
+version = "0.0.2"
+authors = ["Matthias Werner <mwerner@informatik.tu-chemnitz.de>"]
+publish = false
+
+[dependencies]
+compiler_builtins = { git = "https://github.com/rust-lang-nursery/compiler-builtins", features = ["mem"] }
+compiler_error = "0.1.1"
+
+[profile.dev]
+panic = "abort"
+lto = false
+opt-level = 1
+
+[profile.release]
+panic = "abort"
+lto = false
+opt-level = 3
 {% endhighlight %}
 
 Diese Datei muss sich im Wurzelverzeichnis eines Projekts oder Subprojekts befinden. Die Quelldateien sind dann in einem Unterverzeichnis **src/**, das weitere
 Verzeichnisse (mit ggf. eigenen **cargo.toml**-Dateien) befinden können. Beim Start einer Übersetzung mit `cargo build` wird ein Verzeichnis **target** angelegt,  in dem
 übersetzte Dateien etc. angelegt werden.
+
+Außer der __compiler_buildins__-Bibliothek laden wir auch eine andere
+Bibliothek: __compiler_error__, die etwas ähnliches wie C's
+`#error`-Direktive zur Verfügung stellt.
+Soweit es nicht anders angegeben wird -- wie z.B. bei den
+__compiler_buildins__ --, wird nach Bibliotheken auf
+__crates.io__ gesucht.
 
 Neben dem Manifest gibt es optional noch eine Konfigurationsdatei, ebenfalls im TOML-Format. Sie heißt **config** und befindet sich in einem Unterverzeichnis **.cargo/**. Wir brauchen sie vor allem, weil die Erstellung des Kernels Compiler- bzw. Linkeroptionen benötigt, die nicht Standard sind:
 
