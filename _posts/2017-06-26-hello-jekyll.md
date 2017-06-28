@@ -19,7 +19,7 @@ dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf [Jekyll](ht
 Es git einige Gründe, die für den Wechsel sprechen:
 - Das Laden einer Seite geht jetzt wesentlich schneller (nach Messungen ungefähr um den Faktor 4..5)
 - Statische Seiten sind sicherer als dynamische.[^1]
-- Es ist leicht, GitHup-Files mit Syntaxhighlighting einzubinden. Das erspart mir eine Menge von Copy&Paste.
+- Es ist leicht, GitHub-Files mit Syntaxhighlighting einzubinden. Das erspart mir eine Menge von Copy&Paste.
 
 Dem steht ein Nachteil gegenüber: Das Standard-Kommentarsystem von Jekyll ist Disqus, gegen dessen Einsatz ich Bedenken habe, da es eine große Datenkrake ist.
 Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an mich oder GitHub-Issues gegeben werden.
