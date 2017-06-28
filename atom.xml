@@ -2,9 +2,9 @@
 <?xml-stylesheet type="text/xsl" href="/assets/xslt/atom.xslt" ?>
 <?xml-stylesheet type="text/css" href="/assets/css/atom.css" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<id>http://localhost:4000/</id>
+	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-06-28T12:19:21+02:00</updated>
+	<updated>2017-06-28T16:38:55+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -23,16 +23,16 @@
 		</author>
 	
 
-	<link href="http://localhost:4000/atom.xml" rel="self" type="application/rss+xml" />
-	<link href="http://localhost:4000/" rel="alternate" type="text/html" />
+	<link href="https://werner-matthias.github.io/SysOp/atom.xml" rel="self" type="application/rss+xml" />
+	<link href="https://werner-matthias.github.io/SysOp/" rel="alternate" type="text/html" />
 
 	<generator uri="http://jekyllrb.com" version="3.5.0">Jekyll</generator>
 
 	
 		<entry>
-			<id>http://localhost:4000/2017/06/26/hello-jekyll</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll</id>
 			<title>Hello Jekyll</title>
-			<link href="http://localhost:4000/2017/06/26/hello-jekyll" rel="alternate" type="text/html" title="Hello Jekyll" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll" rel="alternate" type="text/html" title="Hello Jekyll" />
 			<updated>2017-06-26T14:16:41+02:00</updated>
 
 			
@@ -50,7 +50,7 @@
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/06/26/hello-jekyll">&lt;p&gt;Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll">&lt;p&gt;Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
 dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; umgestiegen. Jekyll ist ein Generator für statische Webseiten.&lt;/p&gt;
 
 &lt;p&gt;Es git einige Gründe, die für den Wechsel sprechen:&lt;/p&gt;
@@ -85,9 +85,9 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/06/07/aihpos6-haufen</id>
+			<id>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/</id>
 			<title>Wir machen einen Haufen</title>
-			<link href="http://localhost:4000/2017/06/07/aihpos6-haufen" rel="alternate" type="text/html" title="Wir machen einen Haufen" />
+			<link href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/" rel="alternate" type="text/html" title="Wir machen einen Haufen" />
 			<updated>2017-06-07T00:00:00+02:00</updated>
 
 			
@@ -105,7 +105,7 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/06/07/aihpos6-haufen">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#speicher-in-verschiedenen-geschmacksrichtungen&quot; id=&quot;markdown-toc-speicher-in-verschiedenen-geschmacksrichtungen&quot;&gt;Speicher in verschiedenen Geschmacksrichtungen&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#stack&quot; id=&quot;markdown-toc-stack&quot;&gt;Stack&lt;/a&gt;    &lt;ul&gt;
@@ -117,7 +117,7 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
   &lt;li&gt;&lt;a href=&quot;#heap&quot; id=&quot;markdown-toc-heap&quot;&gt;Heap&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/05/14/aihpos5-umrustung&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -257,7 +257,7 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:&lt;/p&gt;
 &lt;h3 id=&quot;hal&quot;&gt;HAL&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cpu::set_mode()&lt;/code&gt; und &lt;code class=&quot;highlighter-rouge&quot;&gt;Cpu::set_stack()&lt;/code&gt; sind natürlich keine Funktionen, die Rust bekannt sind. Der Übersichtlichkeit halber habe ich allen Assembler-Code in ein eigenes
 Modul gepackt, das “HAL” heißt. HAL steht klassischerweise für “&lt;em&gt;Hardware Abstraction Layer&lt;/em&gt;”. Allerdings ist die Abstraktion in SOPHIA sehr dünn, ein Port über die
-ARM-Architektur bedürfte etwas mehr Aufwand. Der Code für &lt;code class=&quot;highlighter-rouge&quot;&gt;Cpu::set_mode()&lt;/code&gt; und &lt;code class=&quot;highlighter-rouge&quot;&gt;Cpu::set_stack()&lt;/code&gt; sieht derzeit so aus:&lt;/p&gt;
+ARM-Architektur hinaus bedürfte etwas mehr Aufwand. Der Code für &lt;code class=&quot;highlighter-rouge&quot;&gt;Cpu::set_mode()&lt;/code&gt; und &lt;code class=&quot;highlighter-rouge&quot;&gt;Cpu::set_stack()&lt;/code&gt; sieht derzeit so aus:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;// Siehe ARM Architectur Reference Manual A2-3&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ProcessorMode&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0x10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -301,7 +301,7 @@ ARM-Architektur bedürfte etwas mehr Aufwand. Der Code für &lt;code class=&quot
 &lt;div class=&quot;alert-box text radius &quot;&gt;&lt;p&gt;Wird noch aktualisiert…&lt;/p&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/05/14/aihpos5-umrustung&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -342,9 +342,9 @@ ARM-Architektur bedürfte etwas mehr Aufwand. Der Code für &lt;code class=&quot
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/05/21/computer-science</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</id>
 			<title>Computer Science</title>
-			<link href="http://localhost:4000/2017/05/21/computer-science" rel="alternate" type="text/html" title="Computer Science" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/05/21/computer-science" rel="alternate" type="text/html" title="Computer Science" />
 			<updated>2017-05-21T14:05:22+02:00</updated>
 
 			
@@ -362,7 +362,7 @@ ARM-Architektur bedürfte etwas mehr Aufwand. Der Code für &lt;code class=&quot
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/05/21/computer-science">&lt;blockquote&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/05/21/computer-science">&lt;blockquote&gt;
   &lt;p&gt;In science, we reserve our highest honors for those who prove we were wrong. But in computer science…
 &lt;cite&gt;Rob Pike&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -385,9 +385,9 @@ ARM-Architektur bedürfte etwas mehr Aufwand. Der Code für &lt;code class=&quot
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/05/14/aihpos5-umrustung</id>
+			<id>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/</id>
 			<title>Um-Rust-ung</title>
-			<link href="http://localhost:4000/2017/05/14/aihpos5-umrustung" rel="alternate" type="text/html" title="Um-Rust-ung" />
+			<link href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/" rel="alternate" type="text/html" title="Um-Rust-ung" />
 			<updated>2017-05-14T00:00:00+02:00</updated>
 
 			
@@ -405,7 +405,7 @@ ARM-Architektur bedürfte etwas mehr Aufwand. Der Code für &lt;code class=&quot
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/05/14/aihpos5-umrustung">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#rust-auf-nicht-standard-plattformen&quot; id=&quot;markdown-toc-rust-auf-nicht-standard-plattformen&quot;&gt;Rust auf Nicht-Standard-Plattformen&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#xargo&quot; id=&quot;markdown-toc-xargo&quot;&gt;Xargo&lt;/a&gt;&lt;/li&gt;
@@ -416,15 +416,15 @@ ARM-Architektur bedürfte etwas mehr Aufwand. Der Code für &lt;code class=&quot
   &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/04/26/aihpos-4-postman&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/06/07/aihpos6-haufen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;rust-auf-nicht-standard-plattformen&quot;&gt;Rust auf Nicht-Standard-Plattformen&lt;/h2&gt;
 
-&lt;p&gt;Nachdem ich im &lt;a href=&quot;/2017/04/26/aihpos-4-postman&quot;&gt;letzen Teil&lt;/a&gt; schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; umzusteigen:
+&lt;p&gt;Nachdem ich im &lt;a href=&quot;/aihpos/computer/aihpos-4-postman/&quot;&gt;letzen Teil&lt;/a&gt; schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; umzusteigen:
 Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das SOPHIA-Projekt zwei Nachteile, die die Nutzung von
 &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; erschweren:&lt;/p&gt;
 
@@ -573,9 +573,9 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 
 &lt;p&gt;Außerdem habe ich ein &lt;a href=&quot;https://github.com/werner-matthias/aihPOS&quot;&gt;GitHub-Projekt&lt;/a&gt; für SOPHIA aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/04/26/aihpos-4-postman&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/06/07/aihpos6-haufen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -605,9 +605,9 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/04/26/aihpos-4-postman</id>
+			<id>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/</id>
 			<title>Please Mr. Postman</title>
-			<link href="http://localhost:4000/2017/04/26/aihpos-4-postman" rel="alternate" type="text/html" title="Please Mr. Postman" />
+			<link href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/" rel="alternate" type="text/html" title="Please Mr. Postman" />
 			<updated>2017-04-26T13:04:55+02:00</updated>
 
 			
@@ -625,7 +625,7 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/04/26/aihpos-4-postman">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#mailboxen&quot; id=&quot;markdown-toc-mailboxen&quot;&gt;Mailboxen&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#property-tags&quot; id=&quot;markdown-toc-property-tags&quot;&gt;Property Tags&lt;/a&gt;    &lt;ul&gt;
@@ -643,9 +643,9 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
   &lt;li&gt;&lt;a href=&quot;#der-linker-zickt-mal-wieder&quot; id=&quot;markdown-toc-der-linker-zickt-mal-wieder&quot;&gt;Der Linker zickt mal wieder&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/05/14/aihpos5-umrustung&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2082,9 +2082,9 @@ definieren und greife auf die &lt;a href=&quot;https://github.com/rust-lang-nurs
 &lt;p&gt;Nun habe ich schon zwei Rust-Bibliotheken (core und compiler-buildins), die händisch eingepflegt werden, wenn es zu Updates bei ihnen oder dem Compiler kommt. Höchste
 Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Dies wird das Thema des nächsten Beitrags sein.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/05/14/aihpos5-umrustung&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2127,9 +2127,9 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/04/20/march-for-science</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</id>
 			<title>March for Science</title>
-			<link href="http://localhost:4000/2017/04/20/march-for-science" rel="alternate" type="text/html" title="March for Science" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science" rel="alternate" type="text/html" title="March for Science" />
 			<updated>2017-04-20T11:04:46+02:00</updated>
 
 			
@@ -2147,7 +2147,7 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/04/20/march-for-science">&lt;ul&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science">&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.marchforscience.com&quot;&gt;March for Science&lt;/a&gt; (International)&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://marchforscience.de&quot;&gt;March for Science Deutschland&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -2165,9 +2165,9 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</id>
 			<title>Lebenszeichen</title>
-			<link href="http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen" rel="alternate" type="text/html" title="Lebenszeichen" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen" rel="alternate" type="text/html" title="Lebenszeichen" />
 			<updated>2017-04-10T11:04:10+02:00</updated>
 
 			
@@ -2185,7 +2185,7 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#boot-prozess&quot; id=&quot;markdown-toc-boot-prozess&quot;&gt;Boot-Prozess&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#speicher-und-formate&quot; id=&quot;markdown-toc-speicher-und-formate&quot;&gt;Speicher und Formate&lt;/a&gt;    &lt;ul&gt;
@@ -2210,9 +2210,9 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/03/31/aihpos-2-ausrustung&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/04/26/aihpos-4-postman&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2719,9 +2719,9 @@ JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständ
 Schleife zwar nicht vollständig wegoptimiert (das verhindert die Assembler-Anweisung), aber die Zeiten sind doch vollständig andere.
 Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführungszeit ist derzeit noch egal, aber die Übersetzungszeit würde sich etwas verlängern.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/03/31/aihpos-2-ausrustung&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/04/26/aihpos-4-postman&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2761,9 +2761,9 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/04/07/pointer</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/04/07/pointer</id>
 			<title>Pointer</title>
-			<link href="http://localhost:4000/2017/04/07/pointer" rel="alternate" type="text/html" title="Pointer" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/04/07/pointer" rel="alternate" type="text/html" title="Pointer" />
 			<updated>2017-04-07T14:04:47+02:00</updated>
 
 			
@@ -2781,7 +2781,7 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/04/07/pointer">&lt;blockquote&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/04/07/pointer">&lt;blockquote&gt;
   &lt;p&gt;Playing with pointers is like playing with fire. Fire is perhaps the most important tool known to man. Carefully used, fire brings enormous benefits; but when fire
 gets out of control, disaster strikes.
 &lt;cite&gt;John Barnes&lt;/cite&gt;&lt;/p&gt;
@@ -2804,9 +2804,9 @@ gets out of control, disaster strikes.
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/03/31/aihpos-2-ausrustung</id>
+			<id>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/</id>
 			<title>Ausr(ü/u)stung</title>
-			<link href="http://localhost:4000/2017/03/31/aihpos-2-ausrustung" rel="alternate" type="text/html" title="Ausr(ü/u)stung" />
+			<link href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/" rel="alternate" type="text/html" title="Ausr(ü/u)stung" />
 			<updated>2017-03-31T00:00:00+02:00</updated>
 
 			
@@ -2824,7 +2824,7 @@ gets out of control, disaster strikes.
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/03/31/aihpos-2-ausrustung">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#setup-rust&quot; id=&quot;markdown-toc-setup-rust&quot;&gt;Setup Rust&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#targets&quot; id=&quot;markdown-toc-targets&quot;&gt;Targets&lt;/a&gt;    &lt;ul&gt;
@@ -2841,9 +2841,9 @@ gets out of control, disaster strikes.
   &lt;li&gt;&lt;a href=&quot;#debugger&quot; id=&quot;markdown-toc-debugger&quot;&gt;Debugger&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -3161,9 +3161,9 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
           &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;brew install openocd&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -3213,9 +3213,9 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
 		</entry>
 	
 		<entry>
-			<id>http://localhost:4000/2017/03/19/aihpos-1</id>
+			<id>https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</id>
 			<title>Another incompatible and hackneyed Pi Operating System</title>
-			<link href="http://localhost:4000/2017/03/19/aihpos-1" rel="alternate" type="text/html" title="Another incompatible and hackneyed Pi Operating System" />
+			<link href="https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1" rel="alternate" type="text/html" title="Another incompatible and hackneyed Pi Operating System" />
 			<updated>2017-03-19T13:03:55+01:00</updated>
 
 			
@@ -3233,7 +3233,7 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017/03/19/aihpos-1">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#hintergrund&quot; id=&quot;markdown-toc-hintergrund&quot;&gt;Hintergrund&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#ziele&quot; id=&quot;markdown-toc-ziele&quot;&gt;Ziele&lt;/a&gt;&lt;/li&gt;
@@ -3242,7 +3242,7 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
   &lt;li&gt;&lt;a href=&quot;#links&quot; id=&quot;markdown-toc-links&quot;&gt;Links&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/03/31/aihpos-2-ausrustung&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -3415,7 +3415,7 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/03/31/aihpos-2-ausrustung&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
