@@ -1,0 +1,596 @@
+<!doctype html>
+<html class="no-js" lang="de">
+<head>
+		<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Um-Rust-ung</title>
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/styles_feeling_responsive.css" />
+	<script src="http://localhost:4000/assets/js/modernizr.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: [ 'Lato:400,700,400italic:latin', 'Volkhov::latin' ]
+      }
+    });
+  </script>
+
+  <noscript>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic|Volkhov' rel='stylesheet' type='text/css' />
+  </noscript>
+
+  
+	
+	<meta name="description" content="Das Build-System wird auf Rust-Tools umgestellt - make hat ausgedient."/>
+
+	
+
+	
+
+
+
+	
+	<link rel="icon" sizes="32x32" href="http://localhost:4000/assets/img/favicon-32x32.png" />
+
+
+
+
+	
+	<link rel="icon" sizes="192x192" href="http://localhost:4000/assets/img/touch-icon-192x192.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="http://localhost:4000/assets/img/apple-touch-icon-180x180-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://localhost:4000/assets/img/apple-touch-icon-152x152-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/assets/img/apple-touch-icon-144x144-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://localhost:4000/assets/img/apple-touch-icon-120x120-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/assets/img/apple-touch-icon-114x114-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://localhost:4000/assets/img/apple-touch-icon-76x76-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/assets/img/apple-touch-icon-72x72-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/assets/img/apple-touch-icon-precomposed.png" />	
+
+
+
+
+	
+	<meta name="msapplication-TileImage" content="http://localhost:4000/assets/img/msapplication_tileimage.png" />
+
+
+
+
+	
+	<meta name="msapplication-TileColor" content="#fabb00" />
+
+
+
+	<!-- Facebook Optimization -->
+	<meta property="og:locale" content="en_EN" />
+	
+	<meta property="og:title" content="Um-Rust-ung" />
+	<meta property="og:description" content="Das Build-System wird auf Rust-Tools umgestellt - make hat ausgedient." />
+	<meta property="og:url" content="http://localhost:4000//2017/05/14/aihpos5-umrustung" />
+	<meta property="og:site_name" content="Systems Operational" />
+	
+
+	
+
+	<!-- Search Engine Optimization -->
+	
+
+	<link type="text/plain" rel="author" href="http://localhost:4000/humans.txt" />
+
+	
+
+	
+</head>
+</head>
+<body id="top-of-page" class="page-fullwidth">
+	
+	
+<div id="navigation" class="sticky">
+  <nav class="top-bar" role="navigation" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+      <h1 class="show-for-small-only"><a href="http://localhost:4000" class="icon-tree"> Systems Operational</a></h1>
+    </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Navigation</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+
+      <ul class="right">
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+            
+            
+              <li class="divider"></li>
+              <li><a href="http://localhost:4000/about/">Über mich</a></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+            
+            
+              <li class="divider"></li>
+              <li><a href="http://localhost:4000/search/">Search</a></li>
+
+            
+            
+          
+        
+        
+      </ul>
+
+      <ul class="left">
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a href="http://localhost:4000/">Start</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+
+              <li class="has-dropdown">
+                <a href="http://localhost:4000/blog/">Blog</a>
+
+                  <ul class="dropdown">
+                    
+
+                      
+
+                      <li><a href="http://localhost:4000/blog/archive/">Archive</a></li>
+                    
+                  </ul>
+                  
+              </li>
+              <li class="divider"></li>
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a href="http://localhost:4000/blog/aihpos/">aihPos</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+        
+      </ul>
+    </section>
+  </nav>
+</div><!-- /#navigation -->
+
+	
+
+	
+
+<div id="masthead-no-image-header">
+	<div class="row">
+		<div class="small-12 columns">
+			<a id="logo" href="http://localhost:4000" title="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
+				<img src="http://localhost:4000/assets/img/logo.png" alt="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
+			</a>
+		</div><!-- /.small-12.columns -->
+	</div><!-- /.row -->
+</div><!-- /#masthead -->
+
+
+
+
+
+
+
+
+
+	
+
+
+<div class="row t30">
+	<div class="medium-12 columns">
+		<article>
+			<header>
+				<p class="subheadline">aihPOS - Ein Betriebsystem für die Lehre</p>
+				<h1>Um-Rust-ung</h1>
+			</header>
+
+			
+
+			<span itemprop="articleSection">
+	                <p><strong>Inhalt</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#rust-auf-nicht-standard-plattformen" id="markdown-toc-rust-auf-nicht-standard-plattformen">Rust auf Nicht-Standard-Plattformen</a>    <ul>
+      <li><a href="#xargo" id="markdown-toc-xargo">Xargo</a></li>
+      <li><a href="#post-linker-aktionen" id="markdown-toc-post-linker-aktionen">Post-Linker Aktionen</a></li>
+      <li><a href="#diskussion" id="markdown-toc-diskussion">Diskussion</a></li>
+    </ul>
+  </li>
+  <li><a href="#github" id="markdown-toc-github">GitHub</a></li>
+</ul>
+
+<p><a class="left button tiny radius" href="http://localhost:4000/2017/04/26/aihpos-4-postman"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
+
+<p><a class="right button tiny radius r15" href="http://localhost:4000/2017/06/07/aihpos6-haufen">Nächster Beitrag in AIHPOS<span class="icon-chevron-right"></span></a></p>
+
+<div class="row"></div>
+
+<h2 id="rust-auf-nicht-standard-plattformen">Rust auf Nicht-Standard-Plattformen</h2>
+
+<p>Nachdem ich im <a href="/2017/04/26/aihpos-4-postman">letzen Teil</a> schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool <code class="highlighter-rouge">cargo</code> umzusteigen:
+Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das ɒiʜꟼOƧ-Projekt zwei Nachteile, die die Nutzung von
+<code class="highlighter-rouge">cargo</code> erschweren:</p>
+
+<ul>
+  <li>Unsere Zielplattform wird nicht unterstützt, damit auch nicht die entsprechenden Bibliotheken</li>
+  <li>Das Endprodukt (Kernel-Image) ist “untypisch”. Seine Erstellung verlangt Post-Linker-Aktionen, die ebenfalls nicht unterstützt werden.</li>
+</ul>
+
+<p>Für beide Probleme gibt es (mindestens) eine Lösung.</p>
+
+<h3 id="xargo">Xargo</h3>
+
+<p>Zur Lösung des ersten Problems gibt es <a href="https://github.com/japaric/xargo"><code class="highlighter-rouge">xargo</code></a>, eine <code class="highlighter-rouge">cargo</code>-Variante für Cross-Umgebungen. Diese übersetzt automatisch die Core-Bibliothek und bei Bedarf auch andere Teile der Standard-Bibliothek und “schenkt” dem Compiler die richtige Tool-Chain, indem <code class="highlighter-rouge">rootdir</code> entsprechend gesetzt wird. Man kann sich damit auch angepasste Versionen der Standard-Bibliothek erstellen – mal sehen, ob ich das später brauchen werde.</p>
+
+<p>Die Installation geht diesmal nicht über Homebrew, sondern schnell und reibungslos über <code class="highlighter-rouge">cargo</code>:</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td><td class="code"><pre><code><span class="line command">cargo install xargo</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p><code class="highlighter-rouge">Cargo</code>/<code class="highlighter-rouge">xargo</code> gehen von einem bestimmten Directory-Layout und der Existenz von (mindestens) einer Konfigurationsdatei <strong>cargo.toml</strong> aus, die das sogenannte “<a href="http://doc.crates.io/manifest.html">Manifest</a>” enthält. Dort kann man auch benötigte Bibliotheken einbinden, die dann von <code class="highlighter-rouge">cargo</code> automatisch geladen und übersetzt werden. Wir wollten ja die <strong>compiler-buildins</strong>-Bibliothek nutzen. Dies geschieht im <strong>cargo.toml</strong> für unseren Kernel im Abschnitt <code class="highlighter-rouge">[dependencies]</code> und sieht so aus:</p>
+
+<figure class="highlight"><pre><code class="language-toml" data-lang="toml"><span class="nn">[package]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"aihPOS"</span>
+<span class="py">version</span> <span class="p">=</span> <span class="s">"0.0.2"</span>
+<span class="py">authors</span> <span class="p">=</span> <span class="p">[</span><span class="s">"Matthias Werner &lt;mwerner@informatik.tu-chemnitz.de&gt;"</span><span class="p">]</span>
+<span class="py">publish</span> <span class="p">=</span> <span class="kc">false</span>
+
+<span class="nn">[dependencies]</span>
+<span class="py">compiler_builtins</span> <span class="p">=</span> <span class="err">{</span> <span class="err">git</span> <span class="err">=</span> <span class="s">"https://github.com/rust-lang-nursery/compiler-builtins"</span><span class="p">,</span> <span class="err">features</span> <span class="err">=</span> <span class="nn">["mem"]</span> <span class="err">}</span>
+<span class="py">compiler_error</span> <span class="p">=</span> <span class="s">"0.1.1"</span>
+
+<span class="nn">[profile.dev]</span>
+<span class="py">panic</span> <span class="p">=</span> <span class="s">"abort"</span>
+<span class="py">lto</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="py">opt-level</span> <span class="p">=</span> <span class="mi">1</span>
+
+<span class="nn">[profile.release]</span>
+<span class="py">panic</span> <span class="p">=</span> <span class="s">"abort"</span>
+<span class="py">lto</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="py">opt-level</span> <span class="p">=</span> <span class="mi">3</span></code></pre></figure>
+
+<p>Diese Datei muss sich im Wurzelverzeichnis eines Projekts oder Subprojekts befinden. Die Quelldateien sind dann in einem Unterverzeichnis <strong>src/</strong>, das weitere
+Verzeichnisse (mit ggf. eigenen <strong>cargo.toml</strong>-Dateien) befinden können. Beim Start einer Übersetzung mit <code class="highlighter-rouge">cargo build</code> wird ein Verzeichnis <strong>target</strong> angelegt,  in dem
+übersetzte Dateien etc. angelegt werden.</p>
+
+<p>Außer der <strong>compiler_buildins</strong>-Bibliothek laden wir auch eine andere
+Bibliothek: <strong>compiler_error</strong>, die etwas ähnliches wie C’s
+<code class="highlighter-rouge">#error</code>-Direktive zur Verfügung stellt.
+Soweit es nicht anders angegeben – wie z.B. bei den
+<strong>compiler_buildins</strong> – wird nach Bibliotheken auf
+<strong>crates.io</strong> gesucht.</p>
+
+<p>Neben dem Manifest gibt es optional noch eine Konfigurationsdatei, ebenfalls im TOML-Format. Sie heißt <strong>config</strong> und befindet sich in einem Unterverzeichnis <strong>.cargo/</strong>. Wir brauchen sie vor allem, weil die Erstellung des Kernels Compiler- bzw. Linkeroptionen benötigt, die nicht Standard sind:</p>
+
+<figure class="highlight"><pre><code class="language-toml" data-lang="toml"><span class="nn">[build]</span>
+<span class="py">traget</span><span class="p">=</span> <span class="s">"arm-none-eabihf"</span>
+
+<span class="nn">[target.arm-none-eabihf]</span>
+<span class="py">linker</span> <span class="p">=</span> <span class="s">"arm-none-eabi-gcc"</span>
+<span class="py">rustflags</span> <span class="p">=</span> <span class="p">[</span>
+  <span class="s">"-C"</span><span class="p">,</span> <span class="s">"code-model=kernel"</span><span class="p">,</span>
+  <span class="s">"-C"</span><span class="p">,</span> <span class="s">"link-arg=-nostartfiles"</span><span class="p">,</span>
+  <span class="s">"-C"</span><span class="p">,</span> <span class="s">"link-arg=-nostdlib"</span><span class="p">,</span>
+  <span class="s">"-C"</span><span class="p">,</span> <span class="s">"link-arg=-Tlayout.ld"</span><span class="p">,</span>
+  <span class="s">"-C"</span><span class="p">,</span> <span class="s">"link-arg=-mfloat-abi=hard"</span><span class="p">,</span>
+  <span class="s">"-C"</span><span class="p">,</span> <span class="s">"link-arg=-ffreestanding"</span><span class="p">,</span>
+  <span class="p">]</span></code></pre></figure>
+
+<p>Die Trennung der Steuerung von Compiler-Optionen (in den <code class="highlighter-rouge">[profile.*]</code>-Abschnitten in <strong>cargo.toml</strong> können auch einige Optionen gesteuert werden) ist etwas unglücklich und wird möglicherweise in künftigen Rust/Cargo-Versionen aufgehoben, aber derzeit muss man damit leben.</p>
+
+<h3 id="post-linker-aktionen">Post-Linker Aktionen</h3>
+
+<p>Wenn man sich das bisherige <strong><tt>Makefile</tt></strong> anschaut, dann sieht man, dass der Building-Prozess nicht – wie sonst meist üblich – mit dem Linken endet. Dies ist
+in <code class="highlighter-rouge">cargo</code> nicht vorgesehen. Zwar kennt <code class="highlighter-rouge">cargo</code> die Möglichkeit, mit Hilfe eines Build-Scriptes Schritte <strong>vor</strong> der Übersetzung auszuführen; etwas ähnliches für danach
+wird zwar in unter den Entwicklern diskutiert, wurde aber bisher nicht umgesetzt. Man kann zwar den Linker (in der Target-Datei) umdefinieren, aber ich fürchte, dass eine
+solche Lösung schnell unübersichtlich wird. Es ein häufig genutzter und sogar empfohlener<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> Ansatz ist daher, <code class="highlighter-rouge">cargo</code> wiederum von einem <code class="highlighter-rouge">Makefile</code> aufrufen lassen. Das
+würde aber  dazu führen, dass Abhängigkeiten z.T. doppelt gepflegt werden müssen. Wenn <code class="highlighter-rouge">cargo</code>, dann richtig.</p>
+
+<p>Glücklicherweise ist <code class="highlighter-rouge">cargo</code> leicht erweiterbar: Wenn <code class="highlighter-rouge">cargo</code> (oder <code class="highlighter-rouge">xargo</code>) mit einem unbekannten Befehl gerufen wird, sucht es im Standardpfad nach einem Programm <code class="highlighter-rouge">cargo-</code>. Dass mache ich mir zunutze und schreibe ein kleines <code class="highlighter-rouge">bash</code>-Skript <code class="highlighter-rouge">cargo-kernel</code>, das erst <code class="highlighter-rouge">xargo</code> aufruft und dann noch den “Rest” erledigt:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">shift
+</span><span class="nv">PROFILE</span><span class="o">=</span>debug
+<span class="nv">TARGET</span><span class="o">=</span>
+<span class="k">for </span>opt <span class="k">in</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>; <span class="k">do
+    case</span> <span class="nv">$opt</span> <span class="k">in</span>
+        --release<span class="p">)</span>
+		<span class="nv">PROFILE</span><span class="o">=</span>release
+     		<span class="p">;;</span>
+	--target<span class="o">=</span><span class="k">*</span><span class="p">)</span>
+		<span class="nv">TARGET</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$opt</span> | cut -f2 -d<span class="s1">'='</span><span class="sb">`</span> 
+    <span class="k">esac
+done
+</span><span class="nv">BINPATH</span><span class="o">=</span>./target/<span class="nv">$TARGET</span>/<span class="nv">$PROFILE</span>
+xargo build <span class="nv">$@</span>
+<span class="nv">PKG</span><span class="o">=</span><span class="sb">`</span>xargo pkgid -q | cut -d# -f2 | cut -d: -f1<span class="sb">`</span>
+<span class="k">if</span> <span class="o">[</span> -f <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> <span class="o">]</span>; <span class="k">then
+   </span>arm-none-eabi-objcopy <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> -O binary  <span class="nv">$BINPATH</span>/kernel.img
+   arm-none-eabi-objdump -D <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> &gt; <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span>.list
+<span class="k">fi</span></code></pre></figure>
+
+<p>Diese Skript muss irgendwo im Ausführungsfad abgelegt werden. Dann kann man die Übersetzung im Rust-Stil anstoßen:</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line command">cargo kernel --target=arm-none-eabihf</span><span class="line output">   Compiling core v0.0.0 (file:///Users/mwerner/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src/libcore)
+</span><span class="line output">      Finished release [optimized] target(s) in 22.87 secs
+</span><span class="line output">   Compiling compiler_builtins v0.1.0 (https://github.com/rust-lang-nursery/compiler-builtins#f3ace110)
+</span><span class="line output">   Compiling aihPOS v0.0.2 (file:///Users/mwerner/Development/aihPOS/aih_pos/kernel)
+</span><span class="line output">      warning: crate `aihPOS` should have a snake case name such as `aih_pos`
+</span><span class="line output">      |
+</span><span class="line output">      = note: #[warn(non_snake_case)] on by default
+</span><span class="line output">   Finished dev [optimized + debuginfo] target(s) in 4.8 secs</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p>Man beachte, dass immer noch <code class="highlighter-rouge">cargo</code> und nicht <code class="highlighter-rouge">xargo</code> aufgerufen werden muss. Zwar würde auch <code class="highlighter-rouge">xargo</code> das Shellskript finden und ausführen, jedoch hat <code class="highlighter-rouge">cargo</code>/<code class="highlighter-rouge">xargo</code> einen Lock, der die nebenläufige Ausführung blockiert. <code class="highlighter-rouge">xargo kernel</code>würde also hängen bleiben.</p>
+
+<h3 id="diskussion">Diskussion</h3>
+
+<p>Bin ich nun vollständig in der Rust-Welt angekommen? Das hängt von der Betrachtung ab. Ich kann auf <code class="highlighter-rouge">make</code> verzichten und alles, was ich mit <code class="highlighter-rouge">make</code> gemacht habe nun mit
+Rust-Mitteln tun. Andererseits kennt <code class="highlighter-rouge">cargo</code> noch viele Befehle – wie z.B. für das Bauen von Tests und Dokumentationen oder die Arbeit mit Repositories – die noch nicht
+berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht dafür keine Garantie.</p>
+
+<h2 id="github">GitHub</h2>
+
+<p>Wenn ich schon bei einer Reorganisation bin, gehe ich noch einen Schritt weiter: Der alte JTAG-Kernel (siehe <a href="/2017/04/10/aihpos-3-lebenszeichen">Teil 3</a>) kommt in ein eigenes Verzeichnis, so dass er noch immer mit <code class="highlighter-rouge">make</code> übersetzt werden kann. Ich nutze ihn als Boot-Kernel, so dass ich Änderungen im Entwicklungskernel schnell über das JTAG-Interface laden und testen kann.</p>
+
+<p>Außerdem habe ich ein <a href="https://github.com/werner-matthias/aihPOS">GitHub-Projekt</a> für ɒiʜꟼOƧ aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.</p>
+
+<p><a class="left button tiny radius" href="http://localhost:4000/2017/04/26/aihpos-4-postman"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
+
+<p><a class="right button tiny radius r15" href="http://localhost:4000/2017/06/07/aihpos6-haufen">Nächster Beitrag in AIHPOS<span class="icon-chevron-right"></span></a></p>
+
+<div class="row"></div>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Die cargo-Entwickler betonen immer wieder, dass cargo kein komplettes Build-Management-Tool ist und auch nicht sein will.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+	                </span>
+			
+						<div id="page-meta" class="t30">
+				<p>
+					<!-- Look the author details up from the site config. -->
+					
+					<!-- Output author details if some exist. -->
+					
+					<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name" class="pr20 icon-edit"><a href="http://www.matthias-werner.net/" target="_blank"> Matthias Werner</a></span>
+				</span>
+				
+
+				
+				<time class="icon-calendar pr20" datetime="2017-05-14" itemprop="datePublished"> 2017-05-14</time>
+				
+
+				<span class="icon-archive pr20"> AIHPOS · COMPUTER</span>
+				<br />
+				<span class="pr20"><span class="icon-price-tag pr10"> aihpos</span> <span class="icon-price-tag pr10"> cargo</span> <span class="icon-price-tag pr10"> xargo</span> </span>
+			</p>
+
+			<div id="post-nav" class="row">
+				
+				<div class="small-5 columns"><a class="button small radius prev" href="http://localhost:4000/2017/04/26/aihpos-4-postman">&laquo; Please Mr. Postman</a></div><!-- /.small-4.columns -->
+				
+				<div class="small-2 columns text-center"><a class="radius button small" href="http://localhost:4000/blog/archive/" title="Blog Archiv">Archiv</a></div><!-- /.small-4.columns -->
+				
+				<div class="small-5 columns text-right"><a class="button small radius next" href="http://localhost:4000/2017/05/21/computer-science">Computer Science &raquo;</a></div><!-- /.small-4.columns -->
+				
+			</div>
+			</div><!--  /.page-meta -->
+			
+
+			
+						
+			
+
+
+
+			
+		</article>
+	</div><!-- /.medium-12.columns -->
+</div><!-- /.row -->
+
+
+
+
+	
+	    <div id="up-to-top" class="row">
+      <div class="small-12 columns" style="text-align: right;">
+        <a class="iconfont" href="#top-of-page">&#xf108;</a>
+      </div><!-- /.small-12.columns -->
+    </div><!-- /.row -->
+
+
+    <footer id="footer-content" class="bg-grau">
+      <div id="footer">
+        <div class="row">
+          <div class="medium-6 large-5 columns">
+            <h5 class="shadow-black">Über diese Website</h5>
+
+            <p class="shadow-black">
+              Matthias Werners Blog. 
+              <a href="http://localhost:4000/info/">Mehr ›</a>
+            </p>
+          </div><!-- /.large-6.columns -->
+
+
+          <div class="small-6 medium-3 large-3 large-offset-1 columns">
+            
+              
+              <ul class="no-bullet shadow-black">
+              
+              </ul>
+          </div><!-- /.large-4.columns -->
+
+
+          <div class="small-6 medium-3 large-3 columns">
+            
+              
+            <ul class="no-bullet shadow-black">
+            
+            </ul>
+          </div><!-- /.large-3.columns -->
+        </div><!-- /.row -->
+
+      </div><!-- /#footer -->
+
+    </footer>
+
+	
+
+	
+
+
+<script src="http://localhost:4000/assets/js/javascript.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
