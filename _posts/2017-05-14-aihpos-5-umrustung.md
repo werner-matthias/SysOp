@@ -73,8 +73,8 @@ Verzeichnisse (mit ggf. eigenen **cargo.toml**-Dateien) befinden können. Beim S
 Außer der __compiler_buildins__-Bibliothek laden wir auch eine andere
 Bibliothek: __compiler_error__, die etwas ähnliches wie C's
 `#error`-Direktive zur Verfügung stellt.
-Soweit es nicht anders angegeben wird -- wie z.B. bei den
-__compiler_buildins__ --, wird nach Bibliotheken auf
+Soweit es nicht anders angegeben -- wie z.B. bei den
+__compiler_buildins__ -- wird nach Bibliotheken auf
 __crates.io__ gesucht.
 
 Neben dem Manifest gibt es optional noch eine Konfigurationsdatei, ebenfalls im TOML-Format. Sie heißt **config** und befindet sich in einem Unterverzeichnis **.cargo/**. Wir brauchen sie vor allem, weil die Erstellung des Kernels Compiler- bzw. Linkeroptionen benötigt, die nicht Standard sind:
