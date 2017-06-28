@@ -6,7 +6,6 @@ meta_description: "Bevor wir uns dem Design des Kernels widmen, wollen wir Infor
 steht zur Verfügung, etc.. Außerdem nutzen wir die Gelegenheit, das Debugging nochmal zu verbessern."
 published: true
 author: mwerner
-comments: true
 date: 2017-04-26 11:04:55
 tags:
     - Rust
@@ -14,8 +13,6 @@ tags:
 categories:
     - aihpos
     - computer
-show_meta: true	
-permalink: /2017/04/26/aihpos-4-postman
 ---
 **Inhalt**
 - TOC

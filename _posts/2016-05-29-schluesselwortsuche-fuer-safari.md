@@ -1,15 +1,13 @@
 ---
 layout: page-fullwidth
 title: Schlüsselwortsuche für Safari
+meta_description: "Es gibt ein Feature, dass ich bei Safari vermisse: gezielte Suche auf einer Nichtstandard-Suchmaschine o.ä. per Schlüsselwort. Aber es gibt Abhilfe. "
 published: true
-author: mwerner
-comments: true
 date: 2016-05-29 10:05:04
 tags:
     - Safari
 categories:
     - computer
-permalink: /2016/05/29/schluesselwortsuche-fuer-safari
 ---
 Eines der Features, die ich bei Safari gegenüber Firefox immer vermisst habe, sind Schlüsselwortsuchen. Beispielsweise erhalte ich bei meiner Firefox-Installation, wenn ich
 

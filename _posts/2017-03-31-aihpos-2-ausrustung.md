@@ -5,7 +5,6 @@ subheadline: aihPOS - Ein Betriebsystem für die Lehre
 meta_description: "Bevor wir mit dem Code-Schreiben beginnen, brauchen wir die Entwickler-Werkzeuge."
 published: true
 author: mwerner
-comments: true
 date: 2017-03-31 
 tags:
     - Rust
@@ -15,7 +14,6 @@ tags:
 categories:
     - aihpos
     - computer
-permalink: /2017/03/31/aihpos-2-ausrustung
 ---
 **Inhalt**
 - TOC

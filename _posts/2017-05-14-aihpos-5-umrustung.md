@@ -5,8 +5,6 @@ subheadline: aihPOS - Ein Betriebsystem für die Lehre
 published: true
 meta_description: "Das Build-System wird auf Rust-Tools umgestellt - make hat ausgedient."
 author: mwerner
-comments: true
-toc: true
 date: 2017-05-14 
 tags:
     - aihpos
@@ -15,7 +13,6 @@ tags:
 categories:
     - aihpos
     - computer
-permalink: /2017/05/14/aihpos5-umrustung
 ---
 **Inhalt**
 - TOC
@@ -23,7 +20,7 @@ permalink: /2017/05/14/aihpos5-umrustung
 {% include next-previous-post-in-category %}
 ## Rust auf Nicht-Standard-Plattformen
 
-Nachdem ich im [letzen Teil](/2017/04/26/aihpos-4-postman) schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool `cargo` umzusteigen:
+Nachdem ich im [letzen Teil]({% post_url 2017-04-26-aihpos-4-postman %}) schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool `cargo` umzusteigen:
 Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das SOPHIA-Projekt zwei Nachteile, die die Nutzung von
 `cargo` erschweren: 
 

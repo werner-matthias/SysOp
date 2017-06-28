@@ -3,14 +3,12 @@ layout: page-fullwidth
 title: Vollständig
 published: true
 author: mwerner
-comments: true
 meta_description: "Bash kann bekanntlich nicht nur Filenamen komplettieren. Man kann auch eigene Erweiterungen schreiben"
 date: 2013-11-19 06:11:58
 tags:
     - bash
 categories:
     - computer
-permalink: /2013/11/19/vollstaendig
 ---
 Die Bourne-Again-Shell, bekannt unter dem Kurznamen `bash`, hat viele nette Eigenschaften.
   

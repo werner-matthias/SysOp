@@ -5,7 +5,6 @@ subheadline: aihPOS - Ein Betriebsystem für die Lehre
 meta_description: 
 published: true
 author: mwerner
-comments: true
 date: 2017-06-07
 tags:
     - Rust
@@ -14,8 +13,6 @@ tags:
 categories:
     - aihpos
     - computer
-show_meta: true	
-permalink: 2017/06/07/aihpos6-haufen
 ---
 **Inhalt**
 - TOC
@@ -90,7 +87,7 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:
 ### HAL
 `Cpu::set_mode()` und `Cpu::set_stack()` sind natürlich keine Funktionen, die Rust bekannt sind. Der Übersichtlichkeit halber habe ich allen Assembler-Code in ein eigenes
 Modul gepackt, das "HAL" heißt. HAL steht klassischerweise für "_Hardware Abstraction Layer_". Allerdings ist die Abstraktion in SOPHIA sehr dünn, ein Port über die
-ARM-Architektur bedürfte etwas mehr Aufwand. Der Code für `Cpu::set_mode()` und `Cpu::set_stack()` sieht derzeit so aus:
+ARM-Architektur hinaus bedürfte etwas mehr Aufwand. Der Code für `Cpu::set_mode()` und `Cpu::set_stack()` sieht derzeit so aus:
 ~~~ rust
 // Siehe ARM Architectur Reference Manual A2-3
 pub enum ProcessorMode {
