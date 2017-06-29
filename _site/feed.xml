@@ -5,12 +5,12 @@
 	<channel>
 		<title>Systems Operational</title>
 		<description>Matthias Werners Blog. </description>
-		<link>http://localhost:4000/</link>
-		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+		<link>https://werner-matthias.github.io/SysOp/</link>
+		<atom:link href="https://werner-matthias.github.io/SysOp/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Hello Jekyll</title>
-				<link>http://localhost:4000/2017/06/26/hello-jekyll</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll</link>
 				<pubDate>Mon, 26 Jun 2017 12:16:41 +0000</pubDate>
 				<description>&lt;p&gt;Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
 dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; umgestiegen. Jekyll ist ein Generator für statische Webseiten.&lt;/p&gt;
@@ -33,12 +33,12 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/06/26/hello-jekyll</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll</guid>
 			</item>
 		
 			<item>
 				<title>Wir machen einen Haufen</title>
-				<link>http://localhost:4000/aihpos/computer/aihpos-6-heap/</link>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/</link>
 				<pubDate>Wed, 07 Jun 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -56,7 +56,7 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -245,7 +245,7 @@ unzusammenhängende Adressbereiche einen logisch zusammenhängenden Adressraum b
 Erst einmal ist es nur wichtig zu vermerken, dass es einen Zusammenhang gib, den wir berücksichtigen sollten.&lt;/p&gt;
 
 &lt;h3 id=&quot;rust-allocator&quot;&gt;Rust Allocator&lt;/h3&gt;
-&lt;p&gt;Die Module, die den Heap verwalten, heißen in Rust “&lt;em&gt;Allokatoren&lt;/em&gt;”. Rust wird mit zwei verschiedenen Allocatoren ausgeliefert, &lt;code class=&quot;highlighter-rouge&quot;&gt;malloc&lt;/code&gt;(wohlbekannt aus der
+&lt;p&gt;Die Module, die den Heap verwalten, heißen in Rust “&lt;em&gt;Allokatoren&lt;/em&gt;”. Rust wird mit zwei verschiedenen Allokatoren ausgeliefert, &lt;code class=&quot;highlighter-rouge&quot;&gt;malloc&lt;/code&gt;(wohlbekannt aus der
 C-Standardbibliothek) und &lt;code class=&quot;highlighter-rouge&quot;&gt;jemalloc&lt;/code&gt;. Beide nutzen jedoch Betriebssystemrufe, die unter SOPHIA erstens nocht gar nicht existieren, und zweitens im Kernel schlecht genutzt
 werden könnten – also fallen beide aus.&lt;/p&gt;
 
@@ -380,15 +380,68 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
 
 &lt;p&gt;Meine &lt;strong&gt;heap.rs&lt;/strong&gt; sieht jetzt so aus:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linked_list_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;linked_list_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;spin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Mutex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__bss_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INIT_HEAP_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4096&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;// 25 Seiten = 100 kB&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;lazy_static!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HEAP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Mutex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Heap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Mutex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nn&quot;&gt;Heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__bss_start&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INIT_HEAP_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;c&quot;&gt;// ToDo: Markiere Speicherseiten als belegt&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;    
+
+&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;no_mangle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;aihpos_allocate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HEAP&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.lock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.allocate_first_fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;None&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c&quot;&gt;// ToDo: Reservierung zusätzlicher Seiten durch die logische Addressverwaltung =&amp;gt; später&lt;/span&gt;
+            &lt;span class=&quot;nd&quot;&gt;panic!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Out of memory&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[no_mangle]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;aihpos_deallocate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HEAP&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.lock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.deallocate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[no_mangle]&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#[allow(unused_variables)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;aihpos_usable_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[no_mangle]&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#[allow(unused_variables)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;aihpos_reallocate_inplace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                        &lt;span class=&quot;n&quot;&gt;new_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[no_mangle]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;aihpos_reallocate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_ptr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;aihpos_allocate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;cmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;aihpos_deallocate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;new_ptr&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Im Quelltext sind die Stellen im Kommentar markiert, an denen später mit der Seitenverwaltung zusammengearbeitet werden soll.&lt;/p&gt;
 
-&lt;div class=&quot;alert-box text radius &quot;&gt;&lt;p&gt;Wird noch aktualisiert…&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -417,12 +470,12 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/aihpos/computer/aihpos-6-heap/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/</guid>
 			</item>
 		
 			<item>
 				<title>Computer Science</title>
-				<link>http://localhost:4000/2017/05/21/computer-science</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</link>
 				<pubDate>Sun, 21 May 2017 12:05:22 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;In science, we reserve our highest honors for those who prove we were wrong. But in computer science…
@@ -435,12 +488,12 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
 &lt;cite&gt;Fred Brooks&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/05/21/computer-science</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</guid>
 			</item>
 		
 			<item>
 				<title>Um-Rust-ung</title>
-				<link>http://localhost:4000/aihpos/computer/aihpos-5-umrustung/</link>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/</link>
 				<pubDate>Sun, 14 May 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -453,9 +506,9 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
   &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-4-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-6-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -610,9 +663,9 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 
 &lt;p&gt;Außerdem habe ich ein &lt;a href=&quot;https://github.com/werner-matthias/aihPOS&quot;&gt;GitHub-Projekt&lt;/a&gt; für SOPHIA aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-4-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-6-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -624,12 +677,12 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/aihpos/computer/aihpos-5-umrustung/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/</guid>
 			</item>
 		
 			<item>
 				<title>Please Mr. Postman</title>
-				<link>http://localhost:4000/aihpos/computer/aihpos-4-postman/</link>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/</link>
 				<pubDate>Wed, 26 Apr 2017 11:04:55 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -649,9 +702,9 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
   &lt;li&gt;&lt;a href=&quot;#der-linker-zickt-mal-wieder&quot; id=&quot;markdown-toc-der-linker-zickt-mal-wieder&quot;&gt;Der Linker zickt mal wieder&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-5-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2088,9 +2141,9 @@ definieren und greife auf die &lt;a href=&quot;https://github.com/rust-lang-nurs
 &lt;p&gt;Nun habe ich schon zwei Rust-Bibliotheken (core und compiler-buildins), die händisch eingepflegt werden, wenn es zu Updates bei ihnen oder dem Compiler kommt. Höchste
 Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Dies wird das Thema des nächsten Beitrags sein.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-5-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2117,12 +2170,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/aihpos/computer/aihpos-4-postman/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/</guid>
 			</item>
 		
 			<item>
 				<title>March for Science</title>
-				<link>http://localhost:4000/2017/04/20/march-for-science</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</link>
 				<pubDate>Thu, 20 Apr 2017 09:04:46 +0000</pubDate>
 				<description>&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.marchforscience.com&quot;&gt;March for Science&lt;/a&gt; (International)&lt;/li&gt;
@@ -2130,12 +2183,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 &lt;/ul&gt;
 
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/04/20/march-for-science</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</guid>
 			</item>
 		
 			<item>
 				<title>Lebenszeichen</title>
-				<link>http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</link>
 				<pubDate>Mon, 10 Apr 2017 09:04:10 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -2162,9 +2215,9 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-4-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2671,9 +2724,9 @@ JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständ
 Schleife zwar nicht vollständig wegoptimiert (das verhindert die Assembler-Anweisung), aber die Zeiten sind doch vollständig andere.
 Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführungszeit ist derzeit noch egal, aber die Übersetzungszeit würde sich etwas verlängern.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-4-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2691,12 +2744,12 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</guid>
 			</item>
 		
 			<item>
 				<title>Pointer</title>
-				<link>http://localhost:4000/2017/04/07/pointer</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/04/07/pointer</link>
 				<pubDate>Fri, 07 Apr 2017 12:04:47 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;Playing with pointers is like playing with fire. Fire is perhaps the most important tool known to man. Carefully used, fire brings enormous benefits; but when fire
@@ -2709,12 +2762,12 @@ gets out of control, disaster strikes.
 &lt;cite&gt;Bertrand Meyer&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/04/07/pointer</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/07/pointer</guid>
 			</item>
 		
 			<item>
 				<title>Ausr(ü/u)stung</title>
-				<link>http://localhost:4000/aihpos/computer/aihpos-2-ausrustung/</link>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/</link>
 				<pubDate>Fri, 31 Mar 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -2733,9 +2786,9 @@ gets out of control, disaster strikes.
   &lt;li&gt;&lt;a href=&quot;#debugger&quot; id=&quot;markdown-toc-debugger&quot;&gt;Debugger&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -3053,9 +3106,9 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
           &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;brew install openocd&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -3085,12 +3138,12 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/aihpos/computer/aihpos-2-ausrustung/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/</guid>
 			</item>
 		
 			<item>
 				<title>Another incompatible and hackneyed Pi Operating System</title>
-				<link>http://localhost:4000/2017/03/19/aihpos-1</link>
+				<link>https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</link>
 				<pubDate>Sun, 19 Mar 2017 12:03:55 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -3101,7 +3154,7 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
   &lt;li&gt;&lt;a href=&quot;#links&quot; id=&quot;markdown-toc-links&quot;&gt;Links&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -3274,7 +3327,7 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -3301,7 +3354,7 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">http://localhost:4000/2017/03/19/aihpos-1</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</guid>
 			</item>
 		
 	</channel>

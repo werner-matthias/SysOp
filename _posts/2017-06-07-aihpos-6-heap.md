@@ -136,7 +136,7 @@ unzusammenhängende Adressbereiche einen logisch zusammenhängenden Adressraum b
 Erst einmal ist es nur wichtig zu vermerken, dass es einen Zusammenhang gib, den wir berücksichtigen sollten.
 
 ### Rust Allocator
-Die Module, die den Heap verwalten, heißen in Rust "_Allokatoren_". Rust wird mit zwei verschiedenen Allocatoren ausgeliefert, `malloc`(wohlbekannt aus der
+Die Module, die den Heap verwalten, heißen in Rust "_Allokatoren_". Rust wird mit zwei verschiedenen Allokatoren ausgeliefert, `malloc`(wohlbekannt aus der
 C-Standardbibliothek) und `jemalloc`. Beide nutzen jedoch Betriebssystemrufe, die unter SOPHIA erstens nocht gar nicht existieren, und zweitens im Kernel schlecht genutzt
 werden könnten -- also fallen beide aus.
 
@@ -198,11 +198,10 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
 
 Meine __heap.rs__ sieht jetzt so aus:
 ~~~ rust
-{% github_sample werner-matthias/aihPOS/blob/896f6685e979ab9249aec6e2e7b8d5b3fdcbca35/kernel/src/mem/heap.rs %}
+{% github_sample werner-matthias/aihPOS/blob/b2f715baf0cff306299692daa98542b87920fec7/kernel/src/mem/heap.rs 0 -1 %}
 ~~~
 Im Quelltext sind die Stellen im Kommentar markiert, an denen später mit der Seitenverwaltung zusammengearbeitet werden soll.
 
-{% include alert text=' Wird noch aktualisiert...' %}
 
 {% include next-previous-post-in-category %}
 [^1]: Das Verb heißt tatsächlich "allozieren", siehe auch [hier](http://faql.de/fremdwort.html#allocate).
