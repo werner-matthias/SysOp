@@ -198,9 +198,17 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
 
 Meine __heap.rs__ sieht jetzt so aus:
 ~~~ rust
-{% github_sample werner-matthias/aihPOS/blob/b2f715baf0cff306299692daa98542b87920fec7/kernel/src/mem/heap.rs 0 -1 %}
+{% github_sample werner-matthias/aihPOS/blob/3ff82b4e3049ec92fb0ef3e69ba28627dee54886/kernel/src/mem/heap.rs 0 -1 %}
 ~~~
 Im Quelltext sind die Stellen im Kommentar markiert, an denen später mit der Seitenverwaltung zusammengearbeitet werden soll.
+Die Initialisierung erfolgt von __main.rs__ aus. Dafür werden dort einige Zeilen ergänzt:
+~~~ rust
+pub  const INIT_HEAP_SIZE: usize = 25 * 4096; // 25 Seiten = 100 kB
+~~~
+^
+~~~ rust
+    init_heap(&unsafe{__bss_start} as *const u32 as usize, INIT_HEAP_SIZE);
+~~~
 
 
 {% include next-previous-post-in-category %}

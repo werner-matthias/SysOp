@@ -641,36 +641,45 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
 <div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">extern</span> <span class="n">crate</span> <span class="n">linked_list_allocator</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">core</span><span class="p">::{</span><span class="n">ptr</span><span class="p">,</span> <span class="n">cmp</span><span class="p">};</span>
 <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">linked_list_allocator</span><span class="p">::</span><span class="n">Heap</span><span class="p">;</span>
-<span class="k">use</span> <span class="nn">spin</span><span class="p">::</span><span class="n">Mutex</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">sync</span><span class="p">::</span><span class="nn">no_concurrency</span><span class="p">::</span><span class="n">NoConcurrency</span><span class="p">;</span>
 
-<span class="k">extern</span> <span class="p">{</span>
-    <span class="k">static</span> <span class="n">__bss_start</span><span class="p">:</span> <span class="nb">u32</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">HEAP</span><span class="p">:</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Heap</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="nn">NoConcurrency</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="nb">None</span><span class="p">);</span>
+
+<span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">init_heap</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">unsafe</span><span class="p">{</span><span class="n">HEAP</span><span class="nf">.set</span><span class="p">(</span><span class="nf">Some</span><span class="p">(</span><span class="nn">Heap</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">size</span><span class="p">)))};</span>
 <span class="p">}</span>
 
-<span class="k">pub</span>  <span class="k">const</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">4096</span><span class="p">;</span> <span class="c">// 25 Seiten = 100 kB</span>
-
-<span class="nd">lazy_static!</span> <span class="p">{</span>
-    <span class="k">static</span> <span class="k">ref</span> <span class="n">HEAP</span><span class="p">:</span> <span class="n">Mutex</span><span class="o">&lt;</span><span class="n">Heap</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">Mutex</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="k">unsafe</span> <span class="p">{</span>
-        <span class="nn">Heap</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">__bss_start</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="nb">u32</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">)</span>
-            <span class="c">// ToDo: Markiere Speicherseiten als belegt</span>
-    <span class="p">});</span>
-<span class="p">}</span>    
-
-<span class="err">#</span><span class="p">[</span><span class="n">no_mangle</span><span class="p">]</span>
+<span class="cp">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">aihpos_allocate</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">HEAP</span><span class="nf">.lock</span><span class="p">()</span><span class="nf">.allocate_first_fit</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">align</span><span class="p">);</span>
-    <span class="k">match</span> <span class="n">ret</span> <span class="p">{</span>
-        <span class="nf">Some</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="n">ptr</span><span class="p">,</span>
-        <span class="nb">None</span>  <span class="k">=&gt;</span> <span class="p">{</span>
-            <span class="c">// ToDo: Reservierung zusätzlicher Seiten durch die logische Addressverwaltung =&gt; später</span>
-            <span class="nd">panic!</span><span class="p">(</span><span class="s">"Out of memory"</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">hpo</span> <span class="o">=</span> <span class="n">HEAP</span><span class="nf">.get</span><span class="p">();</span>
+    <span class="k">match</span> <span class="o">*</span><span class="n">hpo</span> <span class="p">{</span>
+        <span class="nf">Some</span><span class="p">(</span><span class="k">ref</span> <span class="k">mut</span> <span class="n">heap</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">heap</span><span class="nf">.allocate_first_fit</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">align</span><span class="p">);</span>
+            <span class="k">match</span> <span class="n">ret</span> <span class="p">{</span>
+                <span class="nf">Some</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="n">ptr</span><span class="p">,</span>
+                <span class="nb">None</span>  <span class="k">=&gt;</span> <span class="p">{</span>
+                    <span class="c">// ToDo: Reservierung zusätzlicher Seiten durch die logische Addressverwaltung =&gt; später</span>
+                    <span class="nd">panic!</span><span class="p">(</span><span class="s">"Out of memory"</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nb">None</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="nd">panic!</span><span class="p">(</span><span class="s">"Uninitialized heap"</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="cp">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">aihpos_deallocate</span><span class="p">(</span><span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">unsafe</span> <span class="p">{</span> <span class="n">HEAP</span><span class="nf">.lock</span><span class="p">()</span><span class="nf">.deallocate</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">align</span><span class="p">)</span> <span class="p">};</span>
+    <span class="k">let</span> <span class="n">hpo</span> <span class="o">=</span> <span class="n">HEAP</span><span class="nf">.get</span><span class="p">();</span>
+    <span class="k">match</span> <span class="o">*</span><span class="n">hpo</span> <span class="p">{</span>
+        <span class="nf">Some</span><span class="p">(</span><span class="k">ref</span> <span class="k">mut</span> <span class="n">heap</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="k">unsafe</span> <span class="p">{</span> <span class="n">heap</span><span class="nf">.deallocate</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">align</span><span class="p">)</span> <span class="p">};</span>
+        <span class="p">},</span>
+        <span class="nb">None</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="nd">panic!</span><span class="p">(</span><span class="s">"Uninitialized heap"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="cp">#[no_mangle]</span>
@@ -698,7 +707,14 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
 
 </code></pre>
 </div>
-<p>Im Quelltext sind die Stellen im Kommentar markiert, an denen später mit der Seitenverwaltung zusammengearbeitet werden soll.</p>
+<p>Im Quelltext sind die Stellen im Kommentar markiert, an denen später mit der Seitenverwaltung zusammengearbeitet werden soll.
+Die Initialisierung erfolgt von <strong>main.rs</strong> aus. Dafür werden dort einige Zeilen ergänzt:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span>  <span class="k">const</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">4096</span><span class="p">;</span> <span class="c">// 25 Seiten = 100 kB</span>
+</code></pre>
+</div>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="nf">init_heap</span><span class="p">(</span><span class="o">&amp;</span><span class="k">unsafe</span><span class="p">{</span><span class="n">__bss_start</span><span class="p">}</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="nb">u32</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">);</span>
+</code></pre>
+</div>
 
 <p><a class="left button tiny radius" href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
 
