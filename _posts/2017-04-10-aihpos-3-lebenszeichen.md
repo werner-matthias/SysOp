@@ -305,11 +305,11 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund &#8211; die Ausf
 {% include next-previous-post-in-category %}
 
 
-[^1]: Diese Darstellung des Boot-Prozesses ist etwas vereinfacht. &#8629;
-[^2]: Diese Information ist eigentlich überflüssig, da sie sich später im Binärfile nicht mehr wiederfindet. Der Linker braucht sie aber, er würde sonst das Fehlen monieren. &#8629;
-[^3]: Vielleicht werde ich in späteren Folgen nochmal cargo oder die Cross-Compile-Variante xargo einsetzen. &#8629;
-[^4]: Vergleiche https://github.com/dwelch67/raspberrypi/tree/master/armjtag. &#8629;
-[^5]: Schon garn nicht in meiner Arbeitsumgebung auf dem Mac, da der Debugger hier auf MachO ausgelegt ist &#8629;
+[^1]: Diese Darstellung des Boot-Prozesses ist etwas vereinfacht. 
+[^2]: Diese Information ist eigentlich überflüssig, da sie sich später im Binärfile nicht mehr wiederfindet. Der Linker braucht sie aber, er würde sonst das Fehlen monieren. 
+[^3]: Vielleicht werde ich in späteren Folgen nochmal cargo oder die Cross-Compile-Variante xargo einsetzen. 
+[^4]: Vergleiche https://github.com/dwelch67/raspberrypi/tree/master/armjtag. 
+[^5]: Schon garn nicht in meiner Arbeitsumgebung auf dem Mac, da der Debugger hier auf MachO ausgelegt ist 
     
 
  [1]: http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/
