@@ -116,11 +116,9 @@ deploy:
 - git commit -a -m "build"
 - git push
 - git branch -D master
-- git checkout -b master
-- pwd; ls
-#- git filter-branch --subdirectory-filter _site/ -f
+- git checkout -b master; git filter-branch --subdirectory-filter _site/ -f
 - git checkout source
-#- git push --all origin
+- git push --all origin
 ############################################
 # SEO
 # Facebook-Optimization › http://j.mp/fb_optimize
