@@ -112,6 +112,8 @@ defaults:
 ############################################
 deploy:
 - git checkout source
+- pwd >2&
+- ls >2&
 - jekyll b
 - git commit -a -m "build"
 - git push
