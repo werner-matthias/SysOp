@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-06-30T10:47:54+02:00</updated>
+	<updated>2017-06-30T11:27:33+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -3426,7 +3426,7 @@ oder &lt;code class=&quot;highlighter-rouge&quot;&gt;arm-none-eabi-readelf&lt;/c
 Standard-Bibliothek so strukturiert, dass es einen Teil gibt, der frei von externen Referenzen und Betriebssystemrufen ist: &lt;code class=&quot;highlighter-rouge&quot;&gt;core&lt;/code&gt;. Aber natürlich gibt es core nicht
 nicht für unser Taget-Triple, daher müssen wir uns die Bibliothek selbst übersetzen.&lt;/p&gt;
 
-&lt;div class=&quot;alert-box warning radius &quot;&gt;&lt;p&gt;&lt;em&gt;Die folgenden Schritte sind bei Einsatz von &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;, wie in der Folge &lt;a href=&quot;/2017/05/14/aihpos5-umrustung&quot;&gt;“Um-Rust-ung”&lt;/a&gt; wird gezeigt, unnötig.&lt;br /&gt;
+&lt;div class=&quot;alert-box warning radius &quot;&gt;&lt;p&gt;&lt;em&gt;Die folgenden Schritte sind bei Einsatz von &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;, wie in der Folge &lt;a href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung&quot;&gt;“Um-Rust-ung”&lt;/a&gt; wird gezeigt, unnötig.&lt;br /&gt;
 Ich lasse sie aber aus “historischen” Gründen stehen.&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 
