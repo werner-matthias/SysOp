@@ -119,7 +119,7 @@ deploy:
 - git checkout -b master
 - (cd ..; git filter-branch --subdirectory-filter _site/ -f )
 - git checkout source
-# - git push --all origin
+- git push --all origin
 ############################################
 # SEO
 # Facebook-Optimization › http://j.mp/fb_optimize
