@@ -2,7 +2,7 @@
 layout: page-fullwidth
 title: Wir machen einen Haufen
 subheadline: aihPOS - Ein Betriebsystem für die Lehre
-meta_description: 
+meta_description: "Die unterste Schicht im Mikrokernel ist die Kernel-Speicherverwaltung. In diesem Beitrag werden die Stacks und der Heap des Kernels implementiert."
 published: true
 author: mwerner
 date: 2017-06-07
@@ -293,7 +293,7 @@ nehmen würde, wäre der Umwandlung komplexer und außerdem unsicher:
   mem::init_heap(&unsafe{__bss_start} as *const u32 as usize, INIT_HEAP_SIZE);
 ~~~
 Allerdings kann die Deklaration so Verwirrung stiften; ich sollte vermutlich ein Makro als syntaktischen Zucker schreiben, dass einen aussagekräftigen Namen hat.
-Schließlich ist gute Lesbarkeit ein Ziel in SOPHIA
+Schließlich ist gute Lesbarkeit ein Ziel in SOPHIA.
 
 ## Vektoren, Hashes & Co
 Und was hat man nun davon? Viel! Jetzt können einige Standardtypen von Rust genutzt werden, die uns bisher verschlossen waren. Dazu gehören:

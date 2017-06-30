@@ -482,7 +482,7 @@ Hierbei nutze ich einen Trick: Da die externen Symbole ungetypt sind, erkläre i
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Allerdings kann die Deklaration so Verwirrung stiften; ich sollte vermutlich ein Makro als syntaktischen Zucker schreiben, dass einen aussagekräftigen Namen hat.
-Schließlich ist gute Lesbarkeit ein Ziel in SOPHIA&lt;/p&gt;
+Schließlich ist gute Lesbarkeit ein Ziel in SOPHIA.&lt;/p&gt;
 
 &lt;h2 id=&quot;vektoren-hashes--co&quot;&gt;Vektoren, Hashes &amp;amp; Co&lt;/h2&gt;
 &lt;p&gt;Und was hat man nun davon? Viel! Jetzt können einige Standardtypen von Rust genutzt werden, die uns bisher verschlossen waren. Dazu gehören:&lt;/p&gt;
@@ -3437,6 +3437,13 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;div class=&quot;alert-box text radius &quot;&gt;&lt;p&gt;&lt;i&gt;Ein Wort der &lt;strong&gt;Warnung&lt;/strong&gt;: wie ich dargelegt habe, lerne ich Rust während ich SOPHIA schreibe. Es ist also nicht zu erwarten, dass der Code
+stilechter Rust-Code ist, eher wird vermutlich an vielen Stellen C/C++ durchscheinen.&lt;br /&gt;&lt;br /&gt;Ich werde mich aber bemühen und gegebenenfalls auch funktionierenden
+Code später überarbeiten, um dem Geist von Rust näher zu kommen.&lt;br /&gt;Dies und Überarbeitungen von nightly Rust (siehe
+&lt;a href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;nächster Beitrag&lt;/a&gt;) werden dazu führen,
+dass der Code alles andere als stabil sein wird. Aber das ist ja das generelle Abenteuer einer Software-Entwicklung.&lt;/i&gt;&lt;/p&gt;
+&lt;/div&gt;
+
 &lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
@@ -3459,7 +3466,7 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
       &lt;p&gt;Eigentlich wollte ich hier erst ein Minuszeichen setzen, habe es mir dann anders überlegt: Ich habe C++ lange vor Boost und C++11 gelernt, und seitdem nie grundlegend “aufgeholt”.&amp;nbsp;&lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:6&quot;&gt;
-      &lt;p&gt;Go landet da auf Platz 2, zumal ich schon mal in Occam reingeschnuppert hatte, und D erscheint mir z.T. bewußt “unoriginell” zu entworfen zu sein (was in anderen Kontext einen Vorteil darstellt).&amp;nbsp;&lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Go landet da auf Platz 2, zumal ich schon mal in Occam reingeschnuppert hatte, und D erscheint mir z.T. bewußt “unoriginell” zu entworfen zu sein (was in einem anderem Kontext einen Vorteil darstellt).&amp;nbsp;&lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
