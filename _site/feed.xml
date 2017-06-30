@@ -54,6 +54,7 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
       &lt;li&gt;&lt;a href=&quot;#algorithmus&quot; id=&quot;markdown-toc-algorithmus&quot;&gt;Algorithmus&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#vektoren-hashes--co&quot; id=&quot;markdown-toc-vektoren-hashes--co&quot;&gt;Vektoren, Hashes &amp;amp; Co&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
@@ -129,8 +130,7 @@ Mailbox-System implementiert, mit dem wir ja das Ende des Speichers herausfinden
 
 &lt;p&gt;Allerdings geschieht dies zur Laufzeit – d.h., wir brauchen bereits einen Stack. Wir müssen also mit einem provisorischen Stack beginnen um später zu wechseln.
 Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:&lt;/p&gt;
-&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;cp&quot;&gt;#[no_mangle]&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;// Name wird für den Export nicht verändert&lt;/span&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;no_mangle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;// Name wird für den Export nicht verändert&lt;/span&gt;
 &lt;span class=&quot;cp&quot;&gt;#[naked]&lt;/span&gt;          &lt;span class=&quot;c&quot;&gt;// Kein Prolog, da dieser den Stack nutzen würde, den wir noch nicht gesetzt haben&lt;/span&gt;
 &lt;span class=&quot;cp&quot;&gt;#[allow(unreachable_code)]&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;kernel_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -167,6 +167,7 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:&lt;/p&gt;
 
 &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init_mem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nf&quot;&gt;init_stacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;init_heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
     &lt;span class=&quot;nf&quot;&gt;init_paging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
@@ -186,10 +187,13 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:&lt;/p&gt;
     &lt;span class=&quot;nn&quot;&gt;Cpu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;set_mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;ProcessorMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Svc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init_paging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init_heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nd&quot;&gt;unimplemented!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
+&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init_paging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;unimplemented!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -283,7 +287,7 @@ Dazu legen wir ein Verzeichnis &lt;strong&gt;libs&lt;/strong&gt; an, und darin e
 &lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;mkdir libs&lt;/span&gt;&lt;span class=&quot;line command&quot;&gt;cd libs&lt;/span&gt;&lt;span class=&quot;line command&quot;&gt;cargo new kalloc&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Created library `kalloc` project
 &lt;/span&gt;&lt;span class=&quot;line command&quot;&gt;ls kalloc&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;Cargo.toml	  src&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
-&lt;p&gt;Die Datei &lt;strong&gt;lib.rs&lt;/strong&gt; in &lt;strong&gt;src&lt;/strong&gt; sieht jetzt recht schlicht aus:&lt;/p&gt;
+&lt;p&gt;Die Datei &lt;strong&gt;lib.rs&lt;/strong&gt; in &lt;strong&gt;src&lt;/strong&gt; ist daher recht schlicht:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;feature&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; 
 &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;no_std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
@@ -449,13 +453,100 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Im Quelltext sind die Stellen im Kommentar markiert, an denen später mit der Seitenverwaltung zusammengearbeitet werden soll.
-Die Initialisierung erfolgt von &lt;strong&gt;main.rs&lt;/strong&gt; aus. Dafür werden dort einige Zeilen ergänzt:&lt;/p&gt;
+Die Initialisierung erfolgt von &lt;strong&gt;main.rs&lt;/strong&gt; aus. Dafür wird dort noch die initiale Heap-Größe festgelegt…&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INIT_HEAP_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4096&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;// 25 Seiten = 100 kB&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nf&quot;&gt;init_heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__bss_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INIT_HEAP_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;p&gt;…und die Heap-Initialisierung gerufen&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init_heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nn&quot;&gt;mem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;init_heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__bss_start&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INIT_HEAP_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;p&gt;Das Symbol &lt;code class=&quot;highlighter-rouge&quot;&gt;__bss_start&lt;/code&gt; kommt aus &lt;strong&gt;layout.ld&lt;/strong&gt;, die entsprechend überarbeitet werden muss. Es solle den Beginn des freien, also zu verwaltenden Speichers markieren.
+Dann kann in &lt;strong&gt;main.rs&lt;/strong&gt; das entsprechende externe Symbol deklarieren.
+Hierbei nutze ich einen Trick: Da die externen Symbole ungetypt sind, erkläre ich es einfach zu einer Funktion:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;C&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__bss_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Damit kann die Funktionsadresse einfach in einen &lt;code class=&quot;highlighter-rouge&quot;&gt;usize&lt;/code&gt; gewandelt werden. Wenn man statt dessen als Deklaration z.B.&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__bss_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;nehmen würde, wäre der Umwandlung komplexer und außerdem unsicher:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nn&quot;&gt;mem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;init_heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__bss_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INIT_HEAP_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Allerdings kann die Deklaration so Verwirrung stiften; ich sollte vermutlich ein Makro als syntaktischen Zucker schreiben, dass einen aussagekräftigen Namen hat.
+Schließlich ist gute Lesbarkeit ein Ziel in SOPHIA&lt;/p&gt;
+
+&lt;h2 id=&quot;vektoren-hashes--co&quot;&gt;Vektoren, Hashes &amp;amp; Co&lt;/h2&gt;
+&lt;p&gt;Und was hat man nun davon? Viel! Jetzt können einige Standardtypen von Rust genutzt werden, die uns bisher verschlossen waren. Dazu gehören:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Vektoren (Typ: &lt;code class=&quot;highlighter-rouge&quot;&gt;Vec&amp;lt;T&amp;gt;&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Queues (Typ: &lt;code class=&quot;highlighter-rouge&quot;&gt;VecDeque&amp;lt;T&amp;gt;&lt;/code&gt; )&lt;/li&gt;
+  &lt;li&gt;Strings ohne fixe Länge (Typ: &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Mengen (Typ: &lt;code class=&quot;highlighter-rouge&quot;&gt;BTreeSet&amp;lt;T&amp;gt;&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;und noch vieles mehr. Außerdem können jetzt explizit Daten auf den Heap gespeichert werden, was die (unsichere!) Nutzung von &lt;code class=&quot;highlighter-rouge&quot;&gt;static mut&lt;/code&gt; weitgehend obsolet macht.
+Um dies alles Nutzen zu können, müssen die beiden Crates &lt;code class=&quot;highlighter-rouge&quot;&gt;alloc&lt;/code&gt; und &lt;code class=&quot;highlighter-rouge&quot;&gt;collections&lt;/code&gt;&lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt; eingebunden werden.&lt;/p&gt;
+
+&lt;p&gt;Allerdings ergibt die Einbindung der Crates mit&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collctions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;einen Compilerfehler:&lt;/p&gt;
+&lt;div class=&quot;window&quot;&gt;
+          &lt;nav class=&quot;control-window&quot;&gt;
+            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
+          &lt;/nav&gt;
+          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
+          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;cargo kernel --target=arm-none-eabihf&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;   Compiling aihPOS v0.0.2 (file:///Users/mwerner/Development/aihPOS/aih_pos/kernel)
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error[E0463]: can't find crate for `alloc`
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  --&amp;gt; src/main.rs:29:1
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;   |
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;29 | extern crate alloc;
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;   | ^^^^^^^^^^^^^^^^^^^ can't find crate
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error: aborting due to previous error(s)
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error: Could not compile `aihPOS`.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+&lt;p&gt;Ursache ist diesmal &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;. Es übersetzt standardmäßig nur &lt;code class=&quot;highlighter-rouge&quot;&gt;core&lt;/code&gt;, aber nicht die anderen Bibliotheken. Um dies zur erreichen, muss man eine weitere Konfigurationsdatei
+im Wurzelverzeichnis anlegen: &lt;strong&gt;Xargo.toml&lt;/strong&gt;. Dort können zusätzliche Crates der Standard-Bibliothek angegeben werden:&lt;/p&gt;
+&lt;div class=&quot;language-toml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[dependencies]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Nun funktioniert die Übersetzung reibungslos. Auch Codezeilen wie&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;vec!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;sind jetzt möglich.&lt;/p&gt;
+
+&lt;p&gt;Damit haben wir eine vorläufige Lösung für die unterste Kernel-Schicht. Nebenbei werden uns auch viele Datenstrukturen geschenkt, die wir sonst in Schicht 2
+implementieren müssten. Allerdings ist das Thema Speicher noch nicht erledigt: Speicher ist auch Betriebsmittel für die Prozesse. Hier kommt die logische
+Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des nächsten Beitrags in der SOPHIA-Reihe.&lt;/p&gt;
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
@@ -482,6 +573,9 @@ Die Initialisierung erfolgt von &lt;strong&gt;main.rs&lt;/strong&gt; aus. Dafür
     &lt;/li&gt;
     &lt;li id=&quot;fn:6&quot;&gt;
       &lt;p&gt;Freigabe und Wiedereingliedern wird häufig zusammen erledigt.&amp;nbsp;&lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:7&quot;&gt;
+      &lt;p&gt;Es gibt Bestrebungen, diese beiden Crates &lt;a href=&quot;https://github.com/rust-lang/rust/issues/40475&quot;&gt;zusammenzulegen&lt;/a&gt;, derzeit sind sie aber noch getrennt.&amp;nbsp;&lt;a href=&quot;#fnref:7&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;

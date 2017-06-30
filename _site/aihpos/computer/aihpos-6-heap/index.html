@@ -313,6 +313,7 @@
       <li><a href="#algorithmus" id="markdown-toc-algorithmus">Algorithmus</a></li>
     </ul>
   </li>
+  <li><a href="#vektoren-hashes--co" id="markdown-toc-vektoren-hashes--co">Vektoren, Hashes &amp; Co</a></li>
 </ul>
 
 <p><a class="left button tiny radius" href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
@@ -388,8 +389,7 @@ Mailbox-System implementiert, mit dem wir ja das Ende des Speichers herausfinden
 
 <p>Allerdings geschieht dies zur Laufzeit – d.h., wir brauchen bereits einen Stack. Wir müssen also mit einem provisorischen Stack beginnen um später zu wechseln.
 Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code>
-<span class="cp">#[no_mangle]</span>      <span class="c">// Name wird für den Export nicht verändert</span>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="n">no_mangle</span><span class="p">]</span>      <span class="c">// Name wird für den Export nicht verändert</span>
 <span class="cp">#[naked]</span>          <span class="c">// Kein Prolog, da dieser den Stack nutzen würde, den wir noch nicht gesetzt haben</span>
 <span class="cp">#[allow(unreachable_code)]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">kernel_start</span><span class="p">()</span> <span class="p">{</span>
@@ -426,6 +426,7 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:</p>
 
 <span class="k">fn</span> <span class="nf">init_mem</span><span class="p">()</span> <span class="p">{</span>
     <span class="nf">init_stacks</span><span class="p">();</span>
+    <span class="nf">init_heap</span><span class="p">();</span>
     <span class="nf">init_paging</span><span class="p">();</span>
 <span class="p">}</span>
 
@@ -445,10 +446,13 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:</p>
     <span class="nn">Cpu</span><span class="p">::</span><span class="nf">set_mode</span><span class="p">(</span><span class="nn">ProcessorMode</span><span class="p">::</span><span class="n">Svc</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="k">fn</span> <span class="nf">init_paging</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">fn</span> <span class="nf">init_heap</span><span class="p">()</span> <span class="p">{</span>
     <span class="nd">unimplemented!</span><span class="p">();</span>
 <span class="p">}</span>
 
+<span class="k">fn</span> <span class="nf">init_paging</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">unimplemented!</span><span class="p">();</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
@@ -542,7 +546,7 @@ Dazu legen wir ein Verzeichnis <strong>libs</strong> an, und darin eine Untercra
 <span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line command">mkdir libs</span><span class="line command">cd libs</span><span class="line command">cargo new kalloc</span><span class="line output">    Created library `kalloc` project
 </span><span class="line command">ls kalloc</span><span class="line output">Cargo.toml	  src</span></code></pre></td></tr></table></div></div>
         </div>
-<p>Die Datei <strong>lib.rs</strong> in <strong>src</strong> sieht jetzt recht schlicht aus:</p>
+<p>Die Datei <strong>lib.rs</strong> in <strong>src</strong> ist daher recht schlicht:</p>
 <div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="nf">feature</span><span class="p">(</span><span class="n">allocator</span><span class="p">)]</span> 
 <span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="n">allocator</span><span class="p">]</span>
 <span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="n">no_std</span><span class="p">]</span>
@@ -708,13 +712,100 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
 </code></pre>
 </div>
 <p>Im Quelltext sind die Stellen im Kommentar markiert, an denen später mit der Seitenverwaltung zusammengearbeitet werden soll.
-Die Initialisierung erfolgt von <strong>main.rs</strong> aus. Dafür werden dort einige Zeilen ergänzt:</p>
+Die Initialisierung erfolgt von <strong>main.rs</strong> aus. Dafür wird dort noch die initiale Heap-Größe festgelegt…</p>
 <div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span>  <span class="k">const</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">4096</span><span class="p">;</span> <span class="c">// 25 Seiten = 100 kB</span>
 </code></pre>
 </div>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="nf">init_heap</span><span class="p">(</span><span class="o">&amp;</span><span class="k">unsafe</span><span class="p">{</span><span class="n">__bss_start</span><span class="p">}</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="nb">u32</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">);</span>
+<p>…und die Heap-Initialisierung gerufen</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">init_heap</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nn">mem</span><span class="p">::</span><span class="nf">init_heap</span><span class="p">(</span><span class="n">__bss_start</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">);</span>
+<span class="p">}</span>
+
 </code></pre>
 </div>
+<p>Das Symbol <code class="highlighter-rouge">__bss_start</code> kommt aus <strong>layout.ld</strong>, die entsprechend überarbeitet werden muss. Es solle den Beginn des freien, also zu verwaltenden Speichers markieren.
+Dann kann in <strong>main.rs</strong> das entsprechende externe Symbol deklarieren.
+Hierbei nutze ich einen Trick: Da die externen Symbole ungetypt sind, erkläre ich es einfach zu einer Funktion:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">extern</span> <span class="s">"C"</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">__bss_start</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>Damit kann die Funktionsadresse einfach in einen <code class="highlighter-rouge">usize</code> gewandelt werden. Wenn man statt dessen als Deklaration z.B.</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">extern</span> <span class="p">{</span>
+   <span class="k">static</span> <span class="n">__bss_start</span><span class="p">:</span> <span class="nb">u32</span><span class="p">;</span>
+</code></pre>
+</div>
+<p>nehmen würde, wäre der Umwandlung komplexer und außerdem unsicher:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code>  <span class="nn">mem</span><span class="p">::</span><span class="nf">init_heap</span><span class="p">(</span><span class="o">&amp;</span><span class="k">unsafe</span><span class="p">{</span><span class="n">__bss_start</span><span class="p">}</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="nb">u32</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">);</span>
+</code></pre>
+</div>
+<p>Allerdings kann die Deklaration so Verwirrung stiften; ich sollte vermutlich ein Makro als syntaktischen Zucker schreiben, dass einen aussagekräftigen Namen hat.
+Schließlich ist gute Lesbarkeit ein Ziel in ɒiʜꟼOƧ</p>
+
+<h2 id="vektoren-hashes--co">Vektoren, Hashes &amp; Co</h2>
+<p>Und was hat man nun davon? Viel! Jetzt können einige Standardtypen von Rust genutzt werden, die uns bisher verschlossen waren. Dazu gehören:</p>
+<ul>
+  <li>Vektoren (Typ: <code class="highlighter-rouge">Vec&lt;T&gt;</code>)</li>
+  <li>Queues (Typ: <code class="highlighter-rouge">VecDeque&lt;T&gt;</code> )</li>
+  <li>Strings ohne fixe Länge (Typ: <code class="highlighter-rouge">String</code>)</li>
+  <li>Mengen (Typ: <code class="highlighter-rouge">BTreeSet&lt;T&gt;</code>)</li>
+</ul>
+
+<p>und noch vieles mehr. Außerdem können jetzt explizit Daten auf den Heap gespeichert werden, was die (unsichere!) Nutzung von <code class="highlighter-rouge">static mut</code> weitgehend obsolet macht.
+Um dies alles Nutzen zu können, müssen die beiden Crates <code class="highlighter-rouge">alloc</code> und <code class="highlighter-rouge">collections</code><sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> eingebunden werden.</p>
+
+<p>Allerdings ergibt die Einbindung der Crates mit</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">extern</span> <span class="n">crate</span> <span class="n">alloc</span><span class="p">;</span>
+<span class="k">extern</span> <span class="n">crate</span> <span class="n">collctions</span><span class="p">;</span>
+</code></pre>
+</div>
+<p>einen Compilerfehler:</p>
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line command">cargo kernel --target=arm-none-eabihf</span><span class="line output">   Compiling aihPOS v0.0.2 (file:///Users/mwerner/Development/aihPOS/aih_pos/kernel)
+</span><span class="line output">error[E0463]: can't find crate for `alloc`
+</span><span class="line output">  --&gt; src/main.rs:29:1
+</span><span class="line output">   |
+</span><span class="line output">29 | extern crate alloc;
+</span><span class="line output">   | ^^^^^^^^^^^^^^^^^^^ can't find crate
+</span><span class="line output">
+</span><span class="line output">error: aborting due to previous error(s)
+</span><span class="line output">
+</span><span class="line output">error: Could not compile `aihPOS`.</span></code></pre></td></tr></table></div></div>
+        </div>
+<p>Ursache ist diesmal <code class="highlighter-rouge">xargo</code>. Es übersetzt standardmäßig nur <code class="highlighter-rouge">core</code>, aber nicht die anderen Bibliotheken. Um dies zur erreichen, muss man eine weitere Konfigurationsdatei
+im Wurzelverzeichnis anlegen: <strong>Xargo.toml</strong>. Dort können zusätzliche Crates der Standard-Bibliothek angegeben werden:</p>
+<div class="language-toml highlighter-rouge"><pre class="highlight"><code><span class="nn">[dependencies]</span>
+<span class="py">alloc</span> <span class="p">=</span> <span class="err">{}</span>
+<span class="py">collections</span> <span class="p">=</span> <span class="err">{}</span>
+</code></pre>
+</div>
+<p>Nun funktioniert die Übersetzung reibungslos. Auch Codezeilen wie</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">use</span> <span class="nn">collections</span><span class="p">::</span><span class="nn">vec</span><span class="p">::</span><span class="nb">Vec</span><span class="p">;</span>
+<span class="k">let</span> <span class="n">v</span> <span class="o">=</span> <span class="nd">vec!</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+</code></pre>
+</div>
+<p>sind jetzt möglich.</p>
+
+<p>Damit haben wir eine vorläufige Lösung für die unterste Kernel-Schicht. Nebenbei werden uns auch viele Datenstrukturen geschenkt, die wir sonst in Schicht 2
+implementieren müssten. Allerdings ist das Thema Speicher noch nicht erledigt: Speicher ist auch Betriebsmittel für die Prozesse. Hier kommt die logische
+Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des nächsten Beitrags in der ɒiʜꟼOƧ-Reihe.</p>
 
 <p><a class="left button tiny radius" href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
 
@@ -741,6 +832,9 @@ Die Initialisierung erfolgt von <strong>main.rs</strong> aus. Dafür werden dort
     </li>
     <li id="fn:6">
       <p>Freigabe und Wiedereingliedern wird häufig zusammen erledigt.&nbsp;<a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>Es gibt Bestrebungen, diese beiden Crates <a href="https://github.com/rust-lang/rust/issues/40475">zusammenzulegen</a>, derzeit sind sie aber noch getrennt.&nbsp;<a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
