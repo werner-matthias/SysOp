@@ -179,7 +179,7 @@ Wie schon mehrmals betont, müssen wir auf den Einsatz der`Rust`-Standard-Biblio
 Standard-Bibliothek so strukturiert, dass es einen Teil gibt, der frei von externen Referenzen und Betriebssystemrufen ist: `core`. Aber natürlich gibt es core nicht
 nicht für unser Taget-Triple, daher müssen wir uns die Bibliothek selbst übersetzen.
 
-{% include alert warning=' _Die folgenden Schritte sind bei Einsatz von `xargo`, wie in der Folge ["Um-Rust-ung"]({% post_url aihpos5-umrustung %}) wird gezeigt, unnötig.<br/>
+{% include alert warning=' _Die folgenden Schritte sind bei Einsatz von `xargo`, wie in der Folge ["Um-Rust-ung"](https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung) wird gezeigt, unnötig.<br/>
 Ich lasse sie aber aus "historischen" Gründen stehen._' %}
 
 Dazu holen wir uns den Quellcode in unser Projektverzeichnis: 
