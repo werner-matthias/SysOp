@@ -1,0 +1,428 @@
+<!doctype html>
+<html class="no-js" lang="de">
+<head>
+		<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Schlüsselwortsuche für Safari</title>
+	<link rel="stylesheet" type="text/css" href="https://werner-matthias.github.io/SysOp/assets/css/styles_feeling_responsive.css" />
+	<script src="https://werner-matthias.github.io/SysOp/assets/js/modernizr.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: [ 'Lato:400,700,400italic:latin', 'Volkhov::latin' ]
+      }
+    });
+  </script>
+
+  <noscript>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic|Volkhov' rel='stylesheet' type='text/css' />
+  </noscript>
+
+  
+	
+	<meta name="description" content="Es gibt ein Feature, dass ich bei Safari vermisse: gezielte Suche auf einer Nichtstandard-Suchmaschine o.ä. per Schlüsselwort. Aber es gibt Abhilfe. "/>
+
+	
+
+	
+
+
+
+	
+	<link rel="icon" sizes="32x32" href="https://werner-matthias.github.io/SysOp/assets/img/favicon-32x32.png" />
+
+
+
+
+	
+	<link rel="icon" sizes="192x192" href="https://werner-matthias.github.io/SysOp/assets/img/touch-icon-192x192.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-180x180-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-152x152-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-144x144-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-120x120-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-114x114-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-76x76-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-72x72-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-precomposed.png" />	
+
+
+
+
+	
+	<meta name="msapplication-TileImage" content="https://werner-matthias.github.io/SysOp/assets/img/msapplication_tileimage.png" />
+
+
+
+
+	
+	<meta name="msapplication-TileColor" content="#fabb00" />
+
+
+
+	<!-- Facebook Optimization -->
+	<meta property="og:locale" content="en_EN" />
+	
+	<meta property="og:title" content="Schlüsselwortsuche für Safari" />
+	<meta property="og:description" content="Es gibt ein Feature, dass ich bei Safari vermisse: gezielte Suche auf einer Nichtstandard-Suchmaschine o.ä. per Schlüsselwort. Aber es gibt Abhilfe. " />
+	<meta property="og:url" content="https://werner-matthias.github.io/SysOp//computer/schluesselwortsuche-fuer-safari/" />
+	<meta property="og:site_name" content="Systems Operational" />
+	
+
+	
+
+	<!-- Search Engine Optimization -->
+	
+
+	<link type="text/plain" rel="author" href="https://werner-matthias.github.io/SysOp/humans.txt" />
+
+	
+
+	
+</head>
+</head>
+<body id="top-of-page" class="page-fullwidth">
+	
+	
+<div id="navigation" class="sticky">
+  <nav class="top-bar" role="navigation" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+      <h1 class="show-for-small-only"><a href="https://werner-matthias.github.io/SysOp" class="icon-tree"> Systems Operational</a></h1>
+    </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Navigation</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+
+      <ul class="right">
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+            
+            
+              <li class="divider"></li>
+              <li><a href="https://werner-matthias.github.io/SysOp/about/">Über mich</a></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+            
+            
+              <li class="divider"></li>
+              <li><a href="https://werner-matthias.github.io/SysOp/search/">Search</a></li>
+
+            
+            
+          
+        
+        
+      </ul>
+
+      <ul class="left">
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a href="https://werner-matthias.github.io/SysOp/">Start</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+
+              <li class="has-dropdown">
+                <a href="https://werner-matthias.github.io/SysOp/blog/">Blog</a>
+
+                  <ul class="dropdown">
+                    
+
+                      
+
+                      <li><a href="https://werner-matthias.github.io/SysOp/blog/archive/">Archive</a></li>
+                    
+                  </ul>
+                  
+              </li>
+              <li class="divider"></li>
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a href="https://werner-matthias.github.io/SysOp/blog/aihpos/">aihPos</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+        
+      </ul>
+    </section>
+  </nav>
+</div><!-- /#navigation -->
+
+	
+
+	
+
+<div id="masthead-no-image-header">
+	<div class="row">
+		<div class="small-12 columns">
+			<a id="logo" href="https://werner-matthias.github.io/SysOp" title="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
+				<img src="https://werner-matthias.github.io/SysOp/assets/img/logo.png" alt="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
+			</a>
+		</div><!-- /.small-12.columns -->
+	</div><!-- /.row -->
+</div><!-- /#masthead -->
+
+
+
+
+
+
+
+
+
+	
+
+
+<div class="row t30">
+	<div class="medium-12 columns">
+		<article>
+			<header>
+				
+				<h1>Schlüsselwortsuche für Safari</h1>
+			</header>
+
+			
+
+			<span itemprop="articleSection">
+	                <p>Eines der Features, die ich bei Safari gegenüber Firefox immer vermisst habe, sind Schlüsselwortsuchen. Beispielsweise erhalte ich bei meiner Firefox-Installation, wenn ich</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ctan beamer
+</code></pre>
+</div>
+
+<p>in die Adresszeile eingebe, eine Liste mit allen LaTeX-Paketen von der Seite des <a href="http://www.ctan.org/">Comprehensive TEX Archive Network</a>s, die etwas mit Beamer zu tun haben.</p>
+
+<p>Zwar kennt Safari die „schnelle Website-Suche“, die auf <a href="http://www.opensearch.org/Specifications/OpenSearch/1.1#OpenSearch_description_document">OpenSearch</a> basiert, aber diese ist</p>
+
+<ol>
+  <li>nur sehr umständlich lokal für neue Seiten anpassbar (es ist einfacher, wenn die Seiten-Designer selbst einen Deskriptor mitgeben);</li>
+  <li>sind die Schlüsselworte nicht frei wählbar.</li>
+</ol>
+
+<p>Ich habe mich daher nach Plugins umgesehen. Am geeignetsten für meine Zwecke ist <a href="http://safarikeywordsearch.aurlien.net">SafariKeyworkSearch</a>. Es ist zwar sehr schlicht, aber dafür leicht nutz- und
+anpassbar. Ein kleiner Nachteil ist, dass dieses Plugin seine Daten zusammen mit den Cookies und Webdaten speichert. Wenn man – wie ich das regelmäßig mache–
+diese Daten „global bereinigt“ (also löscht), sind auch die Sucheinstellungen futsch. Jedoch lassen sie sich auch einfach extern speichern und laden, so dass
+dies keine zu große Katastrophe darstellt. Irgendwann schreibe ich vielleicht mal ein Skript, welches die Sache automatisiert.</p>
+
+<p>Wen es interessiert, dies sind meine Sucheinträge:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"gg"</span><span class="p">:</span><span class="s2">"https://startpage.com/do/search?query=@@@"</span><span class="p">,</span><span class="nt">"Default"</span><span class="p">:</span><span class="s2">"gg"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"az"</span><span class="p">:</span><span class="s2">"http://www.amazon.de/s/ref=nb_sb_noss?__mk_de_DE=%C5M%C5%u017D%D5%D1&amp;url=search-alias%3Daps&amp;field-keywords=@@@"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"cs"</span><span class="p">:</span><span class="s2">"http://citeseer.ist.psu.edu/search?q=@@@&amp;sort=rel"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"ctan"</span><span class="p">:</span><span class="s2">"http://www.ctan.org/search/?phrase=%%%"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"gb"</span><span class="p">:</span><span class="s2">"http://books.google.com/books?oe=UTF-8&amp;um=1&amp;hl=de&amp;q=@@@"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"ggg"</span><span class="p">:</span><span class="s2">"http://www.google.com/search?q=@@@"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"gm"</span><span class="p">:</span><span class="s2">"http://maps.google.com/maps?oi=map&amp;q=@@@"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"gn"</span><span class="p">:</span><span class="s2">"https://www.google.de/search?tbm=nws&amp;q=@@@"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"gp"</span><span class="p">:</span><span class="s2">"http://images.google.de/images?hl=de&amp;q=@@@&amp;gbv=1"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"gr"</span><span class="p">:</span><span class="s2">"http://www.canoo.net/services/Controller?input=%%%&amp;MenuId=Search&amp;service=canooNet&amp;lang=de"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"gs"</span><span class="p">:</span><span class="s2">"http://scholar.google.de/scholar?q=@@@&amp;hl=de&amp;lr="</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"l"</span><span class="p">:</span><span class="s2">"http://dict.leo.org/ende?lp=ende&amp;lang=de&amp;searchLoc=0&amp;cmpType=relaxed&amp;sectHdr=on&amp;spellToler=on&amp;chinese=both&amp;pinyin=diacritic&amp;search=%%%&amp;relink=on"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"li"</span><span class="p">:</span><span class="s2">"http://www.linguee.de/deutsch-englisch/search?source=auto&amp;query=%%%"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"lt"</span><span class="p">:</span><span class="s2">"https://translate.google.com/#en/de/%%%"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"so"</span><span class="p">:</span><span class="s2">"http://stackoverflow.com/search?q=@@@"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"st"</span><span class="p">:</span><span class="s2">"http://de.statista.com/statistik/suche/?q=@@@"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"w"</span><span class="p">:</span><span class="s2">"http://de.wikipedia.org/w/index.php?title=Spezial%3ASuche&amp;search=%%%"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"wa"</span><span class="p">:</span><span class="s2">"http://www.wolframalpha.com/input/?i=@@@"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"we"</span><span class="p">:</span><span class="s2">"http://en.wikipedia.org/wiki/Special:Search/%%%"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"wq"</span><span class="p">:</span><span class="s2">"http://de.wikiquote.org/w/index.php?title=Spezial%3ASuche&amp;search=%%%"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"wqe"</span><span class="p">:</span><span class="s2">"http://en.wikiquote.org/w/index.php?title=Special%3ASearch&amp;search=%%%"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"yt"</span><span class="p">:</span><span class="s2">"http://youtube.com/results?search_query=@@@"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"yy"</span><span class="p">:</span><span class="s2">"http://www.yandex.com/yandsearch?text=%%%&amp;lr=87"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+
+	                </span>
+			
+
+			
+		</article>
+	</div><!-- /.medium-12.columns -->
+</div><!-- /.row -->
+
+
+
+
+	
+	    <div id="up-to-top" class="row">
+      <div class="small-12 columns" style="text-align: right;">
+        <a class="iconfont" href="#top-of-page">&#xf108;</a>
+      </div><!-- /.small-12.columns -->
+    </div><!-- /.row -->
+
+
+    <footer id="footer-content" class="bg-grau">
+      <div id="footer">
+        <div class="row">
+          <div class="medium-6 large-5 columns">
+            <h5 class="shadow-black">Über diese Website</h5>
+
+            <p class="shadow-black">
+              Matthias Werners Blog. 
+              <a href="https://werner-matthias.github.io/SysOp/info/">Mehr ›</a>
+            </p>
+          </div><!-- /.large-6.columns -->
+
+
+          <div class="small-6 medium-3 large-3 large-offset-1 columns">
+            
+              
+              <ul class="no-bullet shadow-black">
+              
+              </ul>
+          </div><!-- /.large-4.columns -->
+
+
+          <div class="small-6 medium-3 large-3 columns">
+            
+              
+            <ul class="no-bullet shadow-black">
+            
+            </ul>
+          </div><!-- /.large-3.columns -->
+        </div><!-- /.row -->
+
+      </div><!-- /#footer -->
+
+    </footer>
+
+	
+
+	
+
+
+<script src="https://werner-matthias.github.io/SysOp/assets/js/javascript.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
