@@ -117,7 +117,7 @@ deploy:
 - jekyll b
 - git commit -a -m "build"
 - git push
-- git branch -D master
+#- git branch -D master
 - git checkout -b master
 #- git filter-branch --subdirectory-filter _site/ -f
 - git checkout source
