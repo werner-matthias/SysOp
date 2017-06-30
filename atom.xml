@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-06-30T13:18:32+02:00</updated>
+	<updated>2017-06-30T13:28:36+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -3728,7 +3728,7 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
   &lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Betriebssystemprojekte in Rust&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.redox-os.org&quot;&gt;Redox&lt;/a&gt; – ein schon ziemlich ausgewachsenes UNIX-ähnliches Betriebssystem (x86 7)&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.redox-os.org&quot;&gt;Redox&lt;/a&gt; – ein schon ziemlich ausgewachsenes UNIX-ähnliches Betriebssystem (x86&lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;)&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;https://github.com/wbthomason/ironkernel&quot;&gt;Ironkernel&lt;/a&gt; (wohl erster BS-Ansatz in Rust, ARM)&lt;/li&gt;
       &lt;li&gt;Philipp Oppermann’s blog: &lt;a href=&quot;http://os.phil-opp.com&quot;&gt;Writing an OS in Rust&lt;/a&gt; (x86)&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;http://intermezzos.github.io&quot;&gt;IntermezzOS&lt;/a&gt; (x86)&lt;/li&gt;
@@ -3766,6 +3766,9 @@ dass der Code alles andere als stabil sein wird. Aber das ist ja das generelle A
     &lt;/li&gt;
     &lt;li id=&quot;fn:6&quot;&gt;
       &lt;p&gt;Go landet da auf Platz 2, zumal ich schon mal in Occam reingeschnuppert hatte, und D erscheint mir z.T. bewußt “unoriginell” zu entworfen zu sein (was in einem anderem Kontext einen Vorteil darstellt).&amp;nbsp;&lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:7&quot;&gt;
+      &lt;p&gt;ARM ist geplant, aber bisher nur teilweise implementiert.&amp;nbsp;&lt;a href=&quot;#fnref:7&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
