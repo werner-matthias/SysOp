@@ -117,7 +117,7 @@ deploy:
 - git push
 - git branch -D master
 - git checkout -b master
-- (pwd; git filter-branch --subdirectory-filter _site/ -f )
+- (cd ..; git filter-branch --subdirectory-filter _site/ -f )
 - git checkout source
 # - git push --all origin
 ############################################
