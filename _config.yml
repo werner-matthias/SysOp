@@ -112,13 +112,12 @@ defaults:
 ############################################
 deploy:
 - git checkout source
-- pwd 
-- ls 
 - jekyll b
 - git commit -a -m "build"
 - git push
 - git branch -D master
 - git checkout -b master
+- cd ..
 - pwd 
 - ls 
 - git filter-branch --subdirectory-filter _site/ -f
