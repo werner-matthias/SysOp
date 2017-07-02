@@ -15,7 +15,7 @@
 				<description>&lt;p&gt;Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
 dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; umgestiegen. Jekyll ist ein Generator für statische Webseiten.&lt;/p&gt;
 
-&lt;p&gt;Es git einige Gründe, die für den Wechsel sprechen:&lt;/p&gt;
+&lt;p&gt;Es gibt einige Gründe, die für den Wechsel sprechen:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Das Laden einer Seite geht jetzt wesentlich schneller (nach Messungen ungefähr um den Faktor 4..5)&lt;/li&gt;
   &lt;li&gt;Statische Seiten sind sicherer als dynamische.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
