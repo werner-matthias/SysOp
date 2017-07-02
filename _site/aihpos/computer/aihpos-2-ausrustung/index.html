@@ -322,11 +322,11 @@
 
 <div class="row"></div>
 
-<p>Nachdem im <a href="/2017/03/19/aihpos-1">letzten Teil</a> die Design-Ziel von ɒiʜPOƧ kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.</p>
+<p>Nachdem im <a href="/2017/03/19/aihpos-1">letzten Teil</a> die Design-Ziel von ɒiʜ&#xa7fc;OƧ kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.</p>
 
 <h2 id="setup-rust">Setup Rust</h2>
 
-<p>Die Entwicklung von ɒiʜPOƧ erfolgt nicht auf dem System, auf dem es später laufen soll – das gibt es ja noch gar nicht. Vielmehr soll die Entwicklung auf meinem
+<p>Die Entwicklung von ɒiʜ&#xa7fc;OƧ erfolgt nicht auf dem System, auf dem es später laufen soll – das gibt es ja noch gar nicht. Vielmehr soll die Entwicklung auf meinem
 Arbeitsplatzrechner stattfinden. Das ist in diesem Fall ein MacPro von 2010 mit MacOS. Irgendein Linux-Rechner würde auch gehen, zur Not sogar eine Windows-Maschine.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> Wir
 können also nicht den normalen Compiler benutzen, sondern einen Crosscompiler. Ein Crosscompiler wird auf einer Plattform ausgeführt (host), und erzeugt Code für eine
 andere Plattform (target). Ein “normaler” Compiler ist also ein Crosscompiler, bei dem Host- und Targetplattform “zufällig” identisch sind.</p>
@@ -502,7 +502,7 @@ wir das für uns notwendige Target-Triple genauer.</p>
 zugänglich ist, bleibt für uns die Auswahl zwischen ARM- und Thumb-Befehlssatz. Der Raspberry Pi B+ hat 512 MB Speicher, das ist für die heutigen Verhältnisse nicht
 sonderlich viel.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> Daher wäre die Nutzung des Thumb-Befehlssatzes eine gute Idee, da hier jeder Befehl nur die Hälfte des Speichers verbraucht.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> Da hier weniger Register
 und Befehle zur Verfügung stehen, braucht man wiederum für den gleichen Code mehr Befehle, aber erfahrungsgemäß ist die Speichereinsparung trotzdem um die 30%. Vergessen
-wir also den ARM-Befehlssatz und schreiben ɒiʜPOƧ vollständig in Thumb? Nein, die Sache hat einen Haken: Jeder Ausnahmemode (Interruptmodi, Kernelmode, etc.) wird <em>immer</em>
+wir also den ARM-Befehlssatz und schreiben ɒiʜ&#xa7fc;OƧ vollständig in Thumb? Nein, die Sache hat einen Haken: Jeder Ausnahmemode (Interruptmodi, Kernelmode, etc.) wird <em>immer</em>
 in ARM-Befehlsatz ausgeführt. Mit anderen Worten: Mindestens für den Kern sind wir auf den ARM-Befehlssatz angewiesen. Nutzerprogramme und Betriebssystemserver können
 dagegen mitunter in Thumb geschrieben werden.</p>
 
