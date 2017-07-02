@@ -4,7 +4,7 @@ title: Hello Jekyll
 meta_description: "Ich verlasse Wordpress und wechsle zu Jekyll."
 published: true
 author: mwerner
-comments: true
+comments: false
 date: 2017-06-26 12:16:41
 tags:
     - Jekyll
@@ -16,7 +16,7 @@ permalink: /2017/06/26/hello-jekyll
 Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
 dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf [Jekyll](https://jekyllrb.com) umgestiegen. Jekyll ist ein Generator für statische Webseiten.
 
-Es git einige Gründe, die für den Wechsel sprechen:
+Es gibt einige Gründe, die für den Wechsel sprechen:
 - Das Laden einer Seite geht jetzt wesentlich schneller (nach Messungen ungefähr um den Faktor 4..5)
 - Statische Seiten sind sicherer als dynamische.[^1]
 - Es ist leicht, GitHub-Files mit Syntaxhighlighting einzubinden. Das erspart mir eine Menge von Copy&Paste.
