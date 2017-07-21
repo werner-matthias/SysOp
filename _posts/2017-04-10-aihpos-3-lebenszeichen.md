@@ -4,7 +4,7 @@ title: Lebenszeichen
 subheadline: aihPOS - Ein Betriebsystem für die Lehre
 published: true
 author: mwerner
-comments: true
+#comments: 
 meta_description: 'Wir bauen den ersten "Kernel" und holen (nahezu) die Bequemlichkeit des Desktop-Debuggers in die Embedded-Welt.'
 date: 2017-04-10 09:04:10
 tags:
