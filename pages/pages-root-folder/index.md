@@ -46,4 +46,6 @@ permalink: /index.html
 # </div>
 #  <a class="close-reveal-modal">&#215;</a>
 # </div>
+homepage: true
 ---
+<div></div>
