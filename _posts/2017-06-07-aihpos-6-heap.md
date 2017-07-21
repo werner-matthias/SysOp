@@ -204,6 +204,9 @@ C-Standardbibliothek) und `jemalloc`. Beide nutzen jedoch Betriebssystemrufe, di
 werden könnten -- also fallen beide aus.
 
 Glücklicherweise kennt Rust das Konzept von maßgeschneiderten Allokatoren (_custom allocators_). Für einen solchen Allokator gibt es einige Spielregeln:
+{% include alert warning='<h4 class="altert warning">Achtung</h4>
+_Das Konzept der Allocatoren hat sich mit der neuen Allocator-API grundlegend gewandelt.<br/>
+Die folgenden Betrachtungen lasse ich wiederum  aus "historischen" Gründen stehen._' %}
 - Er muss in einer eigenen Bibliothek stehen, die mit `#![allocator]` dekoriert ist.
 - Die Bibliothek muss folgende fünf Funktionen zur Verfügung stellen:
    - `pub extern fn __rust_allocate(size: usize, align: usize) -> *mut u8 `
@@ -227,7 +230,7 @@ Cargo.toml	  src
 {% endterminal %}
 Die Datei __lib.rs__ in __src__ ist daher recht schlicht:
 ~~~ rust
-{% github_sample werner-matthias/aihPOS/blob/master/kernel/libs/kalloc/src/lib.rs 0 -1 %}
+{% github_sample werner-matthias/aihPOS/blob/3ff82b4e3049ec92fb0ef3e69ba28627dee54886/kernel/libs/kalloc/src/lib.rs 0 -1 %}
 ~~~
 Dies gibt uns die Chance, das eigentliche Heap-Management direkt im Kernel zu implementieren. Dazu muss im Haupt-Cargo-File noch die entsprechende Abhängigkeit deklariert
 werden:
