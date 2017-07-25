@@ -284,7 +284,7 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 		
 			<item>
 				<title>Nebenläufigkeit</title>
-				<link>https://werner-matthias.github.io/SysOp/computer/menschen/concurrency/</link>
+				<link>https://werner-matthias.github.io/SysOp/menschen/computer/concurrency/</link>
 				<pubDate>Fri, 30 Jun 2017 00:00:00 +0200</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;Concurrent programs are inherently more complex than sequential programs. In many respects, 
@@ -298,7 +298,7 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 &lt;cite&gt;Alan Cox&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/computer/menschen/concurrency/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/menschen/computer/concurrency/</guid>
 			</item>
 		
 			<item>

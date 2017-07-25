@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-07-25T11:34:06+02:00</updated>
+	<updated>2017-07-25T11:40:41+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -366,9 +366,9 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/computer/menschen/concurrency/</id>
+			<id>https://werner-matthias.github.io/SysOp/menschen/computer/concurrency/</id>
 			<title>Nebenläufigkeit</title>
-			<link href="https://werner-matthias.github.io/SysOp/computer/menschen/concurrency/" rel="alternate" type="text/html" title="Nebenläufigkeit" />
+			<link href="https://werner-matthias.github.io/SysOp/menschen/computer/concurrency/" rel="alternate" type="text/html" title="Nebenläufigkeit" />
 			<updated>2017-06-30T00:00:00+02:00</updated>
 
 			
@@ -386,7 +386,7 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/computer/menschen/concurrency/">&lt;blockquote&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/menschen/computer/concurrency/">&lt;blockquote&gt;
   &lt;p&gt;Concurrent programs are inherently more complex than sequential programs. In many respects, 
    they are to sequential programs what chess is to checkers or bridge is to pinochle: 
    Each is interesting, but the former is more intellectually intriguing than the latter.;
@@ -400,9 +400,9 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 </content>
 
 			
-				<category term="computer" />
-			
 				<category term="menschen" />
+			
+				<category term="computer" />
 			
 			
 
