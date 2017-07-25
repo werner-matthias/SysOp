@@ -11,7 +11,6 @@ tags:
     - Wordpress
 categories:
     - Meta
-permalink: /2017/06/26/hello-jekyll
 ---
 Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
 dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf [Jekyll](https://jekyllrb.com) umgestiegen. Jekyll ist ein Generator für statische Webseiten.

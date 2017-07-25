@@ -10,7 +10,7 @@
 		
 			<item>
 				<title>Braking News</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-8-braking-news/</link>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-braking-news/</link>
 				<pubDate>Thu, 20 Jul 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -26,7 +26,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -73,7 +73,7 @@
 
 &lt;p&gt;Natürlich fiel die Fehlermeldung nicht einfach so vom Himmel, ich hatte vorher – wie ich das regelmäßig tue – meine Toolchain mit &lt;code class=&quot;highlighter-rouge&quot;&gt;rustup update&lt;/code&gt; aktualisiert.
 Selbstverständlich hätte ich jetzt meine Toolchain auch wieder zurück setzen können, aber ich möchte, dass SOPHIA mit der jeweilig aktuellen Toolchain übersetzbar ist.
-Und da ich “nightly” nutze, können solche abrupten Wechsel schon mal vorkommen. Also wird erstmal nichts aus der Erweiterung unseres Betriebssystem, sondern es heißt, den bestehenden Code wieder
+Und da ich „nightly“ nutze, können solche abrupten Wechsel schon mal vorkommen. Also wird erstmal nichts aus der Erweiterung unseres Betriebssystem, sondern es heißt, den bestehenden Code wieder
 lauffähig zu machen.&lt;/p&gt;
 
 &lt;h3 id=&quot;auf-der-suche-nach-dem-verlorenen-attribut&quot;&gt;Auf der Suche nach dem verlorenen Attribut&lt;/h3&gt;
@@ -98,14 +98,14 @@ Ein einfaches Auskommentieren hilft nicht:&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error: Could not compile `aihPOS`.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 &lt;p&gt;Aha, sollte das Attribut einfach bloß umbenannt worden sein? Leider nein, &lt;code class=&quot;highlighter-rouge&quot;&gt;#![allocator]&lt;/code&gt; war ein modulweites Attribut, im Gegensatz zu &lt;code class=&quot;highlighter-rouge&quot;&gt;#[default_lib_allocator]&lt;/code&gt;. Im
-“&lt;a href=&quot;https://doc.rust-lang.org/unstable-book/&quot;&gt;Unstable Book&lt;/a&gt;” ist &lt;code class=&quot;highlighter-rouge&quot;&gt;#[default_lib_allocator]&lt;/code&gt; nicht aufgeführt. Allerdings hilft der
+„&lt;a href=&quot;https://doc.rust-lang.org/unstable-book/&quot;&gt;Unstable Book&lt;/a&gt;“ ist &lt;code class=&quot;highlighter-rouge&quot;&gt;#[default_lib_allocator]&lt;/code&gt; nicht aufgeführt. Allerdings hilft der
 GitHup-&lt;a href=&quot;https://github.com/rust-lang/rust/issues/27389&quot;&gt;Issue&lt;/a&gt; zu  &lt;code class=&quot;highlighter-rouge&quot;&gt;#![allocator]&lt;/code&gt; weiter: Es verweist auf einen anderen Issue,
 &lt;a href=&quot;https://github.com/rust-lang/rust/pull/42727&quot;&gt;#42727&lt;/a&gt;, der wiederum auf anderes verweist, u.a. Issue &lt;a href=&quot;https://github.com/rust-lang/rust/issues/32838&quot;&gt;#32838&lt;/a&gt; und
 die RFCs &lt;a href=&quot;https://github.com/rust-lang/rfcs/blob/master/text/1974-global-allocators.md&quot;&gt;RFC 1974&lt;/a&gt; und
 &lt;a href=&quot;https://github.com/rust-lang/rfcs/blob/master/text/1398-kinds-of-allocators.md&quot;&gt;RFC 1398&lt;/a&gt;. Daraus ergibt sich ein stimmiges Bild: Das Allokator-Interface wurde
 überarbeitet und durch eine neue API ersetzt.&lt;/p&gt;
 
-&lt;p&gt;Im Folgendem wird beschrieben, wie das Allokator-Interface nun aussieht. Die entsprechenden Aussagen aus dem &lt;a href=&quot;/aihpos/computer/aihpos-6-heap/&quot;&gt;Teil 6&lt;/a&gt; dieser
+&lt;p&gt;Im Folgendem wird beschrieben, wie das Allokator-Interface nun aussieht. Die entsprechenden Aussagen aus der Folge &lt;a href=&quot;/aihpos/aihpos-heap/&quot;&gt;„Wir machen einen Haufen“&lt;/a&gt; dieser
 Reihe sind als überholt zu betrachten.&lt;/p&gt;
 
 &lt;h2 id=&quot;auf-zu-neuen-ufern&quot;&gt;Auf zu neuen Ufern&lt;/h2&gt;
@@ -202,7 +202,7 @@ noch nicht stabilisiert.&lt;/p&gt;
 &lt;p&gt;Nachdem ich die &lt;strong&gt;kalloc&lt;/strong&gt;-Bibliothek entfernt und einen Wrapper um die alten Allokator-Funktionen aus der &lt;code class=&quot;highlighter-rouge&quot;&gt;linked_list_allocator&lt;/code&gt;-Bibliothek geschrieben hatte und der
 neue Allokator tadellos lief, stellte ich fest, dass die von mir verwendete Version 0.2.7 der &lt;code class=&quot;highlighter-rouge&quot;&gt;linked_list_allocator&lt;/code&gt;-Bibliothek gar nicht mehr die aktuelle ist. Die
 derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständig umgesetzt. Danke an den Autor Philipp Oppermann, von dem auch das Blog
-“&lt;a href=&quot;https://os.phil-opp.com&quot;&gt;Writing an OS in Rust&lt;/a&gt;” stammt.&lt;/p&gt;
+„&lt;a href=&quot;https://os.phil-opp.com&quot;&gt;Writing an OS in Rust&lt;/a&gt;“ stammt.&lt;/p&gt;
 
 &lt;p&gt;Ich habe dann auf die neue Version umgestellt. Damit ist der Heap trivial, die Datei &lt;strong&gt;heap.rs&lt;/strong&gt; sieht jetzt so aus:&lt;/p&gt;
 
@@ -211,7 +211,7 @@ derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständ
 &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linked_list_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;linked_list_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LockedHeap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Ich lasse sie aber erstmal trotzdem stehen, da ich – wie &lt;a href=&quot;/aihpos/computer/aihpos-6-heap/&quot;&gt;hier&lt;/a&gt; diskutiert – später den Heap überarbeiten und die den
+&lt;p&gt;Ich lasse sie aber erstmal trotzdem stehen, da ich – wie &lt;a href=&quot;/aihpos/aihpos-heap/&quot;&gt;hier&lt;/a&gt; diskutiert – später den Heap überarbeiten und die den
 Out-of-Memory-Fehler abfangen will.&lt;/p&gt;
 
 &lt;p&gt;Der Allokator der &lt;code class=&quot;highlighter-rouge&quot;&gt;linked_list_allocator&lt;/code&gt;-Bibliothek ist übrigens durch einen Spin-Lock (aus der &lt;a href=&quot;https://crates.io/crates/spin&quot;&gt;spin&lt;/a&gt;-Bibliothek) geschützt. Das ist in
@@ -235,7 +235,7 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 
 &lt;p&gt;Jetzt funktioniert die Übersetzung wieder fehlerfrei.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -245,46 +245,46 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
       &lt;p&gt; 18. Juli 2017&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;Ich bin mir nicht sicher, was die beste Bezeichnung im Deutschen für &lt;code class=&quot;highlighter-rouge&quot;&gt;enum&lt;/code&gt; ist. Als C-Programmierer denkt man da an “Aufzählungstyp”, was aber in Rust in die Irre
-    führt. “Summentyp” ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Ich bin mir nicht sicher, was die beste Bezeichnung im Deutschen für &lt;code class=&quot;highlighter-rouge&quot;&gt;enum&lt;/code&gt; ist. Als C-Programmierer denkt man da an „Aufzählungstyp“, was aber in Rust in die Irre
+    führt. „Summentyp“ ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
-      &lt;p&gt;Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich &lt;em&gt;kein&lt;/em&gt; &lt;a href=&quot;/2017/03/19/aihpos-1&quot;&gt;Design-Ziel&lt;/a&gt; in SOPHIA.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich &lt;em&gt;kein&lt;/em&gt; &lt;a href=&quot;/aihpos/aihpos-1/&quot;&gt;Design-Ziel&lt;/a&gt; in SOPHIA.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-8-braking-news/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-braking-news/</guid>
 			</item>
 		
 			<item>
 				<title>Ein bisschen zerstreut</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/</link>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/</link>
 				<pubDate>Sun, 02 Jul 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-8-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
 &lt;div class=&quot;alert-box text radius &quot;&gt;&lt;p&gt;&lt;em&gt;Dieser Beitrag wird derzeit vollständig überarbeitet.&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-8-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/</guid>
 			</item>
 		
 			<item>
 				<title>Nebenläufigkeit</title>
-				<link>https://werner-matthias.github.io/SysOp/menschen/computer/concurrency/</link>
+				<link>https://werner-matthias.github.io/SysOp/quotes/concurrency/</link>
 				<pubDate>Fri, 30 Jun 2017 00:00:00 +0200</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;Concurrent programs are inherently more complex than sequential programs. In many respects, 
@@ -294,16 +294,16 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;A computer is a state machine. Threads are for people who can’t program state machines.
+  &lt;p&gt;A computer is a state machine. Threads are for people who can‘t program state machines.
 &lt;cite&gt;Alan Cox&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/menschen/computer/concurrency/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/quotes/concurrency/</guid>
 			</item>
 		
 			<item>
 				<title>Hello Jekyll</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll</link>
+				<link>https://werner-matthias.github.io/SysOp/meta/hello-jekyll/</link>
 				<pubDate>Mon, 26 Jun 2017 12:16:41 +0000</pubDate>
 				<description>&lt;p&gt;Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
 dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; umgestiegen. Jekyll ist ein Generator für statische Webseiten.&lt;/p&gt;
@@ -326,12 +326,12 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/meta/hello-jekyll/</guid>
 			</item>
 		
 			<item>
 				<title>Wir machen einen Haufen</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/</link>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/</link>
 				<pubDate>Wed, 07 Jun 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -350,9 +350,9 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
   &lt;li&gt;&lt;a href=&quot;#vektoren-hashes--co&quot; id=&quot;markdown-toc-vektoren-hashes--co&quot;&gt;Vektoren, Hashes &amp;amp; Co&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -403,12 +403,12 @@ Diese sind an Prozessor-Modi gebunden. Im einzelnen es beim ARM1176JZF-S folgen
 &lt;ul&gt;
   &lt;li&gt;Supervisor-Mode (SVC): Mode, in dem die CPU startet und mit dem wir es bisher zu tun hatten. Er ist privilegiert, hat also die volle Kontrolle über die CPU.&lt;/li&gt;
   &lt;li&gt;User-Mode: unprivilegierter Mode, der für normale Programme genutzt wird. &lt;/li&gt;
-  &lt;li&gt;System-Mode: privilegierter Mode mit der gleichen “Sicht” wie der User-Mode.&lt;/li&gt;
+  &lt;li&gt;System-Mode: privilegierter Mode mit der gleichen „Sicht“ wie der User-Mode.&lt;/li&gt;
   &lt;li&gt;Interrupt-Mode (IRQ): Mode in dem zur Behandlung eines  Interrupts gewechselt wird.&lt;/li&gt;
   &lt;li&gt;Fast-Interrupt-Mode (FIQ): Mode für die besonders schnelle Behandlung eines  Interrupts.&lt;/li&gt;
   &lt;li&gt;Memory-Abort (ABT): Mode, in dem zur Behandlung eines Traps (also internen Interrupts) gewechselt wird, der durch einen ungültigen Speicherzugriff ausgelöst wird. Ursache können z.B. fehlende Zugriffsrechte sein.&lt;/li&gt;
   &lt;li&gt;Undefined-Instruction-Exception (UND): Ein weiterer Trap-Behandlungsmode, in den gewechselt wird, wenn ein unbekannter Op-Code gelesen wird. Damit kann ein erweiterter Befehlssatz emuliert werden.&lt;/li&gt;
-  &lt;li&gt;Secure-Monitor-Mode (MON): Der ARM1176JZF-S hat eine Erweiterung (TrustZone), bei der zwischen einer vertrauenswürdigen und einer unsicheren “Welt” unterschieden wird. Der Secure-Monitor-Mode dient der Interaktion dieser Welten.&lt;/li&gt;
+  &lt;li&gt;Secure-Monitor-Mode (MON): Der ARM1176JZF-S hat eine Erweiterung (TrustZone), bei der zwischen einer vertrauenswürdigen und einer unsicheren „Welt“ unterschieden wird. Der Secure-Monitor-Mode dient der Interaktion dieser Welten.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Da wir die TrustZone-Erweiterung nicht nutzen wollen, ist der letzte Mode für uns nicht interessant. Um die andern müssen wir uns kümmern. Dabei hat jeder Mode seinen
@@ -417,7 +417,7 @@ Mode einen eigenen Stack anlegen: Da die meisten Modi entweder ihren Stack aufr�
 soll im weiteren Interrupt-Stack heißen.&lt;/p&gt;
 
 &lt;h3 id=&quot;ja-wo-liegen-sie-nur&quot;&gt;Ja, wo liegen sie nur?&lt;/h3&gt;
-&lt;p&gt;Wo sollen nun die Stacks liegen? Da Stacks traditionell&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; nach “untern” wachsen, legen wir sie möglichst “hoch”.
+&lt;p&gt;Wo sollen nun die Stacks liegen? Da Stacks traditionell&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; nach „untern“ wachsen, legen wir sie möglichst „hoch“.
 Da der Interrupt-Stack vorhersagbarer als der SVC-Stack ist, setzen wir ihn ganz an das Ende des verfügbaren Speichers und den SVC-Stack ein Stück weit darunter.
 Allerdings kann das Ende des Speichers variieren, da es zur Bootzeit die Aufteilung zwischen ARM und GPU geändert werden kann.
 Glücklicherweise haben wir in der &lt;a href=&quot;/2017/04/26/aihpos-4-postman&quot;&gt;vorletzten Folge&lt;/a&gt; das
@@ -494,7 +494,7 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:&lt;/p&gt;
 
 &lt;h3 id=&quot;hal&quot;&gt;HAL&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cpu::set_mode()&lt;/code&gt; und &lt;code class=&quot;highlighter-rouge&quot;&gt;Cpu::set_stack()&lt;/code&gt; sind natürlich keine Funktionen, die Rust bekannt sind. Der Übersichtlichkeit halber habe ich allen Assembler-Code in ein eigenes
-Modul gepackt, das “HAL” heißt. HAL steht klassischerweise für “&lt;em&gt;Hardware Abstraction Layer&lt;/em&gt;”. Allerdings ist die Abstraktion in SOPHIA sehr dünn, ein Port über die
+Modul gepackt, das „HAL“ heißt. HAL steht klassischerweise für „&lt;em&gt;Hardware Abstraction Layer&lt;/em&gt;“. Allerdings ist die Abstraktion in SOPHIA sehr dünn, ein Port über die
 ARM-Architektur hinaus bedürfte etwas mehr Aufwand. Der Code für &lt;code class=&quot;highlighter-rouge&quot;&gt;Cpu::set_mode()&lt;/code&gt; und &lt;code class=&quot;highlighter-rouge&quot;&gt;Cpu::set_stack()&lt;/code&gt; sieht derzeit so aus:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;// Siehe ARM Architectur Reference Manual A2-3&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ProcessorMode&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -544,7 +544,7 @@ unzusammenhängende Adressbereiche einen logisch zusammenhängenden Adressraum b
 Erst einmal ist es nur wichtig zu vermerken, dass es einen Zusammenhang gib, den wir berücksichtigen sollten.&lt;/p&gt;
 
 &lt;h3 id=&quot;rust-allocator&quot;&gt;Rust Allocator&lt;/h3&gt;
-&lt;p&gt;Die Module, die den Heap verwalten, heißen in Rust “&lt;em&gt;Allokatoren&lt;/em&gt;”. Rust wird mit zwei verschiedenen Allokatoren ausgeliefert, &lt;code class=&quot;highlighter-rouge&quot;&gt;malloc&lt;/code&gt;(wohlbekannt aus der
+&lt;p&gt;Die Module, die den Heap verwalten, heißen in Rust „&lt;em&gt;Allokatoren&lt;/em&gt;“. Rust wird mit zwei verschiedenen Allokatoren ausgeliefert, &lt;code class=&quot;highlighter-rouge&quot;&gt;malloc&lt;/code&gt;(wohlbekannt aus der
 C-Standardbibliothek) und &lt;code class=&quot;highlighter-rouge&quot;&gt;jemalloc&lt;/code&gt;. Beide nutzen jedoch Betriebssystemrufe, die unter SOPHIA erstens nocht gar nicht existieren, und zweitens im Kernel schlecht genutzt
 werden könnten – also fallen beide aus.&lt;/p&gt;
 
@@ -552,7 +552,7 @@ werden könnten – also fallen beide aus.&lt;/p&gt;
 
 &lt;div class=&quot;alert-box warning radius &quot;&gt;&lt;h4 class=&quot;altert warning&quot;&gt;Achtung&lt;/h4&gt;
 &lt;p&gt;&lt;em&gt;Das Konzept der Allokatoren hat sich mit der neuen Allokator-API grundlegend gewandelt.&lt;br /&gt;
-Die folgenden Betrachtungen lasse ich wiederum  aus “historischen” Gründen stehen.&lt;/em&gt;&lt;/p&gt;
+Die folgenden Betrachtungen lasse ich wiederum  aus „historischen“ Gründen stehen.&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;ul&gt;
@@ -849,20 +849,20 @@ im Wurzelverzeichnis anlegen: &lt;strong&gt;Xargo.toml&lt;/strong&gt;. Dort kön
 implementieren müssten. Allerdings ist das Thema Speicher noch nicht erledigt: Speicher ist auch Betriebsmittel für die Prozesse. Hier kommt die logische
 Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des nächsten Beitrags in der SOPHIA-Reihe.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;Das Verb heißt tatsächlich “allozieren”, siehe auch &lt;a href=&quot;http://faql.de/fremdwort.html#allocate&quot;&gt;hier&lt;/a&gt;.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Das Verb heißt tatsächlich „allozieren“, siehe auch &lt;a href=&quot;http://faql.de/fremdwort.html#allocate&quot;&gt;hier&lt;/a&gt;.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;Achtung: Mitunter (auch in der ARM-Dokumentation) wird schon von “virtueller Speicherverwaltung” gesprochen, wenn eine streuende Adressabbildung erfolgt. Hier wird
-   “Virtualisierung” aber im engeren Sinne verstanden, also so, dass mehr Ressourcen simuliert werden als vorhanden sind. Damit ist die Unterstützung der streuenden
+      &lt;p&gt;Achtung: Mitunter (auch in der ARM-Dokumentation) wird schon von „virtueller Speicherverwaltung“ gesprochen, wenn eine streuende Adressabbildung erfolgt. Hier wird
+   „Virtualisierung“ aber im engeren Sinne verstanden, also so, dass mehr Ressourcen simuliert werden als vorhanden sind. Damit ist die Unterstützung der streuenden
    Adressierung nur ein Teil der Speichervirtualisierung.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
@@ -883,12 +883,12 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/</guid>
 			</item>
 		
 			<item>
 				<title>Computer Science</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</link>
+				<link>https://werner-matthias.github.io/SysOp/quotes/computer-science/</link>
 				<pubDate>Sun, 21 May 2017 12:05:22 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;In science, we reserve our highest honors for those who prove we were wrong. But in computer science…
@@ -901,12 +901,12 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
 &lt;cite&gt;Fred Brooks&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/05/21/computer-science</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/quotes/computer-science/</guid>
 			</item>
 		
 			<item>
 				<title>Um-Rust-ung</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/</link>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/</link>
 				<pubDate>Sun, 14 May 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -919,28 +919,28 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
   &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;rust-auf-nicht-standard-plattformen&quot;&gt;Rust auf Nicht-Standard-Plattformen&lt;/h2&gt;
 
-&lt;p&gt;Nachdem ich im &lt;a href=&quot;/aihpos/computer/aihpos-4-postman/&quot;&gt;letzen Teil&lt;/a&gt; schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; umzusteigen:
+&lt;p&gt;Nachdem ich im &lt;a href=&quot;/aihpos/aihpos-postman/&quot;&gt;letzen Teil&lt;/a&gt; schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; umzusteigen:
 Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das SOPHIA-Projekt zwei Nachteile, die die Nutzung von
 &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; erschweren:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Unsere Zielplattform wird nicht unterstützt, damit auch nicht die entsprechenden Bibliotheken&lt;/li&gt;
-  &lt;li&gt;Das Endprodukt (Kernel-Image) ist “untypisch”. Seine Erstellung verlangt Post-Linker-Aktionen, die ebenfalls nicht unterstützt werden.&lt;/li&gt;
+  &lt;li&gt;Das Endprodukt (Kernel-Image) ist „untypisch“. Seine Erstellung verlangt Post-Linker-Aktionen, die ebenfalls nicht unterstützt werden.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Für beide Probleme gibt es (mindestens) eine Lösung.&lt;/p&gt;
 
 &lt;h3 id=&quot;xargo&quot;&gt;Xargo&lt;/h3&gt;
 
-&lt;p&gt;Zur Lösung des ersten Problems gibt es &lt;a href=&quot;https://github.com/japaric/xargo&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;&lt;/a&gt;, eine &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;-Variante für Cross-Umgebungen. Diese übersetzt automatisch die Core-Bibliothek und bei Bedarf auch andere Teile der Standard-Bibliothek und “schenkt” dem Compiler die richtige Tool-Chain, indem &lt;code class=&quot;highlighter-rouge&quot;&gt;rootdir&lt;/code&gt; entsprechend gesetzt wird. Man kann sich damit auch angepasste Versionen der Standard-Bibliothek erstellen – mal sehen, ob ich das später brauchen werde.&lt;/p&gt;
+&lt;p&gt;Zur Lösung des ersten Problems gibt es &lt;a href=&quot;https://github.com/japaric/xargo&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;&lt;/a&gt;, eine &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;-Variante für Cross-Umgebungen. Diese übersetzt automatisch die Core-Bibliothek und bei Bedarf auch andere Teile der Standard-Bibliothek und „schenkt“ dem Compiler die richtige Tool-Chain, indem &lt;code class=&quot;highlighter-rouge&quot;&gt;rootdir&lt;/code&gt; entsprechend gesetzt wird. Man kann sich damit auch angepasste Versionen der Standard-Bibliothek erstellen – mal sehen, ob ich das später brauchen werde.&lt;/p&gt;
 
 &lt;p&gt;Die Installation geht diesmal nicht über Homebrew, sondern schnell und reibungslos über &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;:&lt;/p&gt;
 
@@ -954,7 +954,7 @@ Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von 
           &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;cargo install xargo&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cargo&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; gehen von einem bestimmten Directory-Layout und der Existenz von (mindestens) einer Konfigurationsdatei &lt;strong&gt;cargo.toml&lt;/strong&gt; aus, die das sogenannte “&lt;a href=&quot;http://doc.crates.io/manifest.html&quot;&gt;Manifest&lt;/a&gt;” enthält. Dort kann man auch benötigte Bibliotheken einbinden, die dann von &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; automatisch geladen und übersetzt werden. Wir wollten ja die &lt;strong&gt;compiler-buildins&lt;/strong&gt;-Bibliothek nutzen. Dies geschieht im &lt;strong&gt;cargo.toml&lt;/strong&gt; für unseren Kernel im Abschnitt &lt;code class=&quot;highlighter-rouge&quot;&gt;[dependencies]&lt;/code&gt; und sieht so aus:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cargo&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; gehen von einem bestimmten Directory-Layout und der Existenz von (mindestens) einer Konfigurationsdatei &lt;strong&gt;cargo.toml&lt;/strong&gt; aus, die das sogenannte „&lt;a href=&quot;http://doc.crates.io/manifest.html&quot;&gt;Manifest&lt;/a&gt;“ enthält. Dort kann man auch benötigte Bibliotheken einbinden, die dann von &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; automatisch geladen und übersetzt werden. Wir wollten ja die &lt;strong&gt;compiler-buildins&lt;/strong&gt;-Bibliothek nutzen. Dies geschieht im &lt;strong&gt;cargo.toml&lt;/strong&gt; für unseren Kernel im Abschnitt &lt;code class=&quot;highlighter-rouge&quot;&gt;[dependencies]&lt;/code&gt; und sieht so aus:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-toml&quot; data-lang=&quot;toml&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[package]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aihPOS&quot;&lt;/span&gt;
@@ -981,7 +981,7 @@ Verzeichnisse (mit ggf. eigenen &lt;strong&gt;cargo.toml&lt;/strong&gt;-Dateien)
 übersetzte Dateien etc. angelegt werden.&lt;/p&gt;
 
 &lt;p&gt;Außer der &lt;strong&gt;compiler_buildins&lt;/strong&gt;-Bibliothek laden wir auch eine andere
-Bibliothek: &lt;strong&gt;compiler_error&lt;/strong&gt;, die etwas ähnliches wie C’s
+Bibliothek: &lt;strong&gt;compiler_error&lt;/strong&gt;, die etwas ähnliches wie C‘s
 &lt;code class=&quot;highlighter-rouge&quot;&gt;#error&lt;/code&gt;-Direktive zur Verfügung stellt.
 Soweit es nicht anders angegeben – wie z.B. bei den
 &lt;strong&gt;compiler_buildins&lt;/strong&gt; – wird nach Bibliotheken auf
@@ -1013,7 +1013,7 @@ wird zwar in unter den Entwicklern diskutiert, wurde aber bisher nicht umgesetzt
 solche Lösung schnell unübersichtlich wird. Es ein häufig genutzter und sogar empfohlener&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Ansatz ist daher, &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; wiederum von einem &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt; aufrufen lassen. Das
 würde aber  dazu führen, dass Abhängigkeiten z.T. doppelt gepflegt werden müssen. Wenn &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;, dann richtig.&lt;/p&gt;
 
-&lt;p&gt;Glücklicherweise ist &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; leicht erweiterbar: Wenn &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; (oder &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;) mit einem unbekannten Befehl gerufen wird, sucht es im Standardpfad nach einem Programm &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-&lt;/code&gt;. Dass mache ich mir zunutze und schreibe ein kleines &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;-Skript &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-kernel&lt;/code&gt;, das erst &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; aufruft und dann noch den “Rest” erledigt:&lt;/p&gt;
+&lt;p&gt;Glücklicherweise ist &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; leicht erweiterbar: Wenn &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; (oder &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;) mit einem unbekannten Befehl gerufen wird, sucht es im Standardpfad nach einem Programm &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-&lt;/code&gt;. Dass mache ich mir zunutze und schreibe ein kleines &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;-Skript &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-kernel&lt;/code&gt;, das erst &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; aufruft und dann noch den „Rest“ erledigt:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;shift
 &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROFILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;debug
@@ -1076,9 +1076,9 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 
 &lt;p&gt;Außerdem habe ich ein &lt;a href=&quot;https://github.com/werner-matthias/aihPOS&quot;&gt;GitHub-Projekt&lt;/a&gt; für SOPHIA aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1090,12 +1090,12 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/</guid>
 			</item>
 		
 			<item>
 				<title>Please Mr. Postman</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/</link>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-postman/</link>
 				<pubDate>Wed, 26 Apr 2017 11:04:55 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -1115,9 +1115,9 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
   &lt;li&gt;&lt;a href=&quot;#der-linker-zickt-mal-wieder&quot; id=&quot;markdown-toc-der-linker-zickt-mal-wieder&quot;&gt;Der Linker zickt mal wieder&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-lebenszeichen/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1130,7 +1130,7 @@ haben, wieviel Speicher zur Verfügung steht und wo die I/O-Hardware liegt.&lt;/
 &lt;p&gt;Glücklicherweise kümmert sich um das alles die GPU. Diese hat auch eine Schnittstelle, über die es mit dem ARM reden kann, das sogenannte &lt;a href=&quot;https://github.com/raspberrypi/firmware/wiki/Mailboxes&quot;&gt;Mailbox-System&lt;/a&gt;. Mailboxes
 sind FIFO-Speicher mit einer Breite von 28 Bit. Jede Mailbox ist in Kanäle unterteilt, die für unterschiedliche Arten von Informationen vorgesehen ist. Es kann pro
 Mailbox maximal 16 Kanäle geben. Daten und Kanalinformationen werden mit einem Datenwort übergeben, wobei die Kanalnummer die untersten vier Bit einnimmt und das zu
-übertragende Datum die oberen 28. Auch wenn die “größeren” Raspberries eine ganze Menge von Mailboxen haben, interessiert uns im Moment nur die Mailbox 0
+übertragende Datum die oberen 28. Auch wenn die „größeren“ Raspberries eine ganze Menge von Mailboxen haben, interessiert uns im Moment nur die Mailbox 0
 (bzw. Mailbox 1 für die Rückantwort). Mailbox 0 hat 9 Kanäle. Für die Datenübertragung muss jeweils auf den passenden Status gewartet werden. Wir machen das im
 Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgehen und einen Interrupt auslösen lassen, wenn Daten bereit stehen.&lt;/p&gt;
 
@@ -1272,7 +1272,7 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
 
 &lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/tag-list.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags “auf Vorrat”in einem enum:&lt;/p&gt;
+&lt;p&gt;Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags „auf Vorrat“in einem enum:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -1647,7 +1647,7 @@ eigentliche Information enthalten. Selbst eine solche Adresse kann mit 28 Bit ni
 
 &lt;p&gt;Glücklicherweise bietet nightly Rust hier Möglichkeiten. Bis vor kurzem musste man tricksen und mit Hilfe von &lt;code class=&quot;highlighter-rouge&quot;&gt;#[repr(simd)]&lt;/code&gt;  behaupten, dass eine Vektorverarbeitung
 vorgenommen wird. Seit neuesten&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; steht ein eigenes Alignment-Attribut zur Verfügung. Bei seiner Nutzung muss man beachten, dass die Syntax aus dem entsprechenden
-&lt;a href=&quot;https://github.com/rust-lang/rfcs/blob/master/text/1358-repr-align.md&quot;&gt;RFC 1358&lt;/a&gt; falsch ist, statt z.B. &lt;code class=&quot;highlighter-rouge&quot;&gt;#[repr(align=&quot;16&quot;)]&lt;/code&gt; wird das Alignment als (ebenfalls relativ neues) “Attribut-Literal”angegeben:
+&lt;a href=&quot;https://github.com/rust-lang/rfcs/blob/master/text/1358-repr-align.md&quot;&gt;RFC 1358&lt;/a&gt; falsch ist, statt z.B. &lt;code class=&quot;highlighter-rouge&quot;&gt;#[repr(align=&quot;16&quot;)]&lt;/code&gt; wird das Alignment als (ebenfalls relativ neues) „Attribut-Literal“angegeben:
 &lt;code class=&quot;highlighter-rouge&quot;&gt;#[repr(align(16))]&lt;/code&gt;. Es müssen also gleich zwei Featuregates freigeschaltet werden, &lt;code class=&quot;highlighter-rouge&quot;&gt;#![feature(repr_align)]&lt;/code&gt; und &lt;code class=&quot;highlighter-rouge&quot;&gt;#![feature(attr_literals)]&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;tag-puffer&quot;&gt;Tag-Puffer&lt;/h3&gt;
@@ -1851,7 +1851,7 @@ vorgenommen wird. Seit neuesten&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quo
 
 &lt;h3 id=&quot;zuwenig-speicher&quot;&gt;Zuwenig Speicher?&lt;/h3&gt;
 
-&lt;p&gt;Mit Hilfe der Property-Tags können jetzt gewünschte Informationen erlangt werden. Um nicht mit den “rohen” Puffer-Daten umgehen zu müssen, habe ich
+&lt;p&gt;Mit Hilfe der Property-Tags können jetzt gewünschte Informationen erlangt werden. Um nicht mit den „rohen“ Puffer-Daten umgehen zu müssen, habe ich
 Schnittstellenfunktionen geschrieben:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
@@ -1978,7 +1978,7 @@ Schnittstellenfunktionen geschrieben:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;Bei der Revisionsnummer des Boards hatte ich bei einem Raspberry Pi 1B+ den Wert 0x10 erwartet. Tatsächlich erhielt ich 0x13, der in einigen Verzeichnissen nicht
 gelistet ist. &lt;a href=&quot;http://elinux.org/RPi_HardwareHistory#Which_Pi_have_I_got.3F&quot;&gt;Hier&lt;/a&gt; ist eine vermutlich vollständige Liste; demnach handelt es sich tatsächlich um einen 1B+, aber mit geänderten Leiterplattenlayout.&lt;/li&gt;
-  &lt;li&gt;Es wurden 256 MByte Speicher berichtet, obwohl der 1B+ doch 512 MByte haben sollte, von denen die GPU standardmäßig lediglich 64 MByte “abzweigt”. Eine kurze
+  &lt;li&gt;Es wurden 256 MByte Speicher berichtet, obwohl der 1B+ doch 512 MByte haben sollte, von denen die GPU standardmäßig lediglich 64 MByte „abzweigt“. Eine kurze
 Web-Recherche ergab, dass es sich dabei um einen bekannten Bug der Firmware handelt, für den auch ein entsprechender Bugfix existiert. Wenn man in das
 Boot-Verzeichnis die Datei fixup.dat aus dem originalen Boot-Verzeichnis kopiert, werden korrekt 448 MByte verfügbarer Speicher gemeldet.&lt;/li&gt;
 &lt;/ol&gt;
@@ -2142,7 +2142,7 @@ Speicherzeilenlänge (&lt;code class=&quot;highlighter-rouge&quot;&gt;pitch&lt;/
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; indem wir einen virtuellen Ringpuffer aufbauen, siehe Abschnitt “&lt;a href=&quot;#scrollen&quot;&gt;Scrollen&lt;/a&gt;”.&lt;/p&gt;
+&lt;p&gt;Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; indem wir einen virtuellen Ringpuffer aufbauen, siehe Abschnitt „&lt;a href=&quot;#scrollen&quot;&gt;Scrollen&lt;/a&gt;“.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/virphys-fb.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 &lt;h3 id=&quot;vom-pixel-zum-string&quot;&gt;Vom Pixel zum String&lt;/h3&gt;
@@ -2270,7 +2270,7 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.&lt;sup id=&quot;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Ein Textstring kann jetzt im Framebuffer Zeichen für Zeichen, ein Zeichen ggf. interpretiert und dann pixelweise ausgegeben werden. Dabei wird immer Buch über die aktuelle Zeichenposition – d.h. Spalte und Zeile – geführt und entsprechend angepasst. Bei der Interpretation beschränken wir uns erst einmal auf die Steuerzeichen für “neue Zeile”und “Tabulator“.&lt;/p&gt;
+&lt;p&gt;Ein Textstring kann jetzt im Framebuffer Zeichen für Zeichen, ein Zeichen ggf. interpretiert und dann pixelweise ausgegeben werden. Dabei wird immer Buch über die aktuelle Zeichenposition – d.h. Spalte und Zeile – geführt und entsprechend angepasst. Bei der Interpretation beschränken wir uns erst einmal auf die Steuerzeichen für „neue Zeile“und „Tabulator“.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -2549,21 +2549,21 @@ wieder unsicher, was heißt, dass der Compiler die Einhaltung der Garantien nich
 
 &lt;p&gt;Eine kurze Recherche zeigt, wo er herkommt: Unser Prozessor kann keine Ganzzahldivision (aber Gleitkommadivision!) und der Compiler verlässt sich darauf, dass die
 Plattform entsprechenden Code zur Verfügung stellt, was wir aber bisher nicht machen. Da es einige dieser Befehle gibt, verzichte ich darauf, sie alle per Hand zu
-definieren und greife auf die &lt;a href=&quot;https://github.com/rust-lang-nursery/compiler-builtins&quot;&gt;Compiler-Buildins-Bibliothek&lt;/a&gt; zurück, die in der “Rust Language Nursery” zur Verfügung gestellt wird.&lt;/p&gt;
+definieren und greife auf die &lt;a href=&quot;https://github.com/rust-lang-nursery/compiler-builtins&quot;&gt;Compiler-Buildins-Bibliothek&lt;/a&gt; zurück, die in der „Rust Language Nursery“ zur Verfügung gestellt wird.&lt;/p&gt;
 
 &lt;p&gt;Nun habe ich schon zwei Rust-Bibliotheken (core und compiler-buildins), die händisch eingepflegt werden, wenn es zu Updates bei ihnen oder dem Compiler kommt. Höchste
 Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Dies wird das Thema des nächsten Beitrags sein.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-lebenszeichen/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;Das ist nicht ganz präzise: Rust hält das “natürliche” Alignment ein, das ggf. durch &lt;code class=&quot;highlighter-rouge&quot;&gt;#[repr(packed)]&lt;/code&gt; unterlaufen werden kann.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Das ist nicht ganz präzise: Rust hält das „natürliche“ Alignment ein, das ggf. durch &lt;code class=&quot;highlighter-rouge&quot;&gt;#[repr(packed)]&lt;/code&gt; unterlaufen werden kann.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:2&quot;&gt;
       &lt;p&gt;Version 6d841da vom 22. April 2017&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
@@ -2575,7 +2575,7 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
       &lt;p&gt;Diese Darstellung ist etwas vereinfacht.&amp;nbsp;&lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:5&quot;&gt;
-      &lt;p&gt;Genau genommen bräuchte man dafür nur ein oder zwei “Reservezeilen”, aber so sind wir etwas flexibler.&amp;nbsp;&lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Genau genommen bräuchte man dafür nur ein oder zwei „Reservezeilen“, aber so sind wir etwas flexibler.&amp;nbsp;&lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:6&quot;&gt;
       &lt;p&gt;Es wäre dann vermutlich besser, wenn ein &lt;code class=&quot;highlighter-rouge&quot;&gt;u8&lt;/code&gt;-Array genutzt würde.&amp;nbsp;&lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
@@ -2583,12 +2583,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-postman/</guid>
 			</item>
 		
 			<item>
 				<title>March for Science</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</link>
+				<link>https://werner-matthias.github.io/SysOp/menschen/march-for-science/</link>
 				<pubDate>Thu, 20 Apr 2017 09:04:46 +0000</pubDate>
 				<description>&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.marchforscience.com&quot;&gt;March for Science&lt;/a&gt; (International)&lt;/li&gt;
@@ -2596,12 +2596,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 &lt;/ul&gt;
 
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/20/march-for-science</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/menschen/march-for-science/</guid>
 			</item>
 		
 			<item>
 				<title>Lebenszeichen</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</link>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-lebenszeichen/</link>
 				<pubDate>Mon, 10 Apr 2017 09:04:10 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -2628,13 +2628,13 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
-&lt;p&gt;Nachdem wir unsere &lt;a href=&quot;http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/&quot;&gt;Toolchain&lt;/a&gt; installiert haben, wollen wir den ersten “Kernel” bauen. Er soll nichts anderes machen, als den Pi für JTAG
+&lt;p&gt;Nachdem wir unsere &lt;a href=&quot;http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/&quot;&gt;Toolchain&lt;/a&gt; installiert haben, wollen wir den ersten „Kernel“ bauen. Er soll nichts anderes machen, als den Pi für JTAG
 vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der &lt;a href=&quot;https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf&quot;&gt;I/O-Hardware&lt;/a&gt;, dem Speicher-Layout und dem
 Boot-Prozess.&lt;/p&gt;
 
@@ -2649,7 +2649,7 @@ lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei start.elf g
 
 &lt;h3 id=&quot;layout-und-linker&quot;&gt;Layout und Linker&lt;/h3&gt;
 
-&lt;p&gt;Die Datei kernel.img ist ein Binärfile, das unmittelbar Maschinencode enthält, also keine ELF-Datei oder ein anderes höheres Format. Wir müssen also erstens dafür sorgen, dass unser “Kernel” von der Adresse 0x08000 lauffähig ist, und zweitens, dass er als reine Binärdatei vorliegt. Beim ersten hilft der Linker. In der “normalen” Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte Anforderungen haben, müssen wir es ihm mit einem &lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Scripts.html&quot;&gt;Linker-Skript&lt;/a&gt; mitteilen. Unser Linker-Skript ist (noch) sehr einfach:&lt;/p&gt;
+&lt;p&gt;Die Datei kernel.img ist ein Binärfile, das unmittelbar Maschinencode enthält, also keine ELF-Datei oder ein anderes höheres Format. Wir müssen also erstens dafür sorgen, dass unser „Kernel“ von der Adresse 0x08000 lauffähig ist, und zweitens, dass er als reine Binärdatei vorliegt. Beim ersten hilft der Linker. In der „normalen“ Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte Anforderungen haben, müssen wir es ihm mit einem &lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Scripts.html&quot;&gt;Linker-Skript&lt;/a&gt; mitteilen. Unser Linker-Skript ist (noch) sehr einfach:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-ld&quot;&gt;ENTRY(kernel_main)
 SECTIONS
@@ -3133,13 +3133,13 @@ JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständ
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Man beachte, dass die auch hier benutzte Verzögerung durch “&lt;em&gt;busy idling&lt;/em&gt;” so nicht funktioniert, wenn wir die Codeoptimierung einschalten: Dann wird die
+&lt;p&gt;Man beachte, dass die auch hier benutzte Verzögerung durch „&lt;em&gt;busy idling&lt;/em&gt;“ so nicht funktioniert, wenn wir die Codeoptimierung einschalten: Dann wird die
 Schleife zwar nicht vollständig wegoptimiert (das verhindert die Assembler-Anweisung), aber die Zeiten sind doch vollständig andere.
 Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführungszeit ist derzeit noch egal, aber die Übersetzungszeit würde sich etwas verlängern.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-4-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -3157,7 +3157,7 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</guid>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-lebenszeichen/</guid>
 			</item>
 		
 	</channel>

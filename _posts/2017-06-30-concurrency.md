@@ -8,8 +8,7 @@ author: mwerner
 date: 2017-06-30
 tags: [ ]
 categories:
-    - menschen
-    - computer 
+    - quotes
 ---
 
 >  Concurrent programs are inherently more complex than sequential programs. In many respects, 

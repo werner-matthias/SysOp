@@ -8,9 +8,7 @@ author: mwerner
 date: 2017-05-21 12:05:22
 tags: [ ]
 categories:
-    - computer 
-    - menschen
-permalink: /2017/05/21/computer-science
+    - quotes 
 ---
 
 >  In science, we reserve our highest honors for those who prove we were wrong. But in computer science&#8230;

@@ -12,7 +12,6 @@ tags: Wissenschaft
 categories:
   - menschen
 
-permalink: /2017/04/20/march-for-science
 ---
 
 
