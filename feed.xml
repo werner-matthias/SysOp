@@ -9,6 +9,280 @@
 		<atom:link href="https://werner-matthias.github.io/SysOp/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Braking News</title>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-8-braking-news/</link>
+				<pubDate>Thu, 20 Jul 2017 00:00:00 +0200</pubDate>
+				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#sophia-wir-haben-ein-problem&quot; id=&quot;markdown-toc-sophia-wir-haben-ein-problem&quot;&gt;SOPHIA, wir haben ein Problem&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#missing-feature&quot; id=&quot;markdown-toc-missing-feature&quot;&gt;Missing Feature&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#auf-der-suche-nach-dem-verlorenen-attribut&quot; id=&quot;markdown-toc-auf-der-suche-nach-dem-verlorenen-attribut&quot;&gt;Auf der Suche nach dem verlorenen Attribut&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#auf-zu-neuen-ufern&quot; id=&quot;markdown-toc-auf-zu-neuen-ufern&quot;&gt;Auf zu neuen Ufern&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#allokator-api&quot; id=&quot;markdown-toc-allokator-api&quot;&gt;Allokator-API&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#guter-service&quot; id=&quot;markdown-toc-guter-service&quot;&gt;Guter Service&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;sophia-wir-haben-ein-problem&quot;&gt;SOPHIA, wir haben ein Problem&lt;/h2&gt;
+&lt;h3 id=&quot;missing-feature&quot;&gt;Missing Feature&lt;/h3&gt;
+&lt;p&gt;Für fast zwei Wochen war ich in Bulgarien. Danach erhielt ich beim ersten Übersetzungsversuch des SOPHIA-Codes eine Fehlermeldung:&lt;/p&gt;
+&lt;div class=&quot;window&quot;&gt;
+          &lt;nav class=&quot;control-window&quot;&gt;
+            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
+          &lt;/nav&gt;
+          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
+          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line output&quot;&gt;error[E0557]: feature has been removed
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt; --&amp;gt; libs/kalloc/src/lib.rs:1:12
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  |
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;1 | #![feature(allocator)] 
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  |            ^^^^^^^^^
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error: The attribute `allocator` is currently unknown to the compiler and may have meaning added to it in the future (see issue #29642)
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt; --&amp;gt; libs/kalloc/src/lib.rs:2:1
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  |
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;2 | #![allocator]
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  | ^^^^^^^^^^^^^
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  |
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  = help: add #![feature(custom_attribute)] to the crate attributes to enable
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error: aborting due to 2 previous errors&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+&lt;p&gt;Natürlich fiel die Fehlermeldung nicht einfach so vom Himmel, ich hatte vorher – wie ich das regelmäßig tue – meine Toolchain mit &lt;code class=&quot;highlighter-rouge&quot;&gt;rustup update&lt;/code&gt; aktualisiert.
+Selbstverständlich hätte ich jetzt meine Toolchain auch wieder zurück setzen können, aber ich möchte, dass SOPHIA mit der jeweilig aktuellen Toolchain übersetzbar ist.
+Und da ich “nightly” nutze, können solche abrupten Wechsel schon mal vorkommen. Also wird erstmal nichts aus der Erweiterung unseres Betriebssystem, sondern es heißt, den bestehenden Code wieder
+lauffähig zu machen.&lt;/p&gt;
+
+&lt;h3 id=&quot;auf-der-suche-nach-dem-verlorenen-attribut&quot;&gt;Auf der Suche nach dem verlorenen Attribut&lt;/h3&gt;
+&lt;p&gt;Wie die Fehlermeldung angibt, wurde das Feature &lt;code class=&quot;highlighter-rouge&quot;&gt;#![allocator]&lt;/code&gt; entfernt. Was nun? Ein &lt;code class=&quot;highlighter-rouge&quot;&gt;rustc --explain E0557&lt;/code&gt; hilft hier nicht weiter, und das angegebene Issue in GitHub
+beschäftigt sich mit Customer-Attributen. Vielleicht braucht man das Attribut nicht mehr, es reicht, dass die Funktionen vorhanden sind?
+Ein einfaches Auskommentieren hilft nicht:&lt;/p&gt;
+&lt;div class=&quot;window&quot;&gt;
+          &lt;nav class=&quot;control-window&quot;&gt;
+            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
+          &lt;/nav&gt;
+          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
+          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line output&quot;&gt;error: no #[default_lib_allocator] found but one is required; is libstd not linked?
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error: cannot continue compilation due to previous error
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error: Could not compile `aihPOS`.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+&lt;p&gt;Aha, sollte das Attribut einfach bloß umbenannt worden sein? Leider nein, &lt;code class=&quot;highlighter-rouge&quot;&gt;#![allocator]&lt;/code&gt; war ein modulweites Attribut, im Gegensatz zu &lt;code class=&quot;highlighter-rouge&quot;&gt;#[default_lib_allocator]&lt;/code&gt;. Im
+“&lt;a href=&quot;https://doc.rust-lang.org/unstable-book/&quot;&gt;Unstable Book&lt;/a&gt;” ist &lt;code class=&quot;highlighter-rouge&quot;&gt;#[default_lib_allocator]&lt;/code&gt; nicht aufgeführt. Allerdings hilft der
+GitHup-&lt;a href=&quot;https://github.com/rust-lang/rust/issues/27389&quot;&gt;Issue&lt;/a&gt; zu  &lt;code class=&quot;highlighter-rouge&quot;&gt;#![allocator]&lt;/code&gt; weiter: Es verweist auf einen anderen Issue,
+&lt;a href=&quot;https://github.com/rust-lang/rust/pull/42727&quot;&gt;#42727&lt;/a&gt;, der wiederum auf anderes verweist, u.a. Issue &lt;a href=&quot;https://github.com/rust-lang/rust/issues/32838&quot;&gt;#32838&lt;/a&gt; und
+die RFCs &lt;a href=&quot;https://github.com/rust-lang/rfcs/blob/master/text/1974-global-allocators.md&quot;&gt;RFC 1974&lt;/a&gt; und
+&lt;a href=&quot;https://github.com/rust-lang/rfcs/blob/master/text/1398-kinds-of-allocators.md&quot;&gt;RFC 1398&lt;/a&gt;. Daraus ergibt sich ein stimmiges Bild: Das Allokator-Interface wurde
+überarbeitet und durch eine neue API ersetzt.&lt;/p&gt;
+
+&lt;p&gt;Im Folgendem wird beschrieben, wie das Allokator-Interface nun aussieht. Die entsprechenden Aussagen aus dem &lt;a href=&quot;/aihpos/computer/aihpos-6-heap/&quot;&gt;Teil 6&lt;/a&gt; dieser
+Reihe sind als überholt zu betrachten.&lt;/p&gt;
+
+&lt;h2 id=&quot;auf-zu-neuen-ufern&quot;&gt;Auf zu neuen Ufern&lt;/h2&gt;
+&lt;h3 id=&quot;allokator-api&quot;&gt;Allokator-API&lt;/h3&gt;
+&lt;p&gt;Ein Allokator (im allgemeinen) ist eine Struktur, die den &lt;code class=&quot;highlighter-rouge&quot;&gt;Allocator&lt;/code&gt;-Trait implementiert. Der Trait ist zwar im Crate &lt;code class=&quot;highlighter-rouge&quot;&gt;alloc&lt;/code&gt; definiert, aber derzeit&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;
+noch nicht in der offiziellen &lt;a href=&quot;https://doc.rust-lang.org/alloc/index.html&quot;&gt;Dokumentation&lt;/a&gt;. Die Quellfiles sind aber ausführlich kommentiert.&lt;/p&gt;
+
+&lt;p&gt;Der Trait besteht aus folgenden Funktionen:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;trait&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Allocator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dealloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;oom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;usable_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;realloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                      &lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                      &lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                      &lt;span class=&quot;n&quot;&gt;new_layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+					  
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;alloc_zeroed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+					  
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;alloc_excess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Excess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;realloc_excess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                             &lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                             &lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                             &lt;span class=&quot;n&quot;&gt;new_layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Excess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+							 
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;grow_in_place&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;new_layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CannotReallocInPlace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+							
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shrink_in_place&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                              &lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                              &lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                              &lt;span class=&quot;n&quot;&gt;new_layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CannotReallocInPlace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc_one&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Unique&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dealloc_one&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unique&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc_array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Unique&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;realloc_array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unique&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;n_old&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;n_new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Unique&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dealloc_array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unique&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Müssen jetzt wirklich fünfzehn Funktionen implementiert werden? Und die neuen Typen, &lt;code class=&quot;highlighter-rouge&quot;&gt;Layout&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;AllocErr&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Excess&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;CannotReallocInPlace&lt;/code&gt;?
+Tatsächlich sieht die Sache viel freundlicher aus: Nur zwei der Funktionen sind obligatorisch, nämlich &lt;code class=&quot;highlighter-rouge&quot;&gt;alloc()&lt;/code&gt; und &lt;code class=&quot;highlighter-rouge&quot;&gt;dealloc()&lt;/code&gt;. Alle anderen haben sinnvolle
+Standardimplementationen (&lt;em&gt;defaults&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Layout&lt;/code&gt; ist eine Struktur, die einen Speicherrequest beschreibt. Sie hat u.a. die beiden Methoden:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;und&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Der Summentyp&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;AllocErr&lt;/code&gt; ist – wie der Name vorschlägt – für den Fehlerbericht bei der Allozierung zuständig. Er ist wie folgt definiert:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;derive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PartialEq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Eq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Exhausted&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Unsupported&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;details&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Alle anderen Dinge braucht man zunächst einmal nicht (können aber später zur besseren Effizienz genutzt werden). Es ist somit jetzt einfach, die Kompatibilität zum früheren
+Interface wieder herzustellen.&lt;/p&gt;
+
+&lt;p&gt;Die Allokator-API gilt für alle Allokatoren, Rust unterstützt Hierarchien von Allokatoren. Am Ende wird irgendwann die Speicherverwaltung des Betriebssystems von die
+Standardbibliothek gerufen. Existiert kein solches (wie in unserem Fall) oder wird nur die Standardbibliothek nicht eingebunden, aber trotzdem Crates benutzt, die
+Allozierungen vornehmen wollen, muss ein globaler Allokator angegeben werden. Dies wird einfach gemacht, indem einer Instanz einer Allokator-Struktur mit dem Attribut
+&lt;code class=&quot;highlighter-rouge&quot;&gt;#[global_allocator]&lt;/code&gt; dazu erklärt wird. Warum bei der Fehlermeldung oben dieses Attribut – das übrigens auch noch keinen Eintrag im
+&lt;a href=&quot;https://doc.rust-lang.org/unstable-book/&quot;&gt;Unstable Book&lt;/a&gt; hat – nicht genannt wurde, sondern &lt;code class=&quot;highlighter-rouge&quot;&gt;#[default_lib_allocator]&lt;/code&gt; ist mir nicht ganz klar; vermutlich ist das bloß
+noch nicht stabilisiert.&lt;/p&gt;
+
+&lt;h3 id=&quot;guter-service&quot;&gt;Guter Service&lt;/h3&gt;
+&lt;p&gt;Nachdem ich die &lt;strong&gt;kalloc&lt;/strong&gt;-Bibliothek entfernt und einen Wrapper um die alten Allokator-Funktionen aus der &lt;code class=&quot;highlighter-rouge&quot;&gt;linked_list_allocator&lt;/code&gt;-Bibliothek geschrieben hatte und der
+neue Allokator tadellos lief, stellte ich fest, dass die von mir verwendete Version 0.2.7 der &lt;code class=&quot;highlighter-rouge&quot;&gt;linked_list_allocator&lt;/code&gt;-Bibliothek gar nicht mehr die aktuelle ist. Die
+derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständig umgesetzt. Danke an den Autor Philipp Oppermann, von dem auch das Blog
+“&lt;a href=&quot;https://os.phil-opp.com&quot;&gt;Writing an OS in Rust&lt;/a&gt;” stammt.&lt;/p&gt;
+
+&lt;p&gt;Ich habe dann auf die neue Version umgestellt. Damit ist der Heap trivial, die Datei &lt;strong&gt;heap.rs&lt;/strong&gt; sieht jetzt so aus:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;c&quot;&gt;///! Z.z. binden wir die einfach die neue Version von linked_list_allocator ein.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;///! Später soll die Interaktion mit dem Pager hinzukommen.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linked_list_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;linked_list_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LockedHeap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Ich lasse sie aber erstmal trotzdem stehen, da ich – wie &lt;a href=&quot;/aihpos/computer/aihpos-6-heap/&quot;&gt;hier&lt;/a&gt; diskutiert – später den Heap überarbeiten und die den
+Out-of-Memory-Fehler abfangen will.&lt;/p&gt;
+
+&lt;p&gt;Der Allokator der &lt;code class=&quot;highlighter-rouge&quot;&gt;linked_list_allocator&lt;/code&gt;-Bibliothek ist übrigens durch einen Spin-Lock (aus der &lt;a href=&quot;https://crates.io/crates/spin&quot;&gt;spin&lt;/a&gt;-Bibliothek) geschützt. Das ist in
+SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss gestellt wird, schadet aber nicht und kann bei einer späteren Portierung nützlich sein.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;In &lt;strong&gt;main.rs&lt;/strong&gt; wird der Allokator als &lt;code class=&quot;highlighter-rouge&quot;&gt;static&lt;/code&gt; deklariert…&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IRQ_STACK_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2048&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INIT_HEAP_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4096&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;// 25 Seiten = 100 kB&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[global_allocator]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HEAP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LockedHeap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;LockedHeap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;… und wie folgt initialisiert:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init_heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;HEAP&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.lock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__bss_start&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INIT_HEAP_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Jetzt funktioniert die Übersetzung wieder fehlerfrei.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt; 18. Juli 2017&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Ich bin mir nicht sicher, was die beste Bezeichnung im Deutschen für &lt;code class=&quot;highlighter-rouge&quot;&gt;enum&lt;/code&gt; ist. Als C-Programmierer denkt man da an “Aufzählungstyp”, was aber in Rust in die Irre
+    führt. “Summentyp” ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich &lt;em&gt;kein&lt;/em&gt; &lt;a href=&quot;/2017/03/19/aihpos-1&quot;&gt;Design-Ziel&lt;/a&gt; in SOPHIA.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-8-braking-news/</guid>
+			</item>
+		
+			<item>
+				<title>Ein bisschen zerstreut</title>
+				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/</link>
+				<pubDate>Sun, 02 Jul 2017 00:00:00 +0200</pubDate>
+				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-8-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;alert-box text radius &quot;&gt;&lt;p&gt;&lt;em&gt;Dieser Beitrag wird derzeit vollständig überarbeitet.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-6-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-8-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+</description>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/</guid>
+			</item>
+		
+			<item>
 				<title>Hello Jekyll</title>
 				<link>https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll</link>
 				<pubDate>Mon, 26 Jun 2017 12:16:41 +0000</pubDate>
@@ -58,6 +332,8 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -256,7 +532,7 @@ werden könnten – also fallen beide aus.&lt;/p&gt;
 &lt;p&gt;Glücklicherweise kennt Rust das Konzept von maßgeschneiderten Allokatoren (&lt;em&gt;custom allocators&lt;/em&gt;). Für einen solchen Allokator gibt es einige Spielregeln:&lt;/p&gt;
 
 &lt;div class=&quot;alert-box warning radius &quot;&gt;&lt;h4 class=&quot;altert warning&quot;&gt;Achtung&lt;/h4&gt;
-&lt;p&gt;&lt;em&gt;Das Konzept der Allocatoren hat sich mit der neuen Allocator-API grundlegend gewandelt.&lt;br /&gt;
+&lt;p&gt;&lt;em&gt;Das Konzept der Allokatoren hat sich mit der neuen Allokator-API grundlegend gewandelt.&lt;br /&gt;
 Die folgenden Betrachtungen lasse ich wiederum  aus “historischen” Gründen stehen.&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 
@@ -380,7 +656,7 @@ es eine nahezu unüberschaubare Anzahl von Allokatoren. Jedoch sind die wenigste
 &lt;ul&gt;
   &lt;li&gt;Buddy-Allokator (siehe Vorlesung)&lt;/li&gt;
   &lt;li&gt;Linked-List-Allokator: Freispeicher wird durch eine verlinkte Liste verwaltet&lt;/li&gt;
-  &lt;li&gt;Slab-Allocator: Vorhalten von vorgefertigten Speicherstückchen&lt;/li&gt;
+  &lt;li&gt;Slab-Allokator: Vorhalten von vorgefertigten Speicherstückchen&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Obwohl er nicht das beste Laufzeitverhalten hat, werden ich vorläufig den Linked-List-Allokator verwenden. Dafür glänzt es mit einem Speicheroverhead und (internen)
@@ -555,6 +831,8 @@ implementieren müssten. Allerdings ist das Thema Speicher noch nicht erledigt: 
 Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des nächsten Beitrags in der SOPHIA-Reihe.&lt;/p&gt;
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-7-vm/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2879,608 +3157,6 @@ gets out of control, disaster strikes.
 &lt;/blockquote&gt;
 </description>
 				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/07/pointer</guid>
-			</item>
-		
-			<item>
-				<title>Ausr(ü/u)stung</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/</link>
-				<pubDate>Fri, 31 Mar 2017 00:00:00 +0200</pubDate>
-				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#setup-rust&quot; id=&quot;markdown-toc-setup-rust&quot;&gt;Setup Rust&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#targets&quot; id=&quot;markdown-toc-targets&quot;&gt;Targets&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#architektur&quot; id=&quot;markdown-toc-architektur&quot;&gt;Architektur&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#betriebssystem-und-binärschnittstelle&quot; id=&quot;markdown-toc-betriebssystem-und-binärschnittstelle&quot;&gt;Betriebssystem und Binärschnittstelle&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ein-eigenes-target&quot; id=&quot;markdown-toc-ein-eigenes-target&quot;&gt;Ein eigenes Target&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#architekturbeschreibung&quot; id=&quot;markdown-toc-architekturbeschreibung&quot;&gt;Architekturbeschreibung&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#linker&quot; id=&quot;markdown-toc-linker&quot;&gt;Linker&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#core&quot; id=&quot;markdown-toc-core&quot;&gt;Core&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#debugger&quot; id=&quot;markdown-toc-debugger&quot;&gt;Debugger&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
-
-&lt;p&gt;Nachdem im &lt;a href=&quot;/2017/03/19/aihpos-1&quot;&gt;letzten Teil&lt;/a&gt; die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.&lt;/p&gt;
-
-&lt;h2 id=&quot;setup-rust&quot;&gt;Setup Rust&lt;/h2&gt;
-
-&lt;p&gt;Die Entwicklung von SOPHIA erfolgt nicht auf dem System, auf dem es später laufen soll – das gibt es ja noch gar nicht. Vielmehr soll die Entwicklung auf meinem
-Arbeitsplatzrechner stattfinden. Das ist in diesem Fall ein MacPro von 2010 mit MacOS. Irgendein Linux-Rechner würde auch gehen, zur Not sogar eine Windows-Maschine.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Wir
-können also nicht den normalen Compiler benutzen, sondern einen Crosscompiler. Ein Crosscompiler wird auf einer Plattform ausgeführt (host), und erzeugt Code für eine
-andere Plattform (target). Ein “normaler” Compiler ist also ein Crosscompiler, bei dem Host- und Targetplattform “zufällig” identisch sind.&lt;/p&gt;
-
-&lt;p&gt;Glücklicherweise ist Rust – u.a. durch das  &lt;a href=&quot;https://de.wikipedia.org/wiki/LLVM&quot;&gt;LLVM-Backend&lt;/a&gt;, das ja auch von clang benutzt wird – von vornherein als Crosscompiler
-ausgelegt. Etwas komplizierter ist, dass wir &lt;em&gt;bare metal&lt;/em&gt; (also für eine Umgebung ohne Betriebssystem) entwickeln, aber dazu später. Installieren wir zunächst Rust. Dazu
-gibt es mehrere Wege, man kann den Paketmanager seiner Wahl benutzen. Die offiziell empfohlene Variante läuft über &lt;code class=&quot;highlighter-rouge&quot;&gt;rustup&lt;/code&gt;. Um &lt;code class=&quot;highlighter-rouge&quot;&gt;rustup&lt;/code&gt; selbst zu erhalten, sollte man in
-einer Shell&lt;/p&gt;
-
-&lt;div class=&quot;window&quot;&gt;
-          &lt;nav class=&quot;control-window&quot;&gt;
-            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
-          &lt;/nav&gt;
-          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
-          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;curl https://sh.rustup.rs -sSf | sh&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
-&lt;p&gt;eingeben und den Anweisungen folgen und zunächst die _default-_Installation wählen. &lt;code class=&quot;highlighter-rouge&quot;&gt;rustup&lt;/code&gt; installiert neben dem eigentlichen Compiler die Standardbibliotheken, das
- Build-Tool &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;, sowie Dokumentationen.&lt;/p&gt;
-
-&lt;p&gt;Wir werden jedoch für die Betriebssystementwicklung auch Inline-Assembler, Language Items&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; und vielleicht einige andere Features brauchen, die noch nicht stabil sind
-und deshalb noch keinen Eingang in die stabile Version von Rust gefunden haben. Jedoch gibt es die sogenannte Nightly-Version von Rust, die diese Features hat, die wir
-zusätzlich installieren.&lt;/p&gt;
-
-&lt;div class=&quot;window&quot;&gt;
-          &lt;nav class=&quot;control-window&quot;&gt;
-            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
-          &lt;/nav&gt;
-          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
-          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;rustup install nightly&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
-
-&lt;p&gt;Eine der netten Eigenschaften von Rust ist es, dass verschiedene Versionen und Toolchains sehr feingranular gemanagt werden können und sich nicht in die Quere kommen. Für
-jedes Projekt (und sogar Subprojekt) können wir jetzt auswählen, ob wir mit der stabilen oder der nightly Version arbeiten wollen. Wir wählen allerdings die
-Nightly-Version als unsere Standardversion.&lt;/p&gt;
-
-&lt;div class=&quot;window&quot;&gt;
-          &lt;nav class=&quot;control-window&quot;&gt;
-            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
-          &lt;/nav&gt;
-          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
-          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;rustup default nightly&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
-
-&lt;h2 id=&quot;targets&quot;&gt;Targets&lt;/h2&gt;
-
-&lt;p&gt;Nach fertiger Installation können wir uns mögliche Targets anzeigen lassen:&lt;/p&gt;
-&lt;div class=&quot;window&quot;&gt;
-          &lt;nav class=&quot;control-window&quot;&gt;
-            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
-          &lt;/nav&gt;
-          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
-          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;rustup target list&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  aarch64-apple-ios
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  aarch64-linux-android
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  aarch64-unknown-fuchsia
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  aarch64-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  arm-linux-androideabi
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  arm-unknown-linux-gnueabi
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  arm-unknown-linux-gnueabihf
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  arm-unknown-linux-musleabi
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  arm-unknown-linux-musleabihf
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  armv7-apple-ios
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  armv7-linux-androideabi
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  armv7-unknown-linux-gnueabihf
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  armv7-unknown-linux-musleabihf
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  armv7s-apple-ios
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  asmjs-unknown-emscripten
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  i386-apple-ios
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  i586-pc-windows-msvc
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  i586-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  i686-apple-darwin
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  i686-linux-android
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  i686-pc-windows-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  i686-pc-windows-msvc
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  i686-unknown-freebsd
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  i686-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  i686-unknown-linux-musl
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  mips-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  mips-unknown-linux-musl
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  mips64-unknown-linux-gnuabi64
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  mips64el-unknown-linux-gnuabi64
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  mipsel-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  mipsel-unknown-linux-musl
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  powerpc-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  powerpc64-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  powerpc64le-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  s390x-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  sparc64-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  wasm32-unknown-emscripten
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-apple-darwin (default)
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-apple-ios
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-pc-windows-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-pc-windows-msvc
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-rumprun-netbsd
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-unknown-freebsd
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-unknown-fuchsia
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-unknown-linux-gnu
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-unknown-linux-musl
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  x86_64-unknown-netbsd&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
-
-&lt;p&gt;Eine Kombination wie  &lt;code class=&quot;highlighter-rouge&quot;&gt;x86_64-apple-darwin&lt;/code&gt; nennt man das &lt;a href=&quot;https://clang.llvm.org/docs/CrossCompilation.html#target-triple&quot;&gt;Target-Triple&lt;/a&gt;, auch wenn diese Bezeichnung mitunter etwas irreführend anmutet, da das Target-Triple auch
-mehr (oder weniger) als drei Parameter haben kann. Die generische Form ist &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Architektur&amp;gt;&amp;lt;Subarchitektur&amp;gt;-&amp;lt;Hersteller&amp;gt;-&amp;lt;Betriebssystem&amp;gt;-&amp;lt;Binärschnittstelle&amp;gt;&lt;/code&gt;. Betrachten
-wir das für uns notwendige Target-Triple genauer.&lt;/p&gt;
-
-&lt;h3 id=&quot;architektur&quot;&gt;Architektur&lt;/h3&gt;
-
-&lt;p&gt;Unter Architektur/Subarchitektur wird der Prozessor angegeben, und ggf. noch weitere Informationen wie die Endianess.&lt;/p&gt;
-
-&lt;p&gt;Unser Zielsystem, ein Raspberry Pi B+, hat einen ARM1176JZF-S-Prozessor und gehört damit zur ARM11-Familie, was wiederum eine ARMv6-Architektur impliziert. Der ARM1176JZF-S kennt drei verschiedene Befehlssätze, zwischen denen man umschalten kann:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;den 32-Bit-ARM-Befehlssatz&lt;/li&gt;
-  &lt;li&gt;den 16-Bit-Thumb2-Befehlssatz&lt;/li&gt;
-  &lt;li&gt;den 8-Bit-Jazelle-Bytecode-Befehlssatz&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Die Bitzahl steht hier nicht für die Adressbreite, sondern für die Größe eines Befehls. Da die Dokumentation zum Jazelle-Befehlssatz nicht ohne weiteres öffentlich
-zugänglich ist, bleibt für uns die Auswahl zwischen ARM- und Thumb-Befehlssatz. Der Raspberry Pi B+ hat 512 MB Speicher, das ist für die heutigen Verhältnisse nicht
-sonderlich viel.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; Daher wäre die Nutzung des Thumb-Befehlssatzes eine gute Idee, da hier jeder Befehl nur die Hälfte des Speichers verbraucht.&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; Da hier weniger Register
-und Befehle zur Verfügung stehen, braucht man wiederum für den gleichen Code mehr Befehle, aber erfahrungsgemäß ist die Speichereinsparung trotzdem um die 30%. Vergessen
-wir also den ARM-Befehlssatz und schreiben SOPHIA vollständig in Thumb? Nein, die Sache hat einen Haken: Jeder Ausnahmemode (Interruptmodi, Kernelmode, etc.) wird &lt;em&gt;immer&lt;/em&gt;
-in ARM-Befehlsatz ausgeführt. Mit anderen Worten: Mindestens für den Kern sind wir auf den ARM-Befehlssatz angewiesen. Nutzerprogramme und Betriebssystemserver können
-dagegen mitunter in Thumb geschrieben werden.&lt;/p&gt;
-
-&lt;p&gt;Wenn man sich die obige Liste von Target-Triplen anschaut, dann fällt auf, dass es zwar armv7,- aber keine armv6-Einträge gibt. Die Einträge, die nur mit
-“arm” anfangen, sind eigentlich für alle 32-Bit-ARM, d.h. auch ARMv7. Allerdings kann ARMv7 noch mehr, und ist nicht vollständig abwärtskompatibel.&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-
-&lt;p&gt;Die Angabe eines Herstellers ist optional. Er wird in unserem Fall ausgelassen oder erhält den Wert “unknown”.&lt;/p&gt;
-
-&lt;h3 id=&quot;betriebssystem-und-binärschnittstelle&quot;&gt;Betriebssystem und Binärschnittstelle&lt;/h3&gt;
-
-&lt;p&gt;Was das Betriebssystem angeht, so ist die Sache einfach: wir haben keines. Durch die Angabe des Betriebssystems weiß der Compiler, welche Systemrufe möglich sind. Dazu wird z.T. die genutzte Standardbibliothek auf dem System angegeben, gegen die gelenkt wird. So benennt “i686-unknown-linux-gnu” die &lt;a href=&quot;https://en.wikipedia.org/wiki/GNU_C_Library&quot;&gt;GNU C Library&lt;/a&gt;, während “i686-unknown-linux-musl” die auf statisches Linken optimierte &lt;a href=&quot;http://www.musl-libc.org&quot;&gt;musl libc&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Die Binärschnittstelle beschreibt, wie z.B. die Parameterübergabe bei Funktionsrufen erfolgt. Theoretisch  könnten wir uns hier auch unsere eigenen Konventionen ausdenken; es empfiehlt sich aber, an das den EABI-Standard  (&lt;a href=&quot;http://infocenter.arm.com/help/topic/com.arm.doc.ihi0036b/IHI0036B_bsabi.pdf&quot;&gt;&lt;em&gt;embedded-application binary interface&lt;/em&gt;&lt;/a&gt;) zu halten, der für verschiedene Architekturen nicht nur die Aufrufkonventionen festlegt, sondern auch noch z.B. Dateiformate. Für ARM unterscheidet man noch durch einen Suffix (“hf”) zur ABI, ob Gleitkommaoperationen durch einen (On-Chip-)Coprozessor ausgeführt werden sollen. Da ein Kernel i.d.R. keine Gleitkomma-Operationen ausführen muss, ist das eigentlich uninteressant. Da aber der Raspberry den VFPv2-Gleitkomma-Prozessor enthält, kann diese Option ruhig gewählt werden.&lt;/p&gt;
-
-&lt;h2 id=&quot;ein-eigenes-target&quot;&gt;Ein eigenes Target&lt;/h2&gt;
-
-&lt;h3 id=&quot;architekturbeschreibung&quot;&gt;Architekturbeschreibung&lt;/h3&gt;
-
-&lt;p&gt;Nach der Diskussion im letzten Abschnitt bräuchten wird also das Target-Triple &lt;strong&gt;arm-none-eabihf&lt;/strong&gt; (und ggf. später &lt;strong&gt;arm-aihpos-eabihf&lt;/strong&gt; und/oder
-&lt;strong&gt;thumpv6-aihpos-eabihf&lt;/strong&gt;). Leider gibt es dieses Triple (noch) nicht. Deshalb müssen wir eine Beschreibung dafür anlegen.&lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; Die Beschreibung ist eine JSON-Datei, und
-würde in unserem Fall etwa so aussehen:&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;llvm-target&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;arm-none-eabihf&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;target-endian&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;little&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;target-pointer-width&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;32&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;os&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;none&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;eabihf&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;vendor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;unknown&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;arch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;arm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;linker&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;arm-none-eabi-gcc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-	&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;linker-flavor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gcc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;data-layout&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;e-m:e-p:32:32-i64:64-v128:64:128-a:0:32-n32-S64&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;executables&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;relocation-model&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;static&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;no-compiler-rt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;no_default_libraries&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;disable-redzone&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Die meisten Punkte sollten selbsterklärend sein, außer wahrscheinlich “data-layout”. Hier werden Eigenschaften des Datenlayouts&lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;, insbesondere Alignment in kompakter Form dargestellt, wobei einiges redundant zu den anderen Punkten ist:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;e: little endiang&lt;/li&gt;
-  &lt;li&gt;m:e: ELF-Mangling, private Symbole erhalten einen .L-Prefix&lt;/li&gt;
-  &lt;li&gt;p:32:32: Größe und Alignment für Pointer, hier jeweils 32 Bit&lt;/li&gt;
-  &lt;li&gt;v128:64:128: Für 128-Bit-Vektoren ist das Alignment 64 Bit, bevorzugt 128 Bit&lt;/li&gt;
-  &lt;li&gt;a:0:32: Kein Alignment für Aggregattypen (wie struct), aber 32 Bit bevorzugt&lt;/li&gt;
-  &lt;li&gt;n32: Native Größe eines Integer ist 32 Bit&lt;/li&gt;
-  &lt;li&gt;S64: Stack hat Alignment von 64 Bit&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;linker&quot;&gt;Linker&lt;/h3&gt;
-
-&lt;p&gt;Dieses JSON-File kopieren wir in unser Projektverzeichnis, wir werden es später ständig brauchen. In ihm haben wir auch spezifiziert, dass für das Linken der
-GCC-Arm-Cross-Linker benutzt werden soll. Diesen müssen wir installieren, genau genommen die ganze Suite von GCC-Arm-Cross-Tools, wozu z.B. auch &lt;code class=&quot;highlighter-rouge&quot;&gt;arm-none-eabi-objcopy&lt;/code&gt;
-oder &lt;code class=&quot;highlighter-rouge&quot;&gt;arm-none-eabi-readelf&lt;/code&gt; gehört. Ich installiere die Tools über den bei mir vorhandenen Paketmanager &lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt;, YMMV:&lt;/p&gt;
-&lt;div class=&quot;window&quot;&gt;
-          &lt;nav class=&quot;control-window&quot;&gt;
-            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
-          &lt;/nav&gt;
-          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
-          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;brew tap nitsky/stm32&lt;/span&gt;&lt;span class=&quot;line command&quot;&gt;brew install arm-none-eabi-gcc&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
-
-&lt;h3 id=&quot;core&quot;&gt;Core&lt;/h3&gt;
-
-&lt;p&gt;Wie schon mehrmals betont, müssen wir auf den Einsatz der&lt;code class=&quot;highlighter-rouge&quot;&gt;Rust&lt;/code&gt;-Standard-Bibliothek verzichten. Damit man aber nicht ganz auf dem Trockenen sitzt, hat Rust seine
-Standard-Bibliothek so strukturiert, dass es einen Teil gibt, der frei von externen Referenzen und Betriebssystemrufen ist: &lt;code class=&quot;highlighter-rouge&quot;&gt;core&lt;/code&gt;. Aber natürlich gibt es core nicht
-nicht für unser Taget-Triple, daher müssen wir uns die Bibliothek selbst übersetzen.&lt;/p&gt;
-
-&lt;div class=&quot;alert-box warning radius &quot;&gt;&lt;p&gt;&lt;em&gt;Die folgenden Schritte sind bei Einsatz von &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;, wie in der Folge &lt;a href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung&quot;&gt;“Um-Rust-ung”&lt;/a&gt; wird gezeigt, unnötig.&lt;br /&gt;
-Ich lasse sie aber aus “historischen” Gründen stehen.&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Dazu holen wir uns den Quellcode in unser Projektverzeichnis:&lt;/p&gt;
-
-&lt;div class=&quot;window&quot;&gt;
-          &lt;nav class=&quot;control-window&quot;&gt;
-            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
-          &lt;/nav&gt;
-          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
-          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;cd ~/aihpos&lt;/span&gt;&lt;span class=&quot;line command&quot;&gt;git clone https://github.com/hackndev/rust-libcore&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
-
-&lt;p&gt;Jetzt können wir die Core-Bibliothek übersetzen. Dazu schreiben wir das Target-JSON-File in das Hauptverzeichnis der Core-Quellfiles und starten die Übersetzung mit &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&quot;window&quot;&gt;
-          &lt;nav class=&quot;control-window&quot;&gt;
-            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
-          &lt;/nav&gt;
-          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
-          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
-&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;cd rust-libcore&lt;/span&gt;&lt;span class=&quot;line command&quot;&gt;cp ../arm-none-eapihf.json .&lt;/span&gt;&lt;span class=&quot;line command&quot;&gt;cargo build --release --target=arm-none-eapihf&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Compiling rust-libcore v0.0.3 (file:///Users/mwerner/aihpos/rust-libcore)
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Finished release [optimized] target(s) in 47.20 secs&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
-
-&lt;p&gt;Unter rust-libcore/target/arm-none-eabihf/release finden wir die fertige Bibliothek libcore.rlib.&lt;/p&gt;
-
-&lt;h2 id=&quot;debugger&quot;&gt;Debugger&lt;/h2&gt;
-
-&lt;p&gt;Haben wir damit alles zusammen? Für die eigentliche Entwicklung schon. Aber ich möchte es mir etwas bequemer machen und nicht ständig die SD-Karte wechseln
-müssen. Glücklicherweise hat unserer Prozessor den Coprozessor CP14. Dieser ermöglicht die Nutzung eines &lt;a href=&quot;https://en.wikipedia.org/wiki/JTAG&quot;&gt;JTAG-Interfaces&lt;/a&gt; zum Debuggen. Früher war JTAG-Hardware sehr
-teuer, die Preise kamen schnell in den vierstelligen Euro-Bereich. Das hat sich zum Glück geändert. Ich nutze den &lt;a href=&quot;https://www.segger.com/j-link-edu.html&quot;&gt;j-link EDU&lt;/a&gt; der Firma Segger, den man (als
-Universität) bereits für knapp 60 € erwerben kann. Mein Freund und Kollege Jan Richling hat mir noch einen Adapter zur Verfügung gestellt, den er für sein
-Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl. JTAG keine Unterschiede auf, so dass ich den Adapter auch für meinen Pi einsetzen kann.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/jlink.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/adapter.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Um diese Hardware nutzen zu können, brauche ich das Software-Gegenstück in Form des &lt;a href=&quot;http://openocd.org&quot;&gt;OpenOCD&lt;/a&gt; (Open On-Chip Debugger). Die Installation übernimmt wieder &lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&quot;window&quot;&gt;
-          &lt;nav class=&quot;control-window&quot;&gt;
-            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
-            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
-          &lt;/nav&gt;
-          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
-          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;brew install openocd&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
-
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;Die Entwickler-Tools, die wir gleich besprechen, sind i.d.R. eher auf unixoide Systeme ausgerichtet, so dass es bei Windows meist etwas Mehraufwand gibt.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;Damit können Funktionen zur Verfügung gestellt werden, die sonst die in der Standardbibliothek sind, aber refactor zur Rust-Runtime gehören.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:3&quot;&gt;
-      &lt;p&gt;Zum Vergleich: Ich war in meiner Jugend sehr stolz, dass ich den Speicher meines ersten Computers – einen ZX 81 – mit 64 kB(!) sehr weit ausgebaut hatte.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:4&quot;&gt;
-      &lt;p&gt;Genau genommen nur die meisten, da es seit Thumb2 einige 32-Bit-Ausnahmen gibt.&amp;nbsp;&lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:5&quot;&gt;
-      &lt;p&gt;Der Raspberry 3 hat mit einem ARMv8-Prozessor, der eine 64-Bit-Architektur hat und im 64-Bit-Modus einen völlig anderen Befehlssatz (A64), der hier aber nicht weiter betrachtet wird.&amp;nbsp;&lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:6&quot;&gt;
-      &lt;p&gt;Eine häufig genutzte Alternative wäre, “arm-unknown-linux-gnueabihf” oder “arm-unknown-linux-musleabihf” zu nehmen und ein paar Basisfunktionen der C-Bibliothek wie z.B. memcpy nachzuimplementieren.&amp;nbsp;&lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:7&quot;&gt;
-      &lt;p&gt;Eine genauere Beschreibung von möglichen Layout-Eigenschaften findet sich in der LLVM-Dokumentation&amp;nbsp;&lt;a href=&quot;#fnref:7&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-</description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/</guid>
-			</item>
-		
-			<item>
-				<title>Another incompatible and hackneyed Pi Operating System</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</link>
-				<pubDate>Sun, 19 Mar 2017 12:03:55 +0000</pubDate>
-				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#hintergrund&quot; id=&quot;markdown-toc-hintergrund&quot;&gt;Hintergrund&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ziele&quot; id=&quot;markdown-toc-ziele&quot;&gt;Ziele&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#sprache&quot; id=&quot;markdown-toc-sprache&quot;&gt;Sprache&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#betriebssystementwicklung&quot; id=&quot;markdown-toc-betriebssystementwicklung&quot;&gt;Betriebssystementwicklung&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#links&quot; id=&quot;markdown-toc-links&quot;&gt;Links&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;hintergrund&quot;&gt;Hintergrund&lt;/h2&gt;
-
-&lt;p&gt;In meinem Kurs &lt;a href=&quot;http://osg.informatik.tu-chemnitz.de/lehre/os&quot;&gt;Betriebssysteme&lt;/a&gt; verwende ich ab und zu Code-Abschnitte, die die Implementation verschiedener Konzepte des Betriebssystementwurfs demonstrieren. Diese Code-Abschnitte sind bisher sehr uneinheitlich, und setzen sich aus verschiedenen Quellen zusammen:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Freier Code aus “echten” Betriebssystemen wie z.B. Linux;&lt;/li&gt;
-  &lt;li&gt;“Unechter” Code (Code, zwar prinzipiell funktioniert, aber so nie einem Betriebsystem eingesetzt wurde), vornehmlich in C und Modula-2;&lt;/li&gt;
-  &lt;li&gt;Pseudocode.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Um die Didaktik des Kurses zu verbessern, möchte ich ein Betriebssystem extra für diese Veranstaltung schreiben, so dass möglichst viele Konzepte direkt im Code wiederzufinden sind. Außerdem soll  &lt;strong&gt;aihPOS&lt;/strong&gt; — so der Name des Projekts — später als Codebasis bei verschiedenen Forschungsprojekten in unser Gruppe nützlich sein.&lt;/p&gt;
-
-&lt;p&gt;“aihPOS” steht für &lt;strong&gt;a&lt;/strong&gt;nother &lt;strong&gt;i&lt;/strong&gt;ncompatible and &lt;strong&gt;h&lt;/strong&gt;ackneyed &lt;strong&gt;P&lt;/strong&gt;i &lt;strong&gt;O&lt;/strong&gt;perating &lt;strong&gt;S&lt;/strong&gt;ystem. Obwohl dieses Akronym einiges über das Betriebssystem
-aussagt, habe ich es doch in erster Linie gewählt, weil es rückwärts geschrieben den Namen meiner Tochter ergibt: Sophia. Daher werde ich den Betriebssystemnamen ab sofort
-so schreiben: SOPHIA. 🙂&lt;/p&gt;
-
-&lt;h2 id=&quot;ziele&quot;&gt;Ziele&lt;/h2&gt;
-
-&lt;p&gt;Bevor man ein Projekt der Größe eines Betriebssystems beginnt, und sei es auch nur ein so kleines wie SOPHIA, muss man sich über die Designziele im Klaren sein. Ich nenne
-zunächst einmal einige Ziele, die ich ausdrücklich &lt;strong&gt;nicht&lt;/strong&gt; habe:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Geschwindigkeit: immer, wenn es einen Widerspruch zwischen &lt;strong&gt;Performance&lt;/strong&gt; und einem klaren Design gibt, werde ich das klare Design bevorzugen. Schließlich soll SOPHIA niemals produktiv eingesetzt werden, sondern zur Demonstrations- und Testzwecken dienen.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Kompatibilität&lt;/strong&gt; zu POSIX, Windows o.ä.&lt;/li&gt;
-  &lt;li&gt;Einsatz auf komplexer Hardware wie z.B. &lt;strong&gt;x86&lt;/strong&gt;-PCs.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Vielmehr habe ich folgende Designziele:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Wesentliche Konzepte von Betriebssystemen sollen entsprechende &lt;strong&gt;Abstraktionen&lt;/strong&gt; im Code wiederfinden.&lt;/li&gt;
-  &lt;li&gt;Das Betriebssystem soll eine &lt;strong&gt;klare Struktur&lt;/strong&gt; haben und dem &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Microkernel&quot;&gt;Mikrokernel&lt;/a&gt;&lt;/strong&gt;-Ansatz folgen.&lt;/li&gt;
-  &lt;li&gt;Als Zielhardware wird der &lt;strong&gt;Raspberry Pi&lt;/strong&gt; benutzt. Er ist günstig zu haben, so dass Studierende leicht mit Modifikationen des Codes herumspielen können, ohne ihren
-teuren Laptop oder Desktop zu riskieren. Außerdem besitzt unser Labor bereits einen Klassensatz Raspberry Pi 1B+ (mit einer &lt;a href=&quot;https://www.gertbot.com&quot;&gt;Gertboard&lt;/a&gt;-Erweiterung).&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;sprache&quot;&gt;Sprache&lt;/h2&gt;
-
-&lt;p&gt;Traditionell werden Betriebssysteme in Assembler oder C geschrieben. Theoretisch kann für das Schreiben von Betriebssysteme nahezu jede Sprache genutzt werden (und
-z.T. werden sie auch tatsächlich genutzt). Häufig muss zwar  “im Notfall” etwas Assembler-Code eingebunden werden (völlig ohne geht es in der Regel sowieso
-nicht, da viele Feinheiten der unterliegenden Maschine sich nicht in höheren Programmiersprachen abbilden), aber es gibt Betriebssysteme in Java oder Lisp. Jedoch eignen
-sich die meisten Sprachen nicht sonderlich gut für eine Bare-Metal-Entwicklung, wie ein Betriebssystem sie erfordert: Die Sprachen bringen ihr eigenes Laufzeitsystem mit,
-das wiederum Systemrufe des Betriebssystem nutzt. Diese stehen aber bei der Entwicklung eines Betriebssystems ja gar nicht zur Verfügung. Entsprechend können einige
-Sprachkonzept nicht genutzt werden. Noch mehr Systemrufe sind meist in den Bibliotheken zu finden, so dass viele Bibliotheksfunktionen ebenfalls nicht genutzt werden
-können und ggf. nachimplementiert werden müssen.&lt;/p&gt;
-
-&lt;p&gt;Trotzdem werde ich für SOPHIA &lt;strong&gt;nicht&lt;/strong&gt; C benutzen, und das im wesentlichen aus drei Gründen:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Entsprechend der obigen Anforderungen sollen sich Betriebssystemkonzept gut in Code-Abstraktionen wiederfinden. Dies ist bei C fast so wenig der Fall, wie in Assembler.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
-  &lt;li&gt;C ist eine alte Sprache, die viele modernen Konzepte der &lt;a href=&quot;http://joeduffyblog.com/2015/11/03/a-tale-of-three-safeties/&quot;&gt;Typen- und Speicher- und Nebenläufigkeitssicherheit&lt;/a&gt; nicht kennt.  Daher ist das “Rumspielen” mit dem Code (vergleiche Designziel 3) relativ gefährlich.&lt;/li&gt;
-  &lt;li&gt;So ein Projekt ist immer eine gute Gelegenheit, eine neue Sprache zu erlernen (oder wenigstens zu vertiefen)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Es stellt sich die Frage, welche anderen Sprachen möglich wären. Die beiden derzeitigen Mainstream-Sprachen Java&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; und Python kommen hier nicht infrage, da sie soweit
-von der Maschine entfernt sind, dass die Brücke zwischen Maschinen- und Sprachabstraktionen nicht sehr intuitiv wäre. Es gibt in meiner Gruppe zwar ein Projekt, ein
-Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es den hier gestellten Designzielen entspricht.&lt;/p&gt;
-
-&lt;p&gt;Es gibt einige Sprachen, die für sich in Anspruch nehmen systemnahe zu sein. Die bekanntesten sind wohl C++, D, Forth, Go und Rust. Von diesen scheidet Forth aus, da es ein bißchen &lt;strong&gt;zu&lt;/strong&gt; maschinennah ist. Außerdem werden Abstraktionen in der Regel auf Datenstrukturen abgebildet, wo Forth etwas limitiert ist. Die anderen vier Sprachen sind aus dieser Perspektive zweifellos alle geeignet.&lt;/p&gt;
-
-&lt;p&gt;Daher habe ich weitere Kriterien betrachtet, die sicherlich sowohl in Auswahl als auch Attribuierung z.T. etwas subjektiv sind:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;C++&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Go&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Rust&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bare-metal Programmierung&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;–&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Speichersicherheit&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;–&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Nebenläufigkeitssicherheit&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;–&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Toolstabilität&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;–&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Subjektive Neuheit&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0 &lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;–&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;+&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Als Ergebnis dieser Betrachtungen werde ich SOPHIA in Rust schreiben. Mir erscheint auch Rust am meisten eine neue Sichtweise zu vermitteln.&lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; Es gibt ein bekanntes Zitat von &lt;a href=&quot;https://de.wikipedia.org/wiki/Alan_J._Perlis&quot;&gt;Alan J. Perlis&lt;/a&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A language that doesn’t affect the way you think about programming is not worth knowing.
-&lt;cite&gt;Alan J. Perlis&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Dies ist der persönliche Hintergrund dieser Entscheidung. C++ mit etwas Programmierdisziplin hätte es genauso gut — und vermutlich an manchen Stellen einfacher — gemacht, aber Rust bringt mir neue Ideen bei.&lt;/p&gt;
-
-&lt;h1 id=&quot;betriebssystementwicklung&quot;&gt;Betriebssystementwicklung&lt;/h1&gt;
-
-&lt;p&gt;An dieser Stelle will ich nochmal auflisten, bei der Betriebssystementwicklung anders ist, als bei der Entwicklung (vieler) anderer Software:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Man hat es nicht mit abstrakter, sondern konkreter Hardware zu tun. Dadurch muss man sich mit vielen technischen Details des Prozessors und der Gesamtplattform beschäftigen, die man sonst ignorieren kann.&lt;/li&gt;
-  &lt;li&gt;Die Dienste eines Betriebssystems stehen nicht zur Verfügung. Es gibt keine z.B. Speicherverwaltung und oder Dateisysteme. Daher stehen die meisten Funktionen der Standardbibliothek nicht zur Verfügung, weil diese letztendlich Systemfunktionen rufen.&lt;/li&gt;
-  &lt;li&gt;Durch die beiden obigen Umstände werden im Design keine Abstraktionen “aufgezwungen”. Sie müssen erst erschaffen werden.&lt;/li&gt;
-  &lt;li&gt;Damit ein Betriebssystem auch zum Laufen kommt, muss man sich Gedanken über den Bootstrapping-Prozess und damit über Binärformate und die Toolchain machen.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In den nächsten Folgen zu SOPHIA werde ich diese Aspekte besprechen. Was ich dagegen hier nicht machen werde, ist eine Einführung in die Rust- oder die Assembler-Programmierung. Jedoch sind dazu nützliche Informationen in den folgenden Links zu finden.&lt;/p&gt;
-
-&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Rust&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://doc.rust-lang.org/book/&quot;&gt;The Rust Programming Language&lt;/a&gt; (the book)&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://doc.rust-lang.org/reference.html&quot;&gt;Rust Referenz&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://doc.rust-lang.org/core/index.html&quot;&gt;Rust Core Library&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://doc.rust-lang.org/nomicon/&quot;&gt;The Rustonomicon&lt;/a&gt; (“Unsafe” Programmierung in Rust)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;ARM&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;http://infocenter.arm.com/help/topic/com.arm.doc.ddi0301h/ddi0301h_arm1176jzfs_r0p7_trm.pdf&quot;&gt;ARM1176JZF-S Technical Reference Manual – ARM Infocenter&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;http://mazsola.iit.uni-miskolc.hu/~drdani/docs_arm/36_Elsevier-ARM_Sy.pdf&quot;&gt;ARM Systems Developer Guide&lt;/a&gt; (etwas veraltet, aber trotzdem sehr hilfreich)&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;http://thinkingeek.com/arm-assembler-raspberry-pi/&quot;&gt;ARM assembler in Raspberry Pi&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;http://embed.rs/articles/2016/arm-inline-assembly-rust/&quot;&gt;Exploring ARM inline assembly in Rust&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Raspberry Pi&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.raspberrypi.org&quot;&gt;Seite der Raspberry Pi Foundation&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;Broadcom: &lt;a href=&quot;https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf&quot;&gt;BCM2835 ARM Peripherals&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;David Welch: &lt;a href=&quot;https://github.com/dwelch67/raspberrypi&quot;&gt;Raspberry Pi ARM based bare metal examples&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Betriebssystemprojekte in Rust&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.redox-os.org&quot;&gt;Redox&lt;/a&gt; – ein schon ziemlich ausgewachsenes UNIX-ähnliches Betriebssystem (x86&lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;)&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://github.com/wbthomason/ironkernel&quot;&gt;Ironkernel&lt;/a&gt; (wohl erster BS-Ansatz in Rust, ARM)&lt;/li&gt;
-      &lt;li&gt;Philipp Oppermann’s blog: &lt;a href=&quot;http://os.phil-opp.com&quot;&gt;Writing an OS in Rust&lt;/a&gt; (x86)&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;http://intermezzos.github.io&quot;&gt;IntermezzOS&lt;/a&gt; (x86)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;alert-box text radius &quot;&gt;&lt;p&gt;&lt;i&gt;Ein Wort der &lt;strong&gt;Warnung&lt;/strong&gt;: wie ich dargelegt habe, lerne ich Rust während ich SOPHIA schreibe. Es ist also nicht zu erwarten, dass der Code
-stilechter Rust-Code ist, eher wird vermutlich an vielen Stellen C/C++ durchscheinen.&lt;br /&gt;&lt;br /&gt;Ich werde mich aber bemühen und gegebenenfalls auch funktionierenden
-Code später überarbeiten, um dem Geist von Rust näher zu kommen.&lt;br /&gt;Dies und Überarbeitungen von nightly Rust (siehe
-&lt;a href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;nächster Beitrag&lt;/a&gt;) werden dazu führen,
-dass der Code alles andere als stabil sein wird. Aber das ist ja das generelle Abenteuer einer Software-Entwicklung.&lt;/i&gt;&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;Man kann schließlich auch in den meisten Assemblern so etwas wie Structs definieren.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;Nein, ich habe Java nie ernsthaft in Betrachtung gezogen, was aber auch an meiner Abneigung gegenüber dieser Sprache liegen mag.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:3&quot;&gt;
-      &lt;p&gt;Man kann in C++ sehr sicher schreiben, wenn man eine ausreichende Selbstdisziplin an den Tag legt und verschiedene Idiome nicht benutzt. Im Gegensatz dazu erzwingt z.B. Rust sicheren Code. Dort, wo man unsichere (weil mächtigere) Konstrukte braucht, muss es explizit gemacht werden.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:4&quot;&gt;
-      &lt;p&gt;Go bekommt in dieser Kategorie bei mir Punktabzug für den vorhandenen Null-Pointer&amp;nbsp;&lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:5&quot;&gt;
-      &lt;p&gt;Eigentlich wollte ich hier erst ein Minuszeichen setzen, habe es mir dann anders überlegt: Ich habe C++ lange vor Boost und C++11 gelernt, und seitdem nie grundlegend “aufgeholt”.&amp;nbsp;&lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:6&quot;&gt;
-      &lt;p&gt;Go landet da auf Platz 2, zumal ich schon mal in Occam reingeschnuppert hatte, und D erscheint mir z.T. bewußt “unoriginell” zu entworfen zu sein (was in einem anderem Kontext einen Vorteil darstellt).&amp;nbsp;&lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:7&quot;&gt;
-      &lt;p&gt;ARM ist geplant, aber bisher nur teilweise implementiert.&amp;nbsp;&lt;a href=&quot;#fnref:7&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-</description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/03/19/aihpos-1</guid>
 			</item>
 		
 	</channel>

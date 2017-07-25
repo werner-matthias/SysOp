@@ -285,7 +285,8 @@
   <li><a href="#ziele" id="markdown-toc-ziele">Ziele</a></li>
   <li><a href="#sprache" id="markdown-toc-sprache">Sprache</a></li>
   <li><a href="#betriebssystementwicklung" id="markdown-toc-betriebssystementwicklung">Betriebssystementwicklung</a></li>
-  <li><a href="#links" id="markdown-toc-links">Links</a></li>
+  <li><a href="#dies-sind-die-abenteuer" id="markdown-toc-dies-sind-die-abenteuer">Dies sind die Abenteuer…</a></li>
+  <li><a href="#nützliche-links" id="markdown-toc-nützliche-links">Nützliche Links</a></li>
 </ul>
 
 <p><a class="right button tiny radius r15" href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/">Nächster Beitrag in AIHPOS<span class="icon-chevron-right"></span></a></p>
@@ -306,15 +307,15 @@
 
 <p>“aihPOS” steht für <strong>a</strong>nother <strong>i</strong>ncompatible and <strong>h</strong>ackneyed <strong>P</strong>i <strong>O</strong>perating <strong>S</strong>ystem. Obwohl dieses Akronym einiges über das Betriebssystem
 aussagt, habe ich es doch in erster Linie gewählt, weil es rückwärts geschrieben den Namen meiner Tochter ergibt: Sophia. Daher werde ich den Betriebssystemnamen ab sofort
-so schreiben: ɒiʜ&#xa7fc;OƧ. 🙂</p>
+so schreiben: <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png">. 🙂</p>
 
 <h2 id="ziele">Ziele</h2>
 
-<p>Bevor man ein Projekt der Größe eines Betriebssystems beginnt, und sei es auch nur ein so kleines wie ɒiʜ&#xa7fc;OƧ, muss man sich über die Designziele im Klaren sein. Ich nenne
+<p>Bevor man ein Projekt der Größe eines Betriebssystems beginnt, und sei es auch nur ein so kleines wie <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png">, muss man sich über die Designziele im Klaren sein. Ich nenne
 zunächst einmal einige Ziele, die ich ausdrücklich <strong>nicht</strong> habe:</p>
 
 <ul>
-  <li>Geschwindigkeit: immer, wenn es einen Widerspruch zwischen <strong>Performance</strong> und einem klaren Design gibt, werde ich das klare Design bevorzugen. Schließlich soll ɒiʜ&#xa7fc;OƧ niemals produktiv eingesetzt werden, sondern zur Demonstrations- und Testzwecken dienen.</li>
+  <li>Geschwindigkeit: immer, wenn es einen Widerspruch zwischen <strong>Performance</strong> und einem klaren Design gibt, werde ich das klare Design bevorzugen. Schließlich soll <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> niemals produktiv eingesetzt werden, sondern zur Demonstrations- und Testzwecken dienen.</li>
   <li><strong>Kompatibilität</strong> zu POSIX, Windows o.ä.</li>
   <li>Einsatz auf komplexer Hardware wie z.B. <strong>x86</strong>-PCs.</li>
 </ul>
@@ -338,7 +339,7 @@ das wiederum Systemrufe des Betriebssystem nutzt. Diese stehen aber bei der Entw
 Sprachkonzept nicht genutzt werden. Noch mehr Systemrufe sind meist in den Bibliotheken zu finden, so dass viele Bibliotheksfunktionen ebenfalls nicht genutzt werden
 können und ggf. nachimplementiert werden müssen.</p>
 
-<p>Trotzdem werde ich für ɒiʜ&#xa7fc;OƧ <strong>nicht</strong> C benutzen, und das im wesentlichen aus drei Gründen:</p>
+<p>Trotzdem werde ich für <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> <strong>nicht</strong> C benutzen, und das im wesentlichen aus drei Gründen:</p>
 
 <ul>
   <li>Entsprechend der obigen Anforderungen sollen sich Betriebssystemkonzept gut in Code-Abstraktionen wiederfinden. Dies ist bei C fast so wenig der Fall, wie in Assembler.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
@@ -403,7 +404,7 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
   </tbody>
 </table>
 
-<p>Als Ergebnis dieser Betrachtungen werde ich ɒiʜ&#xa7fc;OƧ in Rust schreiben. Mir erscheint auch Rust am meisten eine neue Sichtweise zu vermitteln.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> Es gibt ein bekanntes Zitat von <a href="https://de.wikipedia.org/wiki/Alan_J._Perlis">Alan J. Perlis</a>:</p>
+<p>Als Ergebnis dieser Betrachtungen werde ich <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> in Rust schreiben. Mir erscheint auch Rust am meisten eine neue Sichtweise zu vermitteln.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> Es gibt ein bekanntes Zitat von <a href="https://de.wikipedia.org/wiki/Alan_J._Perlis">Alan J. Perlis</a>:</p>
 
 <blockquote>
   <p>A language that doesn’t affect the way you think about programming is not worth knowing.
@@ -412,7 +413,7 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
 
 <p>Dies ist der persönliche Hintergrund dieser Entscheidung. C++ mit etwas Programmierdisziplin hätte es genauso gut — und vermutlich an manchen Stellen einfacher — gemacht, aber Rust bringt mir neue Ideen bei.</p>
 
-<h1 id="betriebssystementwicklung">Betriebssystementwicklung</h1>
+<h2 id="betriebssystementwicklung">Betriebssystementwicklung</h2>
 
 <p>An dieser Stelle will ich nochmal auflisten, bei der Betriebssystementwicklung anders ist, als bei der Entwicklung (vieler) anderer Software:</p>
 
@@ -423,9 +424,24 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
   <li>Damit ein Betriebssystem auch zum Laufen kommt, muss man sich Gedanken über den Bootstrapping-Prozess und damit über Binärformate und die Toolchain machen.</li>
 </ul>
 
-<p>In den nächsten Folgen zu ɒiʜ&#xa7fc;OƧ werde ich diese Aspekte besprechen. Was ich dagegen hier nicht machen werde, ist eine Einführung in die Rust- oder die Assembler-Programmierung. Jedoch sind dazu nützliche Informationen in den folgenden Links zu finden.</p>
+<p>In den kommenden Folgen dieser Serie werde ich beschreiben, wie dies mit Rust umgesetzt werden kann.</p>
 
-<h1 id="links">Links</h1>
+<div class="alert-box text radius "><p><i>Ein Wort der <strong>Warnung</strong>: wie ich dargelegt habe, lerne ich Rust während ich <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> schreibe. Es ist also nicht zu erwarten, dass der Code
+stilechter Rust-Code ist, eher wird vermutlich an vielen Stellen C/C++ durchscheinen.<br /><br />Ich werde mich aber bemühen und gegebenenfalls auch funktionierenden
+Code später überarbeiten, um dem Geist von Rust näher zu kommen.<br />Dies und Überarbeitungen von nightly Rust (siehe
+<a href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/">nächster Beitrag</a>) werden dazu führen,
+dass der Code alles andere als stabil sein wird. Aber das ist ja das generelle Abenteuer einer Software-Entwicklung.</i></p>
+</div>
+
+<h2 id="dies-sind-die-abenteuer">Dies sind die Abenteuer…</h2>
+<p>Diese Blog-Serie ist <strong>nicht</strong> als Tutorial zu verstehen<sup id="fnref:8"><a href="#fn:8" class="footnote">7</a></sup>. Es gibt auch keine Einführung in die Rust- oder in die Assembler-Programmierung. Vielmehr werde ich einfach
+darlegen, was mir beim Schreiben eines Betriebssystems in einer neuen Sprache “begegnet”. Vielleicht werde ich später, wenn <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> einen gewissen Stand erreicht hat,
+alles noch mal systematisieren und direkt für die Lehre aufarbeiten. Derzeit ist die Serie die Beschreibung einer Fahrt ins Ungewisse, mit möglichen Sackgassen und der
+Gefahr eines Schiffbruchs.</p>
+
+<p>Das Abenteuer hat begonnen…</p>
+
+<h2 id="nützliche-links">Nützliche Links</h2>
 
 <ul>
   <li><strong>Rust</strong>
@@ -453,20 +469,13 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
   </li>
   <li><strong>Betriebssystemprojekte in Rust</strong>
     <ul>
-      <li><a href="https://www.redox-os.org">Redox</a> – ein schon ziemlich ausgewachsenes UNIX-ähnliches Betriebssystem (x86<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>)</li>
+      <li><a href="https://www.redox-os.org">Redox</a> – ein schon ziemlich ausgewachsenes UNIX-ähnliches Betriebssystem (x86<sup id="fnref:7"><a href="#fn:7" class="footnote">8</a></sup>)</li>
       <li><a href="https://github.com/wbthomason/ironkernel">Ironkernel</a> (wohl erster BS-Ansatz in Rust, ARM)</li>
       <li>Philipp Oppermann’s blog: <a href="http://os.phil-opp.com">Writing an OS in Rust</a> (x86)</li>
       <li><a href="http://intermezzos.github.io">IntermezzOS</a> (x86)</li>
     </ul>
   </li>
 </ul>
-
-<div class="alert-box text radius "><p><i>Ein Wort der <strong>Warnung</strong>: wie ich dargelegt habe, lerne ich Rust während ich ɒiʜ&#xa7fc;OƧ schreibe. Es ist also nicht zu erwarten, dass der Code
-stilechter Rust-Code ist, eher wird vermutlich an vielen Stellen C/C++ durchscheinen.<br /><br />Ich werde mich aber bemühen und gegebenenfalls auch funktionierenden
-Code später überarbeiten, um dem Geist von Rust näher zu kommen.<br />Dies und Überarbeitungen von nightly Rust (siehe
-<a href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/">nächster Beitrag</a>) werden dazu führen,
-dass der Code alles andere als stabil sein wird. Aber das ist ja das generelle Abenteuer einer Software-Entwicklung.</i></p>
-</div>
 
 <p><a class="right button tiny radius r15" href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/">Nächster Beitrag in AIHPOS<span class="icon-chevron-right"></span></a></p>
 
@@ -481,7 +490,7 @@ dass der Code alles andere als stabil sein wird. Aber das ist ja das generelle A
       <p>Nein, ich habe Java nie ernsthaft in Betrachtung gezogen, was aber auch an meiner Abneigung gegenüber dieser Sprache liegen mag.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>Man kann in C++ sehr sicher schreiben, wenn man eine ausreichende Selbstdisziplin an den Tag legt und verschiedene Idiome nicht benutzt. Im Gegensatz dazu erzwingt z.B. Rust sicheren Code. Dort, wo man unsichere (weil mächtigere) Konstrukte braucht, muss es explizit gemacht werden.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>Man kann in C++ sehr sicher schreiben, wenn man eine ausreichende Selbstdisziplin an den Tag legt und verschiedene Idiome nicht benutzt. Im Gegensatz dazu <strong>erzwingt</strong> z.B. Rust sicheren Code. Dort, wo man unsichere (weil mächtigere) Konstrukte braucht, muss es explizit gemacht werden.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
       <p>Go bekommt in dieser Kategorie bei mir Punktabzug für den vorhandenen Null-Pointer&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
@@ -491,6 +500,9 @@ dass der Code alles andere als stabil sein wird. Aber das ist ja das generelle A
     </li>
     <li id="fn:6">
       <p>Go landet da auf Platz 2, zumal ich schon mal in Occam reingeschnuppert hatte, und D erscheint mir z.T. bewußt “unoriginell” zu entworfen zu sein (was in einem anderem Kontext einen Vorteil darstellt).&nbsp;<a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p>Falls es jedoch Nachfragen gibt, bin ich aber gern bereit, auf einzelne Aspekte näher einzugehen.&nbsp;<a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:7">
       <p>ARM ist geplant, aber bisher nur teilweise implementiert.&nbsp;<a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
