@@ -283,6 +283,25 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 			</item>
 		
 			<item>
+				<title>Nebenläufigkeit</title>
+				<link>https://werner-matthias.github.io/SysOp/computer/menschen/concurrency/</link>
+				<pubDate>Fri, 30 Jun 2017 00:00:00 +0200</pubDate>
+				<description>&lt;blockquote&gt;
+  &lt;p&gt;Concurrent programs are inherently more complex than sequential programs. In many respects, 
+   they are to sequential programs what chess is to checkers or bridge is to pinochle: 
+   Each is interesting, but the former is more intellectually intriguing than the latter.;
+&lt;cite&gt;Gregory R. Andrews&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A computer is a state machine. Threads are for people who can’t program state machines.
+&lt;cite&gt;Alan Cox&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/computer/menschen/concurrency/</guid>
+			</item>
+		
+			<item>
 				<title>Hello Jekyll</title>
 				<link>https://werner-matthias.github.io/SysOp/2017/06/26/hello-jekyll</link>
 				<pubDate>Mon, 26 Jun 2017 12:16:41 +0000</pubDate>
@@ -3139,24 +3158,6 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
 &lt;/div&gt;
 </description>
 				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/10/aihpos-3-lebenszeichen</guid>
-			</item>
-		
-			<item>
-				<title>Pointer</title>
-				<link>https://werner-matthias.github.io/SysOp/2017/04/07/pointer</link>
-				<pubDate>Fri, 07 Apr 2017 12:04:47 +0000</pubDate>
-				<description>&lt;blockquote&gt;
-  &lt;p&gt;Playing with pointers is like playing with fire. Fire is perhaps the most important tool known to man. Carefully used, fire brings enormous benefits; but when fire
-gets out of control, disaster strikes.
-&lt;cite&gt;John Barnes&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;You can either have software quality or you can have pointer arithmetic, but you cannot have both at the same time.
-&lt;cite&gt;Bertrand Meyer&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/2017/04/07/pointer</guid>
 			</item>
 		
 	</channel>

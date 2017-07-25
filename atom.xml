@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-07-25T11:26:30+02:00</updated>
+	<updated>2017-07-25T11:34:06+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -363,6 +363,50 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 			
 
 			<published>2017-07-02T00:00:00+02:00</published>
+		</entry>
+	
+		<entry>
+			<id>https://werner-matthias.github.io/SysOp/computer/menschen/concurrency/</id>
+			<title>Nebenläufigkeit</title>
+			<link href="https://werner-matthias.github.io/SysOp/computer/menschen/concurrency/" rel="alternate" type="text/html" title="Nebenläufigkeit" />
+			<updated>2017-06-30T00:00:00+02:00</updated>
+
+			
+				
+				<author>
+					
+						<name>Matthias Werner</name>
+					
+					
+						<email>matthias.werner@me.com</email>
+					
+					
+						<uri>http://www.matthias-werner.net/</uri>
+					
+				</author>
+			
+			<summary></summary>
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/computer/menschen/concurrency/">&lt;blockquote&gt;
+  &lt;p&gt;Concurrent programs are inherently more complex than sequential programs. In many respects, 
+   they are to sequential programs what chess is to checkers or bridge is to pinochle: 
+   Each is interesting, but the former is more intellectually intriguing than the latter.;
+&lt;cite&gt;Gregory R. Andrews&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A computer is a state machine. Threads are for people who can’t program state machines.
+&lt;cite&gt;Alan Cox&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+
+			
+				<category term="computer" />
+			
+				<category term="menschen" />
+			
+			
+
+			<published>2017-06-30T00:00:00+02:00</published>
 		</entry>
 	
 		<entry>
@@ -3425,49 +3469,6 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
 			
 
 			<published>2017-04-10T11:04:10+02:00</published>
-		</entry>
-	
-		<entry>
-			<id>https://werner-matthias.github.io/SysOp/2017/04/07/pointer</id>
-			<title>Pointer</title>
-			<link href="https://werner-matthias.github.io/SysOp/2017/04/07/pointer" rel="alternate" type="text/html" title="Pointer" />
-			<updated>2017-04-07T14:04:47+02:00</updated>
-
-			
-				
-				<author>
-					
-						<name>Matthias Werner</name>
-					
-					
-						<email>matthias.werner@me.com</email>
-					
-					
-						<uri>http://www.matthias-werner.net/</uri>
-					
-				</author>
-			
-			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/2017/04/07/pointer">&lt;blockquote&gt;
-  &lt;p&gt;Playing with pointers is like playing with fire. Fire is perhaps the most important tool known to man. Carefully used, fire brings enormous benefits; but when fire
-gets out of control, disaster strikes.
-&lt;cite&gt;John Barnes&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;You can either have software quality or you can have pointer arithmetic, but you cannot have both at the same time.
-&lt;cite&gt;Bertrand Meyer&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-
-			
-				<category term="computer" />
-			
-				<category term="menschen" />
-			
-			
-
-			<published>2017-04-07T14:04:47+02:00</published>
 		</entry>
 	
 </feed>
