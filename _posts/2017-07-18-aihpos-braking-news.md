@@ -11,8 +11,8 @@ tags:
     - Rust
     - aihPOS
     - Microkernel
-	- Allokator
-	- Heap
+    - Allokator
+    - Heap
 categories:
     - aihpos
 ---
