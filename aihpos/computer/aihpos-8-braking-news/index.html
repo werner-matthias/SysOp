@@ -281,7 +281,7 @@
 			<span itemprop="articleSection">
 	                <p><strong>Inhalt</strong></p>
 <ul id="markdown-toc">
-  <li><a href="#sophia-wir-haben-ein-problem" id="markdown-toc-sophia-wir-haben-ein-problem"><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png">, wir haben ein Problem</a>    <ul>
+  <li><a href="#sophia-wir-haben-ein-problem" id="markdown-toc-sophia-wir-haben-ein-problem"><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png">, wir haben ein Problem</a>    <ul>
       <li><a href="#missing-feature" id="markdown-toc-missing-feature">Missing Feature</a></li>
       <li><a href="#auf-der-suche-nach-dem-verlorenen-attribut" id="markdown-toc-auf-der-suche-nach-dem-verlorenen-attribut">Auf der Suche nach dem verlorenen Attribut</a></li>
     </ul>
@@ -297,9 +297,9 @@
 
 <div class="row"></div>
 
-<h2 id="sophia-wir-haben-ein-problem"><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png">, wir haben ein Problem</h2>
+<h2 id="sophia-wir-haben-ein-problem"><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png">, wir haben ein Problem</h2>
 <h3 id="missing-feature">Missing Feature</h3>
-<p>Für fast zwei Wochen war ich in Bulgarien. Danach erhielt ich beim ersten Übersetzungsversuch des <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png">-Codes eine Fehlermeldung:</p>
+<p>Für fast zwei Wochen war ich in Bulgarien. Danach erhielt ich beim ersten Übersetzungsversuch des <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png">-Codes eine Fehlermeldung:</p>
 <div class="window">
           <nav class="control-window">
             <a href="#finder" class="close" data-rel="close">close</a>
@@ -339,7 +339,7 @@
         </div>
 
 <p>Natürlich fiel die Fehlermeldung nicht einfach so vom Himmel, ich hatte vorher – wie ich das regelmäßig tue – meine Toolchain mit <code class="highlighter-rouge">rustup update</code> aktualisiert.
-Selbstverständlich hätte ich jetzt meine Toolchain auch wieder zurück setzen können, aber ich möchte, dass <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> mit der jeweilig aktuellen Toolchain übersetzbar ist.
+Selbstverständlich hätte ich jetzt meine Toolchain auch wieder zurück setzen können, aber ich möchte, dass <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> mit der jeweilig aktuellen Toolchain übersetzbar ist.
 Und da ich “nightly” nutze, können solche abrupten Wechsel schon mal vorkommen. Also wird erstmal nichts aus der Erweiterung unseres Betriebssystem, sondern es heißt, den bestehenden Code wieder
 lauffähig zu machen.</p>
 
@@ -482,7 +482,7 @@ derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständ
 Out-of-Memory-Fehler abfangen will.</p>
 
 <p>Der Allokator der <code class="highlighter-rouge">linked_list_allocator</code>-Bibliothek ist übrigens durch einen Spin-Lock (aus der <a href="https://crates.io/crates/spin">spin</a>-Bibliothek) geschützt. Das ist in
-<img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss gestellt wird, schadet aber nicht und kann bei einer späteren Portierung nützlich sein.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+<img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss gestellt wird, schadet aber nicht und kann bei einer späteren Portierung nützlich sein.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
 
 <p>In <strong>main.rs</strong> wird der Allokator als <code class="highlighter-rouge">static</code> deklariert…</p>
 
@@ -516,7 +516,7 @@ Out-of-Memory-Fehler abfangen will.</p>
     führt. “Summentyp” ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich <em>kein</em> <a href="/2017/03/19/aihpos-1">Design-Ziel</a> in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png">.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich <em>kein</em> <a href="/2017/03/19/aihpos-1">Design-Ziel</a> in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png">.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

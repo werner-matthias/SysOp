@@ -307,15 +307,15 @@
 
 <p>“aihPOS” steht für <strong>a</strong>nother <strong>i</strong>ncompatible and <strong>h</strong>ackneyed <strong>P</strong>i <strong>O</strong>perating <strong>S</strong>ystem. Obwohl dieses Akronym einiges über das Betriebssystem
 aussagt, habe ich es doch in erster Linie gewählt, weil es rückwärts geschrieben den Namen meiner Tochter ergibt: Sophia. Daher werde ich den Betriebssystemnamen ab sofort
-so schreiben: <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png">. 🙂</p>
+so schreiben: <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png">. 🙂</p>
 
 <h2 id="ziele">Ziele</h2>
 
-<p>Bevor man ein Projekt der Größe eines Betriebssystems beginnt, und sei es auch nur ein so kleines wie <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png">, muss man sich über die Designziele im Klaren sein. Ich nenne
+<p>Bevor man ein Projekt der Größe eines Betriebssystems beginnt, und sei es auch nur ein so kleines wie <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png">, muss man sich über die Designziele im Klaren sein. Ich nenne
 zunächst einmal einige Ziele, die ich ausdrücklich <strong>nicht</strong> habe:</p>
 
 <ul>
-  <li>Geschwindigkeit: immer, wenn es einen Widerspruch zwischen <strong>Performance</strong> und einem klaren Design gibt, werde ich das klare Design bevorzugen. Schließlich soll <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> niemals produktiv eingesetzt werden, sondern zur Demonstrations- und Testzwecken dienen.</li>
+  <li>Geschwindigkeit: immer, wenn es einen Widerspruch zwischen <strong>Performance</strong> und einem klaren Design gibt, werde ich das klare Design bevorzugen. Schließlich soll <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> niemals produktiv eingesetzt werden, sondern zur Demonstrations- und Testzwecken dienen.</li>
   <li><strong>Kompatibilität</strong> zu POSIX, Windows o.ä.</li>
   <li>Einsatz auf komplexer Hardware wie z.B. <strong>x86</strong>-PCs.</li>
 </ul>
@@ -339,7 +339,7 @@ das wiederum Systemrufe des Betriebssystem nutzt. Diese stehen aber bei der Entw
 Sprachkonzept nicht genutzt werden. Noch mehr Systemrufe sind meist in den Bibliotheken zu finden, so dass viele Bibliotheksfunktionen ebenfalls nicht genutzt werden
 können und ggf. nachimplementiert werden müssen.</p>
 
-<p>Trotzdem werde ich für <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> <strong>nicht</strong> C benutzen, und das im wesentlichen aus drei Gründen:</p>
+<p>Trotzdem werde ich für <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> <strong>nicht</strong> C benutzen, und das im wesentlichen aus drei Gründen:</p>
 
 <ul>
   <li>Entsprechend der obigen Anforderungen sollen sich Betriebssystemkonzept gut in Code-Abstraktionen wiederfinden. Dies ist bei C fast so wenig der Fall, wie in Assembler.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
@@ -404,7 +404,7 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
   </tbody>
 </table>
 
-<p>Als Ergebnis dieser Betrachtungen werde ich <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> in Rust schreiben. Mir erscheint auch Rust am meisten eine neue Sichtweise zu vermitteln.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> Es gibt ein bekanntes Zitat von <a href="https://de.wikipedia.org/wiki/Alan_J._Perlis">Alan J. Perlis</a>:</p>
+<p>Als Ergebnis dieser Betrachtungen werde ich <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> in Rust schreiben. Mir erscheint auch Rust am meisten eine neue Sichtweise zu vermitteln.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> Es gibt ein bekanntes Zitat von <a href="https://de.wikipedia.org/wiki/Alan_J._Perlis">Alan J. Perlis</a>:</p>
 
 <blockquote>
   <p>A language that doesn’t affect the way you think about programming is not worth knowing.
@@ -426,7 +426,7 @@ Python-Betriebssystem zu schreiben, aber dies ist noch nicht so weit, dass es de
 
 <p>In den kommenden Folgen dieser Serie werde ich beschreiben, wie dies mit Rust umgesetzt werden kann.</p>
 
-<div class="alert-box text radius "><p><i>Ein Wort der <strong>Warnung</strong>: wie ich dargelegt habe, lerne ich Rust während ich <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> schreibe. Es ist also nicht zu erwarten, dass der Code
+<div class="alert-box text radius "><p><i>Ein Wort der <strong>Warnung</strong>: wie ich dargelegt habe, lerne ich Rust während ich <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> schreibe. Es ist also nicht zu erwarten, dass der Code
 stilechter Rust-Code ist, eher wird vermutlich an vielen Stellen C/C++ durchscheinen.<br /><br />Ich werde mich aber bemühen und gegebenenfalls auch funktionierenden
 Code später überarbeiten, um dem Geist von Rust näher zu kommen.<br />Dies und Überarbeitungen von nightly Rust (siehe
 <a href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-2-ausrustung/">nächster Beitrag</a>) werden dazu führen,
@@ -435,7 +435,7 @@ dass der Code alles andere als stabil sein wird. Aber das ist ja das generelle A
 
 <h2 id="dies-sind-die-abenteuer">Dies sind die Abenteuer…</h2>
 <p>Diese Blog-Serie ist <strong>nicht</strong> als Tutorial zu verstehen<sup id="fnref:8"><a href="#fn:8" class="footnote">7</a></sup>. Es gibt auch keine Einführung in die Rust- oder in die Assembler-Programmierung. Vielmehr werde ich einfach
-darlegen, was mir beim Schreiben eines Betriebssystems in einer neuen Sprache “begegnet”. Vielleicht werde ich später, wenn <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> einen gewissen Stand erreicht hat,
+darlegen, was mir beim Schreiben eines Betriebssystems in einer neuen Sprache “begegnet”. Vielleicht werde ich später, wenn <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> einen gewissen Stand erreicht hat,
 alles noch mal systematisieren und direkt für die Lehre aufarbeiten. Derzeit ist die Serie die Beschreibung einer Fahrt ins Ungewisse, mit möglichen Sackgassen und der
 Gefahr eines Schiffbruchs.</p>
 
