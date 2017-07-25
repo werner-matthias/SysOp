@@ -9,8 +9,10 @@ author: mwerner
 date: 2017-07-20
 tags:
     - Rust
-    - aihpos
+    - aihPOS
     - Microkernel
+	- Allokator
+	- Heap
 categories:
     - aihpos
 ---
