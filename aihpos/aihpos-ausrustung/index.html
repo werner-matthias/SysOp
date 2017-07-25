@@ -1,0 +1,727 @@
+<!doctype html>
+<html class="no-js" lang="de">
+<head>
+		<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Ausr(ü/u)stung</title>
+	<link rel="stylesheet" type="text/css" href="https://werner-matthias.github.io/SysOp/assets/css/styles_feeling_responsive.css" />
+	<script src="https://werner-matthias.github.io/SysOp/assets/js/modernizr.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: [ 'Lato:400,700,400italic:latin', 'Volkhov::latin' ]
+      }
+    });
+  </script>
+
+  <noscript>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic|Volkhov' rel='stylesheet' type='text/css' />
+  </noscript>
+
+  
+	
+	<meta name="description" content="Bevor wir mit dem Code-Schreiben beginnen, brauchen wir die Entwickler-Werkzeuge."/>
+
+	
+
+	
+
+
+
+	
+	<link rel="icon" sizes="32x32" href="https://werner-matthias.github.io/SysOp/assets/img/favicon-32x32.png" />
+
+
+
+
+	
+	<link rel="icon" sizes="192x192" href="https://werner-matthias.github.io/SysOp/assets/img/touch-icon-192x192.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-180x180-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-152x152-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-144x144-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-120x120-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-114x114-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-76x76-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-72x72-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" href="https://werner-matthias.github.io/SysOp/assets/img/apple-touch-icon-precomposed.png" />	
+
+
+
+
+	
+	<meta name="msapplication-TileImage" content="https://werner-matthias.github.io/SysOp/assets/img/msapplication_tileimage.png" />
+
+
+
+
+	
+	<meta name="msapplication-TileColor" content="#fabb00" />
+
+
+
+	<!-- Facebook Optimization -->
+	<meta property="og:locale" content="en_EN" />
+	
+	<meta property="og:title" content="Ausr(ü/u)stung" />
+	<meta property="og:description" content="Bevor wir mit dem Code-Schreiben beginnen, brauchen wir die Entwickler-Werkzeuge." />
+	<meta property="og:url" content="https://werner-matthias.github.io/SysOp//aihpos/aihpos-ausrustung/" />
+	<meta property="og:site_name" content="Systems Operational" />
+	
+
+	
+
+	<!-- Search Engine Optimization -->
+	
+
+	<link type="text/plain" rel="author" href="https://werner-matthias.github.io/SysOp/humans.txt" />
+
+	
+
+	
+</head>
+</head>
+<body id="top-of-page" class="page-fullwidth">
+	
+	
+<div id="navigation" class="sticky">
+  <nav class="top-bar" role="navigation" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+      <h1 class="show-for-small-only"><a href="https://werner-matthias.github.io/SysOp" class="icon-tree"> Systems Operational</a></h1>
+    </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Navigation</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+
+      <ul class="right">
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+            
+            
+              <li class="divider"></li>
+              <li><a href="https://werner-matthias.github.io/SysOp/about/">Über mich</a></li>
+
+            
+            
+          
+        
+        
+      </ul>
+
+      <ul class="left">
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a href="https://werner-matthias.github.io/SysOp/">Start</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+
+              <li class="has-dropdown">
+                <a href="https://werner-matthias.github.io/SysOp/blog/">Blog</a>
+
+                  <ul class="dropdown">
+                    
+
+                      
+
+                      <li><a href="https://werner-matthias.github.io/SysOp/blog/archive/">Archive</a></li>
+                    
+                  </ul>
+                  
+              </li>
+              <li class="divider"></li>
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a href="https://werner-matthias.github.io/SysOp/blog/aihpos/">aihPos</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+        
+        
+      </ul>
+    </section>
+  </nav>
+</div><!-- /#navigation -->
+
+	
+
+	
+
+<div id="masthead-no-image-header">
+	<div class="row">
+		<div class="small-12 columns">
+			<a id="logo" href="https://werner-matthias.github.io/SysOp" title="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
+				<img src="https://werner-matthias.github.io/SysOp/assets/img/logo.png" alt="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
+			</a>
+		</div><!-- /.small-12.columns -->
+	</div><!-- /.row -->
+</div><!-- /#masthead -->
+
+
+
+
+
+
+
+
+
+	
+
+
+<div class="row t30">
+	<div class="medium-12 columns">
+		<article>
+			<header>
+				<p class="subheadline">aihPOS - Ein Betriebsystem für die Lehre</p>
+				<h1>Ausr(ü/u)stung</h1>
+			</header>
+
+			
+
+			<span itemprop="articleSection">
+	                <p><strong>Inhalt</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#setup-rust" id="markdown-toc-setup-rust">Setup Rust</a></li>
+  <li><a href="#targets" id="markdown-toc-targets">Targets</a>    <ul>
+      <li><a href="#architektur" id="markdown-toc-architektur">Architektur</a></li>
+      <li><a href="#betriebssystem-und-binärschnittstelle" id="markdown-toc-betriebssystem-und-binärschnittstelle">Betriebssystem und Binärschnittstelle</a></li>
+    </ul>
+  </li>
+  <li><a href="#ein-eigenes-target" id="markdown-toc-ein-eigenes-target">Ein eigenes Target</a>    <ul>
+      <li><a href="#architekturbeschreibung" id="markdown-toc-architekturbeschreibung">Architekturbeschreibung</a></li>
+      <li><a href="#linker" id="markdown-toc-linker">Linker</a></li>
+      <li><a href="#core" id="markdown-toc-core">Core</a></li>
+    </ul>
+  </li>
+  <li><a href="#debugger" id="markdown-toc-debugger">Debugger</a></li>
+</ul>
+
+<p><a class="left button tiny radius" href="https://werner-matthias.github.io/SysOp/aihpos/aihpos-1/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
+
+<p><a class="right button tiny radius r15" href="https://werner-matthias.github.io/SysOp/aihpos/aihpos-lebenszeichen/">Nächster Beitrag in AIHPOS<span class="icon-chevron-right"></span></a></p>
+
+<div class="row"></div>
+
+<p>Nachdem im <a href="/2017/03/19/aihpos-1">letzten Teil</a> die Design-Ziel von <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.</p>
+
+<h2 id="setup-rust">Setup Rust</h2>
+
+<p>Die Entwicklung von <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> erfolgt nicht auf dem System, auf dem es später laufen soll – das gibt es ja noch gar nicht. Vielmehr soll die Entwicklung auf meinem
+Arbeitsplatzrechner stattfinden. Das ist in diesem Fall ein MacPro von 2010 mit MacOS. Irgendein Linux-Rechner würde auch gehen, zur Not sogar eine Windows-Maschine.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> Wir
+können also nicht den normalen Compiler benutzen, sondern einen Crosscompiler. Ein Crosscompiler wird auf einer Plattform ausgeführt (host), und erzeugt Code für eine
+andere Plattform (target). Ein „normaler“ Compiler ist also ein Crosscompiler, bei dem Host- und Targetplattform „zufällig“ identisch sind.</p>
+
+<p>Glücklicherweise ist Rust – u.a. durch das  <a href="https://de.wikipedia.org/wiki/LLVM">LLVM-Backend</a>, das ja auch von clang benutzt wird – von vornherein als Crosscompiler
+ausgelegt. Etwas komplizierter ist, dass wir <em>bare metal</em> (also für eine Umgebung ohne Betriebssystem) entwickeln, aber dazu später. Installieren wir zunächst Rust. Dazu
+gibt es mehrere Wege, man kann den Paketmanager seiner Wahl benutzen. Die offiziell empfohlene Variante läuft über <code class="highlighter-rouge">rustup</code>. Um <code class="highlighter-rouge">rustup</code> selbst zu erhalten, sollte man in
+einer Shell</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td><td class="code"><pre><code><span class="line command">curl https://sh.rustup.rs -sSf | sh</span></code></pre></td></tr></table></div></div>
+        </div>
+<p>eingeben und den Anweisungen folgen und zunächst die _default-_Installation wählen. <code class="highlighter-rouge">rustup</code> installiert neben dem eigentlichen Compiler die Standardbibliotheken, das
+ Build-Tool <code class="highlighter-rouge">cargo</code>, sowie Dokumentationen.</p>
+
+<p>Wir werden jedoch für die Betriebssystementwicklung auch Inline-Assembler, Language Items<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> und vielleicht einige andere Features brauchen, die noch nicht stabil sind
+und deshalb noch keinen Eingang in die stabile Version von Rust gefunden haben. Jedoch gibt es die sogenannte Nightly-Version von Rust, die diese Features hat, die wir
+zusätzlich installieren.</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td><td class="code"><pre><code><span class="line command">rustup install nightly</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p>Eine der netten Eigenschaften von Rust ist es, dass verschiedene Versionen und Toolchains sehr feingranular gemanagt werden können und sich nicht in die Quere kommen. Für
+jedes Projekt (und sogar Subprojekt) können wir jetzt auswählen, ob wir mit der stabilen oder der nightly Version arbeiten wollen. Wir wählen allerdings die
+Nightly-Version als unsere Standardversion.</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td><td class="code"><pre><code><span class="line command">rustup default nightly</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<h2 id="targets">Targets</h2>
+
+<p>Nach fertiger Installation können wir uns mögliche Targets anzeigen lassen:</p>
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line command">rustup target list</span><span class="line output">  aarch64-apple-ios
+</span><span class="line output">  aarch64-linux-android
+</span><span class="line output">  aarch64-unknown-fuchsia
+</span><span class="line output">  aarch64-unknown-linux-gnu
+</span><span class="line output">  arm-linux-androideabi
+</span><span class="line output">  arm-unknown-linux-gnueabi
+</span><span class="line output">  arm-unknown-linux-gnueabihf
+</span><span class="line output">  arm-unknown-linux-musleabi
+</span><span class="line output">  arm-unknown-linux-musleabihf
+</span><span class="line output">  armv7-apple-ios
+</span><span class="line output">  armv7-linux-androideabi
+</span><span class="line output">  armv7-unknown-linux-gnueabihf
+</span><span class="line output">  armv7-unknown-linux-musleabihf
+</span><span class="line output">  armv7s-apple-ios
+</span><span class="line output">  asmjs-unknown-emscripten
+</span><span class="line output">  i386-apple-ios
+</span><span class="line output">  i586-pc-windows-msvc
+</span><span class="line output">  i586-unknown-linux-gnu
+</span><span class="line output">  i686-apple-darwin
+</span><span class="line output">  i686-linux-android
+</span><span class="line output">  i686-pc-windows-gnu
+</span><span class="line output">  i686-pc-windows-msvc
+</span><span class="line output">  i686-unknown-freebsd
+</span><span class="line output">  i686-unknown-linux-gnu
+</span><span class="line output">  i686-unknown-linux-musl
+</span><span class="line output">  mips-unknown-linux-gnu
+</span><span class="line output">  mips-unknown-linux-musl
+</span><span class="line output">  mips64-unknown-linux-gnuabi64
+</span><span class="line output">  mips64el-unknown-linux-gnuabi64
+</span><span class="line output">  mipsel-unknown-linux-gnu
+</span><span class="line output">  mipsel-unknown-linux-musl
+</span><span class="line output">  powerpc-unknown-linux-gnu
+</span><span class="line output">  powerpc64-unknown-linux-gnu
+</span><span class="line output">  powerpc64le-unknown-linux-gnu
+</span><span class="line output">  s390x-unknown-linux-gnu
+</span><span class="line output">  sparc64-unknown-linux-gnu
+</span><span class="line output">  wasm32-unknown-emscripten
+</span><span class="line output">  x86_64-apple-darwin (default)
+</span><span class="line output">  x86_64-apple-ios
+</span><span class="line output">  x86_64-pc-windows-gnu
+</span><span class="line output">  x86_64-pc-windows-msvc
+</span><span class="line output">  x86_64-rumprun-netbsd
+</span><span class="line output">  x86_64-unknown-freebsd
+</span><span class="line output">  x86_64-unknown-fuchsia
+</span><span class="line output">  x86_64-unknown-linux-gnu
+</span><span class="line output">  x86_64-unknown-linux-musl
+</span><span class="line output">  x86_64-unknown-netbsd</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p>Eine Kombination wie  <code class="highlighter-rouge">x86_64-apple-darwin</code> nennt man das <a href="https://clang.llvm.org/docs/CrossCompilation.html#target-triple">Target-Triple</a>, auch wenn diese Bezeichnung mitunter etwas irreführend anmutet, da das Target-Triple auch
+mehr (oder weniger) als drei Parameter haben kann. Die generische Form ist <code class="highlighter-rouge">&lt;Architektur&gt;&lt;Subarchitektur&gt;-&lt;Hersteller&gt;-&lt;Betriebssystem&gt;-&lt;Binärschnittstelle&gt;</code>. Betrachten
+wir das für uns notwendige Target-Triple genauer.</p>
+
+<h3 id="architektur">Architektur</h3>
+
+<p>Unter Architektur/Subarchitektur wird der Prozessor angegeben, und ggf. noch weitere Informationen wie die Endianess.</p>
+
+<p>Unser Zielsystem, ein Raspberry Pi B+, hat einen ARM1176JZF-S-Prozessor und gehört damit zur ARM11-Familie, was wiederum eine ARMv6-Architektur impliziert. Der ARM1176JZF-S kennt drei verschiedene Befehlssätze, zwischen denen man umschalten kann:</p>
+
+<ul>
+  <li>den 32-Bit-ARM-Befehlssatz</li>
+  <li>den 16-Bit-Thumb2-Befehlssatz</li>
+  <li>den 8-Bit-Jazelle-Bytecode-Befehlssatz</li>
+</ul>
+
+<p>Die Bitzahl steht hier nicht für die Adressbreite, sondern für die Größe eines Befehls. Da die Dokumentation zum Jazelle-Befehlssatz nicht ohne weiteres öffentlich
+zugänglich ist, bleibt für uns die Auswahl zwischen ARM- und Thumb-Befehlssatz. Der Raspberry Pi B+ hat 512 MB Speicher, das ist für die heutigen Verhältnisse nicht
+sonderlich viel.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> Daher wäre die Nutzung des Thumb-Befehlssatzes eine gute Idee, da hier jeder Befehl nur die Hälfte des Speichers verbraucht.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> Da hier weniger Register
+und Befehle zur Verfügung stehen, braucht man wiederum für den gleichen Code mehr Befehle, aber erfahrungsgemäß ist die Speichereinsparung trotzdem um die 30%. Vergessen
+wir also den ARM-Befehlssatz und schreiben <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> vollständig in Thumb? Nein, die Sache hat einen Haken: Jeder Ausnahmemode (Interruptmodi, Kernelmode, etc.) wird <em>immer</em>
+in ARM-Befehlsatz ausgeführt. Mit anderen Worten: Mindestens für den Kern sind wir auf den ARM-Befehlssatz angewiesen. Nutzerprogramme und Betriebssystemserver können
+dagegen mitunter in Thumb geschrieben werden.</p>
+
+<p>Wenn man sich die obige Liste von Target-Triplen anschaut, dann fällt auf, dass es zwar armv7,- aber keine armv6-Einträge gibt. Die Einträge, die nur mit
+„arm“ anfangen, sind eigentlich für alle 32-Bit-ARM, d.h. auch ARMv7. Allerdings kann ARMv7 noch mehr, und ist nicht vollständig abwärtskompatibel.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup></p>
+
+<p>Die Angabe eines Herstellers ist optional. Er wird in unserem Fall ausgelassen oder erhält den Wert „unknown“.</p>
+
+<h3 id="betriebssystem-und-binärschnittstelle">Betriebssystem und Binärschnittstelle</h3>
+
+<p>Was das Betriebssystem angeht, so ist die Sache einfach: wir haben keines. Durch die Angabe des Betriebssystems weiß der Compiler, welche Systemrufe möglich sind. Dazu wird z.T. die genutzte Standardbibliothek auf dem System angegeben, gegen die gelenkt wird. So benennt „i686-unknown-linux-gnu“ die <a href="https://en.wikipedia.org/wiki/GNU_C_Library">GNU C Library</a>, während „i686-unknown-linux-musl“ die auf statisches Linken optimierte <a href="http://www.musl-libc.org">musl libc</a>.</p>
+
+<p>Die Binärschnittstelle beschreibt, wie z.B. die Parameterübergabe bei Funktionsrufen erfolgt. Theoretisch  könnten wir uns hier auch unsere eigenen Konventionen ausdenken; es empfiehlt sich aber, an das den EABI-Standard  (<a href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0036b/IHI0036B_bsabi.pdf"><em>embedded-application binary interface</em></a>) zu halten, der für verschiedene Architekturen nicht nur die Aufrufkonventionen festlegt, sondern auch noch z.B. Dateiformate. Für ARM unterscheidet man noch durch einen Suffix („hf“) zur ABI, ob Gleitkommaoperationen durch einen (On-Chip-)Coprozessor ausgeführt werden sollen. Da ein Kernel i.d.R. keine Gleitkomma-Operationen ausführen muss, ist das eigentlich uninteressant. Da aber der Raspberry den VFPv2-Gleitkomma-Prozessor enthält, kann diese Option ruhig gewählt werden.</p>
+
+<h2 id="ein-eigenes-target">Ein eigenes Target</h2>
+
+<h3 id="architekturbeschreibung">Architekturbeschreibung</h3>
+
+<p>Nach der Diskussion im letzten Abschnitt bräuchten wird also das Target-Triple <strong>arm-none-eabihf</strong> (und ggf. später <strong>arm-aihpos-eabihf</strong> und/oder
+<strong>thumpv6-aihpos-eabihf</strong>). Leider gibt es dieses Triple (noch) nicht. Deshalb müssen wir eine Beschreibung dafür anlegen.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> Die Beschreibung ist eine JSON-Datei, und
+würde in unserem Fall etwa so aussehen:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"llvm-target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arm-none-eabihf"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"target-endian"</span><span class="p">:</span><span class="w"> </span><span class="s2">"little"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"target-pointer-width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"os"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eabihf"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"arch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arm"</span><span class="p">,</span><span class="w">
+
+    </span><span class="nt">"linker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arm-none-eabi-gcc"</span><span class="p">,</span><span class="w">
+	</span><span class="nt">"linker-flavor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcc"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data-layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e-m:e-p:32:32-i64:64-v128:64:128-a:0:32-n32-S64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"executables"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"relocation-model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"no-compiler-rt"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"no_default_libraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"disable-redzone"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+</div>
+
+<p>Die meisten Punkte sollten selbsterklärend sein, außer wahrscheinlich „data-layout“. Hier werden Eigenschaften des Datenlayouts<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>, insbesondere Alignment in kompakter Form dargestellt, wobei einiges redundant zu den anderen Punkten ist:</p>
+<ul>
+  <li>e: little endiang</li>
+  <li>m:e: ELF-Mangling, private Symbole erhalten einen .L-Prefix</li>
+  <li>p:32:32: Größe und Alignment für Pointer, hier jeweils 32 Bit</li>
+  <li>v128:64:128: Für 128-Bit-Vektoren ist das Alignment 64 Bit, bevorzugt 128 Bit</li>
+  <li>a:0:32: Kein Alignment für Aggregattypen (wie struct), aber 32 Bit bevorzugt</li>
+  <li>n32: Native Größe eines Integer ist 32 Bit</li>
+  <li>S64: Stack hat Alignment von 64 Bit</li>
+</ul>
+
+<h3 id="linker">Linker</h3>
+
+<p>Dieses JSON-File kopieren wir in unser Projektverzeichnis, wir werden es später ständig brauchen. In ihm haben wir auch spezifiziert, dass für das Linken der
+GCC-Arm-Cross-Linker benutzt werden soll. Diesen müssen wir installieren, genau genommen die ganze Suite von GCC-Arm-Cross-Tools, wozu z.B. auch <code class="highlighter-rouge">arm-none-eabi-objcopy</code>
+oder <code class="highlighter-rouge">arm-none-eabi-readelf</code> gehört. Ich installiere die Tools über den bei mir vorhandenen Paketmanager <code class="highlighter-rouge">brew</code>, YMMV:</p>
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">$</span></pre></td><td class="code"><pre><code><span class="line command">brew tap nitsky/stm32</span><span class="line command">brew install arm-none-eabi-gcc</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<h3 id="core">Core</h3>
+
+<p>Wie schon mehrmals betont, müssen wir auf den Einsatz der<code class="highlighter-rouge">Rust</code>-Standard-Bibliothek verzichten. Damit man aber nicht ganz auf dem Trockenen sitzt, hat Rust seine
+Standard-Bibliothek so strukturiert, dass es einen Teil gibt, der frei von externen Referenzen und Betriebssystemrufen ist: <code class="highlighter-rouge">core</code>. Aber natürlich gibt es core nicht
+nicht für unser Taget-Triple, daher müssen wir uns die Bibliothek selbst übersetzen.</p>
+
+<div class="alert-box warning radius "><p><em>Die folgenden Schritte sind bei Einsatz von <code class="highlighter-rouge">xargo</code>, wie in der Folge <a href="https://werner-matthias.github.io/SysOp/aihpos/computer/aihpos-5-umrustung">„Um-Rust-ung“</a> wird gezeigt, unnötig.<br />
+Ich lasse sie aber aus „historischen“ Gründen stehen.</em></p>
+</div>
+
+<p>Dazu holen wir uns den Quellcode in unser Projektverzeichnis:</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">$</span></pre></td><td class="code"><pre><code><span class="line command">cd ~/aihpos</span><span class="line command">git clone https://github.com/hackndev/rust-libcore</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p>Jetzt können wir die Core-Bibliothek übersetzen. Dazu schreiben wir das Target-JSON-File in das Hauptverzeichnis der Core-Quellfiles und starten die Übersetzung mit <code class="highlighter-rouge">cargo</code>:</p>
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line command">cd rust-libcore</span><span class="line command">cp ../arm-none-eapihf.json .</span><span class="line command">cargo build --release --target=arm-none-eapihf</span><span class="line output">    Compiling rust-libcore v0.0.3 (file:///Users/mwerner/aihpos/rust-libcore)
+</span><span class="line output">    Finished release [optimized] target(s) in 47.20 secs</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p>Unter rust-libcore/target/arm-none-eabihf/release finden wir die fertige Bibliothek libcore.rlib.</p>
+
+<h2 id="debugger">Debugger</h2>
+
+<p>Haben wir damit alles zusammen? Für die eigentliche Entwicklung schon. Aber ich möchte es mir etwas bequemer machen und nicht ständig die SD-Karte wechseln
+müssen. Glücklicherweise hat unserer Prozessor den Coprozessor CP14. Dieser ermöglicht die Nutzung eines <a href="https://en.wikipedia.org/wiki/JTAG">JTAG-Interfaces</a> zum Debuggen. Früher war JTAG-Hardware sehr
+teuer, die Preise kamen schnell in den vierstelligen Euro-Bereich. Das hat sich zum Glück geändert. Ich nutze den <a href="https://www.segger.com/j-link-edu.html">j-link EDU</a> der Firma Segger, den man (als
+Universität) bereits für knapp 60 € erwerben kann. Mein Freund und Kollege Jan Richling hat mir noch einen Adapter zur Verfügung gestellt, den er für sein
+Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl. JTAG keine Unterschiede auf, so dass ich den Adapter auch für meinen Pi einsetzen kann.</p>
+
+<p><img src="https://werner-matthias.github.io/SysOp/images/jlink.png" alt="" class="img-responsive" /> <img src="https://werner-matthias.github.io/SysOp/images/adapter.png" alt="" class="img-responsive" /></p>
+
+<p>Um diese Hardware nutzen zu können, brauche ich das Software-Gegenstück in Form des <a href="http://openocd.org">OpenOCD</a> (Open On-Chip Debugger). Die Installation übernimmt wieder <code class="highlighter-rouge">brew</code>:</p>
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td><td class="code"><pre><code><span class="line command">brew install openocd</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p><a class="left button tiny radius" href="https://werner-matthias.github.io/SysOp/aihpos/aihpos-1/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
+
+<p><a class="right button tiny radius r15" href="https://werner-matthias.github.io/SysOp/aihpos/aihpos-lebenszeichen/">Nächster Beitrag in AIHPOS<span class="icon-chevron-right"></span></a></p>
+
+<div class="row"></div>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Die Entwickler-Tools, die wir gleich besprechen, sind i.d.R. eher auf unixoide Systeme ausgerichtet, so dass es bei Windows meist etwas Mehraufwand gibt.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Damit können Funktionen zur Verfügung gestellt werden, die sonst die in der Standardbibliothek sind, aber refactor zur Rust-Runtime gehören.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Zum Vergleich: Ich war in meiner Jugend sehr stolz, dass ich den Speicher meines ersten Computers – einen ZX 81 – mit 64 kB(!) sehr weit ausgebaut hatte.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Genau genommen nur die meisten, da es seit Thumb2 einige 32-Bit-Ausnahmen gibt.&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>Der Raspberry 3 hat mit einem ARMv8-Prozessor, der eine 64-Bit-Architektur hat und im 64-Bit-Modus einen völlig anderen Befehlssatz (A64), der hier aber nicht weiter betrachtet wird.&nbsp;<a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>Eine häufig genutzte Alternative wäre, „arm-unknown-linux-gnueabihf“ oder „arm-unknown-linux-musleabihf“ zu nehmen und ein paar Basisfunktionen der C-Bibliothek wie z.B. memcpy nachzuimplementieren.&nbsp;<a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>Eine genauere Beschreibung von möglichen Layout-Eigenschaften findet sich in der LLVM-Dokumentation&nbsp;<a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+	                </span>
+			
+
+	                
+		</article>
+	</div><!-- /.medium-12.columns -->
+</div><!-- /.row -->
+
+
+
+
+	
+	    <div id="up-to-top" class="row">
+      <div class="small-12 columns" style="text-align: right;">
+        <a class="iconfont" href="#top-of-page">&#xf108;</a>
+      </div><!-- /.small-12.columns -->
+    </div><!-- /.row -->
+
+
+    <footer id="footer-content" class="bg-grau">
+      <div id="footer">
+        <div class="row">
+          <div class="medium-6 large-5 columns">
+            <h5 class="shadow-black">Über diese Website</h5>
+
+            <p class="shadow-black">
+              Matthias Werners Blog. 
+              <a href="https://werner-matthias.github.io/SysOp/info/">Mehr ›</a>
+            </p>
+          </div><!-- /.large-6.columns -->
+
+
+          <div class="small-6 medium-3 large-3 large-offset-1 columns">
+            
+              
+              <ul class="no-bullet shadow-black">
+              
+              </ul>
+          </div><!-- /.large-4.columns -->
+
+
+          <div class="small-6 medium-3 large-3 columns">
+            
+              
+            <ul class="no-bullet shadow-black">
+            
+            </ul>
+          </div><!-- /.large-3.columns -->
+        </div><!-- /.row -->
+
+      </div><!-- /#footer -->
+
+    </footer>
+
+	
+
+	
+
+
+<script src="https://werner-matthias.github.io/SysOp/assets/js/javascript.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
