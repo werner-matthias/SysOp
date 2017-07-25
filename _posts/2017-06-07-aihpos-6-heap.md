@@ -205,7 +205,7 @@ werden könnten -- also fallen beide aus.
 
 Glücklicherweise kennt Rust das Konzept von maßgeschneiderten Allokatoren (_custom allocators_). Für einen solchen Allokator gibt es einige Spielregeln:
 {% include alert warning='<h4 class="altert warning">Achtung</h4>
-_Das Konzept der Allocatoren hat sich mit der neuen Allocator-API grundlegend gewandelt.<br/>
+_Das Konzept der Allokatoren hat sich mit der neuen Allokator-API grundlegend gewandelt.<br/>
 Die folgenden Betrachtungen lasse ich wiederum  aus "historischen" Gründen stehen._' %}
 - Er muss in einer eigenen Bibliothek stehen, die mit `#![allocator]` dekoriert ist.
 - Die Bibliothek muss folgende fünf Funktionen zur Verfügung stellen:
@@ -255,7 +255,7 @@ es eine nahezu unüberschaubare Anzahl von Allokatoren. Jedoch sind die wenigste
 Zu den _bare-metal_-tauglichen Allokatoren zählen:
 - Buddy-Allokator (siehe Vorlesung)
 - Linked-List-Allokator: Freispeicher wird durch eine verlinkte Liste verwaltet
-- Slab-Allocator: Vorhalten von vorgefertigten Speicherstückchen
+- Slab-Allokator: Vorhalten von vorgefertigten Speicherstückchen
 
 Obwohl er nicht das beste Laufzeitverhalten hat, werden ich vorläufig den Linked-List-Allokator verwenden. Dafür glänzt es mit einem Speicheroverhead und (internen)
 Verschnitt von (nahezu) null.
