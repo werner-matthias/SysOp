@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>http://localhost:4000/</id>
 	<title>Systems Operational</title>
-	<updated>2017-07-26T00:15:58+02:00</updated>
+	<updated>2017-07-26T00:17:01+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -30,14 +30,27 @@
 
 	
 		<entry>
-			<id>http://localhost:4000/2017-07-18-aihpos-braking-news/</id>
-			<title></title>
-			<link href="http://localhost:4000/2017-07-18-aihpos-braking-news/" rel="alternate" type="text/html" title="" />
-			<updated></updated>
+			<id>http://localhost:4000/aihpos/aihpos-braking-news/</id>
+			<title>Braking News</title>
+			<link href="http://localhost:4000/aihpos/aihpos-braking-news/" rel="alternate" type="text/html" title="Braking News" />
+			<updated>2017-07-20T00:00:00+02:00</updated>
 
 			
+				
+				<author>
+					
+						<name>Matthias Werner</name>
+					
+					
+						<email>matthias.werner@me.com</email>
+					
+					
+						<uri>http://www.matthias-werner.net/</uri>
+					
+				</author>
+			
 			<summary></summary>
-			<content type="html" xml:base="http://localhost:4000/2017-07-18-aihpos-braking-news/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="http://localhost:4000/aihpos/aihpos-braking-news/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#sophia-wir-haben-ein-problem&quot; id=&quot;markdown-toc-sophia-wir-haben-ein-problem&quot;&gt;SOPHIA, wir haben ein Problem&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#missing-feature&quot; id=&quot;markdown-toc-missing-feature&quot;&gt;Missing Feature&lt;/a&gt;&lt;/li&gt;
@@ -50,6 +63,8 @@
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/aihpos-vm/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -258,6 +273,8 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 
 &lt;p&gt;Jetzt funktioniert die Übersetzung wieder fehlerfrei.&lt;/p&gt;
 
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/aihpos-vm/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
 &lt;div class=&quot;footnotes&quot;&gt;
@@ -277,9 +294,21 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 </content>
 
 			
+				<category term="aihpos" />
+			
+			
+				<category term="Rust" />
+			
+				<category term="aihPOS" />
+			
+				<category term="Microkernel" />
+			
+				<category term="Allokator" />
+			
+				<category term="Heap" />
 			
 
-			<published></published>
+			<published>2017-07-20T00:00:00+02:00</published>
 		</entry>
 	
 		<entry>
@@ -307,12 +336,16 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
 &lt;div class=&quot;alert-box text radius &quot;&gt;&lt;p&gt;&lt;em&gt;Dieser Beitrag wird derzeit vollständig überarbeitet.&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
