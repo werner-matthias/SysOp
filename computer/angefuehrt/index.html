@@ -3,7 +3,7 @@
 <head>
 		<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Und eins</title>
+	<title>Angeführt</title>
 	<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/styles_feeling_responsive.css" />
 	<script src="http://localhost:4000/assets/js/modernizr.min.js"></script>
 
@@ -22,7 +22,7 @@
 
   
 	
-	<meta name="description" content="LaTeX-Versionierung für Arme"/>
+	<meta name="description" content="Jekyll kann typographische Anführungszeichen."/>
 
 	
 
@@ -104,9 +104,9 @@
 	<!-- Facebook Optimization -->
 	<meta property="og:locale" content="en_EN" />
 	
-	<meta property="og:title" content="Und eins" />
-	<meta property="og:description" content="LaTeX-Versionierung für Arme" />
-	<meta property="og:url" content="http://localhost:4000//computer/und-eins/" />
+	<meta property="og:title" content="Angeführt" />
+	<meta property="og:description" content="Jekyll kann typographische Anführungszeichen." />
+	<meta property="og:url" content="http://localhost:4000//computer/angefuehrt/" />
 	<meta property="og:site_name" content="Systems Operational" />
 	
 
@@ -273,28 +273,32 @@
 		<article>
 			<header>
 				
-				<h1>Und eins</h1>
+				<h1>Angeführt</h1>
 			</header>
 
 			
 
 			<span itemprop="articleSection">
-	                <p>Manchmal will man in einem LaTeX-Dokumen eine Versionsnummer haben, so dass jede Übersetzung mit einer anderen Nummer versehen ist.</p>
+	                <p>Jekyll – oder genauer der dort genutzte Markdown-Prozessor Kramdown – kann typographische Anführungszeichen.
+Wenn man also ein Zitat in Anführungszeichen (") setzt stehen nach der Verarbeitung vor und nach dem Zitat typographische
+Anführungszeichen:</p>
 
-<p>Evtl. reicht es aus, Tag und Datum (<code class="highlighter-rouge">\today</code> und <code class="highlighter-rouge">\the\time</code>) einzusetzen. Falls man mit einem Versionierungssystem wie Subversion arbeitet, kann die dortige Version
-  genutzt werden, indem man ins Makefile vor dem Übersetzungslauf</p>
+<ul>
+  <li><code class="highlighter-rouge">"Zitat"</code> wird zu “Zitat”</li>
+</ul>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">svn info -r HEAD | grep <span class="s2">"Revision"</span> | cut -d<span class="s1">' '</span> -f2 &gt; version.tex</code></pre></figure>
+<p>Leider entspricht das nicht der deutschen Typographie, wo vor dem Zitat das Zitatzeichen unten und danach oben (und anders herum) steht.
+Durch eine zusätzliche Konfiguration kann man auf deutsche Typographie umschalten, indem man die <tt>_config.yml</tt> um folgende Zeilen ergänzt:</p>
 
-<p>aufnimmt und <code class="highlighter-rouge">version.tex</code> im LaTeX-Dokument einbindet. Falls jedoch keine Versionierungssoftware zur Verfügung steht, kann man sich auch einfach selbst behelfen und z.B. mit <code class="highlighter-rouge">bc</code> „rechnen“. Dann könnte das Makefile Folgendes enthalten:</p>
+<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">kramdown</span><span class="pi">:</span>
+  <span class="s">smart_quotes</span><span class="pi">:</span>   <span class="s">sbquo,lsquo,bdquo,ldquo</span>
+</code></pre>
+</div>
+<p>Nun ergibt sich der richtige Schriftsatz im Deutschen:</p>
 
-<figure class="highlight"><pre><code class="language-make" data-lang="make"><span class="c"># Versionsfile, steht am Anfang z.B. "1" drin
-</span><span class="nv">VERISON</span><span class="o">=</span>version.tex
-<span class="c"># Zähler 
-</span><span class="nv">StepRun</span><span class="o">=</span><span class="nb">echo</span> <span class="s2">"1+"</span> <span class="sb">`</span>tail -n 1 <span class="nv">$(VERISON)</span><span class="sb">`</span> | bc &lt; <span class="nv">$(VERISON)</span>.1; mv <span class="nv">$(VERISON)</span>.1 <span class="nv">$(VERISON)</span></code></pre></figure>
-
-<p>Jetzt muss bei der Übersetzung das (Pseudo-)Ziel „StepRun“ in den Abhängigkeiten stehen, und schon werden die Versionen gezählt.</p>
-
+<ul>
+  <li><code class="highlighter-rouge">"Zitat"</code> wird zu „Zitat“</li>
+</ul>
 
 	                </span>
 			
