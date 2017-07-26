@@ -5,7 +5,7 @@ meta_description: "Ich verlasse Wordpress und wechsle zu Jekyll."
 published: true
 author: mwerner
 comments: false
-date: 2017-06-26 12:16:41
+date: 2017-06-19 12:16:41
 tags:
     - Jekyll
     - Wordpress
