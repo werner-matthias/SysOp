@@ -1,0 +1,958 @@
+<!doctype html>
+<html class="no-js" lang="de">
+<head>
+		<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Lebenszeichen</title>
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/styles_feeling_responsive.css" />
+	<script src="http://localhost:4000/assets/js/modernizr.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: [ 'Lato:400,700,400italic:latin', 'Volkhov::latin' ]
+      }
+    });
+  </script>
+
+  <noscript>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic|Volkhov' rel='stylesheet' type='text/css' />
+  </noscript>
+
+  
+	
+	<meta name="description" content="Wir bauen den ersten &quot;Kernel&quot; und holen (nahezu) die Bequemlichkeit des Desktop-Debuggers in die Embedded-Welt."/>
+
+	
+
+	
+
+
+
+	
+	<link rel="icon" sizes="32x32" href="http://localhost:4000/assets/img/favicon-32x32.png" />
+
+
+
+
+	
+	<link rel="icon" sizes="192x192" href="http://localhost:4000/assets/img/touch-icon-192x192.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="http://localhost:4000/assets/img/apple-touch-icon-180x180-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://localhost:4000/assets/img/apple-touch-icon-152x152-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/assets/img/apple-touch-icon-144x144-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://localhost:4000/assets/img/apple-touch-icon-120x120-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/assets/img/apple-touch-icon-114x114-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://localhost:4000/assets/img/apple-touch-icon-76x76-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/assets/img/apple-touch-icon-72x72-precomposed.png" />
+
+
+
+
+	
+	<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/assets/img/apple-touch-icon-precomposed.png" />	
+
+
+
+
+	
+	<meta name="msapplication-TileImage" content="http://localhost:4000/assets/img/msapplication_tileimage.png" />
+
+
+
+
+	
+	<meta name="msapplication-TileColor" content="#fabb00" />
+
+
+
+	<!-- Facebook Optimization -->
+	<meta property="og:locale" content="en_EN" />
+	
+	<meta property="og:title" content="Lebenszeichen" />
+	<meta property="og:description" content="Wir bauen den ersten &quot;Kernel&quot; und holen (nahezu) die Bequemlichkeit des Desktop-Debuggers in die Embedded-Welt." />
+	<meta property="og:url" content="http://localhost:4000//aihpos/2017/04/10/aihpos-lebenszeichen/" />
+	<meta property="og:site_name" content="Systems Operational" />
+	
+
+	
+
+	<!-- Search Engine Optimization -->
+	
+
+	<link type="text/plain" rel="author" href="http://localhost:4000/humans.txt" />
+
+	
+
+	
+</head>
+</head>
+<body id="top-of-page" class="page-fullwidth">
+	
+	
+<div id="navigation" class="sticky">
+  <nav class="top-bar" role="navigation" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+      <h1 class="show-for-small-only"><a href="http://localhost:4000" class="icon-tree"> Systems Operational</a></h1>
+    </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Navigation</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+
+      <ul class="right">
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+            
+            
+              <li class="divider"></li>
+              <li><a href="http://localhost:4000/about/">Über mich</a></li>
+
+            
+            
+          
+        
+        
+      </ul>
+
+      <ul class="left">
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a href="http://localhost:4000/">Start</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+
+              <li class="has-dropdown">
+                <a href="http://localhost:4000/blog/">Blog</a>
+
+                  <ul class="dropdown">
+                    
+
+                      
+
+                      <li><a href="http://localhost:4000/blog/archive/">Archive</a></li>
+                    
+                  </ul>
+                  
+              </li>
+              <li class="divider"></li>
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a href="http://localhost:4000/blog/aihpos/">aihPos</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+        
+        
+      </ul>
+    </section>
+  </nav>
+</div><!-- /#navigation -->
+
+	
+
+	
+
+<div id="masthead-no-image-header">
+	<div class="row">
+		<div class="small-12 columns">
+			<a id="logo" href="http://localhost:4000" title="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
+				<img src="http://localhost:4000/assets/img/logo.png" alt="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
+			</a>
+		</div><!-- /.small-12.columns -->
+	</div><!-- /.row -->
+</div><!-- /#masthead -->
+
+
+
+
+
+
+
+
+
+	
+
+
+<div class="row t30">
+	<div class="medium-12 columns">
+		<article>
+			<header>
+				<p class="subheadline">Ein Betriebsystem für die Lehre</p>
+				<h1>Lebenszeichen</h1>
+			</header>
+
+			
+
+			<span itemprop="articleSection">
+	                <p><strong>Inhalt</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#boot-prozess" id="markdown-toc-boot-prozess">Boot-Prozess</a></li>
+  <li><a href="#speicher-und-formate" id="markdown-toc-speicher-und-formate">Speicher und Formate</a>    <ul>
+      <li><a href="#layout-und-linker" id="markdown-toc-layout-und-linker">Layout und Linker</a></li>
+      <li><a href="#binärfile" id="markdown-toc-binärfile">Binärfile</a></li>
+      <li><a href="#makefile" id="markdown-toc-makefile">Makefile</a></li>
+    </ul>
+  </li>
+  <li><a href="#hardware" id="markdown-toc-hardware">Hardware</a>    <ul>
+      <li><a href="#jtag" id="markdown-toc-jtag">JTAG</a></li>
+      <li><a href="#led" id="markdown-toc-led">LED</a></li>
+    </ul>
+  </li>
+  <li><a href="#software" id="markdown-toc-software">Software</a>    <ul>
+      <li><a href="#das-erste-rust-programm" id="markdown-toc-das-erste-rust-programm">Das erste Rust-Programm</a></li>
+      <li><a href="#panik" id="markdown-toc-panik">Panik!</a></li>
+    </ul>
+  </li>
+  <li><a href="#mit-dem-pireden" id="markdown-toc-mit-dem-pireden">Mit dem Pi reden</a>    <ul>
+      <li><a href="#morsezeichen" id="markdown-toc-morsezeichen">Morsezeichen</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><a class="left button tiny radius" href="http://localhost:4000/aihpos/2017/03/31/aihpos-ausrustung/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
+
+<p><a class="right button tiny radius r15" href="http://localhost:4000/aihpos/2017/04/26/aihpos-postman/">Nächster Beitrag in AIHPOS<span class="icon-chevron-right"></span></a></p>
+
+<div class="row"></div>
+
+<p>Nachdem wir unsere <a href="http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/">Toolchain</a> installiert haben, wollen wir den ersten „Kernel“ bauen. Er soll nichts anderes machen, als den Pi für JTAG
+vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der <a href="https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf">I/O-Hardware</a>, dem Speicher-Layout und dem
+Boot-Prozess.</p>
+
+<h2 id="boot-prozess">Boot-Prozess</h2>
+
+<p>Unsere ARM-CPU ist nicht die einzige CPU auf dem Raspberry. Vielmehr gibt es einen weiteren Prozessor, die <a href="https://docs.broadcom.com/docs/12358545">GPU VideoCore</a>® IV. Anders als die Bezeichnung vermuten
+lässt, ist die GPU nicht nur für die Grafiksteuerung verantwortlich, sondern übernimmt z.B. auch den Boot-Prozess.1 Wenn der Strom eingeschaltet wird, übernimmt erst mal
+die GPU die Regie. Sie bootet von einem internen ROM, lädt dann von der SD-Karte die Datei bootcode.bin. Diese kann enthält einen Treiber, um Dateien im ELF-Format
+lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei start.elf geladen. Die Firmware liest u.a. die Datei <kbd>config.txt</kbd>   (so vorhanden) und
+konfiguriert das Board entsprechend, und lädt anschließend die Datei <kbd>kernel.img</kbd> auf die (aus AMR-Sicht) Adresse 0x08000. Von dieser Adresse aus startet dann auch der
+ARM.</p>
+
+<h2 id="speicher-und-formate">Speicher und Formate</h2>
+
+<h3 id="layout-und-linker">Layout und Linker</h3>
+
+<p>Die Datei <kbd>kernel.img</kbd> ist ein Binärfile, das unmittelbar Maschinencode enthält, also keine ELF-Datei oder ein anderes höheres Format. Wir müssen also erstens
+dafür sorgen, dass unser „Kernel“ von der Adresse 0x08000 lauffähig ist, und zweitens, dass er als reine Binärdatei vorliegt. Beim ersten hilft der Linker. In der
+„normalen“ Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte
+Anforderungen haben, müssen wir es ihm mit einem <a href="https://sourceware.org/binutils/docs/ld/Scripts.html">Linker-Skript</a> mitteilen. Unser Linker-Skript ist (noch) sehr einfach:</p>
+
+<pre><code class="language-ld">ENTRY(kernel_main)
+SECTIONS
+{
+    /* Starts at LOADER_ADDR. */
+    . = 0x8000;
+    .text :
+    {
+        KEEP(*(.text.kernel_main))
+        *(.text)
+    }	
+    .bss :
+    {
+        bss = .;
+        *(.bss)
+    }
+}
+</code></pre>
+<p>Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code kernel_main heißt,2 und dass der Code an Adresse 0x0800 beginnt und zwar mit kernel_main.</p>
+
+<h3 id="binärfile">Binärfile</h3>
+
+<p>Um aus dem vom Linker generierten ELF-File ein Binärfile zu machen, nutzen wir <a href="https://sourceware.org/binutils/docs/binutils/objcopy.html#objcopy"><code class="highlighter-rouge">objcopy</code></a>, genauer die Cross-Variante arm-none-eabi-objcopy. Der Name objcopy ist ein
+klares Understatement, das dieses Programm nicht nur kopiert, sondern eine Vielzahl von Transformationen ausführen kann. Wir nutzen es allerdings nur dazu, aus dem
+ELF-File den Binärcode zu generieren, eine Aufgabe, die auf Plattformen <em>mit</em> einem Betriebssystem i.d.R. der Lader übernimmt.</p>
+
+<h3 id="makefile">Makefile</h3>
+
+<p>Eigentlich hat Rust sein eigenes Build-System <code class="highlighter-rouge">cargo</code>, mit dem wir schon die core-Bibliothek gebaut haben. Jedoch ist <code class="highlighter-rouge">cargo</code> nicht sonderlich gut für bare-metal
+Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurückgreifen.<sup id="fnref:3"><a href="#fn:3" class="footnote">1</a></sup></p>
+
+<p>Unser Makefile geht davon aus, dass wir folgendes Verzeichnis-Layout haben:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>aihpos
+  |
+  +- rust-corelib
+  |
+  +- jtag
+      |
+      +-- src
+      +-- obj
+      +-- build
+</code></pre>
+</div>
+
+<p>In src sind alle Quelldateien. Die Objektdateien liegen in obj und alle anderen generierten Dateien in build. Das Makefile selbst befindet sich in jtag und sieht so aus:</p>
+<div class="language-make highlighter-rouge"><pre class="highlight"><code><span class="nv">BUILDDIR</span><span class="o">=</span>build
+<span class="nv">SRCDIR</span><span class="o">=</span>src
+<span class="nv">OBJDIR</span><span class="o">=</span>obj
+<span class="nv">BUILDDIR</span><span class="o">=</span>build
+<span class="nv">OBJCOPY</span><span class="o">=</span>arm-none-eabi-objcopy
+<span class="nv">OBJDUMP</span><span class="o">=</span>arm-none-eabi-objdump
+<span class="nv">RUSTC</span><span class="o">=</span>rustc
+<span class="nv">LIBCORE</span><span class="o">=</span>../rust-libcore/target/arm-none-eabihf/release/libcore.rlib
+<span class="nv">RUSTFLAGS</span><span class="o">=</span> --target <span class="nv">$(TARGET)</span> -C <span class="nv">panic</span><span class="o">=</span>abort -g --crate-type staticlib --extern <span class="nv">core</span><span class="o">=</span><span class="nv">$(LIBCORE)</span>
+<span class="nv">LINKFLAGS</span><span class="o">=</span> -O0 -g -Wl,-gc-sections -mfpu<span class="o">=</span>vfp -mfloat-abi<span class="o">=</span>hard -march<span class="o">=</span>armv6zk -mtune<span class="o">=</span>arm1176jzf-s -nostdlib
+
+<span class="nv">TARGET</span><span class="o">=</span>arm-none-eabihf
+<span class="nv">MAIN</span><span class="o">=</span>kernel
+
+<span class="nv">IMAGE</span><span class="o">=</span><span class="nv">$(BUILDDIR)</span>/<span class="nv">$(MAIN)</span>.img
+<span class="nv">LIST</span><span class="o">=</span><span class="nv">$(BUILDDIR)</span>/<span class="nv">$(MAIN)</span>.list
+<span class="nv">ELF</span><span class="o">=</span><span class="nv">$(BUILDDIR)</span>/<span class="nv">$(MAIN)</span>.elf
+
+<span class="err">vpath</span> <span class="err">%.rs</span> <span class="err">$(SRCDIR)</span>
+<span class="err">vpath</span> <span class="err">%.o</span> <span class="err">$(OBJDIR)</span>
+
+<span class="nv">SOURCES</span><span class="o">=</span> main.rs 
+<span class="nv">OBJ</span><span class="o">=</span> <span class="err">$</span><span class="o">(</span>addsuffix .o, <span class="err">$</span><span class="o">(</span>basename <span class="nv">$(SOURCES)</span><span class="o">))</span>
+
+<span class="nl">.PHONY</span><span class="o">:</span> <span class="nf">clean </span>
+
+<span class="nl">all</span><span class="o">:</span> <span class="nf">$(IMAGE) $(LIST)</span>
+
+<span class="nl">main.o</span><span class="o">:</span>	<span class="nf">main.rs panic.rs</span>
+
+<span class="nl">$(IMAGE)</span><span class="o">:</span> <span class="nf">$(ELF)</span>
+	<span class="nv">$(OBJCOPY)</span> <span class="nv">$(ELF)</span> -O binary <span class="nv">$(IMAGE)</span>
+
+<span class="nl">$(LIST)</span><span class="o">:</span> <span class="nf">$(IMAGE)</span>
+	<span class="nv">$(OBJDUMP)</span> -d <span class="nv">$(ELF)</span> &gt; <span class="nv">$@</span>
+
+<span class="nl">$(ELF)</span><span class="o">:</span> <span class="nf">$(OBJ) </span>
+	arm-none-eabi-gcc <span class="nv">$(LINKFLAGS)</span> -Tsrc/layout.ld  <span class="err">$</span><span class="o">(</span>addprefix <span class="nv">$(OBJDIR)</span>/, <span class="nv">$(OBJ)</span><span class="o">)</span> -o <span class="nv">$@</span>
+
+<span class="nl">%.o</span><span class="o">:</span> <span class="nf">%.rs </span>
+	<span class="nv">$(RUSTC)</span> <span class="nv">$(RUSTFLAGS)</span> <span class="nv">$&lt;</span> -o <span class="nv">$(OBJDIR)</span>/<span class="nv">$@</span>
+
+<span class="nl">clean</span><span class="o">:</span>
+	rm -f <span class="nv">$(OBJDIR)</span>/<span class="k">*</span>
+	rm -f <span class="nv">$(BUILDDIR)</span>/<span class="k">*</span>
+</code></pre>
+</div>
+
+<p>Nach der Diskussion dürfte es nicht weiter überraschend sein. Einzig das Ziel LIST haben wir noch nicht besprochen. Dies ist der mit Hilfe von objdump disassemblierte Code des erzeugten ELF-Files. Er kann manchmal bei der Fehlersuche nützlich sein.</p>
+
+<h2 id="hardware">Hardware</h2>
+
+<h3 id="jtag">JTAG</h3>
+
+<p>Der Pi hat 54  universelle Kommunikationspins, die als Ausgabe (Standard beim Einschalten), Eingabe oder mit jeweils bis zu sechs Spezialfunktionen (Alternativfunktionen 0…5) beschaltet werden kann. Für JTAG werden fünf Steuerleitungen gebraucht, die jeweils auf zwei verschiedene Pins</p>
+
+<ul>
+  <li>Data Input (<em>TDI</em>), serieller Eingang, auf Pin 4 in der Alternativfunktion 5 oder Pin 26  in der Alternativfunktion 4</li>
+  <li>Test Data Output (<em>TDO</em>), serieller Ausgang,  auf Pin 5 in der Alternativfunktion 5 oder Pin 24  in der Alternativfunktion 4</li>
+  <li>Test Clock (<em>TCK</em>). Das Taktsignal,  auf Pin 13 in der Alternativfunktion 5 oder Pin 25  in der Alternativfunktion 4</li>
+  <li>Test Mode Select (<em>TMS</em>), Steuerleitung, auf Pin 12 in der Alternativfunktion 5 oder Pin 27  in der Alternativfunktion 4</li>
+  <li>Test Reset (<em>TRST</em>), Reset, auf Pin 12 in der Alternativfunktion 5 oder Pin 22  in der Alternativfunktion 4</li>
+</ul>
+
+<p>Der Adapter (siehe letzter Beitrag) nutzt die Pin 22 bis 27, entsprechen müssen diese auf Alternativfunktion 4 gesetzt werden. Dies geschieht über die GPIO-Select-Register, genauer über GPIOSEL2. Jeweils drei aufeinanderfolgende Bits wählen die Funktion für ein GPIO-Pin aus.</p>
+
+<p>Außerdem muss vorher für diese Pins die Pull-up/down-Steuerung deaktiviert werden. Dabei folgen wir der Beschreibung auf Seite 101 die ARM-Peripherie-Dokumentation.</p>
+
+<h3 id="led">LED</h3>
+
+<p>Damit wir sehen, dass unser Programm auch läuft, wollen wir die grüne LED des Raspberrys blinken lassen. Diese ist an den GPIO-Pin 47 angeschlossen. Die GPIO-Pins sind in zwei Sätze unterteilt, Satz 1 für Pin 0…31, und Satz 2 für Pin 32…53. Pin 47 ist also Pin 15 (wenn man mit Null anfängt zu zählen) des zweiten Satzes.</p>
+
+<h2 id="software">Software</h2>
+
+<h3 id="das-erste-rust-programm">Das erste Rust-Programm</h3>
+
+<p>Wir haben jetzt alle Informationen zusammen, um eine Software zu schreiben, die den Raspberry auf einen JTAG-Zugriff vorzubereiten. Wie schon im <a href="/aihpos/2017/03/19/aihpos-1/">Teil 1 dieser Reihe</a> diskutiert, soll Rust benutzt werden, mit — wenn nötig — etwas Assembler. In der Regel wird der Startup-Code in Assembler
+geschrieben, siehe z.B. <a href="http://wiki.osdev.org/Raspberry_Pi_Bare_Bones">hier</a>. Das ist im Allgemeinen auch eine gute Idee: jede Rust-Funktion (oder C-Funktion) hat einen Prolog, in dem die Rücksprungadresse auf dem
+Stack gesichert wird. Allerdings ist zu Beginn ja noch gar kein Stack angelegt. Dies und andere Initialisierungen macht das Assemblerprogramm, ehe es in den in der
+höheren Programmiersprache geschriebenen Code ruft.</p>
+
+<p>Allerdings ist ein solches Assembler-Modul in unserem Fall nicht nötig: Einerseits können wir Assembler-Befehle direkt in den Rust-Code einbetten, andererseits können wir
+unsere Startfunktion mit dem Attribute <code class="highlighter-rouge">#[naked]</code> versehen, so dass der Compiler keinen Prolog oder Epilog anlegt.</p>
+
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="nf">feature</span><span class="p">(</span><span class="n">asm</span><span class="p">,</span><span class="n">lang_items</span><span class="p">,</span><span class="n">core_intrinsics</span><span class="p">,</span><span class="n">naked_functions</span><span class="p">)]</span>
+<span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="n">no_std</span><span class="p">]</span>
+
+<span class="c">// Hardware-Adressen</span>
+<span class="k">const</span> <span class="n">GPIO_BASE</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">0x20200000</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">GPFSEL2</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span>   <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x08</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">GPSET1</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span> <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x20</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">GPCLR1</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span> <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x2C</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">GPPUD</span><span class="p">:</span>      <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span> <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x94</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">GPPUDCLK0</span><span class="p">:</span>  <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span> <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x98</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
+
+<span class="k">fn</span> <span class="nf">sleep</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="k">for</span> <span class="n">_</span> <span class="n">in</span> <span class="mi">1</span><span class="err">.</span><span class="py">.value</span> <span class="p">{</span>
+        <span class="k">unsafe</span> <span class="p">{</span> <span class="nd">asm!</span><span class="p">(</span><span class="s">""</span><span class="p">:::</span><span class="s">"memory"</span><span class="p">:</span><span class="s">"volatile"</span><span class="p">);</span> <span class="p">}</span> 
+    <span class="p">}</span>
+<span class="p">}</span> 
+
+<span class="c">// kernel_main() erwartet, dass etwas unterhalb von 0x8000 keine</span>
+<span class="c">// Daten/Code liegen. Das ist normalerweise gewährleistet, da</span>
+<span class="c">// der Code entweder bei 0x8000 beginnt oder 0x0000 (bei "kernel_old=1"</span>
+<span class="c">// in config.txt). Für den letzteren Fall ist dieser Kernel klein</span>
+<span class="c">// genug, um nicht mit dem Stack zu kollidieren.</span>
+
+<span class="cp">#[no_mangle]</span>   <span class="c">// Name wird für den Export nicht verändert</span>
+<span class="cp">#[naked]</span>       <span class="c">// keinen Prolog</span>
+<span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">kernel_main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c">// Setze den Stackpointer</span>
+    <span class="k">unsafe</span><span class="p">{</span> <span class="nd">asm!</span><span class="p">(</span><span class="s">"mov sp, #0x8000"</span><span class="p">);</span>  <span class="p">}</span>
+    
+    <span class="c">// Pull up/down abschalten</span>
+    <span class="k">unsafe</span><span class="p">{</span> <span class="o">*</span><span class="n">GPPUD</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">};</span>
+    <span class="nf">sleep</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+    <span class="k">unsafe</span><span class="p">{</span> <span class="o">*</span><span class="n">GPPUDCLK0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">22</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">23</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">25</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">26</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">27</span><span class="p">)</span> <span class="p">};</span>
+    <span class="nf">sleep</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+    <span class="k">unsafe</span><span class="p">{</span> <span class="o">*</span><span class="n">GPPUDCLK0</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">};</span>
+
+    <span class="c">// GPIO Pins 22 .. 27 auf alternative Funktion 4 (= 011) setzen</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">selection</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="k">unsafe</span><span class="p">{</span> <span class="o">*</span><span class="n">GPFSEL2</span><span class="p">};</span>
+    <span class="n">selection</span> <span class="o">=</span> <span class="n">selection</span> <span class="o">&amp;</span> <span class="o">!</span><span class="p">((</span><span class="mi">0b111</span> <span class="o">&lt;&lt;</span>  <span class="mi">6</span><span class="p">)</span>  <span class="p">|</span> <span class="p">(</span><span class="mi">0b111</span> <span class="o">&lt;&lt;</span>  <span class="mi">9</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">0b111</span> <span class="o">&lt;&lt;</span>  <span class="mi">12</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">0b111</span> <span class="o">&lt;&lt;</span>  <span class="mi">15</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">0b111</span> <span class="o">&lt;&lt;</span>  <span class="mi">18</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">0b111</span> <span class="o">&lt;&lt;</span>  <span class="mi">21</span><span class="p">)</span> <span class="p">);</span>
+    <span class="n">selection</span> <span class="o">=</span> <span class="n">selection</span> <span class="p">|</span> <span class="p">(</span><span class="mi">0b011</span> <span class="o">&lt;&lt;</span>  <span class="mi">6</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">0b011</span> <span class="o">&lt;&lt;</span> <span class="mi">9</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">0b011</span> <span class="o">&lt;&lt;</span>  <span class="mi">12</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">0b011</span> <span class="o">&lt;&lt;</span>  <span class="mi">15</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">0b011</span> <span class="o">&lt;&lt;</span>  <span class="mi">18</span><span class="p">)</span> <span class="p">|</span> <span class="p">(</span><span class="mi">0b011</span> <span class="o">&lt;&lt;</span>  <span class="mi">21</span><span class="p">);</span>
+    <span class="k">unsafe</span> <span class="p">{</span>  <span class="o">*</span><span class="n">GPFSEL2</span> <span class="o">=</span> <span class="n">selection</span><span class="p">};</span>
+
+    <span class="c">// Als Lebenszeichen lassen wir die grüne LED blinken</span>
+    <span class="k">let</span> <span class="n">led_on</span>  <span class="o">=</span> <span class="n">GPSET1</span><span class="p">;</span>
+    <span class="k">let</span> <span class="n">led_off</span> <span class="o">=</span> <span class="n">GPCLR1</span><span class="p">;</span> 
+    <span class="k">loop</span> <span class="p">{</span>
+        <span class="k">unsafe</span> <span class="p">{</span> <span class="o">*</span><span class="p">(</span><span class="n">led_on</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c">// Die Zeiten sind für die Debug-Version, die Release-Version benötigt</span>
+        <span class="c">// längere Zeiten.</span>
+        <span class="nf">sleep</span><span class="p">(</span><span class="mi">50000</span><span class="p">);</span>
+        <span class="k">unsafe</span> <span class="p">{</span> <span class="o">*</span><span class="p">(</span><span class="n">led_off</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="p">}</span>
+        <span class="nf">sleep</span><span class="p">(</span><span class="mi">50000</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+</code></pre>
+</div>
+
+<h3 id="panik">Panik!</h3>
+
+<p>Nun übersetzen wir dieses Programm.</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line command">make</span><span class="line output">    rustc --target arm-none-eabihf -C panic=abort -g --crate-type staticlib --extern core=../rust-libcore/target/arm-none-eabihf/release/libcore.rlib src/main.rs -o build/main.o
+</span><span class="line output">    error: language item required, but not found: `panic_fmt`
+</span><span class="line output">    error: aborting due to previous error
+</span><span class="line output">    make: *** [main.o] Error 101</span></code></pre></td></tr></table></div></div>
+        </div>
+<p>Hoppla! Der Linker hat ein undefiniertes Symbol. Ursache dafür ist, dass die Core-Bibliothek nicht völlig frei von externen Referenzen ist. Tust muss wissen, wie es sich in einem Ausnahmefall (Exception) verhalten soll, um evtl. sogar eine Recovery zu ermöglichen, und das ist plattform-spezifisch. Wenn allerdings wie in unserem Fall der der „Kernel“ selbst crashed, ist eine Recovery hoffnungslos. Es ist daher hinreichend, die undefinierten Symbole (es sind nämlich noch ein paar) einfach durch Dummy-Funktionen zu definieren. Dazu legen wir noch eine Datei panic.rs an:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="n">intrinsics</span><span class="p">;</span>
+
+<span class="cp">#[lang</span> <span class="cp">=</span> <span class="s">"eh_personality"</span><span class="cp">]</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">eh_personality</span><span class="p">()</span> <span class="p">{}</span>
+
+<span class="cp">#[no_mangle]</span>
+<span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">__aeabi_unwind_cpp_pr0</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">loop</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="cp">#[no_mangle]</span>
+<span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">__aeabi_unwind_cpp_pr1</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">loop</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="cp">#[allow(non_snake_case)]</span> <span class="cp">#[no_mangle]</span>
+<span class="k">pub</span> <span class="k">extern</span> <span class="s">"C"</span> <span class="k">fn</span> <span class="nf">_Unwind_Resume</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">!</span> <span class="p">{</span>
+    <span class="k">loop</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="cp">#[lang</span> <span class="cp">=</span> <span class="s">"panic_fmt"</span><span class="cp">]</span>
+<span class="cp">#[no_mangle]</span>
+<span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">rust_begin_panic</span><span class="p">(</span><span class="n">_msg</span><span class="p">:</span> <span class="nn">core</span><span class="p">::</span><span class="nn">fmt</span><span class="p">::</span><span class="n">Arguments</span><span class="p">,</span>
+                               <span class="n">_file</span><span class="p">:</span> <span class="o">&amp;</span><span class="err">'</span><span class="k">static</span> <span class="nb">str</span><span class="p">,</span>
+                               <span class="n">_line</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">!</span> <span class="p">{</span>
+    <span class="k">unsafe</span> <span class="p">{</span> <span class="nn">intrinsics</span><span class="p">::</span><span class="nf">abort</span><span class="p">()</span> <span class="p">}</span>
+<span class="p">}</span>
+
+
+</code></pre>
+</div>
+
+<p>Außerdem fügen wir <kbd>main.rs</kbd> noch eine Zeile hinzu:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="nd">include!</span><span class="p">(</span><span class="s">"panic.rs"</span><span class="p">);</span>
+</code></pre>
+</div>
+<p>Dieses Macro funktioniert ähnlich wie das <code class="highlighter-rouge">#include</code> in C und macht die Datei <kbd>panic.rs</kbd> logisch zu einem Bestandteil von <kbd>main.rs</kbd>. Dieses Vorgehen ist
+ein bisschen „unrustig“, da eigentlich in Rust kein Modul in mehr als einer Datei sein soll (dafür ruhig mehrere Module in einer Datei), aber ich habe diese Variante
+gewählt, um den eigentlichen Funktionscode halbwegs „rein“ zu halten ohne extra ein neues Modul anlegen zu müssen. Nun läuft die Übersetzung durch. Anschließend kopieren
+wir da Binär-Image auf die SD-Karte,</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line command">make</span><span class="line output">    rustc --target arm-none-eabihf -C panic=abort -g --crate-type staticlib --extern core=../rust-libcore/target/arm-none-eabihf/release/libcore.rlib src/main.rs -o obj/main.o
+</span><span class="line output">    arm-none-eabi-gcc -O0 -g -Wl,-gc-sections -mfpu=vfp -mfloat-abi=hard -march=armv6zk -mtune=arm1176jzf-s -nostdlib -Tsrc/layout.ld  obj/main.o -o build/kernel.elf
+</span><span class="line output">    arm-none-eabi-objcopy build/kernel.elf -O binary build/kernel.img
+</span><span class="line output">    arm-none-eabi-objdump -d build/kernel.elf &gt; build/kernel.list
+</span><span class="line output">    cp build/kernel.img /Volume/boot/</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p>Wenn der Raspberry mit dieser SD gestartet wird, fängt die grüne LED tatsächlich an zu blinken.</p>
+
+<h2 id="mit-dem-pireden">Mit dem Pi reden</h2>
+
+<p>Jetzt soll die JTAG-Lommunikation getestet werden. Dazu schreiben wir zwei openocd-Konfigurationsdateien<sup id="fnref:4"><a href="#fn:4" class="footnote">2</a></sup>:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>interface jlink
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>## Broadcom 2835 on Raspberry Pi
+telnet_port 4444
+gdb_port 3333
+adapter_khz 0
+
+if { [info exists CHIPNAME] } {
+set _CHIPNAME $CHIPNAME
+} else {
+set _CHIPNAME raspi
+}
+
+reset_config none
+
+if { [info exists CPU_TAPID ] } {
+set _CPU_TAPID $CPU_TAPID
+} else {
+set _CPU_TAPID 0x07b7617F
+}
+jtag newtap $_CHIPNAME arm -irlen 5 -expected-id $_CPU_TAPID
+
+set _TARGETNAME $_CHIPNAME.arm
+target create $_TARGETNAME arm11 -chain-position $_TARGETNAME
+</code></pre>
+</div>
+
+<p>In einem Terminal kann jetzt der OpenOCD-Server gestartet werden:</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line command">openocd -f jlink.cfg -f raspi.cfg</span><span class="line output">    Open On-Chip Debugger 0.10.0+dev-00093-g6b2acc0 (2017-03-28-11:17)
+</span><span class="line output">    Licensed under GNU GPL v2
+</span><span class="line output">    For bug reports, read
+</span><span class="line output">    http://openocd.org/doc/doxygen/bugs.html
+</span><span class="line output">    adapter speed: 1000 kHz
+</span><span class="line output">    none separate
+</span><span class="line output">    Info : auto-selecting first available session transport "jtag". To override use &#8218;transport select &#8218;.
+</span><span class="line output">    raspi.arm
+</span><span class="line output">    Info : No device selected, using first device.
+</span><span class="line output">    Info : J-Link V10 compiled Jan 9 2017 17:48:51
+</span><span class="line output">    Info : Hardware version: 10.10
+</span><span class="line output">    Info : VTarget = 3.335 V
+</span><span class="line output">    Info : clock speed 1000 kHz
+</span><span class="line output">    Info : JTAG tap: raspi.arm tap/device found: 0x07b7617f (mfg: 0x0bf (Broadcom), part: 0x7b76, ver: 0x0)
+</span><span class="line output">    Info : found ARM1176
+</span><span class="line output">    Info : raspi.arm: hardware has 6 breakpoints, 2 watchpoints</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p>Nun kann ein weiteres Terminalfenster geöffnet werden, in dem ein Telnet gestartet wird.</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line command">telnet localhost 4444</span><span class="line output">  Connected to localhost.
+</span><span class="line output">  Escape character is &#8218;^]&#8216;.
+</span><span class="line output">  Open On-Chip Debugger
+</span><span class="line output">  &gt; halt
+</span><span class="line output">  target halted in ARM state due to debug-request, current mode: Supervisor
+</span><span class="line output">  cpsr: 0x600001d3 pc: 0x000082e0</span></code></pre></td></tr></table></div></div>
+        </div>
+<p>Jetzt kann man viele interessante Dinge machen. Beispielsweise können Register ausgelesen oder Speicherstellen gelesen oder geschrieben werden:</p>
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line output">&gt; reg r1
+</span><span class="line output">    r1 (/32): 0x00007FD4
+</span><span class="line output">    &gt; mww 0x2020002C 0x8000
+</span><span class="line output">    &gt; mww 0x20200020 0x8000</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p>Die letzten beiden Befehle schalten die grüne LED aus- und wieder an. Der vermutlich wichtigste Befehl ist aber <kbd>load_image</kbd>. Damit entfällt das Kopieren eines neuen Images
+auf die SD-Karte. Die Datei (wahlweise auch im ELF-Format) kann direkt auf den Pi gebracht werden.</p>
+
+<p>Für ein noch etwas detaillierteres Debuggen kann openocd mit dem GNU-Debugger gekoppelt werden. Im Konfigurationsfile wurde der Port 3333 dafür freigegeben. Natürlich
+darf nicht der lokale Debugger genutzt werden<sup id="fnref:5"><a href="#fn:5" class="footnote">3</a></sup>, sondern der ARM-Cross-Debugger:</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span></pre></td><td class="code"><pre><code><span class="line command">arm-none-eabi-gdb -q build/kernel.elf</span><span class="line output">    Reading symbols from build/kernel.elf...done.
+</span><span class="line output">    (gdb) target remote localhost:3333
+</span><span class="line output">    Remote debugging using localhost:3333
+</span><span class="line output">    0x000082e0 in core::mem::swap (x=0x7f98, y=0x7fd4) at ~/Development/aihPOS/Code/rust-libcore/rust/src/libcore/mem.rs:448
+</span><span class="line output">    448 pub fn swap(x: &amp;mut T, y: &amp;mut T) {</span></code></pre></td></tr></table></div></div>
+        </div>
+
+<p>Wer will, kann den Debugger auch in eine GUI oder IDE einbinden, z.B. mit der <a href="https://pypi.python.org/pypi/gdbgui/"><code class="highlighter-rouge">gdbgui</code></a>.
+<img src="https://werner-matthias.github.io/SysOp/images/debug.png" alt="" class="img-responsive" /></p>
+
+<p>Nun kann man auch ohne Betriebssystem (fast) so bequem debuggen, wie man es von der Entwicklung von Desktop-Programmen gewohnt ist. Zwar ist die Arbeit über das
+JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständig die SD-Karte wechselt.</p>
+
+<h3 id="morsezeichen">Morsezeichen</h3>
+
+<p>Manchmal will man eine schnelle Rückmeldung haben, ob eine bestimmte Stelle im Programm erreicht wurde oder ob ein Fehler aufgetreten ist. Solange wir keine Konsole
+haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein eigenes Modul ausgelagert und parameterisiert:</p>
+
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="nf">allow</span><span class="p">(</span><span class="n">dead_code</span><span class="p">)]</span>
+<span class="c">// Hardware-Adressen</span>
+<span class="k">const</span> <span class="n">GPIO_BASE</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">0x20200000</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">GPSET1</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span> <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x20</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">GPCLR1</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span> <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x2C</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
+
+<span class="cp">#[derive(Clone,Copy)]</span>
+<span class="cp">#[repr(u32)]</span>
+<span class="k">pub</span> <span class="k">enum</span> <span class="n">Bc</span> <span class="p">{</span>
+    <span class="n">Long</span> <span class="o">=</span>  <span class="mi">380000</span><span class="p">,</span>
+    <span class="n">Short</span> <span class="o">=</span> <span class="mi">120000</span><span class="p">,</span>
+    <span class="n">Pause</span> <span class="o">=</span> <span class="mi">250000</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">type</span> <span class="n">BlinkSeq</span> <span class="o">=</span> <span class="o">&amp;</span><span class="err">'</span><span class="k">static</span> <span class="p">[</span><span class="n">Bc</span><span class="p">];</span>
+
+<span class="cm">/* Blinksequenzen */</span>
+<span class="c">// einmal blinken</span>
+<span class="k">pub</span> <span class="k">const</span> <span class="n">BS_DUMMY</span><span class="p">:</span> <span class="n">BlinkSeq</span> <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">];</span>
+<span class="c">// Lang, dann ein-, zwei, oder dreimal kurz</span>
+<span class="k">pub</span> <span class="k">const</span> <span class="n">BS_ONE</span><span class="p">:</span> <span class="n">BlinkSeq</span>   <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
+<span class="k">pub</span> <span class="k">const</span> <span class="n">BS_TWO</span><span class="p">:</span> <span class="n">BlinkSeq</span>   <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
+<span class="k">pub</span> <span class="k">const</span> <span class="n">BS_THREE</span><span class="p">:</span> <span class="n">BlinkSeq</span> <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
+<span class="c">// SOS (für Panik wenn der Framebuffer versagt: • • •  – – –  • • •</span>
+<span class="k">pub</span> <span class="k">const</span> <span class="n">BS_SOS</span><span class="p">:</span> <span class="n">BlinkSeq</span>   <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
+<span class="c">// Hi in Morsecode:  • • • •  • • </span>
+<span class="k">pub</span> <span class="k">const</span> <span class="n">BS_HI</span><span class="p">:</span> <span class="n">BlinkSeq</span>    <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
+
+<span class="cp">#[inline(never)]</span>
+<span class="k">fn</span> <span class="nf">sleep</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="k">for</span> <span class="n">_</span> <span class="n">in</span> <span class="mi">1</span><span class="err">.</span><span class="py">.value</span> <span class="p">{</span>
+        <span class="k">unsafe</span> <span class="p">{</span> <span class="nd">asm!</span><span class="p">(</span><span class="s">""</span><span class="p">:::</span><span class="s">"memory"</span><span class="p">:</span><span class="s">"volatile"</span><span class="p">);</span> <span class="p">}</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">blink_once</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">BlinkSeq</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">led_on</span>  <span class="o">=</span> <span class="n">GPSET1</span><span class="p">;</span>
+    <span class="k">let</span> <span class="n">led_off</span> <span class="o">=</span> <span class="n">GPCLR1</span><span class="p">;</span> 
+
+    <span class="k">for</span> <span class="n">c</span> <span class="n">in</span> <span class="n">s</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">sym</span><span class="p">:</span> <span class="n">Bc</span> <span class="o">=</span> <span class="n">c</span><span class="nf">.clone</span><span class="p">();</span>
+        <span class="k">match</span> <span class="n">sym</span> <span class="p">{</span>
+            <span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span> <span class="k">=&gt;</span> <span class="p">{</span>
+                <span class="k">unsafe</span> <span class="p">{</span> <span class="o">*</span><span class="p">(</span><span class="n">led_on</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="p">}</span>
+                <span class="nf">sleep</span><span class="p">(</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
+                <span class="k">unsafe</span> <span class="p">{</span> <span class="o">*</span><span class="p">(</span><span class="n">led_off</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span> <span class="k">=&gt;</span> <span class="p">{</span>
+                <span class="k">unsafe</span> <span class="p">{</span> <span class="o">*</span><span class="p">(</span><span class="n">led_on</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="p">}</span>
+                <span class="nf">sleep</span><span class="p">(</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
+                <span class="k">unsafe</span> <span class="p">{</span> <span class="o">*</span><span class="p">(</span><span class="n">led_off</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span> <span class="k">=&gt;</span> <span class="p">{</span>
+                <span class="nf">sleep</span><span class="p">(</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nf">sleep</span><span class="p">(</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">blink</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">BlinkSeq</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">loop</span> <span class="p">{</span>
+        <span class="nf">blink_once</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="nf">sleep</span><span class="p">(</span><span class="mi">400000</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+</code></pre>
+</div>
+
+<p>Man beachte, dass die auch hier benutzte Verzögerung durch „<em>busy idling</em>“ so nicht funktioniert, wenn wir die Codeoptimierung einschalten: Dann wird die
+Schleife zwar nicht vollständig wegoptimiert (das verhindert die Assembler-Anweisung), aber die Zeiten sind doch vollständig andere.
+Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführungszeit ist derzeit noch egal, aber die Übersetzungszeit würde sich etwas verlängern.</p>
+
+<p><a class="left button tiny radius" href="http://localhost:4000/aihpos/2017/03/31/aihpos-ausrustung/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
+
+<p><a class="right button tiny radius r15" href="http://localhost:4000/aihpos/2017/04/26/aihpos-postman/">Nächster Beitrag in AIHPOS<span class="icon-chevron-right"></span></a></p>
+
+<div class="row"></div>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:3">
+      <p>Vielleicht werde ich in späteren Folgen nochmal cargo oder die Cross-Compile-Variante xargo einsetzen.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Vergleiche https://github.com/dwelch67/raspberrypi/tree/master/armjtag.&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>Schon garn nicht in meiner Arbeitsumgebung auf dem Mac, da der Debugger hier auf MachO ausgelegt ist&nbsp;<a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+	                </span>
+			
+						<div id="page-meta" class="t30">
+				<p>
+					<!-- Look the author details up from the site config. -->
+					
+					<!-- Output author details if some exist. -->
+					
+					<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name" class="pr20 icon-edit"><a href="http://osg.informatik.tu-chemnitz.de/Staff/M_Werner/index.php?lang=en" target="_blank"> Matthias Werner</a></span>
+				</span>
+				
+
+				
+				<time class="icon-calendar pr20" datetime="2017-04-10" itemprop="datePublished"> 2017-04-10</time>
+				
+
+				<span class="icon-archive pr20"> AIHPOS</span>
+				<br />
+				<span class="pr20"><span class="icon-price-tag pr10"> aihPOS</span> <span class="icon-price-tag pr10"> Rust</span> <span class="icon-price-tag pr10"> Linker</span> <span class="icon-price-tag pr10"> make</span> <span class="icon-price-tag pr10"> openocd</span> </span>
+			</p>
+
+			<div id="post-nav" class="row">
+				
+				<div class="small-5 columns"><a class="button small radius prev" href="http://localhost:4000/quotes/2017/04/07/pointer/">&laquo; Pointer</a></div><!-- /.small-4.columns -->
+				
+				<div class="small-2 columns text-center"><a class="radius button small" href="http://localhost:4000/blog/archive/" title="Blog Archiv">Archiv</a></div><!-- /.small-4.columns -->
+				
+				<div class="small-5 columns text-right"><a class="button small radius next" href="http://localhost:4000/menschen/2017/04/20/march-for-science/">March for Science &raquo;</a></div><!-- /.small-4.columns -->
+				
+			</div>
+			</div><!--  /.page-meta -->
+			
+
+	                
+		</article>
+	</div><!-- /.medium-12.columns -->
+</div><!-- /.row -->
+
+
+
+
+	
+	    <div id="up-to-top" class="row">
+      <div class="small-12 columns" style="text-align: right;">
+        <a class="iconfont" href="#top-of-page">&#xf108;</a>
+      </div><!-- /.small-12.columns -->
+    </div><!-- /.row -->
+
+
+    <footer id="footer-content" class="bg-grau">
+      <div id="footer">
+        <div class="row">
+          <div class="medium-6 large-5 columns">
+            <h5 class="shadow-black">Über diese Website</h5>
+
+            <p class="shadow-black">
+              Matthias Werners Blog. 
+              <a href="http://localhost:4000/info/">Mehr ›</a>
+            </p>
+          </div><!-- /.large-6.columns -->
+
+
+          <div class="small-6 medium-3 large-3 large-offset-1 columns">
+            
+              
+              <ul class="no-bullet shadow-black">
+              
+              </ul>
+          </div><!-- /.large-4.columns -->
+
+
+          <div class="small-6 medium-3 large-3 columns">
+            
+              
+            <ul class="no-bullet shadow-black">
+            
+            </ul>
+          </div><!-- /.large-3.columns -->
+        </div><!-- /.row -->
+
+      </div><!-- /#footer -->
+
+    </footer>
+
+	
+
+	
+
+
+<script src="http://localhost:4000/assets/js/javascript.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+

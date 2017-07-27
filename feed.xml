@@ -5,12 +5,12 @@
 	<channel>
 		<title>Systems Operational</title>
 		<description>Matthias Werners Blog. </description>
-		<link>https://werner-matthias.github.io/SysOp/</link>
-		<atom:link href="https://werner-matthias.github.io/SysOp/feed.xml" rel="self" type="application/rss+xml" />
+		<link>http://localhost:4000/</link>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Braking News</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-braking-news/</link>
+				<link>http://localhost:4000/aihpos/2017/07/20/aihpos-braking-news/</link>
 				<pubDate>Thu, 20 Jul 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -26,7 +26,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/06/07/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -105,7 +105,7 @@ die RFCs &lt;a href=&quot;https://github.com/rust-lang/rfcs/blob/master/text/197
 &lt;a href=&quot;https://github.com/rust-lang/rfcs/blob/master/text/1398-kinds-of-allocators.md&quot;&gt;RFC 1398&lt;/a&gt;. Daraus ergibt sich ein stimmiges Bild: Das Allokator-Interface wurde
 überarbeitet und durch eine neue API ersetzt.&lt;/p&gt;
 
-&lt;p&gt;Im Folgendem wird beschrieben, wie das Allokator-Interface nun aussieht. Die entsprechenden Aussagen aus der Folge &lt;a href=&quot;/aihpos/aihpos-heap/&quot;&gt;„Wir machen einen Haufen“&lt;/a&gt; dieser
+&lt;p&gt;Im Folgendem wird beschrieben, wie das Allokator-Interface nun aussieht. Die entsprechenden Aussagen aus der Folge &lt;a href=&quot;/aihpos/2017/06/07/aihpos-heap/&quot;&gt;„Wir machen einen Haufen“&lt;/a&gt; dieser
 Reihe sind als überholt zu betrachten.&lt;/p&gt;
 
 &lt;h2 id=&quot;auf-zu-neuen-ufern&quot;&gt;Auf zu neuen Ufern&lt;/h2&gt;
@@ -211,7 +211,7 @@ derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständ
 &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linked_list_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;linked_list_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LockedHeap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Ich lasse sie aber erstmal trotzdem stehen, da ich – wie &lt;a href=&quot;/aihpos/aihpos-heap/&quot;&gt;hier&lt;/a&gt; diskutiert – später den Heap überarbeiten und die den
+&lt;p&gt;Ich lasse sie aber erstmal trotzdem stehen, da ich – wie &lt;a href=&quot;/aihpos/2017/06/07/aihpos-heap/&quot;&gt;hier&lt;/a&gt; diskutiert – später den Heap überarbeiten und die den
 Out-of-Memory-Fehler abfangen will.&lt;/p&gt;
 
 &lt;p&gt;Der Allokator der &lt;code class=&quot;highlighter-rouge&quot;&gt;linked_list_allocator&lt;/code&gt;-Bibliothek ist übrigens durch einen Spin-Lock (aus der &lt;a href=&quot;https://crates.io/crates/spin&quot;&gt;spin&lt;/a&gt;-Bibliothek) geschützt. Das ist in
@@ -235,7 +235,7 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 
 &lt;p&gt;Jetzt funktioniert die Übersetzung wieder fehlerfrei.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/06/07/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -249,42 +249,17 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
     führt. „Summentyp“ ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
-      &lt;p&gt;Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich &lt;em&gt;kein&lt;/em&gt; &lt;a href=&quot;/aihpos/aihpos-1/&quot;&gt;Design-Ziel&lt;/a&gt; in SOPHIA.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich &lt;em&gt;kein&lt;/em&gt; &lt;a href=&quot;/aihpos/2017/03/19/aihpos-1/&quot;&gt;Design-Ziel&lt;/a&gt; in SOPHIA.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-braking-news/</guid>
-			</item>
-		
-			<item>
-				<title>Ein bisschen zerstreut</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/</link>
-				<pubDate>Sun, 02 Jul 2017 00:00:00 +0200</pubDate>
-				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
-
-&lt;div class=&quot;alert-box text radius &quot;&gt;&lt;p&gt;&lt;em&gt;Dieser Beitrag wird derzeit vollständig überarbeitet.&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
-
-</description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/</guid>
+				<guid isPermaLink="true">http://localhost:4000/aihpos/2017/07/20/aihpos-braking-news/</guid>
 			</item>
 		
 			<item>
 				<title>Nebenläufigkeit</title>
-				<link>https://werner-matthias.github.io/SysOp/quotes/concurrency/</link>
+				<link>http://localhost:4000/quotes/2017/06/30/concurrency/</link>
 				<pubDate>Fri, 30 Jun 2017 00:00:00 +0200</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;Concurrent programs are inherently more complex than sequential programs. In many respects, 
@@ -298,12 +273,12 @@ SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss ge
 &lt;cite&gt;Alan Cox&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/quotes/concurrency/</guid>
+				<guid isPermaLink="true">http://localhost:4000/quotes/2017/06/30/concurrency/</guid>
 			</item>
 		
 			<item>
 				<title>Angeführt</title>
-				<link>https://werner-matthias.github.io/SysOp/computer/angefuehrt/</link>
+				<link>http://localhost:4000/small%20hacks/2017/06/22/angefuehrt/</link>
 				<pubDate>Thu, 22 Jun 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;Jekyll – oder genauer der dort genutzte Markdown-Prozessor Kramdown – kann typographische Anführungszeichen.
 Wenn man also ein Zitat in Anführungszeichen (&quot;) setzt stehen nach der Verarbeitung vor und nach dem Zitat typographische
@@ -314,7 +289,7 @@ Anführungszeichen:&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Leider entspricht das nicht der deutschen Typographie, wo vor dem Zitat das Zitatzeichen unten und danach oben (und anders herum) steht.
-Durch eine zusätzliche Konfiguration kann man auf deutsche Typographie umschalten, indem man die &lt;tt&gt;_config.yml&lt;/tt&gt; um folgende Zeilen ergänzt:&lt;/p&gt;
+Durch eine zusätzliche Konfiguration kann man auf deutsche Typographie umschalten, indem man die &lt;kbd&gt;_config.yml&lt;/kbd&gt; um folgende Zeilen ergänzt:&lt;/p&gt;
 
 &lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;s&quot;&gt;smart_quotes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;s&quot;&gt;sbquo,lsquo,bdquo,ldquo&lt;/span&gt;
@@ -326,12 +301,12 @@ Durch eine zusätzliche Konfiguration kann man auf deutsche Typographie umschalt
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;Zitat&quot;&lt;/code&gt; wird zu „Zitat“&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/computer/angefuehrt/</guid>
+				<guid isPermaLink="true">http://localhost:4000/small%20hacks/2017/06/22/angefuehrt/</guid>
 			</item>
 		
 			<item>
 				<title>Hello Jekyll</title>
-				<link>https://werner-matthias.github.io/SysOp/meta/hello-jekyll/</link>
+				<link>http://localhost:4000/meta/2017/06/19/hello-jekyll/</link>
 				<pubDate>Mon, 19 Jun 2017 12:16:41 +0000</pubDate>
 				<description>&lt;p&gt;Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
 dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; umgestiegen. Jekyll ist ein Generator für statische Webseiten.&lt;/p&gt;
@@ -354,12 +329,12 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/meta/hello-jekyll/</guid>
+				<guid isPermaLink="true">http://localhost:4000/meta/2017/06/19/hello-jekyll/</guid>
 			</item>
 		
 			<item>
 				<title>Wir machen einen Haufen</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/</link>
+				<link>http://localhost:4000/aihpos/2017/06/07/aihpos-heap/</link>
 				<pubDate>Wed, 07 Jun 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -378,9 +353,9 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
   &lt;li&gt;&lt;a href=&quot;#vektoren-hashes--co&quot; id=&quot;markdown-toc-vektoren-hashes--co&quot;&gt;Vektoren, Hashes &amp;amp; Co&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/07/20/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -616,7 +591,7 @@ Dazu legen wir ein Verzeichnis &lt;strong&gt;libs&lt;/strong&gt; an, und darin e
 &lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;mkdir libs&lt;/span&gt;&lt;span class=&quot;line command&quot;&gt;cd libs&lt;/span&gt;&lt;span class=&quot;line command&quot;&gt;cargo new kalloc&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Created library `kalloc` project
 &lt;/span&gt;&lt;span class=&quot;line command&quot;&gt;ls kalloc&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;Cargo.toml	  src&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
-&lt;p&gt;Die Datei &lt;strong&gt;lib.rs&lt;/strong&gt; in &lt;strong&gt;src&lt;/strong&gt; ist daher recht schlicht:&lt;/p&gt;
+&lt;p&gt;Die Datei &lt;kbd&gt;lib.rs&lt;/kbd&gt; in &lt;kbd&gt;src&lt;/kbd&gt; ist daher recht schlicht:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;feature&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; 
 &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;no_std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
@@ -695,7 +670,7 @@ werden:&lt;/p&gt;
   &lt;li&gt;Geringer Speicheroverhead&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Da wir nun leicht fremde Bibliotheken einbinden können, schauen wir uns mal auf &lt;strong&gt;crates.io&lt;/strong&gt; um, ob sich nicht geeignete Algorithmen finden lassen. Und in der Tat gibt
+&lt;p&gt;Da wir nun leicht fremde Bibliotheken einbinden können, schauen wir uns mal auf &lt;kbd&gt;crates.io&lt;/kbd&gt; um, ob sich nicht geeignete Algorithmen finden lassen. Und in der Tat gibt
 es eine nahezu unüberschaubare Anzahl von Allokatoren. Jedoch sind die wenigsten davon &lt;em&gt;bare-metal&lt;/em&gt;-geeignet, sondern dienen als Allokatoren für spezifische
 (Betriebs-)Systeme oder Einsatzfälle.&lt;/p&gt;
 
@@ -711,7 +686,7 @@ Verschnitt von (nahezu) null.
 Vielleicht werden ich ihn später ein zu einem
 Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Eingliederung hat (mit einem leicht erhöhten Overhead).&lt;/p&gt;
 
-&lt;p&gt;Meine &lt;strong&gt;heap.rs&lt;/strong&gt; sieht jetzt so aus:&lt;/p&gt;
+&lt;p&gt;Meine &lt;kbd&gt;heap.rs&lt;/kbd&gt; sieht jetzt so aus:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linked_list_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;linked_list_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -782,7 +757,7 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Im Quelltext sind die Stellen im Kommentar markiert, an denen später mit der Seitenverwaltung zusammengearbeitet werden soll.
-Die Initialisierung erfolgt von &lt;strong&gt;main.rs&lt;/strong&gt; aus. Dafür wird dort noch die initiale Heap-Größe festgelegt…&lt;/p&gt;
+Die Initialisierung erfolgt von &lt;kbd&gt;main.rs&lt;/kbd&gt; aus. Dafür wird dort noch die initiale Heap-Größe festgelegt…&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INIT_HEAP_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4096&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;// 25 Seiten = 100 kB&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -793,8 +768,8 @@ Die Initialisierung erfolgt von &lt;strong&gt;main.rs&lt;/strong&gt; aus. Dafür
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;Das Symbol &lt;code class=&quot;highlighter-rouge&quot;&gt;__bss_start&lt;/code&gt; kommt aus &lt;strong&gt;layout.ld&lt;/strong&gt;, die entsprechend überarbeitet werden muss. Es solle den Beginn des freien, also zu verwaltenden Speichers markieren.
-Dann kann in &lt;strong&gt;main.rs&lt;/strong&gt; das entsprechende externe Symbol deklarieren.
+&lt;p&gt;Das Symbol &lt;code class=&quot;highlighter-rouge&quot;&gt;__bss_start&lt;/code&gt; kommt aus &lt;kbd&gt;layout.ld&lt;/kbd&gt;, die entsprechend überarbeitet werden muss. Es solle den Beginn des freien, also zu verwaltenden Speichers markieren.
+Dann kann in &lt;kbd&gt;main.rs&lt;/kbd&gt; das entsprechende externe Symbol deklarieren.
 Hierbei nutze ich einen Trick: Da die externen Symbole ungetypt sind, erkläre ich es einfach zu einer Funktion:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;C&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__bss_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
@@ -860,7 +835,7 @@ Um dies alles Nutzen zu können, müssen die beiden Crates &lt;code class=&quot;
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error: Could not compile `aihPOS`.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 &lt;p&gt;Ursache ist diesmal &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;. Es übersetzt standardmäßig nur &lt;code class=&quot;highlighter-rouge&quot;&gt;core&lt;/code&gt;, aber nicht die anderen Bibliotheken. Um dies zur erreichen, muss man eine weitere Konfigurationsdatei
-im Wurzelverzeichnis anlegen: &lt;strong&gt;Xargo.toml&lt;/strong&gt;. Dort können zusätzliche Crates der Standard-Bibliothek angegeben werden:&lt;/p&gt;
+im Wurzelverzeichnis anlegen: &lt;kbd&gt;Xargo.toml&lt;/kbd&gt;. Dort können zusätzliche Crates der Standard-Bibliothek angegeben werden:&lt;/p&gt;
 &lt;div class=&quot;language-toml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[dependencies]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{}&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{}&lt;/span&gt;
@@ -877,9 +852,9 @@ im Wurzelverzeichnis anlegen: &lt;strong&gt;Xargo.toml&lt;/strong&gt;. Dort kön
 implementieren müssten. Allerdings ist das Thema Speicher noch nicht erledigt: Speicher ist auch Betriebsmittel für die Prozesse. Hier kommt die logische
 Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des nächsten Beitrags in der SOPHIA-Reihe.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-vm/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/07/20/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -911,12 +886,12 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/</guid>
+				<guid isPermaLink="true">http://localhost:4000/aihpos/2017/06/07/aihpos-heap/</guid>
 			</item>
 		
 			<item>
 				<title>Computer Science</title>
-				<link>https://werner-matthias.github.io/SysOp/quotes/computer-science/</link>
+				<link>http://localhost:4000/quotes/2017/05/21/computer-science/</link>
 				<pubDate>Sun, 21 May 2017 12:05:22 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;In science, we reserve our highest honors for those who prove we were wrong. But in computer science…
@@ -929,12 +904,12 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
 &lt;cite&gt;Fred Brooks&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/quotes/computer-science/</guid>
+				<guid isPermaLink="true">http://localhost:4000/quotes/2017/05/21/computer-science/</guid>
 			</item>
 		
 			<item>
 				<title>Um-Rust-ung</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/</link>
+				<link>http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/</link>
 				<pubDate>Sun, 14 May 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -947,15 +922,15 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
   &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/04/26/aihpos-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/06/07/aihpos-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;rust-auf-nicht-standard-plattformen&quot;&gt;Rust auf Nicht-Standard-Plattformen&lt;/h2&gt;
 
-&lt;p&gt;Nachdem ich im &lt;a href=&quot;/aihpos/aihpos-postman/&quot;&gt;letzen Teil&lt;/a&gt; schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; umzusteigen:
+&lt;p&gt;Nachdem ich im &lt;a href=&quot;/aihpos/2017/04/26/aihpos-postman/&quot;&gt;letzen Teil&lt;/a&gt; schon wieder eine Bibliothek per Hand einpflegen musste, hatte ich beschlossen, auf das Rust-eigene Management-Tool &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; umzusteigen:
 Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von Rust. Dem gegenüber stehen für das SOPHIA-Projekt zwei Nachteile, die die Nutzung von
 &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; erschweren:&lt;/p&gt;
 
@@ -982,7 +957,9 @@ Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von 
           &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;cargo install xargo&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cargo&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; gehen von einem bestimmten Directory-Layout und der Existenz von (mindestens) einer Konfigurationsdatei &lt;strong&gt;cargo.toml&lt;/strong&gt; aus, die das sogenannte „&lt;a href=&quot;http://doc.crates.io/manifest.html&quot;&gt;Manifest&lt;/a&gt;“ enthält. Dort kann man auch benötigte Bibliotheken einbinden, die dann von &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; automatisch geladen und übersetzt werden. Wir wollten ja die &lt;strong&gt;compiler-buildins&lt;/strong&gt;-Bibliothek nutzen. Dies geschieht im &lt;strong&gt;cargo.toml&lt;/strong&gt; für unseren Kernel im Abschnitt &lt;code class=&quot;highlighter-rouge&quot;&gt;[dependencies]&lt;/code&gt; und sieht so aus:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cargo&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; gehen von einem bestimmten Directory-Layout und der Existenz von (mindestens) einer Konfigurationsdatei &lt;kbd&gt;cargo.toml&lt;/kbd&gt; aus, die das sogenannte
+„&lt;a href=&quot;http://doc.crates.io/manifest.html&quot;&gt;Manifest&lt;/a&gt;“ enthält. Dort kann man auch benötigte Bibliotheken einbinden, die dann von &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; automatisch geladen und übersetzt werden. Wir wollten ja die
+&lt;strong&gt;compiler-buildins&lt;/strong&gt;-Bibliothek nutzen. Dies geschieht im &lt;strong&gt;cargo.toml&lt;/strong&gt; für unseren Kernel im Abschnitt &lt;code class=&quot;highlighter-rouge&quot;&gt;[dependencies]&lt;/code&gt; und sieht so aus:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-toml&quot; data-lang=&quot;toml&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[package]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aihPOS&quot;&lt;/span&gt;
@@ -1004,18 +981,19 @@ Schließlich ist die Einbindung von externen Bibliotheken eine der Stärken von 
 &lt;span class=&quot;py&quot;&gt;lto&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;opt-level&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Diese Datei muss sich im Wurzelverzeichnis eines Projekts oder Subprojekts befinden. Die Quelldateien sind dann in einem Unterverzeichnis &lt;strong&gt;src/&lt;/strong&gt;, das weitere
-Verzeichnisse (mit ggf. eigenen &lt;strong&gt;cargo.toml&lt;/strong&gt;-Dateien) befinden können. Beim Start einer Übersetzung mit &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo build&lt;/code&gt; wird ein Verzeichnis &lt;strong&gt;target&lt;/strong&gt; angelegt,  in dem
+&lt;p&gt;Diese Datei muss sich im Wurzelverzeichnis eines Projekts oder Subprojekts befinden. Die Quelldateien sind dann in einem Unterverzeichnis &lt;kbd&gt;src/&lt;/kbd&gt;, das weitere
+Verzeichnisse (mit ggf. eigenen &lt;kbd&gt;cargo.toml&lt;/kbd&gt;-Dateien) befinden können. Beim Start einer Übersetzung mit &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo build&lt;/code&gt; wird ein Verzeichnis &lt;kbd&gt;target&lt;/kbd&gt; angelegt,  in dem
 übersetzte Dateien etc. angelegt werden.&lt;/p&gt;
 
-&lt;p&gt;Außer der &lt;strong&gt;compiler_buildins&lt;/strong&gt;-Bibliothek laden wir auch eine andere
-Bibliothek: &lt;strong&gt;compiler_error&lt;/strong&gt;, die etwas ähnliches wie C‘s
+&lt;p&gt;Außer der &lt;kbd&gt;compiler_buildins&lt;/kbd&gt;-Bibliothek laden wir auch eine andere
+Bibliothek: &lt;kbd&gt;compiler_error&lt;/kbd&gt;, die etwas ähnliches wie C‘s
 &lt;code class=&quot;highlighter-rouge&quot;&gt;#error&lt;/code&gt;-Direktive zur Verfügung stellt.
 Soweit es nicht anders angegeben – wie z.B. bei den
-&lt;strong&gt;compiler_buildins&lt;/strong&gt; – wird nach Bibliotheken auf
+&lt;kbd&gt;compiler_buildins&lt;/kbd&gt; – wird nach Bibliotheken auf
 &lt;strong&gt;crates.io&lt;/strong&gt; gesucht.&lt;/p&gt;
 
-&lt;p&gt;Neben dem Manifest gibt es optional noch eine Konfigurationsdatei, ebenfalls im TOML-Format. Sie heißt &lt;strong&gt;config&lt;/strong&gt; und befindet sich in einem Unterverzeichnis &lt;strong&gt;.cargo/&lt;/strong&gt;. Wir brauchen sie vor allem, weil die Erstellung des Kernels Compiler- bzw. Linkeroptionen benötigt, die nicht Standard sind:&lt;/p&gt;
+&lt;p&gt;Neben dem Manifest gibt es optional noch eine Konfigurationsdatei, ebenfalls im TOML-Format. Sie heißt &lt;kbd&gt;config&lt;/kbd&gt; und befindet sich in einem Unterverzeichnis
+&amp;lt;/kbd&amp;gt;.cargo/&amp;lt;/kbd&amp;gt;. Wir brauchen sie vor allem, weil die Erstellung des Kernels Compiler- bzw. Linkeroptionen benötigt, die nicht Standard sind:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-toml&quot; data-lang=&quot;toml&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[build]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;traget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;arm-none-eabihf&quot;&lt;/span&gt;
@@ -1031,17 +1009,19 @@ Soweit es nicht anders angegeben – wie z.B. bei den
   &lt;span class=&quot;s&quot;&gt;&quot;-C&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;link-arg=-ffreestanding&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Die Trennung der Steuerung von Compiler-Optionen (in den &lt;code class=&quot;highlighter-rouge&quot;&gt;[profile.*]&lt;/code&gt;-Abschnitten in &lt;strong&gt;cargo.toml&lt;/strong&gt; können auch einige Optionen gesteuert werden) ist etwas unglücklich und wird möglicherweise in künftigen Rust/Cargo-Versionen aufgehoben, aber derzeit muss man damit leben.&lt;/p&gt;
+&lt;p&gt;Die Trennung der Steuerung von Compiler-Optionen (in den &lt;code class=&quot;highlighter-rouge&quot;&gt;[profile.*]&lt;/code&gt;-Abschnitten in &amp;lt;/kbd&amp;gt;cargo.toml&amp;lt;/kbd&amp;gt; können auch einige Optionen gesteuert werden) ist etwas
+unglücklich und wird möglicherweise in künftigen Rust/Cargo-Versionen aufgehoben, aber derzeit muss man damit leben.&lt;/p&gt;
 
 &lt;h3 id=&quot;post-linker-aktionen&quot;&gt;Post-Linker Aktionen&lt;/h3&gt;
 
-&lt;p&gt;Wenn man sich das bisherige &lt;strong&gt;&lt;tt&gt;Makefile&lt;/tt&gt;&lt;/strong&gt; anschaut, dann sieht man, dass der Building-Prozess nicht – wie sonst meist üblich – mit dem Linken endet. Dies ist
+&lt;p&gt;Wenn man sich das bisherige &lt;kbd&gt;Makefile&lt;/kbd&gt; anschaut, dann sieht man, dass der Building-Prozess nicht – wie sonst meist üblich – mit dem Linken endet. Dies ist
 in &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; nicht vorgesehen. Zwar kennt &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; die Möglichkeit, mit Hilfe eines Build-Scriptes Schritte &lt;strong&gt;vor&lt;/strong&gt; der Übersetzung auszuführen; etwas ähnliches für danach
 wird zwar in unter den Entwicklern diskutiert, wurde aber bisher nicht umgesetzt. Man kann zwar den Linker (in der Target-Datei) umdefinieren, aber ich fürchte, dass eine
 solche Lösung schnell unübersichtlich wird. Es ein häufig genutzter und sogar empfohlener&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Ansatz ist daher, &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; wiederum von einem &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt; aufrufen lassen. Das
 würde aber  dazu führen, dass Abhängigkeiten z.T. doppelt gepflegt werden müssen. Wenn &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;, dann richtig.&lt;/p&gt;
 
-&lt;p&gt;Glücklicherweise ist &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; leicht erweiterbar: Wenn &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; (oder &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;) mit einem unbekannten Befehl gerufen wird, sucht es im Standardpfad nach einem Programm &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-&lt;/code&gt;. Dass mache ich mir zunutze und schreibe ein kleines &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;-Skript &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-kernel&lt;/code&gt;, das erst &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; aufruft und dann noch den „Rest“ erledigt:&lt;/p&gt;
+&lt;p&gt;Glücklicherweise ist &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; leicht erweiterbar: Wenn &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; (oder &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;) mit einem unbekannten Befehl gerufen wird, sucht es im Standardpfad nach einem Programm
+&lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-&lt;/code&gt;. Dass mache ich mir zunutze und schreibe ein kleines &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;-Skript &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo-kernel&lt;/code&gt;, das erst &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; aufruft und dann noch den „Rest“ erledigt:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;shift
 &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROFILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;debug
@@ -1090,7 +1070,8 @@ xargo build &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt;
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;   Finished dev [optimized + debuginfo] target(s) in 4.8 secs&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
 
-&lt;p&gt;Man beachte, dass immer noch &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; und nicht &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; aufgerufen werden muss. Zwar würde auch &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; das Shellskript finden und ausführen, jedoch hat &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; einen Lock, der die nebenläufige Ausführung blockiert. &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo kernel&lt;/code&gt;würde also hängen bleiben.&lt;/p&gt;
+&lt;p&gt;Man beachte, dass immer noch &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; und nicht &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; aufgerufen werden muss. Zwar würde auch &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt; das Shellskript finden und ausführen, jedoch hat &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;xargo&lt;/code&gt;
+einen Lock, der die nebenläufige Ausführung blockiert. &lt;code class=&quot;highlighter-rouge&quot;&gt;xargo kernel&lt;/code&gt;würde also hängen bleiben.&lt;/p&gt;
 
 &lt;h3 id=&quot;diskussion&quot;&gt;Diskussion&lt;/h3&gt;
 
@@ -1100,13 +1081,15 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 
 &lt;h2 id=&quot;github&quot;&gt;GitHub&lt;/h2&gt;
 
-&lt;p&gt;Wenn ich schon bei einer Reorganisation bin, gehe ich noch einen Schritt weiter: Der alte JTAG-Kernel (siehe &lt;a href=&quot;/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Teil 3&lt;/a&gt;) kommt in ein eigenes Verzeichnis, so dass er noch immer mit &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; übersetzt werden kann. Ich nutze ihn als Boot-Kernel, so dass ich Änderungen im Entwicklungskernel schnell über das JTAG-Interface laden und testen kann.&lt;/p&gt;
+&lt;p&gt;Wenn ich schon bei einer Reorganisation bin, gehe ich noch einen Schritt weiter: Der alte JTAG-Kernel (siehe &lt;a href=&quot;/2017/04/10/aihpos-3-lebenszeichen&quot;&gt;Teil 3&lt;/a&gt;) kommt in ein
+eigenes Verzeichnis, so dass er noch immer mit &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; übersetzt werden kann. Ich nutze ihn als Boot-Kernel, so dass ich Änderungen im Entwicklungskernel schnell über das
+JTAG-Interface laden und testen kann.&lt;/p&gt;
 
 &lt;p&gt;Außerdem habe ich ein &lt;a href=&quot;https://github.com/werner-matthias/aihPOS&quot;&gt;GitHub-Projekt&lt;/a&gt; für SOPHIA aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/04/26/aihpos-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/06/07/aihpos-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1118,12 +1101,12 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/</guid>
+				<guid isPermaLink="true">http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/</guid>
 			</item>
 		
 			<item>
 				<title>Please Mr. Postman</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/aihpos-postman/</link>
+				<link>http://localhost:4000/aihpos/2017/04/26/aihpos-postman/</link>
 				<pubDate>Wed, 26 Apr 2017 11:04:55 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -1143,9 +1126,9 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
   &lt;li&gt;&lt;a href=&quot;#der-linker-zickt-mal-wieder&quot; id=&quot;markdown-toc-der-linker-zickt-mal-wieder&quot;&gt;Der Linker zickt mal wieder&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-lebenszeichen/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/04/10/aihpos-lebenszeichen/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1680,7 +1663,8 @@ vorgenommen wird. Seit neuesten&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quo
 
 &lt;h3 id=&quot;tag-puffer&quot;&gt;Tag-Puffer&lt;/h3&gt;
 
-&lt;p&gt;Die Implementation des Tag-Puffers ist unkompliziert. Man muss lediglich darauf achten, dass die Daten &lt;code class=&quot;highlighter-rouge&quot;&gt;u32&lt;/code&gt;-Wörter sind, aber die Größen stets in Byte gemessen werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwendig, die durch die Shift-Operatoren &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt; realisiert werden.&lt;/p&gt;
+&lt;p&gt;Die Implementation des Tag-Puffers ist unkompliziert. Man muss lediglich darauf achten, dass die Daten &lt;code class=&quot;highlighter-rouge&quot;&gt;u32&lt;/code&gt;-Wörter sind, aber die Größen stets in Byte gemessen
+werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwendig, die durch die Shift-Operatoren &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt; realisiert werden.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -2008,7 +1992,7 @@ Schnittstellenfunktionen geschrieben:&lt;/p&gt;
 gelistet ist. &lt;a href=&quot;http://elinux.org/RPi_HardwareHistory#Which_Pi_have_I_got.3F&quot;&gt;Hier&lt;/a&gt; ist eine vermutlich vollständige Liste; demnach handelt es sich tatsächlich um einen 1B+, aber mit geänderten Leiterplattenlayout.&lt;/li&gt;
   &lt;li&gt;Es wurden 256 MByte Speicher berichtet, obwohl der 1B+ doch 512 MByte haben sollte, von denen die GPU standardmäßig lediglich 64 MByte „abzweigt“. Eine kurze
 Web-Recherche ergab, dass es sich dabei um einen bekannten Bug der Firmware handelt, für den auch ein entsprechender Bugfix existiert. Wenn man in das
-Boot-Verzeichnis die Datei fixup.dat aus dem originalen Boot-Verzeichnis kopiert, werden korrekt 448 MByte verfügbarer Speicher gemeldet.&lt;/li&gt;
+Boot-Verzeichnis die Datei &lt;kbd&gt;fixup.dat&lt;/kbd&gt; aus dem originalen Boot-Verzeichnis kopiert, werden korrekt 448 MByte verfügbarer Speicher gemeldet.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;kprint&quot;&gt;Kprint&lt;/h2&gt;
@@ -2170,7 +2154,8 @@ Speicherzeilenlänge (&lt;code class=&quot;highlighter-rouge&quot;&gt;pitch&lt;/
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; indem wir einen virtuellen Ringpuffer aufbauen, siehe Abschnitt „&lt;a href=&quot;#scrollen&quot;&gt;Scrollen&lt;/a&gt;“.&lt;/p&gt;
+&lt;p&gt;Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; indem wir
+einen virtuellen Ringpuffer aufbauen, siehe Abschnitt „&lt;a href=&quot;#scrollen&quot;&gt;Scrollen&lt;/a&gt;“.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/virphys-fb.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 &lt;h3 id=&quot;vom-pixel-zum-string&quot;&gt;Vom Pixel zum String&lt;/h3&gt;
@@ -2298,7 +2283,9 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.&lt;sup id=&quot;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Ein Textstring kann jetzt im Framebuffer Zeichen für Zeichen, ein Zeichen ggf. interpretiert und dann pixelweise ausgegeben werden. Dabei wird immer Buch über die aktuelle Zeichenposition – d.h. Spalte und Zeile – geführt und entsprechend angepasst. Bei der Interpretation beschränken wir uns erst einmal auf die Steuerzeichen für „neue Zeile“und „Tabulator“.&lt;/p&gt;
+&lt;p&gt;Ein Textstring kann jetzt im Framebuffer Zeichen für Zeichen, ein Zeichen ggf. interpretiert und dann pixelweise ausgegeben werden. Dabei wird immer Buch über die
+aktuelle Zeichenposition – d.h. Spalte und Zeile – geführt und entsprechend angepasst. Bei der Interpretation beschränken wir uns erst einmal auf die
+Steuerzeichen für „neue Zeile“und „Tabulator“.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -2408,7 +2395,10 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.&lt;sup id=&quot;
 
 &lt;h3 id=&quot;scrollen&quot;&gt;Scrollen&lt;/h3&gt;
 
-&lt;p&gt;Nun muss noch die Scroll-Logik implementiert werden. Die Idee ist sehr einfach: Die eigentliche Verschiebung erfolgt auch die Änderung von &lt;code class=&quot;highlighter-rouge&quot;&gt;y_offset&lt;/code&gt;, wofür wieder die Mailbox benutzt wird. Sobald das sichtbare Fenster nach unten geschoben wurde, wird eine Bildschirmzeile nach oben in den jetzt verstecken Bereich kopiert. Der noch nicht sichtbare Bereich unten wird von evtl. vorhandenen alten Daten bereinigt. Wenn die maximale Verschiebung erreicht ist, springt der sichtbare Ausschnitt wieder nach oben, was durch das vorherige Kopieren aber wie ein einfaches Scrollen aussieht.&lt;/p&gt;
+&lt;p&gt;Nun muss noch die Scroll-Logik implementiert werden. Die Idee ist sehr einfach: Die eigentliche Verschiebung erfolgt auch die Änderung von &lt;code class=&quot;highlighter-rouge&quot;&gt;y_offset&lt;/code&gt;, wofür wieder die
+Mailbox benutzt wird. Sobald das sichtbare Fenster nach unten geschoben wurde, wird eine Bildschirmzeile nach oben in den jetzt verstecken Bereich kopiert. Der noch nicht
+sichtbare Bereich unten wird von evtl. vorhandenen alten Daten bereinigt. Wenn die maximale Verschiebung erreicht ist, springt der sichtbare Ausschnitt wieder nach oben,
+was durch das vorherige Kopieren aber wie ein einfaches Scrollen aussieht.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -2582,9 +2572,9 @@ definieren und greife auf die &lt;a href=&quot;https://github.com/rust-lang-nurs
 &lt;p&gt;Nun habe ich schon zwei Rust-Bibliotheken (core und compiler-buildins), die händisch eingepflegt werden, wenn es zu Updates bei ihnen oder dem Compiler kommt. Höchste
 Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Dies wird das Thema des nächsten Beitrags sein.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-lebenszeichen/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/04/10/aihpos-lebenszeichen/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/aihpos-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2611,12 +2601,12 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/aihpos-postman/</guid>
+				<guid isPermaLink="true">http://localhost:4000/aihpos/2017/04/26/aihpos-postman/</guid>
 			</item>
 		
 			<item>
 				<title>March for Science</title>
-				<link>https://werner-matthias.github.io/SysOp/menschen/march-for-science/</link>
+				<link>http://localhost:4000/menschen/2017/04/20/march-for-science/</link>
 				<pubDate>Thu, 20 Apr 2017 09:04:46 +0000</pubDate>
 				<description>&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.marchforscience.com&quot;&gt;March for Science&lt;/a&gt; (International)&lt;/li&gt;
@@ -2624,7 +2614,584 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 &lt;/ul&gt;
 
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/menschen/march-for-science/</guid>
+				<guid isPermaLink="true">http://localhost:4000/menschen/2017/04/20/march-for-science/</guid>
+			</item>
+		
+			<item>
+				<title>Lebenszeichen</title>
+				<link>http://localhost:4000/aihpos/2017/04/10/aihpos-lebenszeichen/</link>
+				<pubDate>Mon, 10 Apr 2017 09:04:10 +0000</pubDate>
+				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#boot-prozess&quot; id=&quot;markdown-toc-boot-prozess&quot;&gt;Boot-Prozess&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#speicher-und-formate&quot; id=&quot;markdown-toc-speicher-und-formate&quot;&gt;Speicher und Formate&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#layout-und-linker&quot; id=&quot;markdown-toc-layout-und-linker&quot;&gt;Layout und Linker&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#binärfile&quot; id=&quot;markdown-toc-binärfile&quot;&gt;Binärfile&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#makefile&quot; id=&quot;markdown-toc-makefile&quot;&gt;Makefile&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hardware&quot; id=&quot;markdown-toc-hardware&quot;&gt;Hardware&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#jtag&quot; id=&quot;markdown-toc-jtag&quot;&gt;JTAG&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#led&quot; id=&quot;markdown-toc-led&quot;&gt;LED&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#software&quot; id=&quot;markdown-toc-software&quot;&gt;Software&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#das-erste-rust-programm&quot; id=&quot;markdown-toc-das-erste-rust-programm&quot;&gt;Das erste Rust-Programm&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#panik&quot; id=&quot;markdown-toc-panik&quot;&gt;Panik!&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mit-dem-pireden&quot; id=&quot;markdown-toc-mit-dem-pireden&quot;&gt;Mit dem Pi reden&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#morsezeichen&quot; id=&quot;markdown-toc-morsezeichen&quot;&gt;Morsezeichen&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/03/31/aihpos-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/04/26/aihpos-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;Nachdem wir unsere &lt;a href=&quot;http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/&quot;&gt;Toolchain&lt;/a&gt; installiert haben, wollen wir den ersten „Kernel“ bauen. Er soll nichts anderes machen, als den Pi für JTAG
+vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der &lt;a href=&quot;https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf&quot;&gt;I/O-Hardware&lt;/a&gt;, dem Speicher-Layout und dem
+Boot-Prozess.&lt;/p&gt;
+
+&lt;h2 id=&quot;boot-prozess&quot;&gt;Boot-Prozess&lt;/h2&gt;
+
+&lt;p&gt;Unsere ARM-CPU ist nicht die einzige CPU auf dem Raspberry. Vielmehr gibt es einen weiteren Prozessor, die &lt;a href=&quot;https://docs.broadcom.com/docs/12358545&quot;&gt;GPU VideoCore&lt;/a&gt;® IV. Anders als die Bezeichnung vermuten
+lässt, ist die GPU nicht nur für die Grafiksteuerung verantwortlich, sondern übernimmt z.B. auch den Boot-Prozess.1 Wenn der Strom eingeschaltet wird, übernimmt erst mal
+die GPU die Regie. Sie bootet von einem internen ROM, lädt dann von der SD-Karte die Datei bootcode.bin. Diese kann enthält einen Treiber, um Dateien im ELF-Format
+lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei start.elf geladen. Die Firmware liest u.a. die Datei &lt;kbd&gt;config.txt&lt;/kbd&gt;   (so vorhanden) und
+konfiguriert das Board entsprechend, und lädt anschließend die Datei &lt;kbd&gt;kernel.img&lt;/kbd&gt; auf die (aus AMR-Sicht) Adresse 0x08000. Von dieser Adresse aus startet dann auch der
+ARM.&lt;/p&gt;
+
+&lt;h2 id=&quot;speicher-und-formate&quot;&gt;Speicher und Formate&lt;/h2&gt;
+
+&lt;h3 id=&quot;layout-und-linker&quot;&gt;Layout und Linker&lt;/h3&gt;
+
+&lt;p&gt;Die Datei &lt;kbd&gt;kernel.img&lt;/kbd&gt; ist ein Binärfile, das unmittelbar Maschinencode enthält, also keine ELF-Datei oder ein anderes höheres Format. Wir müssen also erstens
+dafür sorgen, dass unser „Kernel“ von der Adresse 0x08000 lauffähig ist, und zweitens, dass er als reine Binärdatei vorliegt. Beim ersten hilft der Linker. In der
+„normalen“ Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte
+Anforderungen haben, müssen wir es ihm mit einem &lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Scripts.html&quot;&gt;Linker-Skript&lt;/a&gt; mitteilen. Unser Linker-Skript ist (noch) sehr einfach:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-ld&quot;&gt;ENTRY(kernel_main)
+SECTIONS
+{
+    /* Starts at LOADER_ADDR. */
+    . = 0x8000;
+    .text :
+    {
+        KEEP(*(.text.kernel_main))
+        *(.text)
+    }	
+    .bss :
+    {
+        bss = .;
+        *(.bss)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code kernel_main heißt,2 und dass der Code an Adresse 0x0800 beginnt und zwar mit kernel_main.&lt;/p&gt;
+
+&lt;h3 id=&quot;binärfile&quot;&gt;Binärfile&lt;/h3&gt;
+
+&lt;p&gt;Um aus dem vom Linker generierten ELF-File ein Binärfile zu machen, nutzen wir &lt;a href=&quot;https://sourceware.org/binutils/docs/binutils/objcopy.html#objcopy&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;objcopy&lt;/code&gt;&lt;/a&gt;, genauer die Cross-Variante arm-none-eabi-objcopy. Der Name objcopy ist ein
+klares Understatement, das dieses Programm nicht nur kopiert, sondern eine Vielzahl von Transformationen ausführen kann. Wir nutzen es allerdings nur dazu, aus dem
+ELF-File den Binärcode zu generieren, eine Aufgabe, die auf Plattformen &lt;em&gt;mit&lt;/em&gt; einem Betriebssystem i.d.R. der Lader übernimmt.&lt;/p&gt;
+
+&lt;h3 id=&quot;makefile&quot;&gt;Makefile&lt;/h3&gt;
+
+&lt;p&gt;Eigentlich hat Rust sein eigenes Build-System &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;, mit dem wir schon die core-Bibliothek gebaut haben. Jedoch ist &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; nicht sonderlich gut für bare-metal
+Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurückgreifen.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Unser Makefile geht davon aus, dass wir folgendes Verzeichnis-Layout haben:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aihpos
+  |
+  +- rust-corelib
+  |
+  +- jtag
+      |
+      +-- src
+      +-- obj
+      +-- build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In src sind alle Quelldateien. Die Objektdateien liegen in obj und alle anderen generierten Dateien in build. Das Makefile selbst befindet sich in jtag und sieht so aus:&lt;/p&gt;
+&lt;div class=&quot;language-make highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;BUILDDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;build
+&lt;span class=&quot;nv&quot;&gt;SRCDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;src
+&lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;obj
+&lt;span class=&quot;nv&quot;&gt;BUILDDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;build
+&lt;span class=&quot;nv&quot;&gt;OBJCOPY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;arm-none-eabi-objcopy
+&lt;span class=&quot;nv&quot;&gt;OBJDUMP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;arm-none-eabi-objdump
+&lt;span class=&quot;nv&quot;&gt;RUSTC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;rustc
+&lt;span class=&quot;nv&quot;&gt;LIBCORE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;../rust-libcore/target/arm-none-eabihf/release/libcore.rlib
+&lt;span class=&quot;nv&quot;&gt;RUSTFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; --target &lt;span class=&quot;nv&quot;&gt;$(TARGET)&lt;/span&gt; -C &lt;span class=&quot;nv&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;abort -g --crate-type staticlib --extern &lt;span class=&quot;nv&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$(LIBCORE)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LINKFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -O0 -g -Wl,-gc-sections -mfpu&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;vfp -mfloat-abi&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;hard -march&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;armv6zk -mtune&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;arm1176jzf-s -nostdlib
+
+&lt;span class=&quot;nv&quot;&gt;TARGET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;arm-none-eabihf
+&lt;span class=&quot;nv&quot;&gt;MAIN&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;kernel
+
+&lt;span class=&quot;nv&quot;&gt;IMAGE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$(BUILDDIR)&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$(MAIN)&lt;/span&gt;.img
+&lt;span class=&quot;nv&quot;&gt;LIST&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$(BUILDDIR)&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$(MAIN)&lt;/span&gt;.list
+&lt;span class=&quot;nv&quot;&gt;ELF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$(BUILDDIR)&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$(MAIN)&lt;/span&gt;.elf
+
+&lt;span class=&quot;err&quot;&gt;vpath&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%.rs&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(SRCDIR)&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;vpath&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%.o&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(OBJDIR)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;SOURCES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; main.rs 
+&lt;span class=&quot;nv&quot;&gt;OBJ&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;addsuffix .o, &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;basename &lt;span class=&quot;nv&quot;&gt;$(SOURCES)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;.PHONY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;clean &lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(IMAGE) $(LIST)&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;main.o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;	&lt;span class=&quot;nf&quot;&gt;main.rs panic.rs&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;$(IMAGE)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(ELF)&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$(OBJCOPY)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(ELF)&lt;/span&gt; -O binary &lt;span class=&quot;nv&quot;&gt;$(IMAGE)&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;$(LIST)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(IMAGE)&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$(OBJDUMP)&lt;/span&gt; -d &lt;span class=&quot;nv&quot;&gt;$(ELF)&lt;/span&gt; &amp;gt; &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;$(ELF)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(OBJ) &lt;/span&gt;
+	arm-none-eabi-gcc &lt;span class=&quot;nv&quot;&gt;$(LINKFLAGS)&lt;/span&gt; -Tsrc/layout.ld  &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;addprefix &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;/, &lt;span class=&quot;nv&quot;&gt;$(OBJ)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;%.o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;%.rs &lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$(RUSTC)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(RUSTFLAGS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;clean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+	rm -f &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+	rm -f &lt;span class=&quot;nv&quot;&gt;$(BUILDDIR)&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Nach der Diskussion dürfte es nicht weiter überraschend sein. Einzig das Ziel LIST haben wir noch nicht besprochen. Dies ist der mit Hilfe von objdump disassemblierte Code des erzeugten ELF-Files. Er kann manchmal bei der Fehlersuche nützlich sein.&lt;/p&gt;
+
+&lt;h2 id=&quot;hardware&quot;&gt;Hardware&lt;/h2&gt;
+
+&lt;h3 id=&quot;jtag&quot;&gt;JTAG&lt;/h3&gt;
+
+&lt;p&gt;Der Pi hat 54  universelle Kommunikationspins, die als Ausgabe (Standard beim Einschalten), Eingabe oder mit jeweils bis zu sechs Spezialfunktionen (Alternativfunktionen 0…5) beschaltet werden kann. Für JTAG werden fünf Steuerleitungen gebraucht, die jeweils auf zwei verschiedene Pins&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Data Input (&lt;em&gt;TDI&lt;/em&gt;), serieller Eingang, auf Pin 4 in der Alternativfunktion 5 oder Pin 26  in der Alternativfunktion 4&lt;/li&gt;
+  &lt;li&gt;Test Data Output (&lt;em&gt;TDO&lt;/em&gt;), serieller Ausgang,  auf Pin 5 in der Alternativfunktion 5 oder Pin 24  in der Alternativfunktion 4&lt;/li&gt;
+  &lt;li&gt;Test Clock (&lt;em&gt;TCK&lt;/em&gt;). Das Taktsignal,  auf Pin 13 in der Alternativfunktion 5 oder Pin 25  in der Alternativfunktion 4&lt;/li&gt;
+  &lt;li&gt;Test Mode Select (&lt;em&gt;TMS&lt;/em&gt;), Steuerleitung, auf Pin 12 in der Alternativfunktion 5 oder Pin 27  in der Alternativfunktion 4&lt;/li&gt;
+  &lt;li&gt;Test Reset (&lt;em&gt;TRST&lt;/em&gt;), Reset, auf Pin 12 in der Alternativfunktion 5 oder Pin 22  in der Alternativfunktion 4&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Der Adapter (siehe letzter Beitrag) nutzt die Pin 22 bis 27, entsprechen müssen diese auf Alternativfunktion 4 gesetzt werden. Dies geschieht über die GPIO-Select-Register, genauer über GPIOSEL2. Jeweils drei aufeinanderfolgende Bits wählen die Funktion für ein GPIO-Pin aus.&lt;/p&gt;
+
+&lt;p&gt;Außerdem muss vorher für diese Pins die Pull-up/down-Steuerung deaktiviert werden. Dabei folgen wir der Beschreibung auf Seite 101 die ARM-Peripherie-Dokumentation.&lt;/p&gt;
+
+&lt;h3 id=&quot;led&quot;&gt;LED&lt;/h3&gt;
+
+&lt;p&gt;Damit wir sehen, dass unser Programm auch läuft, wollen wir die grüne LED des Raspberrys blinken lassen. Diese ist an den GPIO-Pin 47 angeschlossen. Die GPIO-Pins sind in zwei Sätze unterteilt, Satz 1 für Pin 0…31, und Satz 2 für Pin 32…53. Pin 47 ist also Pin 15 (wenn man mit Null anfängt zu zählen) des zweiten Satzes.&lt;/p&gt;
+
+&lt;h2 id=&quot;software&quot;&gt;Software&lt;/h2&gt;
+
+&lt;h3 id=&quot;das-erste-rust-programm&quot;&gt;Das erste Rust-Programm&lt;/h3&gt;
+
+&lt;p&gt;Wir haben jetzt alle Informationen zusammen, um eine Software zu schreiben, die den Raspberry auf einen JTAG-Zugriff vorzubereiten. Wie schon im &lt;a href=&quot;/aihpos/2017/03/19/aihpos-1/&quot;&gt;Teil 1 dieser Reihe&lt;/a&gt; diskutiert, soll Rust benutzt werden, mit — wenn nötig — etwas Assembler. In der Regel wird der Startup-Code in Assembler
+geschrieben, siehe z.B. &lt;a href=&quot;http://wiki.osdev.org/Raspberry_Pi_Bare_Bones&quot;&gt;hier&lt;/a&gt;. Das ist im Allgemeinen auch eine gute Idee: jede Rust-Funktion (oder C-Funktion) hat einen Prolog, in dem die Rücksprungadresse auf dem
+Stack gesichert wird. Allerdings ist zu Beginn ja noch gar kein Stack angelegt. Dies und andere Initialisierungen macht das Assemblerprogramm, ehe es in den in der
+höheren Programmiersprache geschriebenen Code ruft.&lt;/p&gt;
+
+&lt;p&gt;Allerdings ist ein solches Assembler-Modul in unserem Fall nicht nötig: Einerseits können wir Assembler-Befehle direkt in den Rust-Code einbetten, andererseits können wir
+unsere Startfunktion mit dem Attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;#[naked]&lt;/code&gt; versehen, so dass der Compiler keinen Prolog oder Epilog anlegt.&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;feature&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;asm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lang_items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;core_intrinsics&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;naked_functions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;no_std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// Hardware-Adressen&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPIO_BASE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0x20200000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPFSEL2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPIO_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0x08&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPSET1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPIO_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0x20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPCLR1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPIO_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0x2C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPPUD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPIO_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0x94&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPPUDCLK0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPIO_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0x98&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;asm!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:::&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;memory&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;volatile&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+
+&lt;span class=&quot;c&quot;&gt;// kernel_main() erwartet, dass etwas unterhalb von 0x8000 keine&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// Daten/Code liegen. Das ist normalerweise gewährleistet, da&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// der Code entweder bei 0x8000 beginnt oder 0x0000 (bei &quot;kernel_old=1&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// in config.txt). Für den letzteren Fall ist dieser Kernel klein&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// genug, um nicht mit dem Stack zu kollidieren.&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[no_mangle]&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;// Name wird für den Export nicht verändert&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#[naked]&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;// keinen Prolog&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;kernel_main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;// Setze den Stackpointer&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;asm!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mov sp, #0x8000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;c&quot;&gt;// Pull up/down abschalten&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPPUD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPPUDCLK0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPPUDCLK0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;// GPIO Pins 22 .. 27 auf alternative Funktion 4 (= 011) setzen&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPFSEL2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;selection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b111&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b111&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b111&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b111&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b111&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b111&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;selection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b011&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b011&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b011&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b011&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b011&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0b011&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPFSEL2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;// Als Lebenszeichen lassen wir die grüne LED blinken&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;led_on&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPSET1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;led_off&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPCLR1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;loop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;led_on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;// Die Zeiten sind für die Debug-Version, die Release-Version benötigt&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;// längere Zeiten.&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;led_off&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;panik&quot;&gt;Panik!&lt;/h3&gt;
+
+&lt;p&gt;Nun übersetzen wir dieses Programm.&lt;/p&gt;
+
+&lt;div class=&quot;window&quot;&gt;
+          &lt;nav class=&quot;control-window&quot;&gt;
+            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
+          &lt;/nav&gt;
+          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
+          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;make&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    rustc --target arm-none-eabihf -C panic=abort -g --crate-type staticlib --extern core=../rust-libcore/target/arm-none-eabihf/release/libcore.rlib src/main.rs -o build/main.o
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    error: language item required, but not found: `panic_fmt`
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    error: aborting due to previous error
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    make: *** [main.o] Error 101&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+&lt;p&gt;Hoppla! Der Linker hat ein undefiniertes Symbol. Ursache dafür ist, dass die Core-Bibliothek nicht völlig frei von externen Referenzen ist. Tust muss wissen, wie es sich in einem Ausnahmefall (Exception) verhalten soll, um evtl. sogar eine Recovery zu ermöglichen, und das ist plattform-spezifisch. Wenn allerdings wie in unserem Fall der der „Kernel“ selbst crashed, ist eine Recovery hoffnungslos. Es ist daher hinreichend, die undefinierten Symbole (es sind nämlich noch ein paar) einfach durch Dummy-Funktionen zu definieren. Dazu legen wir noch eine Datei panic.rs an:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intrinsics&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[lang&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;eh_personality&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;eh_personality&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[no_mangle]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__aeabi_unwind_cpp_pr0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;loop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[no_mangle]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__aeabi_unwind_cpp_pr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;loop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[allow(non_snake_case)]&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;#[no_mangle]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;C&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_Unwind_Resume&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;loop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[lang&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;panic_fmt&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#[no_mangle]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rust_begin_panic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;_line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;intrinsics&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;abort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Außerdem fügen wir &lt;kbd&gt;main.rs&lt;/kbd&gt; noch eine Zeile hinzu:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;include!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;panic.rs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Dieses Macro funktioniert ähnlich wie das &lt;code class=&quot;highlighter-rouge&quot;&gt;#include&lt;/code&gt; in C und macht die Datei &lt;kbd&gt;panic.rs&lt;/kbd&gt; logisch zu einem Bestandteil von &lt;kbd&gt;main.rs&lt;/kbd&gt;. Dieses Vorgehen ist
+ein bisschen „unrustig“, da eigentlich in Rust kein Modul in mehr als einer Datei sein soll (dafür ruhig mehrere Module in einer Datei), aber ich habe diese Variante
+gewählt, um den eigentlichen Funktionscode halbwegs „rein“ zu halten ohne extra ein neues Modul anlegen zu müssen. Nun läuft die Übersetzung durch. Anschließend kopieren
+wir da Binär-Image auf die SD-Karte,&lt;/p&gt;
+
+&lt;div class=&quot;window&quot;&gt;
+          &lt;nav class=&quot;control-window&quot;&gt;
+            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
+          &lt;/nav&gt;
+          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
+          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;make&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    rustc --target arm-none-eabihf -C panic=abort -g --crate-type staticlib --extern core=../rust-libcore/target/arm-none-eabihf/release/libcore.rlib src/main.rs -o obj/main.o
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    arm-none-eabi-gcc -O0 -g -Wl,-gc-sections -mfpu=vfp -mfloat-abi=hard -march=armv6zk -mtune=arm1176jzf-s -nostdlib -Tsrc/layout.ld  obj/main.o -o build/kernel.elf
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    arm-none-eabi-objcopy build/kernel.elf -O binary build/kernel.img
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    arm-none-eabi-objdump -d build/kernel.elf &amp;gt; build/kernel.list
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    cp build/kernel.img /Volume/boot/&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+&lt;p&gt;Wenn der Raspberry mit dieser SD gestartet wird, fängt die grüne LED tatsächlich an zu blinken.&lt;/p&gt;
+
+&lt;h2 id=&quot;mit-dem-pireden&quot;&gt;Mit dem Pi reden&lt;/h2&gt;
+
+&lt;p&gt;Jetzt soll die JTAG-Lommunikation getestet werden. Dazu schreiben wir zwei openocd-Konfigurationsdateien&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;interface jlink
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Broadcom 2835 on Raspberry Pi
+telnet_port 4444
+gdb_port 3333
+adapter_khz 0
+
+if { [info exists CHIPNAME] } {
+set _CHIPNAME $CHIPNAME
+} else {
+set _CHIPNAME raspi
+}
+
+reset_config none
+
+if { [info exists CPU_TAPID ] } {
+set _CPU_TAPID $CPU_TAPID
+} else {
+set _CPU_TAPID 0x07b7617F
+}
+jtag newtap $_CHIPNAME arm -irlen 5 -expected-id $_CPU_TAPID
+
+set _TARGETNAME $_CHIPNAME.arm
+target create $_TARGETNAME arm11 -chain-position $_TARGETNAME
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In einem Terminal kann jetzt der OpenOCD-Server gestartet werden:&lt;/p&gt;
+
+&lt;div class=&quot;window&quot;&gt;
+          &lt;nav class=&quot;control-window&quot;&gt;
+            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
+          &lt;/nav&gt;
+          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
+          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;openocd -f jlink.cfg -f raspi.cfg&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Open On-Chip Debugger 0.10.0+dev-00093-g6b2acc0 (2017-03-28-11:17)
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Licensed under GNU GPL v2
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    For bug reports, read
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    http://openocd.org/doc/doxygen/bugs.html
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    adapter speed: 1000 kHz
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    none separate
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : auto-selecting first available session transport &quot;jtag&quot;. To override use &amp;#8218;transport select &amp;#8218;.
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    raspi.arm
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : No device selected, using first device.
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : J-Link V10 compiled Jan 9 2017 17:48:51
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : Hardware version: 10.10
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : VTarget = 3.335 V
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : clock speed 1000 kHz
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : JTAG tap: raspi.arm tap/device found: 0x07b7617f (mfg: 0x0bf (Broadcom), part: 0x7b76, ver: 0x0)
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : found ARM1176
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Info : raspi.arm: hardware has 6 breakpoints, 2 watchpoints&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+&lt;p&gt;Nun kann ein weiteres Terminalfenster geöffnet werden, in dem ein Telnet gestartet wird.&lt;/p&gt;
+
+&lt;div class=&quot;window&quot;&gt;
+          &lt;nav class=&quot;control-window&quot;&gt;
+            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
+          &lt;/nav&gt;
+          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
+          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;telnet localhost 4444&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  Connected to localhost.
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  Escape character is &amp;#8218;^]&amp;#8216;.
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  Open On-Chip Debugger
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  &amp;gt; halt
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  target halted in ARM state due to debug-request, current mode: Supervisor
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;  cpsr: 0x600001d3 pc: 0x000082e0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+&lt;p&gt;Jetzt kann man viele interessante Dinge machen. Beispielsweise können Register ausgelesen oder Speicherstellen gelesen oder geschrieben werden:&lt;/p&gt;
+&lt;div class=&quot;window&quot;&gt;
+          &lt;nav class=&quot;control-window&quot;&gt;
+            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
+          &lt;/nav&gt;
+          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
+          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line output&quot;&gt;&amp;gt; reg r1
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    r1 (/32): 0x00007FD4
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    &amp;gt; mww 0x2020002C 0x8000
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    &amp;gt; mww 0x20200020 0x8000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+&lt;p&gt;Die letzten beiden Befehle schalten die grüne LED aus- und wieder an. Der vermutlich wichtigste Befehl ist aber &lt;kbd&gt;load_image&lt;/kbd&gt;. Damit entfällt das Kopieren eines neuen Images
+auf die SD-Karte. Die Datei (wahlweise auch im ELF-Format) kann direkt auf den Pi gebracht werden.&lt;/p&gt;
+
+&lt;p&gt;Für ein noch etwas detaillierteres Debuggen kann openocd mit dem GNU-Debugger gekoppelt werden. Im Konfigurationsfile wurde der Port 3333 dafür freigegeben. Natürlich
+darf nicht der lokale Debugger genutzt werden&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, sondern der ARM-Cross-Debugger:&lt;/p&gt;
+
+&lt;div class=&quot;window&quot;&gt;
+          &lt;nav class=&quot;control-window&quot;&gt;
+            &lt;a href=&quot;#finder&quot; class=&quot;close&quot; data-rel=&quot;close&quot;&gt;close&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;minimize&quot;&gt;minimize&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;deactivate&quot;&gt;deactivate&lt;/a&gt;
+          &lt;/nav&gt;
+          &lt;h1 class=&quot;titleInside&quot;&gt;Terminal&lt;/h1&gt;
+          &lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;terminal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&quot;line-number&quot;&gt;$&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line command&quot;&gt;arm-none-eabi-gdb -q build/kernel.elf&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Reading symbols from build/kernel.elf...done.
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    (gdb) target remote localhost:3333
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    Remote debugging using localhost:3333
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    0x000082e0 in core::mem::swap (x=0x7f98, y=0x7fd4) at ~/Development/aihPOS/Code/rust-libcore/rust/src/libcore/mem.rs:448
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    448 pub fn swap(x: &amp;amp;mut T, y: &amp;amp;mut T) {&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+&lt;p&gt;Wer will, kann den Debugger auch in eine GUI oder IDE einbinden, z.B. mit der &lt;a href=&quot;https://pypi.python.org/pypi/gdbgui/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gdbgui&lt;/code&gt;&lt;/a&gt;.
+&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/debug.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nun kann man auch ohne Betriebssystem (fast) so bequem debuggen, wie man es von der Entwicklung von Desktop-Programmen gewohnt ist. Zwar ist die Arbeit über das
+JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständig die SD-Karte wechselt.&lt;/p&gt;
+
+&lt;h3 id=&quot;morsezeichen&quot;&gt;Morsezeichen&lt;/h3&gt;
+
+&lt;p&gt;Manchmal will man eine schnelle Rückmeldung haben, ob eine bestimmte Stelle im Programm erreicht wurde oder ob ein Fehler aufgetreten ist. Solange wir keine Konsole
+haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein eigenes Modul ausgelagert und parameterisiert:&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;allow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dead_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// Hardware-Adressen&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPIO_BASE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0x20200000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPSET1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPIO_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0x20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPCLR1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPIO_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0x2C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[derive(Clone,Copy)]&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#[repr(u32)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;380000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;120000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Pause&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;250000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BlinkSeq&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/* Blinksequenzen */&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// einmal blinken&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BS_DUMMY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BlinkSeq&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// Lang, dann ein-, zwei, oder dreimal kurz&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BS_ONE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BlinkSeq&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BS_TWO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BlinkSeq&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BS_THREE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BlinkSeq&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// SOS (für Panik wenn der Framebuffer versagt: • • •  – – –  • • •&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BS_SOS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BlinkSeq&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pause&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pause&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pause&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// Hi in Morsecode:  • • • •  • • &lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BS_HI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BlinkSeq&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pause&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[inline(never)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;asm!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:::&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;memory&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;volatile&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;blink_once&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BlinkSeq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;led_on&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPSET1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;led_off&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GPCLR1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sym&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sym&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;led_on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;led_off&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;led_on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;led_off&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pause&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pause&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Bc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Short&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;blink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BlinkSeq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;loop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;blink_once&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;400000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Man beachte, dass die auch hier benutzte Verzögerung durch „&lt;em&gt;busy idling&lt;/em&gt;“ so nicht funktioniert, wenn wir die Codeoptimierung einschalten: Dann wird die
+Schleife zwar nicht vollständig wegoptimiert (das verhindert die Assembler-Anweisung), aber die Zeiten sind doch vollständig andere.
+Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführungszeit ist derzeit noch egal, aber die Übersetzungszeit würde sich etwas verlängern.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/03/31/aihpos-ausrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/04/26/aihpos-postman/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;Vielleicht werde ich in späteren Folgen nochmal cargo oder die Cross-Compile-Variante xargo einsetzen.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot;&gt;
+      &lt;p&gt;Vergleiche https://github.com/dwelch67/raspberrypi/tree/master/armjtag.&amp;nbsp;&lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:5&quot;&gt;
+      &lt;p&gt;Schon garn nicht in meiner Arbeitsumgebung auf dem Mac, da der Debugger hier auf MachO ausgelegt ist&amp;nbsp;&lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+				<guid isPermaLink="true">http://localhost:4000/aihpos/2017/04/10/aihpos-lebenszeichen/</guid>
 			</item>
 		
 	</channel>
