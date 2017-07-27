@@ -1,12 +1,11 @@
 ---
-layout: page-fullwidth
 title: Nebenläufigkeit
 subheadline: Zitate des Tages
 published: true
 author: mwerner
 # comments: true
 date: 2017-06-30
-tags: [ ]
+tags:
 categories:
     - quotes
 ---

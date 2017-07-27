@@ -1,15 +1,17 @@
 ---
 layout: page-fullwidth
 title: Wir machen einen Haufen
-subheadline: aihPOS - Ein Betriebsystem für die Lehre
+subheadline: Ein Betriebsystem für die Lehre
 meta_description: "Die unterste Schicht im Mikrokernel ist die Kernel-Speicherverwaltung. In diesem Beitrag werden die Stacks und der Heap des Kernels implementiert."
 published: true
 author: mwerner
 date: 2017-06-07
 tags:
+    - aihPOS
     - Rust
-    - aihpos
     - Microkernel
+    - Heap
+    - Stack
 categories:
     - aihpos
 ---
@@ -227,7 +229,7 @@ $ cargo new kalloc
 $ ls kalloc
 Cargo.toml	  src
 {% endterminal %}
-Die Datei __lib.rs__ in __src__ ist daher recht schlicht:
+Die Datei <kbd>lib.rs</kbd> in <kbd>src</kbd> ist daher recht schlicht:
 ~~~ rust
 {% github_sample werner-matthias/aihPOS/blob/3ff82b4e3049ec92fb0ef3e69ba28627dee54886/kernel/libs/kalloc/src/lib.rs 0 -1 %}
 ~~~
@@ -247,7 +249,7 @@ Zur Verwaltung von gibt es eine ganze Reihe von Ansätzen. Prinzipiell gibt es m
 - Geringer Verschnitt
 - Geringer Speicheroverhead
 
-Da wir nun leicht fremde Bibliotheken einbinden können, schauen wir uns mal auf **crates.io** um, ob sich nicht geeignete Algorithmen finden lassen. Und in der Tat gibt
+Da wir nun leicht fremde Bibliotheken einbinden können, schauen wir uns mal auf <kbd>crates.io</kbd> um, ob sich nicht geeignete Algorithmen finden lassen. Und in der Tat gibt
 es eine nahezu unüberschaubare Anzahl von Allokatoren. Jedoch sind die wenigsten davon _bare-metal_-geeignet, sondern dienen als Allokatoren für spezifische
 (Betriebs-)Systeme oder Einsatzfälle.
 
@@ -261,12 +263,12 @@ Verschnitt von (nahezu) null.
 Vielleicht werden ich ihn später ein zu einem
 Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Eingliederung hat (mit einem leicht erhöhten Overhead).
 
-Meine __heap.rs__ sieht jetzt so aus:
+Meine <kbd>heap.rs</kbd> sieht jetzt so aus:
 ~~~ rust
 {% github_sample werner-matthias/aihPOS/blob/3ff82b4e3049ec92fb0ef3e69ba28627dee54886/kernel/src/mem/heap.rs 0 -1 %}
 ~~~
 Im Quelltext sind die Stellen im Kommentar markiert, an denen später mit der Seitenverwaltung zusammengearbeitet werden soll.
-Die Initialisierung erfolgt von __main.rs__ aus. Dafür wird dort noch die initiale Heap-Größe festgelegt...
+Die Initialisierung erfolgt von <kbd>main.rs</kbd> aus. Dafür wird dort noch die initiale Heap-Größe festgelegt...
 ~~~ rust
 pub  const INIT_HEAP_SIZE: usize = 25 * 4096; // 25 Seiten = 100 kB
 ~~~
@@ -277,8 +279,8 @@ fn init_heap() {
 }
 
 ~~~
-Das Symbol `__bss_start` kommt aus __layout.ld__, die entsprechend überarbeitet werden muss. Es solle den Beginn des freien, also zu verwaltenden Speichers markieren.
-Dann kann in __main.rs__ das entsprechende externe Symbol deklarieren.
+Das Symbol `__bss_start` kommt aus <kbd>layout.ld</kbd>, die entsprechend überarbeitet werden muss. Es solle den Beginn des freien, also zu verwaltenden Speichers markieren.
+Dann kann in <kbd>main.rs</kbd> das entsprechende externe Symbol deklarieren.
 Hierbei nutze ich einen Trick: Da die externen Symbole ungetypt sind, erkläre ich es einfach zu einer Funktion:
 ~~~ rust
 extern "C" {
@@ -328,7 +330,7 @@ error: Could not compile `aihPOS`.
 
 {% endterminal %}
 Ursache ist diesmal `xargo`. Es übersetzt standardmäßig nur `core`, aber nicht die anderen Bibliotheken. Um dies zur erreichen, muss man eine weitere Konfigurationsdatei
-im Wurzelverzeichnis anlegen: __Xargo.toml__. Dort können zusätzliche Crates der Standard-Bibliothek angegeben werden:
+im Wurzelverzeichnis anlegen: <kbd>Xargo.toml</kbd>. Dort können zusätzliche Crates der Standard-Bibliothek angegeben werden:
 ~~~ toml
 [dependencies]
 alloc = {}

@@ -1,5 +1,4 @@
 ---
-layout: page-fullwidth
 title: Um-Rust-ung
 subheadline: aihPOS - Ein Betriebsystem für die Lehre
 published: true
@@ -7,7 +6,7 @@ meta_description: "Das Build-System wird auf Rust-Tools umgestellt - make hat au
 author: mwerner
 date: 2017-05-14 
 tags:
-    - aihpos
+    - aihPOS
     - cargo
     - xargo
 categories:
@@ -38,7 +37,9 @@ Die Installation geht diesmal nicht über Homebrew, sondern schnell und reibungs
 $ cargo install xargo
 {% endterminal %}
 
-`Cargo`/`xargo` gehen von einem bestimmten Directory-Layout und der Existenz von (mindestens) einer Konfigurationsdatei **cargo.toml** aus, die das sogenannte "[Manifest][3]" enthält. Dort kann man auch benötigte Bibliotheken einbinden, die dann von `cargo` automatisch geladen und übersetzt werden. Wir wollten ja die **compiler-buildins**-Bibliothek nutzen. Dies geschieht im **cargo.toml** für unseren Kernel im Abschnitt `[dependencies]` und sieht so aus:
+`Cargo`/`xargo` gehen von einem bestimmten Directory-Layout und der Existenz von (mindestens) einer Konfigurationsdatei <kbd>cargo.toml</kbd> aus, die das sogenannte
+"[Manifest][3]" enthält. Dort kann man auch benötigte Bibliotheken einbinden, die dann von `cargo` automatisch geladen und übersetzt werden. Wir wollten ja die
+**compiler-buildins**-Bibliothek nutzen. Dies geschieht im **cargo.toml** für unseren Kernel im Abschnitt `[dependencies]` und sieht so aus: 
 
 {% highlight toml %}
 [package]
@@ -62,34 +63,37 @@ lto = false
 opt-level = 3
 {% endhighlight %}
 
-Diese Datei muss sich im Wurzelverzeichnis eines Projekts oder Subprojekts befinden. Die Quelldateien sind dann in einem Unterverzeichnis **src/**, das weitere
-Verzeichnisse (mit ggf. eigenen **cargo.toml**-Dateien) befinden können. Beim Start einer Übersetzung mit `cargo build` wird ein Verzeichnis **target** angelegt,  in dem
+Diese Datei muss sich im Wurzelverzeichnis eines Projekts oder Subprojekts befinden. Die Quelldateien sind dann in einem Unterverzeichnis <kbd>src/</kbd>, das weitere
+Verzeichnisse (mit ggf. eigenen <kbd>cargo.toml</kbd>-Dateien) befinden können. Beim Start einer Übersetzung mit `cargo build` wird ein Verzeichnis <kbd>target</kbd> angelegt,  in dem
 übersetzte Dateien etc. angelegt werden.
 
-Außer der __compiler_buildins__-Bibliothek laden wir auch eine andere
-Bibliothek: __compiler_error__, die etwas ähnliches wie C's
+Außer der <kbd>compiler_buildins</kbd>-Bibliothek laden wir auch eine andere
+Bibliothek: <kbd>compiler_error</kbd>, die etwas ähnliches wie C's
 `#error`-Direktive zur Verfügung stellt.
 Soweit es nicht anders angegeben -- wie z.B. bei den
-__compiler_buildins__ -- wird nach Bibliotheken auf
+<kbd>compiler_buildins</kbd> -- wird nach Bibliotheken auf
 __crates.io__ gesucht.
 
-Neben dem Manifest gibt es optional noch eine Konfigurationsdatei, ebenfalls im TOML-Format. Sie heißt **config** und befindet sich in einem Unterverzeichnis **.cargo/**. Wir brauchen sie vor allem, weil die Erstellung des Kernels Compiler- bzw. Linkeroptionen benötigt, die nicht Standard sind:
+Neben dem Manifest gibt es optional noch eine Konfigurationsdatei, ebenfalls im TOML-Format. Sie heißt <kbd>config</kbd> und befindet sich in einem Unterverzeichnis
+</kbd>.cargo/</kbd>. Wir brauchen sie vor allem, weil die Erstellung des Kernels Compiler- bzw. Linkeroptionen benötigt, die nicht Standard sind: 
 
 {% highlight toml %}
 {%  github_sample   werner-matthias/aihPOS/blob/master/kernel/.cargo/config 0 -1 %}
 {% endhighlight %}
 
-Die Trennung der Steuerung von Compiler-Optionen (in den `[profile.*]`-Abschnitten in **cargo.toml** können auch einige Optionen gesteuert werden) ist etwas unglücklich und wird möglicherweise in künftigen Rust/Cargo-Versionen aufgehoben, aber derzeit muss man damit leben.
+Die Trennung der Steuerung von Compiler-Optionen (in den `[profile.*]`-Abschnitten in </kbd>cargo.toml</kbd> können auch einige Optionen gesteuert werden) ist etwas
+unglücklich und wird möglicherweise in künftigen Rust/Cargo-Versionen aufgehoben, aber derzeit muss man damit leben. 
 
 ### Post-Linker Aktionen
 
-Wenn man sich das bisherige **<tt>Makefile</tt>** anschaut, dann sieht man, dass der Building-Prozess nicht -- wie sonst meist üblich -- mit dem Linken endet. Dies ist
+Wenn man sich das bisherige <kbd>Makefile</kbd> anschaut, dann sieht man, dass der Building-Prozess nicht -- wie sonst meist üblich -- mit dem Linken endet. Dies ist
 in `cargo` nicht vorgesehen. Zwar kennt `cargo` die Möglichkeit, mit Hilfe eines Build-Scriptes Schritte **vor** der Übersetzung auszuführen; etwas ähnliches für danach
 wird zwar in unter den Entwicklern diskutiert, wurde aber bisher nicht umgesetzt. Man kann zwar den Linker (in der Target-Datei) umdefinieren, aber ich fürchte, dass eine
 solche Lösung schnell unübersichtlich wird. Es ein häufig genutzter und sogar empfohlener[^1] Ansatz ist daher, `cargo` wiederum von einem `Makefile` aufrufen lassen. Das
 würde aber  dazu führen, dass Abhängigkeiten z.T. doppelt gepflegt werden müssen. Wenn `cargo`, dann richtig. 
 
-Glücklicherweise ist `cargo` leicht erweiterbar: Wenn `cargo` (oder `xargo`) mit einem unbekannten Befehl gerufen wird, sucht es im Standardpfad nach einem Programm `cargo-`. Dass mache ich mir zunutze und schreibe ein kleines `bash`-Skript `cargo-kernel`, das erst `xargo` aufruft und dann noch den "Rest" erledigt:
+Glücklicherweise ist `cargo` leicht erweiterbar: Wenn `cargo` (oder `xargo`) mit einem unbekannten Befehl gerufen wird, sucht es im Standardpfad nach einem Programm
+`cargo-`. Dass mache ich mir zunutze und schreibe ein kleines `bash`-Skript `cargo-kernel`, das erst `xargo` aufruft und dann noch den "Rest" erledigt: 
 
 {% highlight bash %}
 {%  github_sample   /werner-matthias/aihPOS/blob/master/bin/cargo-kernel 0 -1 %}
@@ -109,7 +113,8 @@ $ cargo kernel --target=arm-none-eabihf
    Finished dev [optimized + debuginfo] target(s) in 4.8 secs
 {% endterminal %} 
 
-Man beachte, dass immer noch `cargo` und nicht `xargo` aufgerufen werden muss. Zwar würde auch `xargo` das Shellskript finden und ausführen, jedoch hat `cargo`/`xargo` einen Lock, der die nebenläufige Ausführung blockiert. `xargo kernel`würde also hängen bleiben.
+Man beachte, dass immer noch `cargo` und nicht `xargo` aufgerufen werden muss. Zwar würde auch `xargo` das Shellskript finden und ausführen, jedoch hat `cargo`/`xargo`
+einen Lock, der die nebenläufige Ausführung blockiert. `xargo kernel`würde also hängen bleiben. 
 
 ### Diskussion
 
@@ -119,7 +124,9 @@ berücksichtigt sind. Einiges könnte einfach so funktionieren, aber es besteht 
 
 ## GitHub
 
-Wenn ich schon bei einer Reorganisation bin, gehe ich noch einen Schritt weiter: Der alte JTAG-Kernel (siehe [Teil 3](/2017/04/10/aihpos-3-lebenszeichen)) kommt in ein eigenes Verzeichnis, so dass er noch immer mit `make` übersetzt werden kann. Ich nutze ihn als Boot-Kernel, so dass ich Änderungen im Entwicklungskernel schnell über das JTAG-Interface laden und testen kann.
+Wenn ich schon bei einer Reorganisation bin, gehe ich noch einen Schritt weiter: Der alte JTAG-Kernel (siehe [Teil 3](/2017/04/10/aihpos-3-lebenszeichen)) kommt in ein
+eigenes Verzeichnis, so dass er noch immer mit `make` übersetzt werden kann. Ich nutze ihn als Boot-Kernel, so dass ich Änderungen im Entwicklungskernel schnell über das
+JTAG-Interface laden und testen kann. 
 
 Außerdem habe ich ein [GitHub-Projekt](https://github.com/werner-matthias/aihPOS) für SOPHIA aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.
 {% include next-previous-post-in-category %}

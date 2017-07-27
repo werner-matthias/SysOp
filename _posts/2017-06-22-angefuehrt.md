@@ -9,7 +9,7 @@ tags:
     - jekyll
     - kramdown
 categories:
-    - computer
+    - small hacks
 ---
 Jekyll -- oder genauer der dort genutzte Markdown-Prozessor Kramdown -- kann typographische Anführungszeichen.
 Wenn man also ein Zitat in Anführungszeichen (\") setzt stehen nach der Verarbeitung vor und nach dem Zitat typographische
@@ -18,7 +18,7 @@ Anführungszeichen:
    * `"Zitat"` wird zu &ldquo;Zitat&rdquo;
 
 Leider entspricht das nicht der deutschen Typographie, wo vor dem Zitat das Zitatzeichen unten und danach oben (und anders herum) steht.
-Durch eine zusätzliche Konfiguration kann man auf deutsche Typographie umschalten, indem man die <tt>\_config.yml</tt> um folgende Zeilen ergänzt:
+Durch eine zusätzliche Konfiguration kann man auf deutsche Typographie umschalten, indem man die <kbd>_config.yml</kbd> um folgende Zeilen ergänzt:
 
 ~~~ yml
 kramdown:

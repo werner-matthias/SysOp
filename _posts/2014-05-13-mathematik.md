@@ -8,7 +8,7 @@ date: 2014-05-13 02:05:04
 tags:
     - LaTeX
 categories:
-    - computer
+    - small hacks
 ---
 
 Bisher habe ich für Berechnungen in `LaTeX` stets die Pakete [calc][1] oder [fp][2] genutzt.

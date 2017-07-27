@@ -18,10 +18,6 @@ author: mwerner
 url: 'https://werner-matthias.github.io/SysOp'
 baseurl: ''
 
-# This is for the editing function in _/includes/improve_content
-# Leave it empty if your site is not on GitHub/GitHub Pages
-#improve_content: # https://github.com/Phlow/feeling-responsive/edit/gh-pages
-
 # This URL points directly to the images directory making
 # things easier to link to images in posts and templates. It needs a slash at the end.
 #
@@ -34,7 +30,6 @@ urlimg: 'https://werner-matthias.github.io/SysOp/images'
 logo: "logo.png"
 
 future: true
-
 
 # Paginates all X entries
 paginate: 5
@@ -53,7 +48,9 @@ kramdown:
   smart_quotes:   sbquo,lsquo,bdquo,ldquo
   hard_wrap:      false
   footnote_nr:    1
-permalink: /:categories/:title/
+  
+permalink: pretty
+
 highlighter: rouge
 
 excerpt_separator: "<!--more-->"
@@ -91,7 +88,6 @@ plugins:
   - jekyll_github_sample
   - emoji_for_jekyll
   - jekyll-typogrify
-  - jekyll-deploy
 
 jemoji:
    src: images/emoji
@@ -103,27 +99,13 @@ defaults:
   -
     scope:
       path: "" 				# an empty string here means all files in the project
-      type: "pages-fullwidth"
+      type: "posts"
     values:
-      show_meta: true 	        # Show metadata for all pages
-      # sidebar:    		# Possible values › left, right › by default there will be no sidebar
+      layout: page-fullwidth
       comments: false           # change if staticman is stable
       author: mwerner           # Default author for pages
-      permalink: date
+      show_meta: true 	        # Show metadata for all pages
 
-############################################
-# Deploy
-############################################
-deploy:
-- ( cd ..; git checkout source )
-- ( cd ..; jekyll b )
-- ( cd ..; git commit -a -m "build" )
-- ( cd ..; git push )
-- git branch -D master
-- git checkout -b master
-- (cd ..; git filter-branch --subdirectory-filter _site/ -f )
-- git checkout source
-- git push --all origin
 ############################################
 # SEO
 # Facebook-Optimization › http://j.mp/fb_optimize

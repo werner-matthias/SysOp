@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Inkscapes verlorener Pfad
 meta_description: Das LaTeX-svg-Paket funktioniert nicht mehr. Schuld daran ist Inkscape. 
 published: true
@@ -10,9 +9,9 @@ tags:
     - LaTeX
     - OSX
 categories:
-    - computer
+    - small hacks
 ---
-Ich nutze schon seit Jahren die automatische Einbettung von svg-Grafiken (ich weiß, &#8222;svg-Grafiken&#8220; ist wie &#8222;HIV-Virus&#8220;) in LaTeX mit Hilfe des `svg`-Pakets.
+Ich nutze schon seit Jahren die automatische Einbettung von svg-Grafiken (ich weiß, "svg-Grafiken" ist wie "HIV-Virus") in LaTeX mit Hilfe des `svg`-Pakets.
   
 Seit dem letzten Update von Inkscape funktionierte dies nicht mehr, da der Aufruf von Inkscape das Arbeitsverzeichnis ändert.
 
@@ -30,4 +29,4 @@ Das konnte mit Hilfe des Pakets `currfile` gelöst werden. In meiner generischen
 \usepackage{currfile} % Wird für einen Workaround für das Inkscape-Pfadproblem gebraucht
 \setsvg{inkscape=inkscape -z -D,svgpath=\currfiledir}
 ~~~
-&#8230;und die svg-Einbindung funktioniert wieder.
+...und die svg-Einbindung funktioniert wieder.

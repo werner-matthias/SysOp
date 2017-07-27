@@ -1,16 +1,14 @@
 ---
-layout: page-fullwidth
 title: Braking News
-subheadline: aihPOS - Ein Betriebsystem für die Lehre
-meta_description: 'So ist das mit "unstable" Versionen: Kaum kommt man nach zwei Wochen von einer Reise zurück, schon funktioniert die Übersetzung nicht mehr - in diesem ist
-Fall der Heap kaputt. '
+subheadline: Ein Betriebsystem für die Lehre
+meta_description: 'So ist das mit "unstable" Versionen\: Kaum kommt man nach zwei Wochen von einer Reise zurück, schon funktioniert die Übersetzung nicht mehr -- in diesem ist
+    Fall der Heap kaputt.'
 published: true
 author: mwerner
 date: 2017-07-20
 tags:
-    - Rust
     - aihPOS
-    - Microkernel
+    - Rust
     - Allokator
     - Heap
 categories:

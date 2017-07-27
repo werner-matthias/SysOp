@@ -1,15 +1,14 @@
 ---
-layout: page-fullwidth
 title: Lebenszeichen
-subheadline: aihPOS - Ein Betriebsystem für die Lehre
+subheadline: Ein Betriebsystem für die Lehre
 published: true
 author: mwerner
 #comments: 
 meta_description: 'Wir bauen den ersten "Kernel" und holen (nahezu) die Bequemlichkeit des Desktop-Debuggers in die Embedded-Welt.'
 date: 2017-04-10 09:04:10
 tags:
-    - Rust
     - aihPOS
+    - Rust
     - Linker
     - make
     - openocd
@@ -30,13 +29,18 @@ Boot-Prozess.
 Unsere ARM-CPU ist nicht die einzige CPU auf dem Raspberry. Vielmehr gibt es einen weiteren Prozessor, die [GPU VideoCore][3]® IV. Anders als die Bezeichnung vermuten
 lässt, ist die GPU nicht nur für die Grafiksteuerung verantwortlich, sondern übernimmt z.B. auch den Boot-Prozess.1 Wenn der Strom eingeschaltet wird, übernimmt erst mal
 die GPU die Regie. Sie bootet von einem internen ROM, lädt dann von der SD-Karte die Datei bootcode.bin. Diese kann enthält einen Treiber, um Dateien im ELF-Format
-lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei start.elf geladen. Die Firmware liest u.a. die Datei <tt>config.txt</tt>   (so vorhanden) und konfiguriert das Board entsprechend, und lädt anschließend die Datei kernel.img auf die (aus AMR-Sicht) Adresse 0x08000. Von dieser Adresse aus startet dann auch der ARM.
+lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei start.elf geladen. Die Firmware liest u.a. die Datei <kbd>config.txt</kbd>   (so vorhanden) und
+konfiguriert das Board entsprechend, und lädt anschließend die Datei <kbd>kernel.img</kbd> auf die (aus AMR-Sicht) Adresse 0x08000. Von dieser Adresse aus startet dann auch der
+ARM. 
 
 ## Speicher und Formate
 
 ### Layout und Linker
 
-Die Datei kernel.img ist ein Binärfile, das unmittelbar Maschinencode enthält, also keine ELF-Datei oder ein anderes höheres Format. Wir müssen also erstens dafür sorgen, dass unser "Kernel" von der Adresse 0x08000 lauffähig ist, und zweitens, dass er als reine Binärdatei vorliegt. Beim ersten hilft der Linker. In der "normalen" Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte Anforderungen haben, müssen wir es ihm mit einem [Linker-Skript][4] mitteilen. Unser Linker-Skript ist (noch) sehr einfach:
+Die Datei <kbd>kernel.img</kbd> ist ein Binärfile, das unmittelbar Maschinencode enthält, also keine ELF-Datei oder ein anderes höheres Format. Wir müssen also erstens
+dafür sorgen, dass unser "Kernel" von der Adresse 0x08000 lauffähig ist, und zweitens, dass er als reine Binärdatei vorliegt. Beim ersten hilft der Linker. In der
+"normalen" Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte
+Anforderungen haben, müssen wir es ihm mit einem [Linker-Skript][4] mitteilen. Unser Linker-Skript ist (noch) sehr einfach: 
 
 ~~~ ld
 ENTRY(kernel_main)
@@ -60,11 +64,14 @@ Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code kernel_main hei
 
 ### Binärfile
 
-Um aus dem vom Linker generierten ELF-File ein Binärfile zu machen, nutzen wir [`objcopy`][5], genauer die Cross-Variante arm-none-eabi-objcopy. Der Name objcopy ist ein klares Understatement, das dieses Programm nicht nur kopiert, sondern eine Vielzahl von Transformationen ausführen kann. Wir nutzen es allerdings nur dazu, aus dem ELF-File den Binärcode zu generieren, eine Aufgabe, die auf Plattformen _mit_ einem Betriebssystem i.d.R. der Lader übernimmt.
+Um aus dem vom Linker generierten ELF-File ein Binärfile zu machen, nutzen wir [`objcopy`][5], genauer die Cross-Variante arm-none-eabi-objcopy. Der Name objcopy ist ein
+klares Understatement, das dieses Programm nicht nur kopiert, sondern eine Vielzahl von Transformationen ausführen kann. Wir nutzen es allerdings nur dazu, aus dem
+ELF-File den Binärcode zu generieren, eine Aufgabe, die auf Plattformen _mit_ einem Betriebssystem i.d.R. der Lader übernimmt. 
 
 ### Makefile
 
-Eigentlich hat Rust sein eigenes Build-System `cargo`, mit dem wir schon die core-Bibliothek gebaut haben. Jedoch ist `cargo` nicht sonderlich gut für bare-metal Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurückgreifen.[^3]
+Eigentlich hat Rust sein eigenes Build-System `cargo`, mit dem wir schon die core-Bibliothek gebaut haben. Jedoch ist `cargo` nicht sonderlich gut für bare-metal
+Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurückgreifen.[^3] 
   
 Unser Makefile geht davon aus, dass wir folgendes Verzeichnis-Layout haben:
   
@@ -153,9 +160,14 @@ Damit wir sehen, dass unser Programm auch läuft, wollen wir die grüne LED des 
 
 ### Das erste Rust-Programm
 
-Wir haben jetzt alle Informationen zusammen, um eine Software zu schreiben, die den Raspberry auf einen JTAG-Zugriff vorzubereiten. Wie schon im [Teil 1 dieser Reihe][6] diskutiert, soll Rust benutzt werden, mit &#8212; wenn nötig &#8212; etwas Assembler. In der Regel wird der Startup-Code in Assembler geschrieben, siehe z.B. [hier][7]. Das ist im Allgemeinen auch eine gute Idee: jede Rust-Funktion (oder C-Funktion) hat einen Prolog, in dem die Rücksprungadresse auf dem Stack gesichert wird. Allerdings ist zu Beginn ja noch gar kein Stack angelegt. Dies und andere Initialisierungen macht das Assemblerprogramm, ehe es in den in der höheren Programmiersprache geschriebenen Code ruft.
+Wir haben jetzt alle Informationen zusammen, um eine Software zu schreiben, die den Raspberry auf einen JTAG-Zugriff vorzubereiten. Wie schon im [Teil 1 dieser Reihe]({%
+post_url 2017-03-19-aihpos-1 %}) diskutiert, soll Rust benutzt werden, mit &#8212; wenn nötig &#8212; etwas Assembler. In der Regel wird der Startup-Code in Assembler
+geschrieben, siehe z.B. [hier][7]. Das ist im Allgemeinen auch eine gute Idee: jede Rust-Funktion (oder C-Funktion) hat einen Prolog, in dem die Rücksprungadresse auf dem
+Stack gesichert wird. Allerdings ist zu Beginn ja noch gar kein Stack angelegt. Dies und andere Initialisierungen macht das Assemblerprogramm, ehe es in den in der
+höheren Programmiersprache geschriebenen Code ruft. 
 
-Allerdings ist ein solches Assembler-Modul in unserem Fall nicht nötig: Einerseits können wir Assembler-Befehle direkt in den Rust-Code einbetten, andererseits können wir unsere Startfunktion mit dem Attribute #[naked] versehen, so dass der Compiler keinen Prolog oder Epilog anlegt.
+Allerdings ist ein solches Assembler-Modul in unserem Fall nicht nötig: Einerseits können wir Assembler-Befehle direkt in den Rust-Code einbetten, andererseits können wir
+unsere Startfunktion mit dem Attribute `#[naked]` versehen, so dass der Compiler keinen Prolog oder Epilog anlegt. 
 
 ~~~ rust 
 {%  github_sample werner-matthias/aihPOS/blob/master/jtag/src/main.rs  0 54 %}
@@ -177,11 +189,14 @@ $ make
 {%  github_sample werner-matthias/aihPOS/blob/master/jtag/src/panic.rs  0 -1 %}
 ~~~
 
-Außerdem fügen wir <tt><b>main.rs</b></tt> noch eine Zeile hinzu:
+Außerdem fügen wir <kbd>main.rs</kbd> noch eine Zeile hinzu:
 ~~~ rust
 include!("panic.rs");
 ~~~
-Dieses Macro funktioniert ähnlich wie das `#include` in C und macht die Datei panic.rs logisch zu einem Bestandteil von main.rs. Dieses Vorgehen ist ein bisschen „unrustig“, da eigentlich in Rust kein Modul in mehr als einer Datei sein soll (dafür ruhig mehrere Module in einer Datei), aber ich habe diese Variante gewählt, um den eigentlichen Funktionscode halbwegs „rein“ zu halten ohne extra ein neues Modul anlegen zu müssen. Nun läuft die Übersetzung durch. Anschließend kopieren wir da Binär-Image auf die SD-Karte,
+Dieses Macro funktioniert ähnlich wie das `#include` in C und macht die Datei <kbd>panic.rs</kbd> logisch zu einem Bestandteil von <kbd>main.rs</kbd>. Dieses Vorgehen ist
+ein bisschen „unrustig“, da eigentlich in Rust kein Modul in mehr als einer Datei sein soll (dafür ruhig mehrere Module in einer Datei), aber ich habe diese Variante
+gewählt, um den eigentlichen Funktionscode halbwegs "rein" zu halten ohne extra ein neues Modul anlegen zu müssen. Nun läuft die Übersetzung durch. Anschließend kopieren
+wir da Binär-Image auf die SD-Karte, 
 
 {% terminal %}
   $make
@@ -266,7 +281,7 @@ Jetzt kann man viele interessante Dinge machen. Beispielsweise können Register 
     > mww 0x20200020 0x8000
 {% endterminal %} 
   
-Die letzten beiden Befehle schalten die grüne LED aus- und wieder an. Der vermutlich wichtigste Befehl ist aber load_image. Damit entfällt das Kopieren eines neuen Images
+Die letzten beiden Befehle schalten die grüne LED aus- und wieder an. Der vermutlich wichtigste Befehl ist aber <kbd>load_image</kbd>. Damit entfällt das Kopieren eines neuen Images
 auf die SD-Karte. Die Datei (wahlweise auch im ELF-Format) kann direkt auf den Pi gebracht werden. 
 
 Für ein noch etwas detaillierteres Debuggen kann openocd mit dem GNU-Debugger gekoppelt werden. Im Konfigurationsfile wurde der Port 3333 dafür freigegeben. Natürlich
@@ -290,7 +305,8 @@ JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständ
 
 ### Morsezeichen {#morsezeichen}
 
-Manchmal will man eine schnelle Rückmeldung haben, ob eine bestimmte Stelle im Programm erreicht wurde oder ob ein Fehler aufgetreten ist. Solange wir keine Konsole haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein eigenes Modul ausgelagert und parameterisiert:
+Manchmal will man eine schnelle Rückmeldung haben, ob eine bestimmte Stelle im Programm erreicht wurde oder ob ein Fehler aufgetreten ist. Solange wir keine Konsole
+haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein eigenes Modul ausgelagert und parameterisiert: 
 
 ~~~ rust
 {%  github_sample werner-matthias/aihPOS/blob/master/kernel/src/debug/blink.rs  0 -1 %}
@@ -315,6 +331,5 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund &#8211; die Ausf
  [3]: https://docs.broadcom.com/docs/12358545
  [4]: https://sourceware.org/binutils/docs/ld/Scripts.html
  [5]: https://sourceware.org/binutils/docs/binutils/objcopy.html#objcopy
- [6]: http://sysop.matthias-werner.net/aihpos-ein-betriebssystem-fuer-die-lehre-teil-1/
  [7]: http://wiki.osdev.org/Raspberry_Pi_Bare_Bones
  [8]: https://pypi.python.org/pypi/gdbgui/

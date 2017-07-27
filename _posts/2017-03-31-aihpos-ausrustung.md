@@ -1,16 +1,16 @@
 ---
-layout: page-fullwidth
 title: Ausr(ü/u)stung
-subheadline: aihPOS - Ein Betriebsystem für die Lehre
+subheadline: Ein Betriebsystem für die Lehre
 meta_description: "Bevor wir mit dem Code-Schreiben beginnen, brauchen wir die Entwickler-Werkzeuge."
 published: true
 author: mwerner
 date: 2017-03-31 
 tags:
-    - Rust
     - aihPOS
+    - Rust
     - JTAG
     - EABI
+    - Debugger
 categories:
     - aihpos
 ---

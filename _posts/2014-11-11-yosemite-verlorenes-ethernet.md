@@ -1,14 +1,16 @@
 ---
-layout: page
 title: 'Yosemite: verlorenes Ethernet'
 published: true
+meta_description: "Es gibt im Web immer wieder Beschwerden, dass in Yosemite der WiFi-Empfang nicht funktioniert. Dieses Problem habe ich nicht, dafür bricht bei mir das kabelgebundene Ethernet zusammen."
 author: mwerner
 date: 2014-11-11 09:11:29
 tags:
     - OSX
     - Yosemite
+    - Treiber
+    - Ethernet
 categories:
-    - computer
+    - small hacks
 ---
 Es gibt im Web immer wieder Beschwerden, dass in Yosemite der WiFi-Empfang nicht funktioniert. Dieses Problem habe ich nicht, dafür bricht bei mir (insbesondere nach
 einem Ruhezustand) das kabelgebundene Ethernet zusammen.

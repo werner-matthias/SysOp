@@ -1,15 +1,15 @@
 ---
-layout: page-fullwidth
 title: Please Mr. Postman
-subheadline: aihPOS - Ein Betriebsystem für die Lehre
+subheadline: Ein Betriebsystem für die Lehre
 meta_description: "Bevor wir uns dem Design des Kernels widmen, wollen wir Informationen über das System einsammeln:  welchen Raspberry-Typ haben wir, wieviel Speicher
 steht zur Verfügung, etc.. Außerdem nutzen wir die Gelegenheit, das Debugging nochmal zu verbessern."
 published: true
 author: mwerner
 date: 2017-04-26 11:04:55
 tags:
+    - aihPOS
+    - Raspberry Pi
     - Rust
-    - aihpos
 categories:
     - aihpos
 ---
@@ -68,7 +68,8 @@ vorgenommen wird. Seit neuesten[^2] steht ein eigenes Alignment-Attribut zur Ver
 
 ### Tag-Puffer
 
-Die Implementation des Tag-Puffers ist unkompliziert. Man muss lediglich darauf achten, dass die Daten `u32`-Wörter sind, aber die Größen stets in Byte gemessen werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwendig, die durch die Shift-Operatoren `<<` realisiert werden.
+Die Implementation des Tag-Puffers ist unkompliziert. Man muss lediglich darauf achten, dass die Daten `u32`-Wörter sind, aber die Größen stets in Byte gemessen
+werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwendig, die durch die Shift-Operatoren `<<` realisiert werden. 
 
 {% highlight rust linenos %}
 {%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/propertytags.rs 192 -1 %}
@@ -89,7 +90,7 @@ Die Nutzung dieser Funktionen gab für mich zwei Überraschungen:
      gelistet ist. [Hier][6] ist eine vermutlich vollständige Liste; demnach handelt es sich tatsächlich um einen 1B+, aber mit geänderten Leiterplattenlayout. 
   2. Es wurden 256 MByte Speicher berichtet, obwohl der 1B+ doch 512 MByte haben sollte, von denen die GPU standardmäßig lediglich 64 MByte "abzweigt". Eine kurze
      Web-Recherche ergab, dass es sich dabei um einen bekannten Bug der Firmware handelt, für den auch ein entsprechender Bugfix existiert. Wenn man in das
-     Boot-Verzeichnis die Datei fixup.dat aus dem originalen Boot-Verzeichnis kopiert, werden korrekt 448 MByte verfügbarer Speicher gemeldet. 
+     Boot-Verzeichnis die Datei <kbd>fixup.dat</kbd> aus dem originalen Boot-Verzeichnis kopiert, werden korrekt 448 MByte verfügbarer Speicher gemeldet. 
 
 ## Kprint
 Der Property-Tags-Kanal der Mailbox hat noch viel mehr parat: Mit Hilfe der Property Tags kann nämlich der Framebuffer konfiguriert werden. [Blinksignale][7] zum Debuggen
@@ -113,7 +114,8 @@ Speicherzeilenlänge (`pitch`) werden bei der Initialisierung abgefragt, nachde
 {%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 33 87 %}
 {% endhighlight %}
 
-Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,[^5] indem wir einen virtuellen Ringpuffer aufbauen, siehe Abschnitt "[Scrollen][8]".
+Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,[^5] indem wir
+einen virtuellen Ringpuffer aufbauen, siehe Abschnitt "[Scrollen][8]". 
 
 ![]({{site.urlimg}}/virphys-fb.png){:class="img-responsive"}
 ### Vom Pixel zum String
@@ -177,7 +179,9 @@ impl Font for SystemFont {
 }
 {% endhighlight %}
 
-Ein Textstring kann jetzt im Framebuffer Zeichen für Zeichen, ein Zeichen ggf. interpretiert und dann pixelweise ausgegeben werden. Dabei wird immer Buch über die aktuelle Zeichenposition &#8211; d.h. Spalte und Zeile &#8211; geführt und entsprechend angepasst. Bei der Interpretation beschränken wir uns erst einmal auf die Steuerzeichen für "neue Zeile"und "Tabulator&#8220;.
+Ein Textstring kann jetzt im Framebuffer Zeichen für Zeichen, ein Zeichen ggf. interpretiert und dann pixelweise ausgegeben werden. Dabei wird immer Buch über die
+aktuelle Zeichenposition -- d.h. Spalte und Zeile -- geführt und entsprechend angepasst. Bei der Interpretation beschränken wir uns erst einmal auf die
+Steuerzeichen für "neue Zeile"und "Tabulator". 
 
 {% highlight rust linenos %}
 pub fn print(&mut self, s: &str) {
@@ -240,7 +244,10 @@ impl<'a> fmt::Write for Framebuffer<'a> {
 
 ### Scrollen {#scrollen}
 
-Nun muss noch die Scroll-Logik implementiert werden. Die Idee ist sehr einfach: Die eigentliche Verschiebung erfolgt auch die Änderung von `y_offset`, wofür wieder die Mailbox benutzt wird. Sobald das sichtbare Fenster nach unten geschoben wurde, wird eine Bildschirmzeile nach oben in den jetzt verstecken Bereich kopiert. Der noch nicht sichtbare Bereich unten wird von evtl. vorhandenen alten Daten bereinigt. Wenn die maximale Verschiebung erreicht ist, springt der sichtbare Ausschnitt wieder nach oben, was durch das vorherige Kopieren aber wie ein einfaches Scrollen aussieht.
+Nun muss noch die Scroll-Logik implementiert werden. Die Idee ist sehr einfach: Die eigentliche Verschiebung erfolgt auch die Änderung von `y_offset`, wofür wieder die
+Mailbox benutzt wird. Sobald das sichtbare Fenster nach unten geschoben wurde, wird eine Bildschirmzeile nach oben in den jetzt verstecken Bereich kopiert. Der noch nicht
+sichtbare Bereich unten wird von evtl. vorhandenen alten Daten bereinigt. Wenn die maximale Verschiebung erreicht ist, springt der sichtbare Ausschnitt wieder nach oben,
+was durch das vorherige Kopieren aber wie ein einfaches Scrollen aussieht. 
 
 {% highlight rust linenos %}
 pub fn scroll(&mut self) {

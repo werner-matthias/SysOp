@@ -1,10 +1,8 @@
 ---
-layout: page-fullwidth
 title: Computer Science
 subheadline: Zitate des Tages
 published: true
 author: mwerner
-# comments: true
 date: 2017-05-21 12:05:22
 tags: [ ]
 categories:
