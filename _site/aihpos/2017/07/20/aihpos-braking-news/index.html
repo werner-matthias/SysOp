@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="de">
 <head>
-		<meta charset="utf-8" />
+	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Braking News</title>
 	<link rel="stylesheet" type="text/css" href="https://werner-matthias.github.io/SysOp/assets/css/styles_feeling_responsive.css" />
@@ -121,6 +121,9 @@
 
 	
 </head>
+   <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   </script>
 </head>
 <body id="top-of-page" class="page-fullwidth">
 	
@@ -288,9 +291,10 @@
   </li>
   <li><a href="#auf-zu-neuen-ufern" id="markdown-toc-auf-zu-neuen-ufern">Auf zu neuen Ufern</a>    <ul>
       <li><a href="#allokator-api" id="markdown-toc-allokator-api">Allokator-API</a></li>
-      <li><a href="#guter-service" id="markdown-toc-guter-service">Guter Service</a></li>
+      <li><a href="#am-rande-des-speichers" id="markdown-toc-am-rande-des-speichers">Am Rande des Speichers</a></li>
     </ul>
   </li>
+  <li><a href="#blick-zurück-in-freude" id="markdown-toc-blick-zurück-in-freude">Blick zurück in Freude</a></li>
 </ul>
 
 <p><a class="left button tiny radius" href="https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
@@ -465,42 +469,105 @@ Allozierungen vornehmen wollen, muss ein globaler Allokator angegeben werden. Di
 <a href="https://doc.rust-lang.org/unstable-book/">Unstable Book</a> hat – nicht genannt wurde, sondern <code class="highlighter-rouge">#[default_lib_allocator]</code> ist mir nicht ganz klar; vermutlich ist das bloß
 noch nicht stabilisiert.</p>
 
-<h3 id="guter-service">Guter Service</h3>
-<p>Nachdem ich die <strong>kalloc</strong>-Bibliothek entfernt und einen Wrapper um die alten Allokator-Funktionen aus der <code class="highlighter-rouge">linked_list_allocator</code>-Bibliothek geschrieben hatte und der
-neue Allokator tadellos lief, stellte ich fest, dass die von mir verwendete Version 0.2.7 der <code class="highlighter-rouge">linked_list_allocator</code>-Bibliothek gar nicht mehr die aktuelle ist. Die
-derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständig umgesetzt. Danke an den Autor Philipp Oppermann, von dem auch das Blog
-„<a href="https://os.phil-opp.com">Writing an OS in Rust</a>“ stammt.</p>
+<h3 id="am-rande-des-speichers">Am Rande des Speichers</h3>
+<p>Ich nutze die Gelegenheit und implementiere eine eigene Heapverwaltung. Dazu nutze ich das <em>Boundary-Tag-Verfahren</em> <sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>. Das hat den Vorteil, dass die Wiedereingliederung
+von zurückgegebenen Speicher eine konstante Komplexität \(\mathcal{O}(1)\) hat, jedoch auf Kosten des Speicherverbrauchs: Jeder belegte Speicherabschnitt hat zwei Tags
+Verwaltungsinformation, in denen die Größe des Abschnitts und Statusflags stehen. In meiner Implementation ist ein Tag ein <code class="highlighter-rouge">usize</code> (genauer: eine <code class="highlighter-rouge">struct</code> mit einem
+<code class="highlighter-rouge">usize</code>), so dass jeweils pro Block 8 Bytes Overhead entstehen. Da es durch die Alignmentanforderungen ohnehin zu Verschnitt kommt, halte ich dies für vertretbar.</p>
 
-<p>Ich habe dann auf die neue Version umgestellt. Damit ist der Heap trivial, die Datei <strong>heap.rs</strong> sieht jetzt so aus:</p>
+<p><img src="https://werner-matthias.github.io/SysOp/imagesboundary.png" alt="" class="img-responsive" /></p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="c">///! Z.z. binden wir die einfach die neue Version von linked_list_allocator ein.</span>
-<span class="c">///! Später soll die Interaktion mit dem Pager hinzukommen.</span>
-<span class="k">extern</span> <span class="n">crate</span> <span class="n">linked_list_allocator</span><span class="p">;</span>
-<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">linked_list_allocator</span><span class="p">::</span><span class="n">LockedHeap</span><span class="p">;</span></code></pre></figure>
-
-<p>Ich lasse sie aber erstmal trotzdem stehen, da ich – wie <a href="/aihpos/2017/06/07/aihpos-heap/">hier</a> diskutiert – später den Heap überarbeiten und die den
-Out-of-Memory-Fehler abfangen will.</p>
-
-<p>Der Allokator der <code class="highlighter-rouge">linked_list_allocator</code>-Bibliothek ist übrigens durch einen Spin-Lock (aus der <a href="https://crates.io/crates/spin">spin</a>-Bibliothek) geschützt. Das ist in
-<img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss gestellt wird, schadet aber nicht und kann bei einer späteren Portierung nützlich sein.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<p>In <strong>main.rs</strong> wird der Allokator als <code class="highlighter-rouge">static</code> deklariert…</p>
-
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">const</span> <span class="n">IRQ_STACK_SIZE</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">2048</span><span class="p">;</span>
-<span class="k">pub</span>  <span class="k">const</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">4096</span><span class="p">;</span> <span class="c">// 25 Seiten = 100 kB</span>
-
-<span class="cp">#[global_allocator]</span>
-<span class="k">static</span> <span class="n">HEAP</span><span class="p">:</span> <span class="n">LockedHeap</span> <span class="o">=</span> <span class="nn">LockedHeap</span><span class="p">::</span><span class="nf">empty</span><span class="p">();</span></code></pre></figure>
-
-<p>… und wie folgt initialisiert:</p>
-
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">fn</span> <span class="nf">init_heap</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">unsafe</span><span class="p">{</span>
-        <span class="n">HEAP</span><span class="nf">.lock</span><span class="p">()</span><span class="nf">.init</span><span class="p">(</span><span class="n">__bss_start</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">);</span>
+<p>Um einen Speicherbereich zu belegen, wird einfach die Freispeicherliste durchsucht:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Result</span><span class="o">&lt;*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">AllocErr</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">start</span> <span class="o">=</span> <span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="k">self</span><span class="py">.first</span><span class="nf">.as_ptr</span><span class="p">()</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">);</span>
+    <span class="k">for</span> <span class="k">mut</span> <span class="n">mr</span> <span class="n">in</span> <span class="n">start</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">mr</span><span class="nf">.is_sufficient</span><span class="p">(</span><span class="o">&amp;</span><span class="n">layout</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">mr</span><span class="nf">.allocate</span><span class="p">(</span><span class="n">layout</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
+    <span class="nf">Err</span><span class="p">(</span><span class="nn">AllocErr</span><span class="p">::</span><span class="n">Exhausted</span><span class="p">{</span><span class="n">request</span><span class="p">:</span> <span class="n">layout</span><span class="p">})</span>
+<span class="p">}</span>
 
-<p>Jetzt funktioniert die Übersetzung wieder fehlerfrei.</p>
+</code></pre>
+</div>
+<p>Die eigentliche „Arbeit“ liegt bei der <code class="highlighter-rouge">allocate</code>-Methode des Speicherabschnitts: Hier wir überprüft, ob der Abschnitt als Ganzes belegt werden soll, oder ob er
+aufgeteilt wird. Im letzteren Fall wird die Teilung durchgeführt; der abgetrennte Bereich nimmt den Platz des ursprünglichen Abschnittes in der Liste ein.</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">allocate</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="k">-&gt;</span>  <span class="n">Result</span><span class="o">&lt;*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">AllocErr</span><span class="o">&gt;</span>  <span class="p">{</span>
+    <span class="k">let</span> <span class="n">dest_addr</span> <span class="o">=</span> <span class="nf">align_up</span><span class="p">(</span><span class="k">self</span><span class="nf">.client_addr</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">(),</span><span class="n">layout</span><span class="nf">.align</span><span class="p">());</span>
+    <span class="k">let</span> <span class="n">front_padding</span> <span class="o">=</span> <span class="n">dest_addr</span> <span class="o">-</span> <span class="k">self</span><span class="nf">.client_addr</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">needed_size</span> <span class="o">=</span> <span class="nn">cmp</span><span class="p">::</span><span class="nf">max</span><span class="p">(</span><span class="nf">align_up</span><span class="p">(</span><span class="n">front_padding</span> <span class="o">+</span> <span class="n">layout</span><span class="nf">.size</span><span class="p">(),</span><span class="nn">mem</span><span class="p">::</span><span class="nn">align_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">()),</span>
+                               <span class="nn">Self</span><span class="p">::</span><span class="nf">min_size</span><span class="p">());</span>
+    <span class="c">// Vorgänger und Nachfolger in der Liste (so vorhanden)</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">prev</span> <span class="o">=</span> <span class="k">self</span><span class="py">.prev</span><span class="nf">.map_or</span><span class="p">(</span><span class="nb">None</span><span class="p">,|</span> <span class="n">a</span> <span class="p">|</span> <span class="nf">Some</span><span class="p">(</span><span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="p">);</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">next</span> <span class="o">=</span> <span class="k">self</span><span class="py">.next</span><span class="nf">.map_or</span><span class="p">(</span><span class="nb">None</span><span class="p">,|</span> <span class="n">a</span> <span class="p">|</span> <span class="nf">Some</span><span class="p">(</span><span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="p">);</span>
+    <span class="c">// Lohnt es sich, den Bereich zu teilen?</span>
+    <span class="k">if</span> <span class="k">self</span><span class="py">.size</span> <span class="o">-</span> <span class="n">needed_size</span> <span class="o">&gt;</span> <span class="nn">Self</span><span class="p">::</span><span class="nf">min_size</span><span class="p">()</span>  <span class="p">{</span> <span class="c">// Teile den Bereich</span>
+        <span class="c">// Initialisere den neuen Bereich.</span>
+        <span class="k">let</span> <span class="n">old_size</span> <span class="o">=</span> <span class="k">self</span><span class="py">.size</span><span class="p">;</span>
+        <span class="k">self</span><span class="nf">.set_size</span><span class="p">(</span><span class="n">needed_size</span><span class="p">);</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">new_mr</span> <span class="o">=</span> <span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+        <span class="c">// Da der neue Bereich hinten abgetrennt wird, gibt es stets einen Vorgänger</span>
+        <span class="n">new_mr</span><span class="nf">.init</span><span class="p">(</span><span class="nf">Some</span><span class="p">(</span><span class="k">self</span><span class="py">.end_addr</span><span class="nf">.unwrap</span><span class="p">()</span> <span class="o">+</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">()),</span>
+                    <span class="n">old_size</span> <span class="o">-</span> <span class="k">self</span><span class="py">.size</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">(),</span>
+                    <span class="k">self</span><span class="py">.next</span><span class="p">,</span> <span class="k">self</span><span class="py">.prev</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">self</span><span class="py">.upper_guard</span><span class="p">);</span>
+        <span class="nd">assert_eq!</span><span class="p">(</span><span class="n">old_size</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">(),</span> <span class="k">self</span><span class="py">.size</span> <span class="o">+</span> <span class="n">new_mr</span><span class="py">.size</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">());</span>
+        <span class="k">self</span><span class="py">.upper_guard</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="c">// Setze Liste auf abgetrennten Bereich um</span>
+        <span class="n">prev</span><span class="nf">.map_or</span><span class="p">((),|</span> <span class="k">mut</span> <span class="n">mr</span> <span class="p">|</span> <span class="n">mr</span><span class="nf">.set_next_addr</span><span class="p">(</span><span class="n">new_mr</span><span class="py">.addr</span><span class="p">));</span>
+        <span class="n">next</span><span class="nf">.map_or</span><span class="p">((),|</span> <span class="k">mut</span> <span class="n">mr</span> <span class="p">|</span> <span class="n">mr</span><span class="nf">.set_prev_addr</span><span class="p">(</span><span class="n">new_mr</span><span class="py">.addr</span><span class="p">));</span>
+        <span class="n">new_mr</span><span class="nf">.write_to_memory</span><span class="p">();</span>
+     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c">// Belege den gesamten Bereich</span>
+        <span class="c">// Entferne Bereich aus der Liste</span>
+        <span class="k">self</span><span class="py">.free</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="n">prev</span><span class="nf">.map_or</span><span class="p">((),|</span> <span class="k">mut</span> <span class="n">mr</span> <span class="p">|</span> <span class="n">mr</span><span class="nf">.set_next_addr</span><span class="p">(</span><span class="k">self</span><span class="py">.next</span><span class="p">));</span>
+        <span class="n">next</span><span class="nf">.map_or</span><span class="p">((),</span> <span class="p">|</span> <span class="k">mut</span> <span class="n">mr</span> <span class="p">|</span> <span class="n">mr</span><span class="nf">.set_prev_addr</span><span class="p">(</span><span class="k">self</span><span class="py">.prev</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="n">prev</span><span class="nf">.map_or</span><span class="p">((),|</span> <span class="k">mut</span> <span class="n">mr</span> <span class="p">|</span> <span class="n">mr</span><span class="nf">.write_to_memory</span><span class="p">());</span>
+    <span class="n">next</span><span class="nf">.map_or</span><span class="p">((),</span> <span class="p">|</span> <span class="k">mut</span> <span class="n">mr</span> <span class="p">|</span> <span class="n">mr</span><span class="nf">.write_to_memory</span><span class="p">());</span>
+    <span class="c">// Markiere Bereich als reserviert und aktualisiere den Speicher</span>
+    <span class="k">self</span><span class="py">.free</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="k">self</span><span class="nf">.write_to_memory</span><span class="p">();</span>
+    <span class="nf">Ok</span><span class="p">(</span><span class="n">dest_addr</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">)</span> 
+<span class="p">}</span>
+
+</code></pre>
+</div>
+<p>Die Komplexität der Reservierung ist immer noch \(\mathcal{O}(n)\), wobei \(n\) die Anzahl der freien Speicherblöcke ist.
+Im Unterschied zur vorherigen Lösung muss bei der Wiedereingliederung die Liste <em>nicht</em> durchsucht werden:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">dealloc</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">end_tag_addr</span> <span class="o">=</span> <span class="nn">memory_region</span><span class="p">::</span><span class="nf">align_up</span><span class="p">(</span><span class="n">ptr</span> <span class="k">as</span> <span class="nb">usize</span> <span class="o">+</span> <span class="nn">cmp</span><span class="p">::</span><span class="nf">max</span><span class="p">(</span><span class="n">layout</span><span class="nf">.size</span><span class="p">(),</span><span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">min_size</span><span class="p">()),</span>
+                                               <span class="nn">mem</span><span class="p">::</span><span class="nn">align_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">());</span>
+    <span class="k">let</span> <span class="n">end_tag</span> <span class="o">=</span> <span class="nn">EndBoundaryTag</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="n">end_tag_addr</span><span class="p">);</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">mr</span> <span class="o">=</span> <span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="n">end_tag_addr</span> <span class="o">-</span> <span class="n">end_tag</span><span class="nf">.size</span><span class="p">()</span> <span class="o">-</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">());</span>
+    <span class="n">mr</span><span class="nf">.set_free</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+    <span class="c">// Prüft, ob Bereiche zusammen gelegt werden können.</span>
+    <span class="k">if</span> <span class="o">!</span><span class="n">mr</span><span class="nf">.coalesce_with_neighbors</span><span class="p">()</span>  <span class="p">{</span>
+        <span class="c">// Keine physischen Nachbarn gefunden, Speicherbereich rückt an Listenanfang</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">head</span><span class="p">:</span> <span class="n">StartBoundaryTag</span> <span class="o">=</span> <span class="k">self</span><span class="py">.first</span><span class="nf">.get</span><span class="p">();</span>
+        <span class="n">mr</span><span class="nf">.set_prev_addr</span><span class="p">(</span><span class="nf">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="py">.first</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="n">_</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">));</span>
+        <span class="n">mr</span><span class="nf">.set_next_addr</span><span class="p">(</span><span class="n">head</span><span class="nf">.next</span><span class="p">());</span>
+        <span class="c">// Bisheriges TOL-Element rückt hinter neues Element</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nf">Some</span><span class="p">(</span><span class="n">next_addr</span><span class="p">)</span> <span class="o">=</span> <span class="n">mr</span><span class="nf">.next_addr</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="k">mut</span> <span class="n">next</span> <span class="o">=</span> <span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="n">next_addr</span><span class="p">);</span>
+            <span class="n">next</span><span class="nf">.set_prev_addr</span><span class="p">(</span><span class="n">mr</span><span class="nf">.addr</span><span class="p">());</span>
+            <span class="n">next</span><span class="nf">.write_to_memory</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="c">// Listenkopf zeigt auf einzugliedernden Bereich</span>
+        <span class="n">head</span><span class="nf">.set_next</span><span class="p">(</span><span class="n">mr</span><span class="nf">.addr</span><span class="p">());</span>
+        <span class="k">self</span><span class="py">.first</span><span class="nf">.set</span><span class="p">(</span><span class="n">head</span><span class="p">);</span>
+        <span class="n">mr</span><span class="nf">.write_to_memory</span><span class="p">();</span>
+    <span class="p">}</span>
+
+</code></pre>
+</div>
+<p>Das ist natürlich nur ein des Gesamtcodes, der vollständige Code ist wieder
+auf <a href="https://github.com/werner-matthias/aihPOS/tree/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap">GibHub</a> zu finden.</p>
+
+<h2 id="blick-zurück-in-freude">Blick zurück in Freude</h2>
+<p>Nachdem ich die mein neuer Allokator tadellos lief, stellte ich fest, dass die von mir früher verwendete Version 0.2.7 der <code class="highlighter-rouge">linked_list_allocator</code>-Bibliothek gar nicht mehr die aktuelle ist. Die
+derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständig umgesetzt. Danke an den Autor Philipp Oppermann, von dem auch das Blog
+„<a href="https://os.phil-opp.com">Writing an OS in Rust</a>“ stammt. Ich werde zwar in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> bei meinem Boundary-Tag-Allokator bleiben, es ist aber gut zu wissen, dass es eine Alternative gibt
+und dass die Community so schnell reagiert.</p>
 
 <p><a class="left button tiny radius" href="https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
 
@@ -516,7 +583,7 @@ Out-of-Memory-Fehler abfangen will.</p>
     führt. „Summentyp“ ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich <em>kein</em> <a href="/aihpos/2017/03/19/aihpos-1/">Design-Ziel</a> in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png">.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>D. Knuth, “The Art of Computer Programming”, 2nd Auflage, Addison Wesley, 1973, Seiten 441f.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

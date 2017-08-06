@@ -156,33 +156,37 @@ Allozierungen vornehmen wollen, muss ein globaler Allokator angegeben werden. Di
 [Unstable Book](https://doc.rust-lang.org/unstable-book/) hat -- nicht genannt wurde, sondern `#[default_lib_allocator]` ist mir nicht ganz klar; vermutlich ist das bloß
 noch nicht stabilisiert.
 
-### Guter Service
-Nachdem ich die __kalloc__-Bibliothek entfernt und einen Wrapper um die alten Allokator-Funktionen aus der `linked_list_allocator`-Bibliothek geschrieben hatte und der
-neue Allokator tadellos lief, stellte ich fest, dass die von mir verwendete Version 0.2.7 der `linked_list_allocator`-Bibliothek gar nicht mehr die aktuelle ist. Die
+### Am Rande des Speichers
+Ich nutze die Gelegenheit und implementiere eine eigene Heapverwaltung. Dazu nutze ich das *Boundary-Tag-Verfahren* [^3]. Das hat den Vorteil, dass die Wiedereingliederung
+von zurückgegebenen Speicher eine konstante Komplexität \\(\mathcal{O}(1)\\) hat, jedoch auf Kosten des Speicherverbrauchs: Jeder belegte Speicherabschnitt hat zwei Tags
+Verwaltungsinformation, in denen die Größe des Abschnitts und Statusflags stehen. In meiner Implementation ist ein Tag ein `usize` (genauer: eine `struct` mit einem
+`usize`), so dass jeweils pro Block 8 Bytes Overhead entstehen. Da es durch die Alignmentanforderungen ohnehin zu Verschnitt kommt, halte ich dies für vertretbar.
+
+![]({{site.urlimg}}boundary.png){:class="img-responsive"}
+
+Um einen Speicherbereich zu belegen, wird einfach die Freispeicherliste durchsucht: 
+~~~ rust
+{% github_sample werner-matthias/aihPOS/blob/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap/mod.rs 72 80 %}
+~~~
+Die eigentliche "Arbeit" liegt bei der `allocate`-Methode des Speicherabschnitts: Hier wir überprüft, ob der Abschnitt als Ganzes belegt werden soll, oder ob er
+aufgeteilt wird. Im letzteren Fall wird die Teilung durchgeführt; der abgetrennte Bereich nimmt den Platz des ursprünglichen Abschnittes in der Liste ein.
+~~~ rust
+{% github_sample werner-matthias/aihPOS/blob/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap/memory_region.rs 224 260 %}
+~~~
+Die Komplexität der Reservierung ist immer noch \\(\mathcal{O}(n)\\), wobei \\(n\\) die Anzahl der freien Speicherblöcke ist.
+Im Unterschied zur vorherigen Lösung muss bei der Wiedereingliederung die Liste *nicht* durchsucht werden:
+~~~ rust
+{% github_sample werner-matthias/aihPOS/blob/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap/mod.rs 82 104 %}
+~~~
+Das ist natürlich nur ein des Gesamtcodes, der vollständige Code ist wieder
+auf [GibHub](https://github.com/werner-matthias/aihPOS/tree/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap) zu finden.
+
+## Blick zurück in Freude 
+Nachdem ich die mein neuer Allokator tadellos lief, stellte ich fest, dass die von mir früher verwendete Version 0.2.7 der `linked_list_allocator`-Bibliothek gar nicht mehr die aktuelle ist. Die
 derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständig umgesetzt. Danke an den Autor Philipp Oppermann, von dem auch das Blog
-"[Writing an OS in Rust](https://os.phil-opp.com)" stammt.
+"[Writing an OS in Rust](https://os.phil-opp.com)" stammt. Ich werde zwar in SOPHIA bei meinem Boundary-Tag-Allokator bleiben, es ist aber gut zu wissen, dass es eine Alternative gibt
+und dass die Community so schnell reagiert.
 
-Ich habe dann auf die neue Version umgestellt. Damit ist der Heap trivial, die Datei __heap.rs__ sieht jetzt so aus:
-{% highlight rust %}
-{%  github_sample   werner-matthias/aihPOS/blob/b3b2363eec8d5af7627723022541a075d82e1662/kernel/src/mem/heap.rs 0 -1 %}
-{% endhighlight %}
-Ich lasse sie aber erstmal trotzdem stehen, da ich -- wie [hier]({% post_url 2017-06-07-aihpos-heap %}) diskutiert -- später den Heap überarbeiten und die den
-Out-of-Memory-Fehler abfangen will.
-
-Der Allokator der `linked_list_allocator`-Bibliothek ist übrigens durch einen Spin-Lock (aus der [spin](https://crates.io/crates/spin)-Bibliothek) geschützt. Das ist in
-SOPHIA zwar (bisher) nicht nötig, da der komplette Kern unter Kernausschluss gestellt wird, schadet aber nicht und kann bei einer späteren Portierung nützlich sein.[^3]
-
-In __main.rs__ wird der Allokator als `static` deklariert...
-{% highlight rust %}
-{%  github_sample   werner-matthias/aihPOS/blob/b3b2363eec8d5af7627723022541a075d82e1662/kernel/src/main.rs 58 63 %}
-{% endhighlight %}
-
-... und wie folgt initialisiert:
-
-{% highlight rust %}
-{%  github_sample   werner-matthias/aihPOS/blob/b3b2363eec8d5af7627723022541a075d82e1662/kernel/src/main.rs 126 131 %}
-{% endhighlight %}
-Jetzt funktioniert die Übersetzung wieder fehlerfrei.
 
 {% include next-previous-post-in-category %}
 
@@ -192,4 +196,6 @@ Jetzt funktioniert die Übersetzung wieder fehlerfrei.
 [^2]: Ich bin mir nicht sicher, was die beste Bezeichnung im Deutschen für `enum` ist. Als C-Programmierer denkt man da an "Aufzählungstyp", was aber in Rust in die Irre
         führt. "Summentyp" ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig.
 
-[^3]: Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich *kein* [Design-Ziel]({% post_url 2017-03-19-aihpos-1 %}) in SOPHIA. 
+[^3]: D. Knuth, “The Art of Computer Programming”, 2nd Auflage, Addison Wesley, 1973, Seiten 441f.
+
+[^4]: Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich *kein* [Design-Ziel]({% post_url 2017-03-19-aihpos-1 %}) in SOPHIA. 
