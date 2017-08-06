@@ -162,7 +162,7 @@ von zurückgegebenen Speicher eine konstante Komplexität \\(\mathcal{O}(1)\\) h
 Verwaltungsinformation, in denen die Größe des Abschnitts und Statusflags stehen. In meiner Implementation ist ein Tag ein `usize` (genauer: eine `struct` mit einem
 `usize`), so dass jeweils pro Block 8 Bytes Overhead entstehen. Da es durch die Alignmentanforderungen ohnehin zu Verschnitt kommt, halte ich dies für vertretbar.
 
-![]({{site.urlimg}}boundary.png){:class="img-responsive"}
+![]({{site.urlimg}}/boundary.png){:class="img-responsive"}
 
 Um einen Speicherbereich zu belegen, wird einfach die Freispeicherliste durchsucht: 
 ~~~ rust

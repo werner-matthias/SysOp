@@ -475,7 +475,7 @@ von zurückgegebenen Speicher eine konstante Komplexität \(\mathcal{O}(1)\) hat
 Verwaltungsinformation, in denen die Größe des Abschnitts und Statusflags stehen. In meiner Implementation ist ein Tag ein <code class="highlighter-rouge">usize</code> (genauer: eine <code class="highlighter-rouge">struct</code> mit einem
 <code class="highlighter-rouge">usize</code>), so dass jeweils pro Block 8 Bytes Overhead entstehen. Da es durch die Alignmentanforderungen ohnehin zu Verschnitt kommt, halte ich dies für vertretbar.</p>
 
-<p><img src="https://werner-matthias.github.io/SysOp/imagesboundary.png" alt="" class="img-responsive" /></p>
+<p><img src="https://werner-matthias.github.io/SysOp/images/boundary.png" alt="" class="img-responsive" /></p>
 
 <p>Um einen Speicherbereich zu belegen, wird einfach die Freispeicherliste durchsucht:</p>
 <div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Result</span><span class="o">&lt;*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">AllocErr</span><span class="o">&gt;</span> <span class="p">{</span>
