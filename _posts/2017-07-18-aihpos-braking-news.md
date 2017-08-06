@@ -5,7 +5,7 @@ meta_description: 'So ist das mit "unstable" Versionen\: Kaum kommt man nach zwe
     Fall der Heap kaputt.'
 published: true
 author: mwerner
-date: 2017-07-20
+date: 2017-07-19
 tags:
     - aihPOS
     - Rust
@@ -196,6 +196,6 @@ und dass die Community so schnell reagiert.
 [^2]: Ich bin mir nicht sicher, was die beste Bezeichnung im Deutschen für `enum` ist. Als C-Programmierer denkt man da an "Aufzählungstyp", was aber in Rust in die Irre
         führt. "Summentyp" ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig.
 
-[^3]: D. Knuth, “The Art of Computer Programming”, 2nd Auflage, Addison Wesley, 1973, Seiten 441f.
+[^3]: D. Knuth, "The Art of Computer Programming", 2nd Auflage, Addison Wesley, 1973, Seiten 441f.
 
 [^4]: Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich *kein* [Design-Ziel]({% post_url 2017-03-19-aihpos-1 %}) in SOPHIA. 
