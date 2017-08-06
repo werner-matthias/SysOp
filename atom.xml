@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-08-06T16:56:58+02:00</updated>
+	<updated>2017-08-06T22:29:34+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -30,10 +30,10 @@
 
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/aihpos/2017/07/20/aihpos-braking-news/</id>
+			<id>https://werner-matthias.github.io/SysOp/aihpos/2017/07/19/aihpos-braking-news/</id>
 			<title>Braking News</title>
-			<link href="https://werner-matthias.github.io/SysOp/aihpos/2017/07/20/aihpos-braking-news/" rel="alternate" type="text/html" title="Braking News" />
-			<updated>2017-07-20T00:00:00+02:00</updated>
+			<link href="https://werner-matthias.github.io/SysOp/aihpos/2017/07/19/aihpos-braking-news/" rel="alternate" type="text/html" title="Braking News" />
+			<updated>2017-07-19T00:00:00+02:00</updated>
 
 			
 				
@@ -50,7 +50,7 @@
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/aihpos/2017/07/20/aihpos-braking-news/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/aihpos/2017/07/19/aihpos-braking-news/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#sophia-wir-haben-ein-problem&quot; id=&quot;markdown-toc-sophia-wir-haben-ein-problem&quot;&gt;SOPHIA, wir haben ein Problem&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#missing-feature&quot; id=&quot;markdown-toc-missing-feature&quot;&gt;Missing Feature&lt;/a&gt;&lt;/li&gt;
@@ -351,7 +351,7 @@ und dass die Community so schnell reagiert.&lt;/p&gt;
     führt. „Summentyp“ ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
-      &lt;p&gt;D. Knuth, “The Art of Computer Programming”, 2nd Auflage, Addison Wesley, 1973, Seiten 441f.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;D. Knuth, „The Art of Computer Programming“, 2nd Auflage, Addison Wesley, 1973, Seiten 441f.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
@@ -370,7 +370,7 @@ und dass die Community so schnell reagiert.&lt;/p&gt;
 				<category term="Heap" />
 			
 
-			<published>2017-07-20T00:00:00+02:00</published>
+			<published>2017-07-19T00:00:00+02:00</published>
 		</entry>
 	
 		<entry>
@@ -565,7 +565,7 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/07/20/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/07/19/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1064,7 +1064,7 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/07/20/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/07/19/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
