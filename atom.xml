@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-08-11T08:24:02+02:00</updated>
+	<updated>2017-08-11T08:32:53+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -131,7 +131,7 @@ Ein einfaches Auskommentieren hilft nicht:&lt;/p&gt;
 &lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
 &lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;
 &lt;span class=&quot;line-number&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;line output&quot;&gt;error: no #[default_lib_allocator] found but one is required; is libstd not linked?
-&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;line output&quot;&gt; 
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error: cannot continue compilation due to previous error
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;error: Could not compile `aihPOS`.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
