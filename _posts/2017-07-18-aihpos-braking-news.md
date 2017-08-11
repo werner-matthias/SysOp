@@ -5,7 +5,7 @@ meta_description: 'So ist das mit "unstable" Versionen\: Kaum kommt man nach zwe
     Fall der Heap kaputt.'
 published: true
 author: mwerner
-date: 2017-07-19
+date: 2017-07-18
 tags:
     - aihPOS
     - Rust
