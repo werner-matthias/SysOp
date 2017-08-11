@@ -50,7 +50,7 @@ beschäftigt sich mit Customer-Attributen. Vielleicht braucht man das Attribut n
 Ein einfaches Auskommentieren hilft nicht:
 {% terminal %}
 error: no #[default_lib_allocator] found but one is required; is libstd not linked?
-
+ 
 error: cannot continue compilation due to previous error
 
 error: Could not compile `aihPOS`.
