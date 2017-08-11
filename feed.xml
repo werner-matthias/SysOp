@@ -2725,9 +2725,9 @@ Boot-Prozess.&lt;/p&gt;
 &lt;h2 id=&quot;boot-prozess&quot;&gt;Boot-Prozess&lt;/h2&gt;
 
 &lt;p&gt;Unsere ARM-CPU ist nicht die einzige CPU auf dem Raspberry. Vielmehr gibt es einen weiteren Prozessor, die &lt;a href=&quot;https://docs.broadcom.com/docs/12358545&quot;&gt;GPU VideoCore&lt;/a&gt;® IV. Anders als die Bezeichnung vermuten
-lässt, ist die GPU nicht nur für die Grafiksteuerung verantwortlich, sondern übernimmt z.B. auch den Boot-Prozess.1 Wenn der Strom eingeschaltet wird, übernimmt erst mal
-die GPU die Regie. Sie bootet von einem internen ROM, lädt dann von der SD-Karte die Datei bootcode.bin. Diese kann enthält einen Treiber, um Dateien im ELF-Format
-lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei start.elf geladen. Die Firmware liest u.a. die Datei &lt;kbd&gt;config.txt&lt;/kbd&gt;   (so vorhanden) und
+lässt, ist die GPU nicht nur für die Grafiksteuerung verantwortlich, sondern übernimmt z.B. auch den Boot-Prozess.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Wenn der Strom eingeschaltet wird, übernimmt erst mal
+die GPU die Regie. Sie bootet von einem internen ROM, lädt dann von der SD-Karte die Datei &lt;kbd&gt;bootcode.bin&lt;/kbd&gt;. Diese kann enthält einen Treiber, um Dateien im ELF-Format
+lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei &lt;kbd&gt;start.elf&lt;/kbd&gt; geladen. Die Firmware liest u.a. die Datei &lt;kbd&gt;config.txt&lt;/kbd&gt; (so vorhanden) und
 konfiguriert das Board entsprechend, und lädt anschließend die Datei &lt;kbd&gt;kernel.img&lt;/kbd&gt; auf die (aus AMR-Sicht) Adresse 0x08000. Von dieser Adresse aus startet dann auch der
 ARM.&lt;/p&gt;
 
@@ -2757,18 +2757,18 @@ SECTIONS
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code kernel_main heißt,2 und dass der Code an Adresse 0x0800 beginnt und zwar mit kernel_main.&lt;/p&gt;
+&lt;p&gt;Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code kernel_main heißt,&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; und dass der Code an Adresse 0x0800 beginnt und zwar mit &lt;code class=&quot;highlighter-rouge&quot;&gt;kernel_main&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;binärfile&quot;&gt;Binärfile&lt;/h3&gt;
 
-&lt;p&gt;Um aus dem vom Linker generierten ELF-File ein Binärfile zu machen, nutzen wir &lt;a href=&quot;https://sourceware.org/binutils/docs/binutils/objcopy.html#objcopy&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;objcopy&lt;/code&gt;&lt;/a&gt;, genauer die Cross-Variante arm-none-eabi-objcopy. Der Name objcopy ist ein
+&lt;p&gt;Um aus dem vom Linker generierten ELF-File ein Binärfile zu machen, nutzen wir &lt;a href=&quot;https://sourceware.org/binutils/docs/binutils/objcopy.html#objcopy&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;objcopy&lt;/code&gt;&lt;/a&gt;, genauer die Cross-Variante &lt;code class=&quot;highlighter-rouge&quot;&gt;arm-none-eabi-objcopy&lt;/code&gt;. Der Name „objcopy“ ist ein
 klares Understatement, das dieses Programm nicht nur kopiert, sondern eine Vielzahl von Transformationen ausführen kann. Wir nutzen es allerdings nur dazu, aus dem
 ELF-File den Binärcode zu generieren, eine Aufgabe, die auf Plattformen &lt;em&gt;mit&lt;/em&gt; einem Betriebssystem i.d.R. der Lader übernimmt.&lt;/p&gt;
 
 &lt;h3 id=&quot;makefile&quot;&gt;Makefile&lt;/h3&gt;
 
 &lt;p&gt;Eigentlich hat Rust sein eigenes Build-System &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;, mit dem wir schon die core-Bibliothek gebaut haben. Jedoch ist &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; nicht sonderlich gut für bare-metal
-Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurückgreifen.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurückgreifen.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;p&gt;Unser Makefile geht davon aus, dass wir folgendes Verzeichnis-Layout haben:&lt;/p&gt;
 
@@ -2784,7 +2784,7 @@ Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurü
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;In src sind alle Quelldateien. Die Objektdateien liegen in obj und alle anderen generierten Dateien in build. Das Makefile selbst befindet sich in jtag und sieht so aus:&lt;/p&gt;
+&lt;p&gt;In &lt;kbd&gt;src&lt;/kbd&gt; sind alle Quelldateien. Die Objektdateien liegen in &lt;kbd&gt;obj&lt;/kbd&gt; und alle anderen generierten Dateien in &lt;kbd&gt;build&lt;/kbd&gt;. Das Makefile selbst befindet sich in &lt;kbd&gt;jtag&lt;/kbd&gt; und sieht so aus:&lt;/p&gt;
 &lt;div class=&quot;language-make highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;BUILDDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;build
 &lt;span class=&quot;nv&quot;&gt;SRCDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;src
 &lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;obj
@@ -2833,7 +2833,8 @@ Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurü
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Nach der Diskussion dürfte es nicht weiter überraschend sein. Einzig das Ziel LIST haben wir noch nicht besprochen. Dies ist der mit Hilfe von objdump disassemblierte Code des erzeugten ELF-Files. Er kann manchmal bei der Fehlersuche nützlich sein.&lt;/p&gt;
+&lt;p&gt;Nach der Diskussion dürfte es nicht weiter überraschend sein. Einzig das Ziel „LIST“ haben wir noch nicht besprochen. Dies ist der mit Hilfe von &lt;code class=&quot;highlighter-rouge&quot;&gt;objdump&lt;/code&gt; disassemblierte
+Code des erzeugten ELF-Files. Er kann manchmal bei der Fehlersuche nützlich sein.&lt;/p&gt;
 
 &lt;h2 id=&quot;hardware&quot;&gt;Hardware&lt;/h2&gt;
 
@@ -2948,7 +2949,10 @@ unsere Startfunktion mit dem Attribute &lt;code class=&quot;highlighter-rouge&qu
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    error: aborting due to previous error
 &lt;/span&gt;&lt;span class=&quot;line output&quot;&gt;    make: *** [main.o] Error 101&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
-&lt;p&gt;Hoppla! Der Linker hat ein undefiniertes Symbol. Ursache dafür ist, dass die Core-Bibliothek nicht völlig frei von externen Referenzen ist. Tust muss wissen, wie es sich in einem Ausnahmefall (Exception) verhalten soll, um evtl. sogar eine Recovery zu ermöglichen, und das ist plattform-spezifisch. Wenn allerdings wie in unserem Fall der der „Kernel“ selbst crashed, ist eine Recovery hoffnungslos. Es ist daher hinreichend, die undefinierten Symbole (es sind nämlich noch ein paar) einfach durch Dummy-Funktionen zu definieren. Dazu legen wir noch eine Datei panic.rs an:&lt;/p&gt;
+&lt;p&gt;Hoppla! Der Linker hat ein undefiniertes Symbol. Ursache dafür ist, dass die Core-Bibliothek nicht völlig frei von externen Referenzen ist. Rust muss wissen, wie es sich
+ in einem Ausnahmefall (Exception) verhalten soll, um evtl. sogar eine Recovery zu ermöglichen, und das ist plattform-spezifisch. Wenn allerdings wie in unserem Fall der
+ der „Kernel“ selbst crashed, ist eine Recovery hoffnungslos. Es ist daher hinreichend, die undefinierten Symbole (es sind nämlich noch ein paar) einfach durch
+ Dummy-Funktionen zu definieren. Dazu legen wir noch eine Datei &lt;kbd&gt;panic.rs&lt;/kbd&gt; an:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intrinsics&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;cp&quot;&gt;#[lang&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;eh_personality&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;eh_personality&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
@@ -3014,7 +3018,7 @@ wir da Binär-Image auf die SD-Karte,&lt;/p&gt;
 
 &lt;h2 id=&quot;mit-dem-pireden&quot;&gt;Mit dem Pi reden&lt;/h2&gt;
 
-&lt;p&gt;Jetzt soll die JTAG-Lommunikation getestet werden. Dazu schreiben wir zwei openocd-Konfigurationsdateien&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;p&gt;Jetzt soll die JTAG-Lommunikation getestet werden. Dazu schreiben wir zwei openocd-Konfigurationsdateien&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;interface jlink
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -3129,7 +3133,7 @@ target create $_TARGETNAME arm11 -chain-position $_TARGETNAME
 auf die SD-Karte. Die Datei (wahlweise auch im ELF-Format) kann direkt auf den Pi gebracht werden.&lt;/p&gt;
 
 &lt;p&gt;Für ein noch etwas detaillierteres Debuggen kann openocd mit dem GNU-Debugger gekoppelt werden. Im Konfigurationsfile wurde der Port 3333 dafür freigegeben. Natürlich
-darf nicht der lokale Debugger genutzt werden&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, sondern der ARM-Cross-Debugger:&lt;/p&gt;
+darf nicht der lokale Debugger genutzt werden&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;, sondern der ARM-Cross-Debugger:&lt;/p&gt;
 
 &lt;div class=&quot;window&quot;&gt;
           &lt;nav class=&quot;control-window&quot;&gt;
@@ -3245,6 +3249,12 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;Diese Darstellung des Boot-Prozesses ist etwas vereinfacht.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Diese Information ist eigentlich überflüssig, da sie sich später im Binärfile nicht mehr wiederfindet. Der Linker braucht sie aber, er würde sonst das Fehlen monieren.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
       &lt;p&gt;Vielleicht werde ich in späteren Folgen nochmal cargo oder die Cross-Compile-Variante xargo einsetzen.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
