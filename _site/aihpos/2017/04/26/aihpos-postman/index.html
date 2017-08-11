@@ -1098,10 +1098,12 @@ Schnittstellenfunktionen geschrieben:</p>
 56
 57
 58
-59</pre></td><td class="code"><pre><span class="k">mod</span> <span class="n">mailbox</span><span class="p">;</span>
+59
+60</pre></td><td class="code"><pre><span class="k">mod</span> <span class="n">mailbox</span><span class="p">;</span>
 <span class="k">mod</span> <span class="n">propertytags</span><span class="p">;</span>
 <span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">propertytags</span><span class="p">::{</span><span class="n">Tag</span><span class="p">,</span><span class="n">PropertyTagBuffer</span><span class="p">,</span><span class="n">BUFFER_SIZE</span><span class="p">};</span>
 <span class="k">pub</span> <span class="k">use</span> <span class="nn">hal</span><span class="p">::</span><span class="nn">board</span><span class="p">::</span><span class="nn">mailbox</span><span class="p">::{</span><span class="n">mailbox</span><span class="p">,</span> <span class="n">Channel</span><span class="p">};</span>
+<span class="k">use</span> <span class="nn">mem</span><span class="p">::</span><span class="n">PhysicalAddress</span><span class="p">;</span>
 
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">BoardReport</span> <span class="p">{</span>
     <span class="n">FirmwareVersion</span><span class="p">,</span>
@@ -1137,7 +1139,7 @@ Schnittstellenfunktionen geschrieben:</p>
     <span class="n">VcSize</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="k">pub</span> <span class="k">fn</span> <span class="nf">report_memory</span><span class="p">(</span><span class="n">kind</span><span class="p">:</span> <span class="n">MemReport</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">report_memory</span><span class="p">(</span><span class="n">kind</span><span class="p">:</span> <span class="n">MemReport</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">PhysicalAddress</span> <span class="p">{</span>
     <span class="k">let</span> <span class="k">mut</span> <span class="n">prob_tag_buf</span> <span class="o">=</span> <span class="nn">PropertyTagBuffer</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
     <span class="n">prob_tag_buf</span><span class="nf">.init</span><span class="p">();</span>
     <span class="k">let</span> <span class="n">tag</span> <span class="o">=</span> <span class="k">match</span> <span class="n">kind</span> <span class="p">{</span>
@@ -1151,8 +1153,8 @@ Schnittstellenfunktionen geschrieben:</p>
     <span class="k">let</span> <span class="n">array</span> <span class="o">=</span> <span class="n">prob_tag_buf</span><span class="nf">.get_answer</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span>
     <span class="k">match</span> <span class="n">array</span> <span class="p">{</span>
         <span class="nf">Some</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="k">match</span> <span class="n">kind</span> <span class="p">{</span>
-            <span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmStart</span> <span class="p">|</span> <span class="nn">MemReport</span><span class="p">::</span><span class="n">VcStart</span> <span class="k">=&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-            <span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmSize</span>  <span class="p">|</span> <span class="nn">MemReport</span><span class="p">::</span><span class="n">VcSize</span>  <span class="k">=&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmStart</span> <span class="p">|</span> <span class="nn">MemReport</span><span class="p">::</span><span class="n">VcStart</span> <span class="k">=&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">as</span> <span class="n">PhysicalAddress</span><span class="p">,</span>
+            <span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmSize</span>  <span class="p">|</span> <span class="nn">MemReport</span><span class="p">::</span><span class="n">VcSize</span>  <span class="k">=&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="n">PhysicalAddress</span>
         <span class="p">},</span>
         <span class="nb">None</span> <span class="k">=&gt;</span> <span class="mi">0</span>
     <span class="p">}</span>
