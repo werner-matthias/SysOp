@@ -27,9 +27,9 @@ Boot-Prozess.
 ## Boot-Prozess
 
 Unsere ARM-CPU ist nicht die einzige CPU auf dem Raspberry. Vielmehr gibt es einen weiteren Prozessor, die [GPU VideoCore][3]® IV. Anders als die Bezeichnung vermuten
-lässt, ist die GPU nicht nur für die Grafiksteuerung verantwortlich, sondern übernimmt z.B. auch den Boot-Prozess.1 Wenn der Strom eingeschaltet wird, übernimmt erst mal
-die GPU die Regie. Sie bootet von einem internen ROM, lädt dann von der SD-Karte die Datei bootcode.bin. Diese kann enthält einen Treiber, um Dateien im ELF-Format
-lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei start.elf geladen. Die Firmware liest u.a. die Datei <kbd>config.txt</kbd>   (so vorhanden) und
+lässt, ist die GPU nicht nur für die Grafiksteuerung verantwortlich, sondern übernimmt z.B. auch den Boot-Prozess.[^1] Wenn der Strom eingeschaltet wird, übernimmt erst mal
+die GPU die Regie. Sie bootet von einem internen ROM, lädt dann von der SD-Karte die Datei <kbd>bootcode.bin</kbd>. Diese kann enthält einen Treiber, um Dateien im ELF-Format
+lesen. Als nächstes wird die eigentliche GPU-Firmware aus der Datei <kbd>start.elf</kbd> geladen. Die Firmware liest u.a. die Datei <kbd>config.txt</kbd> (so vorhanden) und
 konfiguriert das Board entsprechend, und lädt anschließend die Datei <kbd>kernel.img</kbd> auf die (aus AMR-Sicht) Adresse 0x08000. Von dieser Adresse aus startet dann auch der
 ARM. 
 
@@ -60,11 +60,11 @@ SECTIONS
     }
 }
 ~~~
-Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code kernel_main heißt,2 und dass der Code an Adresse 0x0800 beginnt und zwar mit kernel_main.
+Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code kernel_main heißt,[^2] und dass der Code an Adresse 0x0800 beginnt und zwar mit `kernel_main`.
 
 ### Binärfile
 
-Um aus dem vom Linker generierten ELF-File ein Binärfile zu machen, nutzen wir [`objcopy`][5], genauer die Cross-Variante arm-none-eabi-objcopy. Der Name objcopy ist ein
+Um aus dem vom Linker generierten ELF-File ein Binärfile zu machen, nutzen wir [`objcopy`][5], genauer die Cross-Variante `arm-none-eabi-objcopy`. Der Name "objcopy" ist ein
 klares Understatement, das dieses Programm nicht nur kopiert, sondern eine Vielzahl von Transformationen ausführen kann. Wir nutzen es allerdings nur dazu, aus dem
 ELF-File den Binärcode zu generieren, eine Aufgabe, die auf Plattformen _mit_ einem Betriebssystem i.d.R. der Lader übernimmt. 
 
@@ -85,7 +85,7 @@ Unser Makefile geht davon aus, dass wir folgendes Verzeichnis-Layout haben:
           +-- obj
           +-- build
 
-In src sind alle Quelldateien. Die Objektdateien liegen in obj und alle anderen generierten Dateien in build. Das Makefile selbst befindet sich in jtag und sieht so aus:
+In <kbd>src</kbd> sind alle Quelldateien. Die Objektdateien liegen in <kbd>obj</kbd> und alle anderen generierten Dateien in <kbd>build</kbd>. Das Makefile selbst befindet sich in <kbd>jtag</kbd> und sieht so aus:
 ~~~ make
 BUILDDIR=build
 SRCDIR=src
@@ -134,7 +134,8 @@ clean:
 	rm -f $(BUILDDIR)/*
 ~~~
 
-Nach der Diskussion dürfte es nicht weiter überraschend sein. Einzig das Ziel LIST haben wir noch nicht besprochen. Dies ist der mit Hilfe von objdump disassemblierte Code des erzeugten ELF-Files. Er kann manchmal bei der Fehlersuche nützlich sein.
+Nach der Diskussion dürfte es nicht weiter überraschend sein. Einzig das Ziel "LIST" haben wir noch nicht besprochen. Dies ist der mit Hilfe von `objdump` disassemblierte
+Code des erzeugten ELF-Files. Er kann manchmal bei der Fehlersuche nützlich sein. 
 
 ## Hardware
 
@@ -184,7 +185,10 @@ $ make
     error: aborting due to previous error
     make: *** [main.o] Error 101
 {% endterminal %} 
- Hoppla! Der Linker hat ein undefiniertes Symbol. Ursache dafür ist, dass die Core-Bibliothek nicht völlig frei von externen Referenzen ist. Tust muss wissen, wie es sich in einem Ausnahmefall (Exception) verhalten soll, um evtl. sogar eine Recovery zu ermöglichen, und das ist plattform-spezifisch. Wenn allerdings wie in unserem Fall der der „Kernel“ selbst crashed, ist eine Recovery hoffnungslos. Es ist daher hinreichend, die undefinierten Symbole (es sind nämlich noch ein paar) einfach durch Dummy-Funktionen zu definieren. Dazu legen wir noch eine Datei panic.rs an:
+ Hoppla! Der Linker hat ein undefiniertes Symbol. Ursache dafür ist, dass die Core-Bibliothek nicht völlig frei von externen Referenzen ist. Rust muss wissen, wie es sich
+ in einem Ausnahmefall (Exception) verhalten soll, um evtl. sogar eine Recovery zu ermöglichen, und das ist plattform-spezifisch. Wenn allerdings wie in unserem Fall der
+ der "Kernel" selbst crashed, ist eine Recovery hoffnungslos. Es ist daher hinreichend, die undefinierten Symbole (es sind nämlich noch ein paar) einfach durch
+ Dummy-Funktionen zu definieren. Dazu legen wir noch eine Datei <kbd>panic.rs</kbd> an: 
 ~~~ rust
 {%  github_sample werner-matthias/aihPOS/blob/master/jtag/src/panic.rs  0 -1 %}
 ~~~
@@ -314,7 +318,7 @@ haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein e
 
 Man beachte, dass die auch hier benutzte Verzögerung durch "_busy idling_" so nicht funktioniert, wenn wir die Codeoptimierung einschalten: Dann wird die
 Schleife zwar nicht vollständig wegoptimiert (das verhindert die Assembler-Anweisung), aber die Zeiten sind doch vollständig andere.
-Allerdings besteht bisher für eine Optimierung noch kein Grund &#8211; die Ausführungszeit ist derzeit noch egal, aber die Übersetzungszeit würde sich etwas verlängern.
+Allerdings besteht bisher für eine Optimierung noch kein Grund -- die Ausführungszeit ist derzeit noch egal, aber die Übersetzungszeit würde sich etwas verlängern.
 
 {% include next-previous-post-in-category %}
 
