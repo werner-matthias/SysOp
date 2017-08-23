@@ -761,6 +761,10 @@ JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständ
 haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein eigenes Modul ausgelagert und parameterisiert:</p>
 
 <div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="nf">allow</span><span class="p">(</span><span class="n">dead_code</span><span class="p">)]</span>
+<span class="c">//! Der Raspberry hat zwei LEDs. Dieses Modul nutzt die grüne LED,</span>
+<span class="c">//! um Signal zu generieren. Dies kann z.B. als Low-Level-Debugging-Interface</span>
+<span class="c">//! genutzt werden,</span>
+
 <span class="c">// Hardware-Adressen</span>
 <span class="k">const</span> <span class="n">GPIO_BASE</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">0x20200000</span><span class="p">;</span>
 <span class="k">const</span> <span class="n">GPSET1</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span> <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x20</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
@@ -768,24 +772,30 @@ haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein e
 
 <span class="cp">#[derive(Clone,Copy)]</span>
 <span class="cp">#[repr(u32)]</span>
+<span class="c">/// Blinkzeichen</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">Bc</span> <span class="p">{</span>
+    <span class="c">/// langes Zeichen</span>
     <span class="n">Long</span> <span class="o">=</span>  <span class="mi">380000</span><span class="p">,</span>
+    <span class="c">/// kurzes Zeichen</span>
     <span class="n">Short</span> <span class="o">=</span> <span class="mi">120000</span><span class="p">,</span>
+    <span class="c">/// Pause</span>
     <span class="n">Pause</span> <span class="o">=</span> <span class="mi">250000</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="k">type</span> <span class="n">BlinkSeq</span> <span class="o">=</span> <span class="o">&amp;</span><span class="err">'</span><span class="k">static</span> <span class="p">[</span><span class="n">Bc</span><span class="p">];</span>
 
-<span class="cm">/* Blinksequenzen */</span>
-<span class="c">// einmal blinken</span>
+<span class="c">// Blinksequenzen </span>
+<span class="c">/// einmal blinken</span>
 <span class="k">pub</span> <span class="k">const</span> <span class="n">BS_DUMMY</span><span class="p">:</span> <span class="n">BlinkSeq</span> <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">];</span>
-<span class="c">// Lang, dann ein-, zwei, oder dreimal kurz</span>
+<span class="c">/// Ziffer 1 in Morsecode:  `–•`</span>
 <span class="k">pub</span> <span class="k">const</span> <span class="n">BS_ONE</span><span class="p">:</span> <span class="n">BlinkSeq</span>   <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
+<span class="c">/// Ziffer 2 in Morsecode:  `–••`</span>
 <span class="k">pub</span> <span class="k">const</span> <span class="n">BS_TWO</span><span class="p">:</span> <span class="n">BlinkSeq</span>   <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
+<span class="c">/// Ziffer 3 in Morsecode:  `–•••`</span>
 <span class="k">pub</span> <span class="k">const</span> <span class="n">BS_THREE</span><span class="p">:</span> <span class="n">BlinkSeq</span> <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
-<span class="c">// SOS (für Panik wenn der Framebuffer versagt: • • •  – – –  • • •</span>
+<span class="c">/// "SOS" in Morsecode : `••• ––– •••`</span>
 <span class="k">pub</span> <span class="k">const</span> <span class="n">BS_SOS</span><span class="p">:</span> <span class="n">BlinkSeq</span>   <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
-<span class="c">// Hi in Morsecode:  • • • •  • • </span>
+<span class="c">/// "Hi" in Morsecode:  `•••• ••` </span>
 <span class="k">pub</span> <span class="k">const</span> <span class="n">BS_HI</span><span class="p">:</span> <span class="n">BlinkSeq</span>    <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
 
 <span class="cp">#[inline(never)]</span>
@@ -795,6 +805,7 @@ haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein e
     <span class="p">}</span>
 <span class="p">}</span>
 
+<span class="c">/// Gibt eine Blinksequenz am LED aus</span>
 <span class="k">pub</span> <span class="k">fn</span> <span class="nf">blink_once</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">BlinkSeq</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">led_on</span>  <span class="o">=</span> <span class="n">GPSET1</span><span class="p">;</span>
     <span class="k">let</span> <span class="n">led_off</span> <span class="o">=</span> <span class="n">GPCLR1</span><span class="p">;</span> 
@@ -820,7 +831,8 @@ haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein e
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">pub</span> <span class="k">fn</span> <span class="nf">blink</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">BlinkSeq</span><span class="p">)</span> <span class="p">{</span>
+<span class="c">/// Gibt eine Blinksequenz in endloser Wiederholung aus</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">blink</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">BlinkSeq</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">!</span> <span class="p">{</span>
 
     <span class="k">loop</span> <span class="p">{</span>
         <span class="nf">blink_once</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
