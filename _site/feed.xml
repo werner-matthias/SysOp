@@ -12,7 +12,7 @@
 				<title>Reihenfolge</title>
 				<link>https://werner-matthias.github.io/SysOp/small/hacks/2017/08/23/reihenfolge/</link>
 				<pubDate>Wed, 23 Aug 2017 00:00:00 +0200</pubDate>
-				<description>&lt;p&gt;Bei SOPHIA hatte ich das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte – lediglich die Optimierung.&lt;/p&gt;
+				<description>&lt;p&gt;Bei &lt;a href=&quot;/blog/ahipos&quot;&gt;SOPHIA&lt;/a&gt; hatte ich diesr Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte[^1]– lediglich die Optimierung.&lt;/p&gt;
 
 &lt;p&gt;Nach längerer Fehlersuche stellte sich folgende Funktion als Verursacherin heraus:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;never&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
@@ -110,6 +110,8 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Der vierte Parameter im &lt;code class=&quot;highlighter-rouge&quot;&gt;asm!()&lt;/code&gt;-Macro sagt normalerweise, welche Register „verschmutzt“ werden, so dass der Compiler sich nicht darauf verlassen darf, dass deren Inhalte gleich bleiben. Man kann dort aber auch „memory“ hinschreiben, was behauptet, dass der Assember-Code Nebeneffekte hat. Damit darf der Compiler die Reihenfolge nicht mehr ändern, und SOPHIA funktioniert auch mit &lt;code class=&quot;highlighter-rouge&quot;&gt;--opt-level=3&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;[^1] Die Symbole nützten mir auf dem Raspberry Pi nichts, da das Debugging über den Entwicklungsrechner läuft.&lt;/p&gt;
 </description>
 				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/small/hacks/2017/08/23/reihenfolge/</guid>
 			</item>
