@@ -383,15 +383,35 @@ Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgeh
 62
 63
 64
-65</pre></td><td class="code"><pre><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="nn">intrinsics</span><span class="p">::</span><span class="n">volatile_load</span><span class="p">;</span>
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82</pre></td><td class="code"><pre><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="nn">intrinsics</span><span class="p">::{</span><span class="n">volatile_load</span><span class="p">,</span><span class="n">volatile_store</span><span class="p">};</span>
 <span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="nn">mem</span><span class="p">::</span><span class="n">transmute</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">cpu</span><span class="p">::</span><span class="n">Cpu</span><span class="p">;</span>
 
 <span class="c">// Basisadresse des Mailregisters</span>
 <span class="k">const</span> <span class="n">MAILBOX_BASE</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">0x2000B880</span><span class="p">;</span>
- 
+
+<span class="c">/// Kanäle des Mailbox-Interfaces</span>
 <span class="cp">#[allow(dead_code)]</span>
 <span class="cp">#[derive(Clone,Copy)]</span>
 <span class="cp">#[repr(u32)]</span>
+<span class="cp">#[allow(missing_docs)]</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">Channel</span> <span class="p">{</span>
     <span class="n">PowerManagement</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">Framebuffer</span><span class="p">,</span>
@@ -411,37 +431,51 @@ Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgeh
 <span class="cp">#[allow(dead_code)]</span>
 <span class="cp">#[repr(C)]</span>
 <span class="k">pub</span> <span class="k">struct</span> <span class="n">Mailbox</span> <span class="p">{</span>
-    <span class="k">pub</span> <span class="n">read</span><span class="p">:</span>    <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x00</span>
+    <span class="n">read</span><span class="p">:</span>    <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x00</span>
     <span class="n">_unused</span><span class="p">:</span> <span class="p">[</span><span class="nb">u32</span><span class="p">;</span> <span class="mi">3</span><span class="p">],</span>     <span class="c">// 0x04 0x08 0x0C</span>
-    <span class="k">pub</span> <span class="n">poll</span><span class="p">:</span>    <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x10 </span>
-    <span class="k">pub</span> <span class="n">sender</span><span class="p">:</span>  <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x14</span>
-    <span class="k">pub</span> <span class="n">status</span><span class="p">:</span>  <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x18</span>
-    <span class="k">pub</span> <span class="n">configuration</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span><span class="c">// 0x1C</span>
-    <span class="k">pub</span> <span class="n">write</span><span class="p">:</span>   <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x20 Mailbox 1!</span>
+    <span class="n">poll</span><span class="p">:</span>    <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x10 </span>
+    <span class="n">sender</span><span class="p">:</span>  <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x14</span>
+    <span class="n">status</span><span class="p">:</span>  <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x18</span>
+    <span class="n">configuration</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span><span class="c">// 0x1C</span>
+    <span class="n">write</span><span class="p">:</span>   <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x20 Mailbox 1!</span>
 <span class="p">}</span>
 
 <span class="k">impl</span> <span class="n">Mailbox</span> <span class="p">{</span>
+    <span class="c">/// Liest die Antwort aus Kanal `channel`</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">read</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">!</span><span class="mi">0</span><span class="p">;</span>
+        <span class="k">loop</span><span class="p">{</span>
+            <span class="k">while</span> <span class="p">(</span><span class="k">unsafe</span><span class="p">{</span><span class="nn">volatile_load</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">u32</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="py">.status</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="n">_</span> <span class="p">)}</span> <span class="o">&amp;</span> <span class="n">MAILBOX_EMPTY</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="c">// DMB: Das ist evtl. redundant zum "volatile", aber empfohlen im Firmware-Wiki:</span>
+                <span class="c">// mindestens nach dem letzten Lesen und vor dem ersten Schreiben</span>
+                <span class="c">// (vgl. https://github.com/raspberrypi/firmware/wiki/</span>
+                <span class="c">//  Accessing-mailboxes#memory-barriers--invalidatingflushing-data-cache)</span>
+                <span class="nn">Cpu</span><span class="p">::</span><span class="nf">data_memory_barrier</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="k">unsafe</span><span class="p">{</span><span class="nn">volatile_load</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">u32</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="py">.read</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="n">_</span><span class="p">)};</span>
+            <span class="nn">Cpu</span><span class="p">::</span><span class="nf">data_memory_barrier</span><span class="p">();</span>
+            <span class="k">if</span> <span class="n">ret</span> <span class="o">&amp;</span> <span class="mi">0xF</span> <span class="o">==</span> <span class="n">channel</span> <span class="k">as</span> <span class="nb">u32</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">ret</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c">/// Schreibt in den Kanal `channel` die Daten, die an der Adresse `addr` zu finden sind.</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">write</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">,</span> <span class="n">addr</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">assert</span><span class="o">!</span><span class="p">(</span><span class="n">addr</span> <span class="o">&amp;</span> <span class="mi">0x0Fu32</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="cm">/*if addr &amp; 0x0Fu32 != 0 {
-            blink::blink(blink::BS_SOS);
-        }
-         */</span>
-        <span class="k">loop</span><span class="p">{</span> 
-            <span class="k">if</span> <span class="k">unsafe</span><span class="p">{</span><span class="nf">volatile_load</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="py">.status</span><span class="p">)}</span> <span class="o">&amp;</span> <span class="n">MAILBOX_FULL</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span> <span class="k">break</span> <span class="p">};</span> 
-        <span class="p">}</span>
-        <span class="k">self</span><span class="py">.write</span> <span class="o">=</span><span class="n">addr</span> <span class="p">|</span> <span class="n">channel</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">;</span> 
+        <span class="k">while</span> <span class="k">unsafe</span><span class="p">{</span><span class="nf">volatile_load</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="py">.status</span><span class="p">)}</span> <span class="o">&amp;</span> <span class="n">MAILBOX_FULL</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="nn">Cpu</span><span class="p">::</span><span class="nf">data_memory_barrier</span><span class="p">();</span>
+        <span class="p">};</span>
+        <span class="nn">Cpu</span><span class="p">::</span><span class="nf">data_memory_barrier</span><span class="p">();</span>
+        <span class="k">unsafe</span><span class="p">{</span> <span class="nn">volatile_store</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">u32</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="py">.write</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="n">_</span><span class="p">,</span> <span class="n">addr</span> <span class="p">|</span> <span class="n">channel</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">)};</span> 
     <span class="p">}</span>
 
-    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">read</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>
-        <span class="k">loop</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="k">unsafe</span><span class="p">{</span><span class="nf">volatile_load</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="py">.status</span><span class="p">)}</span> <span class="o">&amp;</span> <span class="n">MAILBOX_EMPTY</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="k">self</span><span class="py">.read</span> <span class="o">&amp;</span> <span class="mi">0xF</span> <span class="o">==</span> <span class="n">channel</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">)</span>
-                <span class="p">{</span> <span class="k">break</span> <span class="p">};</span>
-        <span class="p">}</span>
-        <span class="k">self</span><span class="py">.read</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span> 
-    <span class="p">}</span>
 <span class="p">}</span>
 
+<span class="c">/// Gibt die Mailbox `nr`</span>
+<span class="c">///</span>
+<span class="c">/// # Anmerkung</span>
+<span class="c">/// Es ist nur Mailbox 0 implementiert, alle anderen Nummern erzeugen eine Panik.</span>
 <span class="k">pub</span> <span class="k">fn</span> <span class="nf">mailbox</span><span class="p">(</span><span class="n">nr</span><span class="p">:</span> <span class="nb">u8</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="err">'</span><span class="k">static</span> <span class="k">mut</span> <span class="n">Mailbox</span> <span class="p">{</span>
     <span class="k">match</span> <span class="n">nr</span><span class="p">{</span>
         <span class="mi">0</span> <span class="k">=&gt;</span> <span class="k">unsafe</span><span class="p">{</span> <span class="nf">transmute</span><span class="p">(</span><span class="n">MAILBOX_BASE</span><span class="p">)},</span>
@@ -542,8 +576,13 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
 81
 82
 83
-84</pre></td><td class="code"><pre><span class="err">#</span><span class="p">[</span><span class="nf">derive</span><span class="p">(</span><span class="n">Clone</span><span class="p">,</span><span class="nb">Copy</span><span class="p">)]</span>
+84
+85</pre></td><td class="code"><pre><span class="err">#</span><span class="p">[</span><span class="nf">derive</span><span class="p">(</span><span class="n">Clone</span><span class="p">,</span><span class="nb">Copy</span><span class="p">)]</span>
 <span class="cp">#[repr(u32)]</span>
+<span class="cp">#[allow(missing_docs)]</span>
+<span class="c">/// Tags des Mailbox-Interface. Für die Bedeutungen der einzelnen Tags</span>
+<span class="c">/// siehe [Raspberry Firmware</span>
+<span class="c">/// Wiki](https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface)</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">Tag</span> <span class="p">{</span>
     <span class="nb">None</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="c">// Firmware</span>
@@ -622,10 +661,7 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
     <span class="n">SetOverscan</span> <span class="o">=</span> <span class="mi">0x4800A</span><span class="p">,</span>
     <span class="n">GetPalette</span> <span class="o">=</span> <span class="mi">0x4000B</span><span class="p">,</span>
     <span class="n">TestPalette</span> <span class="o">=</span> <span class="mi">0x4400B</span><span class="p">,</span>
-    <span class="n">SetPalette</span> <span class="o">=</span> <span class="mi">0x4800B</span><span class="p">,</span>
-    <span class="n">SetCursorInfo</span> <span class="o">=</span> <span class="mi">0x8011</span><span class="p">,</span>
-    <span class="n">SetCursorState</span> <span class="o">=</span> <span class="mi">0x8010</span>
-<span class="p">}</span><span class="w">
+    <span class="n">SetPalette</span> <span class="o">=</span> <span class="mi">0x4800B</span><span class="p">,</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Bei der Antwort auf einen Request wird der Frage-Puffer überschrieben. Es muss also dafür gesorgt werden, dass genügend Platz für die Antwort zur Verfügung steht. Je nach
@@ -725,7 +761,12 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
 92
 93
 94
-95</pre></td><td class="code"><pre>    <span class="k">pub</span> <span class="n">tag</span><span class="p">:</span>  <span class="n">Tag</span><span class="p">,</span>
+95
+96</pre></td><td class="code"><pre>    <span class="n">SetCursorState</span> <span class="o">=</span> <span class="mi">0x8010</span>
+<span class="p">}</span>
+
+<span class="k">struct</span> <span class="n">ReqProperty</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="n">tag</span><span class="p">:</span>  <span class="n">Tag</span><span class="p">,</span>
     <span class="k">pub</span> <span class="n">buf_size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span>
     <span class="k">pub</span> <span class="n">param_size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span>
 <span class="p">}</span>
@@ -816,10 +857,7 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
                 <span class="nn">Tag</span><span class="p">::</span><span class="n">SetCursorState</span>
                 <span class="k">=&gt;</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
                 <span class="nn">Tag</span><span class="p">::</span><span class="nb">None</span> <span class="k">=&gt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-        <span class="p">};</span>
-        <span class="n">ReqProperty</span><span class="p">{</span> <span class="n">tag</span><span class="p">:</span> <span class="n">tag</span><span class="p">,</span> <span class="n">buf_size</span><span class="p">:</span> <span class="n">buf_size</span><span class="p">,</span> <span class="n">param_size</span><span class="p">:</span> <span class="n">param_size</span><span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span><span class="w">
+        <span class="p">};</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Da für die über den Kanal ausgetauschte Information wenige Bytes mitunter nicht ausreichen, werden über die Mailbox Adressen eine Puffers kommuniziert, die die
@@ -936,7 +974,27 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
 94
 95
 96
-97</pre></td><td class="code"><pre><span class="k">enum</span> <span class="n">ReqResCode</span> <span class="p">{</span>
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</pre></td><td class="code"><pre>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#[repr(u32)]</span>
+<span class="k">enum</span> <span class="n">ReqResCode</span> <span class="p">{</span>
     <span class="n">Request</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nb">Success</span> <span class="o">=</span> <span class="mi">0x80000000</span><span class="p">,</span>
     <span class="n">Error</span>   <span class="o">=</span> <span class="mi">0x80000001</span><span class="p">,</span>
@@ -961,13 +1019,15 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
 
 <span class="cp">#[repr(C)]</span>
 <span class="cp">#[repr(align(</span><span class="mi">16</span><span class="cp">))]</span>
+<span class="c">/// Pufferspeicher für Property-Tag-Nachrichten</span>
 <span class="k">pub</span> <span class="k">struct</span> <span class="n">PropertyTagBuffer</span> <span class="p">{</span>
-    <span class="k">pub</span> <span class="n">data</span><span class="p">:</span> <span class="p">[</span><span class="nb">u32</span><span class="p">;</span> <span class="n">BUFFER_SIZE</span><span class="p">],</span>
-    <span class="k">pub</span> <span class="n">index</span><span class="p">:</span>    <span class="nb">usize</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">:</span> <span class="p">[</span><span class="nb">u32</span><span class="p">;</span> <span class="n">BUFFER_SIZE</span><span class="p">],</span>
+    <span class="n">index</span><span class="p">:</span>    <span class="nb">usize</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="k">impl</span> <span class="n">PropertyTagBuffer</span> <span class="p">{</span>
 
+    <span class="c">/// Erzeugt einen neuen Puffer.</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="n">PropertyTagBuffer</span> <span class="p">{</span>
         <span class="n">PropertyTagBuffer</span><span class="p">{</span>
             <span class="n">data</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span> <span class="n">BUFFER_SIZE</span><span class="p">],</span>
@@ -975,6 +1035,7 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
         <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c">/// Initialisert die Puffer-Struktur</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">init</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span>  <span class="p">{</span>
         <span class="k">self</span><span class="py">.index</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
         <span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="nn">PbOffset</span><span class="p">::</span><span class="n">Size</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c">// Size + Code + Endtag</span>
@@ -982,12 +1043,14 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
         <span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="k">self</span><span class="py">.index</span><span class="p">]</span> <span class="o">=</span> <span class="nn">Tag</span><span class="p">::</span><span class="nb">None</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">;</span>
     <span class="p">}</span>
 
+    <span class="c">/// Schreibt ein einzelnes Wort in den Puffer</span>
     <span class="k">fn</span> <span class="nf">write</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">u32</span><span class="p">){</span>
         <span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="k">self</span><span class="py">.index</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">;</span>
         <span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="nn">PbOffset</span><span class="p">::</span><span class="n">Size</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">+=</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">u32</span><span class="o">&gt;</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">;</span>
         <span class="k">self</span><span class="py">.index</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
 
+    <span class="c">/// Fügt einen Tag und ggf. seine Parameter zu den Pufferdaten hinzu.</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">add_tag_with_param</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="n">Tag</span><span class="p">,</span>  <span class="n">params</span><span class="p">:</span> <span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="p">[</span><span class="nb">u32</span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">let</span> <span class="n">old_index</span> <span class="o">=</span> <span class="k">self</span><span class="py">.index</span><span class="p">;</span>
         <span class="k">let</span> <span class="n">prop</span> <span class="o">=</span> <span class="nn">ReqProperty</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span>
@@ -1008,11 +1071,13 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
         <span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="nn">PbOffset</span><span class="p">::</span><span class="n">Size</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="k">self</span><span class="py">.index</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">;</span> 
     <span class="p">}</span>
 
+    <span class="c">/// Liest ein einzelnes Wort aus dem Puffer</span>
     <span class="k">fn</span> <span class="nf">read</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>
         <span class="k">self</span><span class="py">.index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="k">self</span><span class="py">.index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
     <span class="p">}</span>
 
+    <span class="c">/// Liest die Antwort auf eine Tag-Nachricht</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">get_answer</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="n">Tag</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="p">[</span><span class="nb">u32</span><span class="p">]</span><span class="o">&gt;</span> <span class="p">{</span>
         <span class="k">if</span> <span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="nn">PbOffset</span><span class="p">::</span><span class="n">Code</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">!=</span> <span class="nn">ReqResCode</span><span class="p">::</span><span class="nb">Success</span> <span class="k">as</span> <span class="nb">u32</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nb">None</span>
@@ -1031,6 +1096,11 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
             <span class="n">index</span> <span class="o">+=</span> <span class="p">(</span><span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="nn">TagOffset</span><span class="p">::</span><span class="n">Size</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="nb">None</span>
+    <span class="p">}</span>
+
+    <span class="c">/// Adresse der Puffer-Daten </span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">data_addr</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
+        <span class="o">&amp;</span><span class="k">self</span><span class="py">.data</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="n">_</span> <span class="k">as</span> <span class="nb">usize</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
@@ -1099,19 +1169,37 @@ Schnittstellenfunktionen geschrieben:</p>
 57
 58
 59
-60</pre></td><td class="code"><pre><span class="k">mod</span> <span class="n">mailbox</span><span class="p">;</span>
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72</pre></td><td class="code"><pre><span class="k">mod</span> <span class="n">mailbox</span><span class="p">;</span>
 <span class="k">mod</span> <span class="n">propertytags</span><span class="p">;</span>
-<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">propertytags</span><span class="p">::{</span><span class="n">Tag</span><span class="p">,</span><span class="n">PropertyTagBuffer</span><span class="p">,</span><span class="n">BUFFER_SIZE</span><span class="p">};</span>
-<span class="k">pub</span> <span class="k">use</span> <span class="nn">hal</span><span class="p">::</span><span class="nn">board</span><span class="p">::</span><span class="nn">mailbox</span><span class="p">::{</span><span class="n">mailbox</span><span class="p">,</span> <span class="n">Channel</span><span class="p">};</span>
-<span class="k">use</span> <span class="nn">mem</span><span class="p">::</span><span class="n">PhysicalAddress</span><span class="p">;</span>
 
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">propertytags</span><span class="p">::{</span><span class="n">Tag</span><span class="p">,</span><span class="n">PropertyTagBuffer</span><span class="p">,</span><span class="n">BUFFER_SIZE</span><span class="p">};</span>
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">mailbox</span><span class="p">::{</span><span class="n">mailbox</span><span class="p">,</span> <span class="n">Channel</span><span class="p">};</span>
+
+<span class="c">/// Art der verlangten Information</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">BoardReport</span> <span class="p">{</span>
+    <span class="c">/// Version der Firmware</span>
     <span class="n">FirmwareVersion</span><span class="p">,</span>
+    <span class="c">/// Code für den Computertyp (sollte 0 = Raspberry Pi sein)</span>
     <span class="n">BoardModel</span><span class="p">,</span>
+    <span class="c">/// Version des Raspberrys</span>
     <span class="n">BoardRevision</span><span class="p">,</span>
+    <span class="c">/// Seriennummer</span>
     <span class="n">SerialNumber</span>
 <span class="p">}</span>
 
+<span class="c">/// Gibt Informationen über die Hardware</span>
 <span class="k">pub</span> <span class="k">fn</span> <span class="nf">report_board_info</span><span class="p">(</span><span class="n">kind</span><span class="p">:</span> <span class="n">BoardReport</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>  
     <span class="k">let</span> <span class="k">mut</span> <span class="n">prob_tag_buf</span><span class="p">:</span> <span class="n">PropertyTagBuffer</span> <span class="o">=</span> <span class="nn">PropertyTagBuffer</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
     <span class="n">prob_tag_buf</span><span class="nf">.init</span><span class="p">();</span>
@@ -1123,7 +1211,7 @@ Schnittstellenfunktionen geschrieben:</p>
     <span class="p">};</span>
     <span class="n">prob_tag_buf</span><span class="nf">.add_tag_with_param</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="nb">None</span><span class="p">);</span>
     <span class="k">let</span> <span class="n">mb</span> <span class="o">=</span> <span class="nf">mailbox</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-    <span class="n">mb</span><span class="nf">.write</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prob_tag_buf</span><span class="py">.data</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="p">[</span><span class="nb">u32</span><span class="p">;</span> <span class="k">self</span><span class="p">::</span><span class="nn">propertytags</span><span class="p">::</span><span class="n">BUFFER_SIZE</span><span class="p">]</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
+    <span class="n">mb</span><span class="nf">.write</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">,</span> <span class="n">prob_tag_buf</span><span class="nf">.data_addr</span><span class="p">()</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
     <span class="n">mb</span><span class="nf">.read</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">);</span>
     <span class="k">match</span> <span class="n">prob_tag_buf</span><span class="nf">.get_answer</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="p">{</span>
         <span class="nf">Some</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
@@ -1131,15 +1219,21 @@ Schnittstellenfunktionen geschrieben:</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
+<span class="c">/// </span>
 <span class="cp">#[allow(dead_code)]</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">MemReport</span> <span class="p">{</span>
+    <span class="c">/// Beginn des ARM-Speicherbereiches</span>
     <span class="n">ArmStart</span><span class="p">,</span>
+    <span class="c">/// Größe des ARM-Speicherbereiches</span>
     <span class="n">ArmSize</span><span class="p">,</span>
+    <span class="c">/// Beginn des Speicherbereiches des Videoprozessors</span>
     <span class="n">VcStart</span><span class="p">,</span>
+    <span class="c">/// Größe des Speicherbereiches des Videoprozessors</span>
     <span class="n">VcSize</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="k">pub</span> <span class="k">fn</span> <span class="nf">report_memory</span><span class="p">(</span><span class="n">kind</span><span class="p">:</span> <span class="n">MemReport</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">PhysicalAddress</span> <span class="p">{</span>
+<span class="c">/// Gibt Informationen über die Speicheraufteilung</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">report_memory</span><span class="p">(</span><span class="n">kind</span><span class="p">:</span> <span class="n">MemReport</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
     <span class="k">let</span> <span class="k">mut</span> <span class="n">prob_tag_buf</span> <span class="o">=</span> <span class="nn">PropertyTagBuffer</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
     <span class="n">prob_tag_buf</span><span class="nf">.init</span><span class="p">();</span>
     <span class="k">let</span> <span class="n">tag</span> <span class="o">=</span> <span class="k">match</span> <span class="n">kind</span> <span class="p">{</span>
@@ -1148,13 +1242,13 @@ Schnittstellenfunktionen geschrieben:</p>
     <span class="p">};</span>    
     <span class="n">prob_tag_buf</span><span class="nf">.add_tag_with_param</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="nb">None</span><span class="p">);</span>
     <span class="k">let</span> <span class="n">mb</span> <span class="o">=</span> <span class="nf">mailbox</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-    <span class="n">mb</span><span class="nf">.write</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prob_tag_buf</span><span class="py">.data</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="p">[</span><span class="nb">u32</span><span class="p">;</span> <span class="k">self</span><span class="p">::</span><span class="nn">propertytags</span><span class="p">::</span><span class="n">BUFFER_SIZE</span><span class="p">]</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
+    <span class="n">mb</span><span class="nf">.write</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">,</span> <span class="n">prob_tag_buf</span><span class="nf">.data_addr</span><span class="p">()</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
     <span class="n">mb</span><span class="nf">.read</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">);</span>
     <span class="k">let</span> <span class="n">array</span> <span class="o">=</span> <span class="n">prob_tag_buf</span><span class="nf">.get_answer</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span>
     <span class="k">match</span> <span class="n">array</span> <span class="p">{</span>
         <span class="nf">Some</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="k">match</span> <span class="n">kind</span> <span class="p">{</span>
-            <span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmStart</span> <span class="p">|</span> <span class="nn">MemReport</span><span class="p">::</span><span class="n">VcStart</span> <span class="k">=&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">as</span> <span class="n">PhysicalAddress</span><span class="p">,</span>
-            <span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmSize</span>  <span class="p">|</span> <span class="nn">MemReport</span><span class="p">::</span><span class="n">VcSize</span>  <span class="k">=&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="n">PhysicalAddress</span>
+            <span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmStart</span> <span class="p">|</span> <span class="nn">MemReport</span><span class="p">::</span><span class="n">VcStart</span> <span class="k">=&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span>
+            <span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmSize</span>  <span class="p">|</span> <span class="nn">MemReport</span><span class="p">::</span><span class="n">VcSize</span>  <span class="k">=&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="nb">usize</span>
         <span class="p">},</span>
         <span class="nb">None</span> <span class="k">=&gt;</span> <span class="mi">0</span>
     <span class="p">}</span>
@@ -1199,7 +1293,10 @@ positioniert werden kann.</p>
 14
 15
 16
-17</pre></td><td class="code"><pre><span class="err">#</span><span class="p">[</span><span class="nf">allow</span><span class="p">(</span><span class="n">dead_code</span><span class="p">)]</span>
+17
+18</pre></td><td class="code"><pre><span class="k">const</span> <span class="n">DEF_BG_COLOR</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">0x7f7f7f7f</span><span class="p">;</span>
+
+<span class="cp">#[allow(dead_code)]</span>
 <span class="k">pub</span> <span class="k">struct</span> <span class="n">Framebuffer</span><span class="o">&lt;</span><span class="err">'</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="n">screen</span><span class="p">:</span> <span class="o">&amp;</span><span class="err">'</span><span class="n">a</span> <span class="k">mut</span><span class="p">[</span><span class="nb">u32</span><span class="p">],</span>
     <span class="n">width</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
@@ -1214,8 +1311,7 @@ positioniert werden kann.</p>
     <span class="n">virtual_height</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
     <span class="n">x_offset</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
     <span class="n">y_offset</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
-    <span class="n">size</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
-<span class="p">}</span><span class="w">
+    <span class="n">size</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><code class="highlighter-rouge">screen</code> ist dabei die Referenz auf den eigentlichen Framebuffer-Speicherbereich, die anderen Felder sollten selbsterklärend sein. <code class="highlighter-rouge">screen</code> und die resultierende
@@ -1274,21 +1370,27 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
 51
 52
 53
-54</pre></td><td class="code"><pre>    <span class="cm">/* Die Voreinstellung des Bootloaders wird ignoriert.
-       Gegebenenfalls sollten die Einstellungen abgefragt und verwendet werden. Allerdings erfordert dies mindestens
-    bei der Farbtiefe größere Änderungen. */</span>
+54</pre></td><td class="code"><pre><span class="c">/// Legt einen neuen Framebuffer an und setzt die Parameter.</span>
+<span class="c">/// Die Voreinstellung des Bootloaders wird ignoriert.</span>
+<span class="c">///  *Todo*:  Gegebenenfalls sollten die Einstellungen abgefragt und verwendet werden. Allerdings erfordert dies mindestens</span>
+<span class="c">///   bei der Farbtiefe größere Änderungen.</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">()</span> <span class="k">-&gt;</span>  <span class="n">Framebuffer</span><span class="o">&lt;</span><span class="err">'</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c">// Mit der GPU wird über die Mailbox kommuniziert.</span>
+    <span class="c">// Es wird das Property-Tag-Interface genutzt, nicht das Framebuffer-Interface.</span>
     <span class="k">let</span> <span class="k">mut</span> <span class="n">prob_tag_buf</span><span class="p">:</span> <span class="n">PropertyTagBuffer</span> <span class="o">=</span> <span class="nn">PropertyTagBuffer</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
     <span class="n">prob_tag_buf</span><span class="nf">.init</span><span class="p">();</span>
     <span class="n">prob_tag_buf</span><span class="nf">.add_tag_with_param</span><span class="p">(</span><span class="nn">Tag</span><span class="p">::</span><span class="n">SetPhysicalDisplaySize</span><span class="p">,</span><span class="nf">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="n">FB_WIDTH</span><span class="p">,</span><span class="n">FB_HEIGHT</span><span class="p">]));</span>
+    <span class="c">// Der Framebuffer ist doppelt so "hoch" wie der Ausgabebereich, so dass gescrollt werden kann</span>
     <span class="n">prob_tag_buf</span><span class="nf">.add_tag_with_param</span><span class="p">(</span><span class="nn">Tag</span><span class="p">::</span><span class="n">SetVirtualDisplaySize</span><span class="p">,</span><span class="nf">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="n">FB_WIDTH</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">FB_HEIGHT</span><span class="p">]));</span>
     <span class="n">prob_tag_buf</span><span class="nf">.add_tag_with_param</span><span class="p">(</span><span class="nn">Tag</span><span class="p">::</span><span class="n">SetDepth</span><span class="p">,</span><span class="nf">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="n">FB_COLOR_DEP</span><span class="p">]));</span>
     <span class="n">prob_tag_buf</span><span class="nf">.add_tag_with_param</span><span class="p">(</span><span class="nn">Tag</span><span class="p">::</span><span class="n">AllocateFrameBuffer</span><span class="p">,</span><span class="nf">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="mi">16</span><span class="p">]));</span>
     <span class="n">prob_tag_buf</span><span class="nf">.add_tag_with_param</span><span class="p">(</span><span class="nn">Tag</span><span class="p">::</span><span class="n">GetPitch</span><span class="p">,</span><span class="nb">None</span><span class="p">);</span>
     <span class="k">let</span> <span class="n">mb</span> <span class="o">=</span> <span class="nf">mailbox</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-    <span class="n">mb</span><span class="nf">.write</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prob_tag_buf</span><span class="py">.data</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="p">[</span><span class="nb">u32</span><span class="p">;</span> <span class="n">BUFFER_SIZE</span><span class="p">]</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
+    <span class="n">mb</span><span class="nf">.write</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">,</span> <span class="n">prob_tag_buf</span><span class="nf">.data_addr</span><span class="p">()</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
     <span class="n">mb</span><span class="nf">.read</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">);</span>
+    <span class="c">// Die Antwort enthält die Speicheradresse des Framebuffers</span>
     <span class="k">let</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">prob_tag_buf</span><span class="nf">.get_answer</span><span class="p">(</span><span class="nn">Tag</span><span class="p">::</span><span class="n">AllocateFrameBuffer</span><span class="p">);</span>
-    <span class="k">let</span> <span class="k">mut</span> <span class="n">adr</span><span class="p">:</span> <span class="o">&amp;</span><span class="err">'</span><span class="n">a</span> <span class="k">mut</span><span class="p">[</span><span class="nb">u32</span><span class="p">];</span>
+    <span class="k">let</span> <span class="n">adr</span><span class="p">:</span> <span class="o">&amp;</span><span class="err">'</span><span class="n">a</span> <span class="k">mut</span><span class="p">[</span><span class="nb">u32</span><span class="p">];</span>
     <span class="k">let</span> <span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">;</span>
     <span class="k">match</span> <span class="n">ret</span> <span class="p">{</span>
         <span class="nf">Some</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
@@ -1296,8 +1398,9 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
             <span class="n">adr</span>  <span class="o">=</span> <span class="k">unsafe</span><span class="p">{</span> <span class="nn">slice</span><span class="p">::</span><span class="nf">from_raw_parts_mut</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">size</span><span class="p">)};</span>
         <span class="p">}</span>
         <span class="n">_</span>   <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="c">// Wenn etwas schiefgelaufen ist, haben wir keine Konsole zur Fehlerausgabe.</span>
+            <span class="c">// Daher wird die LED genutzt</span>
             <span class="nn">blink</span><span class="p">::</span><span class="nf">blink</span><span class="p">(</span><span class="nn">blink</span><span class="p">::</span><span class="n">BS_SOS</span><span class="p">);</span>
-            <span class="nd">unreachable!</span><span class="p">();</span>
         <span class="p">}</span>
     <span class="p">};</span>
     
@@ -1309,7 +1412,6 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
         <span class="p">}</span>
         <span class="n">_</span> <span class="k">=&gt;</span> <span class="p">{</span>
             <span class="nn">blink</span><span class="p">::</span><span class="nf">blink</span><span class="p">(</span><span class="nn">blink</span><span class="p">::</span><span class="n">BS_SOS</span><span class="p">);</span>
-            <span class="nd">unreachable!</span><span class="p">();</span>
         <span class="p">}</span>
     <span class="p">}</span>        
     <span class="k">let</span> <span class="n">fb</span> <span class="o">=</span> <span class="n">Framebuffer</span> <span class="p">{</span>
@@ -1321,13 +1423,7 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
         <span class="n">pitch</span><span class="p">:</span> <span class="n">pitch</span><span class="p">,</span>
         <span class="n">fg_color</span><span class="p">:</span> <span class="n">DEF_COLOR</span><span class="p">,</span> <span class="n">bg_color</span><span class="p">:</span> <span class="n">DEF_BG_COLOR</span><span class="p">,</span>
         <span class="n">virtual_width</span><span class="p">:</span> <span class="n">FB_WIDTH</span><span class="p">,</span>
-        <span class="n">virtual_height</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">FB_HEIGHT</span><span class="p">,</span>
-        <span class="n">x_offset</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="n">y_offset</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="n">size</span><span class="p">:</span> <span class="n">size</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">,</span>
-    <span class="p">};</span>
-    <span class="n">fb</span>
-<span class="p">}</span><span class="w">
+        <span class="n">virtual_height</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">FB_HEIGHT</span><span class="p">,</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> indem wir
@@ -1368,9 +1464,9 @@ einen virtuellen Ringpuffer aufbauen, siehe Abschnitt „<a href="#scrollen">Scr
 
 <figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre><span class="k">fn</span> <span class="nf">draw_pixel</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span>  <span class="n">color</span><span class="p">;</span>
-<span class="p">}</span><span class="w">
+3</pre></td><td class="code"><pre><span class="n">x_offset</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="n">y_offset</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="n">size</span><span class="p">:</span> <span class="n">size</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">,</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Jetzt zeigt es sich von Vorteil, dass wir eine Farbtiefe gewählt haben, die der Wortbreite entspricht: Dadurch wird die Indexierung sehr einfach. Bei 24 Bit Farbtiefe,

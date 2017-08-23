@@ -410,7 +410,9 @@ done
 xargo build <span class="nv">$@</span>
 <span class="nv">PKG</span><span class="o">=</span><span class="sb">`</span>xargo pkgid -q | cut -d# -f2 | cut -d: -f1<span class="sb">`</span>
 <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> <span class="o">]</span>; <span class="k">then
-   </span>arm-none-eabi-objcopy <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> -O binary  <span class="nv">$BINPATH</span>/kernel.img
+   </span><span class="nb">echo</span> <span class="s2">"Building kernel"</span>
+   arm-none-eabi-objcopy <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> -O binary  <span class="nv">$BINPATH</span>/kernel.img
+   <span class="nb">echo</span> <span class="s2">"Generate assembler dump"</span>
    arm-none-eabi-objdump -D <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> &gt; <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span>.list
 <span class="k">fi</span></code></pre></figure>
 

@@ -9,4 +9,5 @@ group :jekyll_plugins do
   gem 'jekyll_github_sample'
   gem 'emoji_for_jekyll'
   gem 'jekyll-typogrify'
+  gem 'jekyll-admin'
 end
