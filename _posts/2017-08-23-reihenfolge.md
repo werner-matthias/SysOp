@@ -110,4 +110,4 @@ Zur Behebung dieses Problems genügt der alte Trick, eine Abhängigkeit zu behau
 ~~~
 Der vierte Parameter im `asm!()`-Macro sagt normalerweise, welche Register "verschmutzt" werden, so dass der Compiler sich nicht darauf verlassen darf, dass deren Inhalte gleich bleiben. Man kann dort aber auch "memory" hinschreiben, was behauptet, dass der Assember-Code Nebeneffekte hat. Damit darf der Compiler die Reihenfolge nicht mehr ändern, und SOPHIA funktioniert auch mit `--opt-level=3`. 
 
-[^1] Die Symbole nützten mir auf dem Raspberry Pi nichts, da das Debugging über den Entwicklungsrechner läuft.
+[^1]: Die Symbole nützten mir auf dem Raspberry Pi nichts, da das Debugging über den Entwicklungsrechner läuft.
