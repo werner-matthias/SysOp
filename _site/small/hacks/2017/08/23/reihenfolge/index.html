@@ -122,7 +122,7 @@
 	
 </head>
    <script type="text/javascript"
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
    </script>
 </head>
 <body id="top-of-page" class="page-fullwidth">
@@ -328,36 +328,38 @@
 </code></pre>
 </div>
 <p>Der Blick auf den generierten Assembler-Code (via <kbd>objdump</kbd>) zeigt das Problem. Während die Debug-Version so aussah …</p>
-<pre><code class="language-asm"> 000006b4 &lt;_ZN13aihpos_kernel11init_stacks17hbe91fb6176eaf21dE&gt;:
-     6b4:	e92d4800 	push	{fp, lr}
-     6b8:	e1a0b00d 	mov	fp, sp
-     6bc:	ebffffba 	bl	5ac &lt;_ZN13aihpos_kernel19determine_irq_stack17h107193fbe9f3e16eE&gt;
-     6c0:	f1020012 	cps	#18
-     6c4:	e1a0d000 	mov	sp, r0
-     6c8:	f1020011 	cps	#17
-     6cc:	e1a0d000 	mov	sp, r0
-     6d0:	f1020017 	cps	#23
-     6d4:	e1a0d000 	mov	sp, r0
-     6d8:	f102001b 	cps	#27
-     6dc:	e1a0d000 	mov	sp, r0
-     6e0:	f1020013 	cps	#19
-     6e4:	e8bd8800 	pop	{fp, pc}
+<div class="language-slim highlighter-rouge"><pre class="highlight"><code> <span class="nt">000006b4</span><span class="w"> </span><span class="p">&lt;</span>_ZN13aihpos_kernel11init_stacks17hbe91fb6176eaf21dE<span class="p">&gt;</span>:
+     <span class="nt">6b4</span>:<span class="w">	</span>e92d4800<span class="w"> 	</span>push<span class="w">	</span>{fp,<span class="w"> </span>lr}
+     <span class="nt">6b8</span>:<span class="w">	</span>e1a0b00d<span class="w"> 	</span>mov<span class="w">	</span>fp,<span class="w"> </span>sp
+     <span class="nt">6bc</span>:<span class="w">	</span>ebffffba<span class="w"> 	</span>bl<span class="w">	</span>5ac<span class="w"> </span><span class="p">&lt;</span>_ZN13aihpos_kernel19determine_irq_stack17h107193fbe9f3e16eE<span class="p">&gt;</span>
+     <span class="nt">6c0</span>:<span class="w">	</span>f1020012<span class="w"> 	</span>cps<span class="w">	</span>#18
+     <span class="nt">6c4</span>:<span class="w">	</span>e1a0d000<span class="w"> 	</span>mov<span class="w">	</span>sp,<span class="w"> </span>r0
+     <span class="nt">6c8</span>:<span class="w">	</span>f1020011<span class="w"> 	</span>cps<span class="w">	</span>#17
+     <span class="nt">6cc</span>:<span class="w">	</span>e1a0d000<span class="w"> 	</span>mov<span class="w">	</span>sp,<span class="w"> </span>r0
+     <span class="nt">6d0</span>:<span class="w">	</span>f1020017<span class="w"> 	</span>cps<span class="w">	</span>#23
+     <span class="nt">6d4</span>:<span class="w">	</span>e1a0d000<span class="w"> 	</span>mov<span class="w">	</span>sp,<span class="w"> </span>r0
+     <span class="nt">6d8</span>:<span class="w">	</span>f102001b<span class="w"> 	</span>cps<span class="w">	</span>#27
+     <span class="nt">6dc</span>:<span class="w">	</span>e1a0d000<span class="w"> 	</span>mov<span class="w">	</span>sp,<span class="w"> </span>r0
+     <span class="nt">6e0</span>:<span class="w">	</span>f1020013<span class="w"> 	</span>cps<span class="w">	</span>#19
+     <span class="nt">6e4</span>:<span class="w">	</span>e8bd8800<span class="w"> 	</span>pop<span class="w">	</span>{fp,<span class="w"> </span>pc}
 </code></pre>
+</div>
 <p>… lautete die optimierte Version so;</p>
-<pre><code class="language-asm">000010bc &lt;_ZN13aihpos_kernel11init_stacks17h0c7ec04f5f8147a7E&gt;:
-    10bc:	e92d4800 	push	{fp, lr}
-    10c0:	ebfffe4d 	bl	9fc &lt;_ZN13aihpos_kernel19determine_irq_stack17hc16efbf461b228f8E&gt;
-    10c4:	e1a0d000 	mov	sp, r0
-    10c8:	f1020012 	cps	#18
-    10cc:	f1020011 	cps	#17
-    10d0:	f1020017 	cps	#23
-    10d4:	f102001b 	cps	#27
-    10d8:	f1020013 	cps	#19
-    10dc:	e1a0d000 	mov	sp, r0
-    10e0:	e1a0d000 	mov	sp, r0
-    10e4:	e1a0d000 	mov	sp, r0
-    10e8:	e8bd8800 	pop	{fp, pc}
+<div class="language-slim highlighter-rouge"><pre class="highlight"><code><span class="nt">000010bc</span><span class="w"> </span><span class="p">&lt;</span>_ZN13aihpos_kernel11init_stacks17h0c7ec04f5f8147a7E<span class="p">&gt;</span>:
+    <span class="nt">10bc</span>:<span class="w">	</span>e92d4800<span class="w"> 	</span>push<span class="w">	</span>{fp,<span class="w"> </span>lr}
+    <span class="nt">10c0</span>:<span class="w">	</span>ebfffe4d<span class="w"> 	</span>bl<span class="w">	</span>9fc<span class="w"> </span><span class="p">&lt;</span>_ZN13aihpos_kernel19determine_irq_stack17hc16efbf461b228f8E<span class="p">&gt;</span>
+    <span class="nt">10c4</span>:<span class="w">	</span>e1a0d000<span class="w"> 	</span>mov<span class="w">	</span>sp,<span class="w"> </span>r0
+    <span class="nt">10c8</span>:<span class="w">	</span>f1020012<span class="w"> 	</span>cps<span class="w">	</span>#18
+    <span class="nt">10cc</span>:<span class="w">	</span>f1020011<span class="w"> 	</span>cps<span class="w">	</span>#17
+    <span class="nt">10d0</span>:<span class="w">	</span>f1020017<span class="w"> 	</span>cps<span class="w">	</span>#23
+    <span class="nt">10d4</span>:<span class="w">	</span>f102001b<span class="w"> 	</span>cps<span class="w">	</span>#27
+    <span class="nt">10d8</span>:<span class="w">	</span>f1020013<span class="w"> 	</span>cps<span class="w">	</span>#19
+    <span class="nt">10dc</span>:<span class="w">	</span>e1a0d000<span class="w"> 	</span>mov<span class="w">	</span>sp,<span class="w"> </span>r0
+    <span class="nt">10e0</span>:<span class="w">	</span>e1a0d000<span class="w"> 	</span>mov<span class="w">	</span>sp,<span class="w"> </span>r0
+    <span class="nt">10e4</span>:<span class="w">	</span>e1a0d000<span class="w"> 	</span>mov<span class="w">	</span>sp,<span class="w"> </span>r0
+    <span class="nt">10e8</span>:<span class="w">	</span>e8bd8800<span class="w"> 	</span>pop<span class="w">	</span>{fp,<span class="w"> </span>pc}
 </code></pre>
+</div>
 
 <p>Der Optimierer hatte also die Befehle umgeordnet. Warum er das für <em>besser</em> hielt, ist mir nicht ganz klar. Dass er es allerdings glaubt zu <em>dürfen</em>, liegt daran, dass <code class="highlighter-rouge">cps</code> für ihn kein Lese- oder Schreibebefehl ist, so dass er keine Datenabhängigkeit sah.</p>
 

@@ -55,7 +55,7 @@ Das war etwas verwunderlich, da sowohl `Cpu::set_mode()` als auch `Cpu::set_stac
     }
 ~~~
 Der Blick auf den generierten Assembler-Code (via <kbd>objdump</kbd>) zeigt das Problem. Während die Debug-Version so aussah ...
-~~~ asm
+~~~ slim
  000006b4 <_ZN13aihpos_kernel11init_stacks17hbe91fb6176eaf21dE>:
      6b4:	e92d4800 	push	{fp, lr}
      6b8:	e1a0b00d 	mov	fp, sp
@@ -72,7 +72,7 @@ Der Blick auf den generierten Assembler-Code (via <kbd>objdump</kbd>) zeigt das 
      6e4:	e8bd8800 	pop	{fp, pc}
 ~~~
 ... lautete die optimierte Version so;
-~~~ asm
+~~~ slim
 000010bc <_ZN13aihpos_kernel11init_stacks17h0c7ec04f5f8147a7E>:
     10bc:	e92d4800 	push	{fp, lr}
     10c0:	ebfffe4d 	bl	9fc <_ZN13aihpos_kernel19determine_irq_stack17hc16efbf461b228f8E>
