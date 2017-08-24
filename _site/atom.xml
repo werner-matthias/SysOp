@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-08-23T21:23:25+02:00</updated>
+	<updated>2017-08-24T08:46:55+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -170,8 +170,8 @@
 	
 		<entry>
 			<id>https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/</id>
-			<title>Braking News</title>
-			<link href="https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/" rel="alternate" type="text/html" title="Braking News" />
+			<title>Breaking News</title>
+			<link href="https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/" rel="alternate" type="text/html" title="Breaking News" />
 			<updated>2017-07-18T00:00:00+02:00</updated>
 
 			

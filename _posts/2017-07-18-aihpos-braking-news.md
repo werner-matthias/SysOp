@@ -1,19 +1,23 @@
 ---
-title: Braking News
-subheadline: Ein Betriebsystem für die Lehre
-meta_description: 'So ist das mit "unstable" Versionen\: Kaum kommt man nach zwei Wochen von einer Reise zurück, schon funktioniert die Übersetzung nicht mehr -- in diesem ist
-    Fall der Heap kaputt.'
-published: true
+title: Breaking News
+layout: page-fullwidth
 author: mwerner
-date: 2017-07-18
+show_meta: true
+subheadline: Ein Betriebsystem für die Lehre
+meta_description: 'So ist das mit "unstable" Versionen\: Kaum kommt man nach zwei
+  Wochen von einer Reise zurück, schon funktioniert die Übersetzung nicht mehr --
+  in diesem ist Fall der Heap kaputt.'
+published: true
+date: '2017-07-18'
 tags:
-    - aihPOS
-    - Rust
-    - Allokator
-    - Heap
+- aihPOS
+- Rust
+- Allokator
+- Heap
 categories:
-    - aihpos
+- aihpos
 ---
+
 **Inhalt**
 - TOC
 {:toc}
@@ -198,4 +202,4 @@ und dass die Community so schnell reagiert.
 
 [^3]: D. Knuth, "The Art of Computer Programming", 2nd Auflage, Addison Wesley, 1973, Seiten 441f.
 
-[^4]: Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich *kein* [Design-Ziel]({% post_url 2017-03-19-aihpos-1 %}) in SOPHIA. 
+[^4]: Natürlich ist es ein leichter Performance-Verlust, aber Performance ist ja ausdrücklich *kein* [Design-Ziel]({% post_url 2017-03-19-aihpos-1 %}) in SOPHIA.
