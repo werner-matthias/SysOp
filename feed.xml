@@ -5,12 +5,12 @@
 	<channel>
 		<title>Systems Operational</title>
 		<description>Matthias Werners Blog. </description>
-		<link>https://werner-matthias.github.io/SysOp/</link>
-		<atom:link href="https://werner-matthias.github.io/SysOp/feed.xml" rel="self" type="application/rss+xml" />
+		<link>http://localhost:4000/</link>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Reihenfolge</title>
-				<link>https://werner-matthias.github.io/SysOp/small/hacks/2017/08/23/reihenfolge/</link>
+				<link>http://localhost:4000/small/hacks/2017/08/23/reihenfolge/</link>
 				<pubDate>Wed, 23 Aug 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;Bei &lt;a href=&quot;/blog/ahipos&quot;&gt;SOPHIA&lt;/a&gt; hatte ich diesr Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;– lediglich die Optimierung.&lt;/p&gt;
 
@@ -121,12 +121,12 @@
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/small/hacks/2017/08/23/reihenfolge/</guid>
+				<guid isPermaLink="true">http://localhost:4000/small/hacks/2017/08/23/reihenfolge/</guid>
 			</item>
 		
 			<item>
 				<title>Breaking News</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/</link>
+				<link>http://localhost:4000/aihpos/2017/07/18/aihpos-braking-news/</link>
 				<pubDate>Tue, 18 Jul 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -143,7 +143,7 @@
   &lt;li&gt;&lt;a href=&quot;#blick-zurück-in-freude&quot; id=&quot;markdown-toc-blick-zurück-in-freude&quot;&gt;Blick zurück in Freude&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/LINK&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -415,7 +415,7 @@ derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständ
 „&lt;a href=&quot;https://os.phil-opp.com&quot;&gt;Writing an OS in Rust&lt;/a&gt;“ stammt. Ich werde zwar in SOPHIA bei meinem Boundary-Tag-Allokator bleiben, es ist aber gut zu wissen, dass es eine Alternative gibt
 und dass die Community so schnell reagiert.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/LINK&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -434,12 +434,12 @@ und dass die Community so schnell reagiert.&lt;/p&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/</guid>
+				<guid isPermaLink="true">http://localhost:4000/aihpos/2017/07/18/aihpos-braking-news/</guid>
 			</item>
 		
 			<item>
 				<title>Nebenläufigkeit</title>
-				<link>https://werner-matthias.github.io/SysOp/quotes/2017/06/30/concurrency/</link>
+				<link>http://localhost:4000/quotes/2017/06/30/concurrency/</link>
 				<pubDate>Fri, 30 Jun 2017 00:00:00 +0200</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;Concurrent programs are inherently more complex than sequential programs. In many respects, 
@@ -453,12 +453,12 @@ und dass die Community so schnell reagiert.&lt;/p&gt;
 &lt;cite&gt;Alan Cox&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/quotes/2017/06/30/concurrency/</guid>
+				<guid isPermaLink="true">http://localhost:4000/quotes/2017/06/30/concurrency/</guid>
 			</item>
 		
 			<item>
 				<title>Angeführt</title>
-				<link>https://werner-matthias.github.io/SysOp/small%20hacks/2017/06/22/angefuehrt/</link>
+				<link>http://localhost:4000/small%20hacks/2017/06/22/angefuehrt/</link>
 				<pubDate>Thu, 22 Jun 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;Jekyll – oder genauer der dort genutzte Markdown-Prozessor Kramdown – kann typographische Anführungszeichen.
 Wenn man also ein Zitat in Anführungszeichen (&quot;) setzt stehen nach der Verarbeitung vor und nach dem Zitat typographische
@@ -481,12 +481,12 @@ Durch eine zusätzliche Konfiguration kann man auf deutsche Typographie umschalt
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;Zitat&quot;&lt;/code&gt; wird zu „Zitat“&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/small%20hacks/2017/06/22/angefuehrt/</guid>
+				<guid isPermaLink="true">http://localhost:4000/small%20hacks/2017/06/22/angefuehrt/</guid>
 			</item>
 		
 			<item>
 				<title>Hello Jekyll</title>
-				<link>https://werner-matthias.github.io/SysOp/meta/2017/06/19/hello-jekyll/</link>
+				<link>http://localhost:4000/meta/2017/06/19/hello-jekyll/</link>
 				<pubDate>Mon, 19 Jun 2017 12:16:41 +0000</pubDate>
 				<description>&lt;p&gt;Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
 dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; umgestiegen. Jekyll ist ein Generator für statische Webseiten.&lt;/p&gt;
@@ -509,12 +509,402 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/meta/2017/06/19/hello-jekyll/</guid>
+				<guid isPermaLink="true">http://localhost:4000/meta/2017/06/19/hello-jekyll/</guid>
+			</item>
+		
+			<item>
+				<title>Seitenweise</title>
+				<link>http://localhost:4000/LINK</link>
+				<pubDate>Sun, 18 Jun 2017 00:00:00 +0200</pubDate>
+				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#nach-mehr-aufgaben&quot; id=&quot;markdown-toc-nach-mehr-aufgaben&quot;&gt;Nach mehr Aufgaben&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#paging-auf-dem-arm&quot; id=&quot;markdown-toc-paging-auf-dem-arm&quot;&gt;Paging auf dem ARM&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#tabellen&quot; id=&quot;markdown-toc-tabellen&quot;&gt;Tabellen&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#zugriff&quot; id=&quot;markdown-toc-zugriff&quot;&gt;Zugriff&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#rechte-und-typen&quot; id=&quot;markdown-toc-rechte-und-typen&quot;&gt;Rechte und Typen&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#implementierung&quot; id=&quot;markdown-toc-implementierung&quot;&gt;Implementierung&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#designentscheidungen&quot; id=&quot;markdown-toc-designentscheidungen&quot;&gt;Designentscheidungen&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#datenstrukturen&quot; id=&quot;markdown-toc-datenstrukturen&quot;&gt;Datenstrukturen&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#tabelleneinträge&quot; id=&quot;markdown-toc-tabelleneinträge&quot;&gt;Tabelleneinträge&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#tabellen-1&quot; id=&quot;markdown-toc-tabellen-1&quot;&gt;Tabellen&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/06/07/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/07/18/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;nach-mehr-aufgaben&quot;&gt;Nach mehr Aufgaben&lt;/h2&gt;
+&lt;p&gt;Wie wir im &lt;a href=&quot;/aihpos/2017/06/07/aihpos-heap/&quot;&gt;vorherigen Beitrag&lt;/a&gt;
+diskutiert haben, hat die Speicherverwaltung in einem Betriebssystem
+häufig noch zwei zusätzliche Aufgaben jenseits der reinen Zuteilung:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Prozesse sollen davor geschützt werden, dass sie sich gegenseitig in
+den Speicher schreiben können;&lt;/li&gt;
+  &lt;li&gt;Es soll mehr Speicher genutzt werden können, als real zur Verfügung
+ steht.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Beides wird in der Regel mit dem gleichen Ansatz realisiert: &lt;em&gt;gestreute
+Adressierung mit Paging&lt;/em&gt;&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Wir wollen zunächst in SOPHIA nur die
+erste Aufgabe erfüllen.&lt;/p&gt;
+
+&lt;h2 id=&quot;paging-auf-dem-arm&quot;&gt;Paging auf dem ARM&lt;/h2&gt;
+&lt;h3 id=&quot;tabellen&quot;&gt;Tabellen&lt;/h3&gt;
+&lt;p&gt;Das Paging auf unserem Prozessor&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; erfolgt – wenn es den angeschaltet
+ist – ein- bis -zweistufig. Das Top-Level-Verzeichnis kann den
+vollständigen adressierbaren Speicherbereich organisieren, das sind
+bei einer Adressbreite von 32 Bit 4 GiB. In diesem Verzeichnis gibt es
+1024 Einträge zu je 4 Byte, so dass das gesamte Verzeichnis 4 kiB groß
+ist und jeder für Eintrag 1 MiB steht. Ein solcher Eintrag kann
+verschiedene Dinge enthalten:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Seitenfehler (&lt;em&gt;page fault&lt;/em&gt;): Der Zugriff auf diesen Speicher führt
+zu einer Ausnahme (&lt;em&gt;abort&lt;/em&gt;);&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Section&lt;/em&gt;: Ein Speicherbereich von 1 MiB Größe;&lt;/li&gt;
+  &lt;li&gt;Verweis auf eine Seitentabelle, die ebenfalls einen
+  Speicherbereich von 1 MiB Größe beschreibt, jedoch eine feinere
+  Unterteilung zulässt.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Darüber hinaus gibt noch die sogenannte &lt;em&gt;Supersection&lt;/em&gt;: einen
+Speicherbereich von 16 MiB Größe. Wer jetzt aber glaubt, damit könnte
+man das Top-Level-Verzeichnis kleiner machen, irrt sich: wenn
+Supersections genutzt werden, muss jeder entsprechende Eintrag 16 mal
+im Verzeichnis vorhanden sein. In SOPHIA werden wir Supersections
+nicht nutzen.&lt;/p&gt;
+
+&lt;p&gt;Um eine Verwechslung auszuschließen, wird im Folgenden das
+Top-Level-Verzeichnis als &lt;strong&gt;Seitenverzeichnis&lt;/strong&gt; (&lt;em&gt;page directory&lt;/em&gt;) und
+die Verzeichnisse der zweiten Stufe als &lt;strong&gt;Seitentabellen&lt;/strong&gt; (&lt;em&gt;page
+tables&lt;/em&gt;) bezeichnet. Diese Namen sind häufig im Gebrauch, kommen aber
+in der ARM-Dokumentation nicht vor: dort wird nut von &lt;em&gt;first level
+table&lt;/em&gt; und &lt;em&gt;second level tables&lt;/em&gt; gesprochen.&lt;/p&gt;
+
+&lt;p&gt;Ein Seitentabelle ist 1 kiB groß und enthält 256 Einträge. Jeder der
+Einträge kann wieder von unterschiedlicher Art sein:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Seitenfehler (hatten wir ja schon)&lt;/li&gt;
+  &lt;li&gt;große Speicherseite mit 64 kiB&lt;/li&gt;
+  &lt;li&gt;kleine Speicherseite mit 4 kiB&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Wieder gilt, dass eine goße Speicherseite 16 gleichlautende Einträge
+in der Seitentabelle braucht. Durch Nutzung von großen Speicherseiten
+kann also nicht an Platz für die Seitentabelle gespart werden.
+In SOPHIA werden wir vorerst kleine Speicherseiten nutzen.&lt;/p&gt;
+
+&lt;h3 id=&quot;zugriff&quot;&gt;Zugriff&lt;/h3&gt;
+&lt;p&gt;Bei einem Speicherzugriff auf die (gültige) logische Speicheradresse
+&lt;var&gt;adr&lt;/var&gt; bei eingeschalteten Paging und zweistufiger Hierarchie
+geschieht Folgendes:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Aus dem Register &lt;kbd&gt;TTBR0&lt;/kbd&gt; wird die Adresse des
+Seitenverzeichnisses&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; geholt&lt;/li&gt;
+  &lt;li&gt;Die oberen 12 Bit von &lt;var&gt;adr&lt;/var&gt; (also Bit 20 bis Bit 31)
+dienen als Index im Speicherverzeichnis.&lt;/li&gt;
+  &lt;li&gt;Die oberen 12 Bits des dort gefundene 32-Bit-Wortes bilden die
+oberen 12 Bits der Adresse der Seitentabelle, die unteren sind 0.&lt;/li&gt;
+  &lt;li&gt;Die nächsten 8 Bit von &lt;var&gt;adr&lt;/var&gt; (Bits 12 bis Bit 19) sind der
+ Index in dieser Seitentabelle.&lt;/li&gt;
+  &lt;li&gt;Von dem gefundenen Wort werden die oberen 20 Bit (Bit 12 bis Bit
+ 31) genommen und daran die unteren 12 Bit (Bit 0 bis Bit 11)
+ angehangen. Dieses zusammengesetzt Wort ist die physische Adresse,
+ (Busadresse) auf die tatäsächlich zugegriffen wird.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Die Abbildung zeigt diesen „Tabellenlauf“ (&lt;em&gt;table walk&lt;/em&gt;) noch einmal
+im Zusammenhang.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/paging.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Damit nicht durch die ständigen Speicherzugriffe viel Zeit verloren
+geht, hat der ARM mehrere Caches, darunter einen
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Translation_lookaside_buffer&quot;&gt;TLB&lt;/a&gt; .&lt;/p&gt;
+
+&lt;h3 id=&quot;rechte-und-typen&quot;&gt;Rechte und Typen&lt;/h3&gt;
+&lt;p&gt;Die übrig gebliebenen Bits im Seitenverzeichnis und in der
+Seitentabelle haben auch Aufgaben. Einerseits geben sie an, welches
+Speicherkonsistenzmodell und damit welche Cachestrategie benutzt
+werden soll. So ist es z.B. wichtig zu wissen, ob es einen geteilten
+(&lt;em&gt;shared&lt;/em&gt;) Zugriff auf eine Speicherseite gibt.&lt;/p&gt;
+
+&lt;p&gt;Andererseits, werden Reche angegeben, also wann und wie auf eine Seite
+zugegriffen werden darf:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ob lesend+schreibend, nur schreibend, oder gar nicht;&lt;/li&gt;
+  &lt;li&gt;ob in einem privilegierten und/oder im nichtpriviligierten Modus;&lt;/li&gt;
+  &lt;li&gt;ob die Seite ausführbaren Code enthalten darf.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Darüber hinaus gehört jede Seitentabelle einer &lt;em&gt;Domain&lt;/em&gt; an. Davon kann
+es bis zu 16 geben, von denen zu jedem Zeitpunkte eine oder mehrere
+aktiv sein können. Ist eine Domain nicht aktiv, so führt ein Zugriff
+auf einen entsprechenden Speicher automatisch zu einem Zugriffsfehler,
+unabhängig von den Rechten in der Seitentabelle. Auf diese Weise
+können z.B. bei einem Prozesswechesel Teile des Speichers gesperrt
+werden, ohne das Seitenverzeichnis zu verändern.&lt;/p&gt;
+
+&lt;h2 id=&quot;implementierung&quot;&gt;Implementierung&lt;/h2&gt;
+&lt;h3 id=&quot;designentscheidungen&quot;&gt;Designentscheidungen&lt;/h3&gt;
+
+&lt;p&gt;Bevor wir an die Nutzung der Paging-Hardware machen, müssen uns
+Gedanken über das  Speicherlayout machen. Dazu müssen wir einige
+Aspekte berücksichtigen:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Da der Zugriff auf das Seitenverzeichnis und die Seitentabellen
+selbst von der Adressübersetzung betroffen sind, wird es
+unkomplizierter, wenn die Speicherbereiche in denen sie sich
+befinden auf sich selbst abgebildert werden.&lt;/li&gt;
+  &lt;li&gt;Auch für den Kernel-Code ist es einfacher, wenn er in einem auf sich
+selbst abgebildeten Adressbereich liegt.&lt;/li&gt;
+  &lt;li&gt;Die (Speicher-)Größe eines Prozesses bestimmt, wieviele
+Seitentabellen wir für ihn benötigen. Der Einfachheit halber legen
+wir fest, dass kein Prozess größer als 1 MiB ist, was für alle Fälle
+&lt;a href=&quot;https://de.wikiquote.org/wiki/Bill_Gates&quot;&gt;reichen sollte&lt;/a&gt;. Damit
+brauchen wir jedem Prozess später nur eine Seitentabelle zuordnen.
+ Zusammen mit der Entscheidung vom &lt;a href=&quot;/aihpos/2017/06/07/aihpos-heap/&quot;&gt;letzen Beitrag&lt;/a&gt;, die Stacks ans Ende des verfügbaren RAM
+zu legen, ergibt sich aus Kernel-Sicht folgendes Speicherlayout:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/memory-layout.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Alle Prozesse sollen logisch den gleichen Adressbereich haben. Wir legen
+fest, dass der maximal 1 MiB große Adressbereich von 0x02000000 bis
+0x020FFFFF geht. Damit ist hinreichen Platz für den Kernel und seine
+Verwaltungsdaten im unteren Bereich des Speichers. Für einen Prozess
+sähe der Adressbereich dann ungefähr so aus, wobei die schwarz-gelb
+schraffierten Gebiete „verboten“ sind, wo ein Speicherzugriff des
+Prozesses also zu einer Ausnahme führt. Ob der Prozess auf den
+Adressbereich mit den Geräten zugreifen darf, hängt von seinen Rechten
+ab; bei Treiberprozessen sollte man einen entsprechenden Zugriff
+natürlich gestatten.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/pmemory-layout.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;datenstrukturen&quot;&gt;Datenstrukturen&lt;/h3&gt;
+&lt;p&gt;Nachdem wir die Designentscheidungen getroffen haben, können die
+Datenstrukturen festgelegt werden.&lt;/p&gt;
+
+&lt;h4 id=&quot;tabelleneinträge&quot;&gt;Tabelleneinträge&lt;/h4&gt;
+&lt;p&gt;Die einfachsten Datenstrukturen sind die Einträge in den
+Seitentabellen bzw. dem Seitenvereichnis: Das in eigentlich nur
+32-Bit-Worte, in Rust also &lt;code class=&quot;highlighter-rouge&quot;&gt;u32&lt;/code&gt; (oder &lt;code class=&quot;highlighter-rouge&quot;&gt;usize&lt;/code&gt;):&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageDirectoryEntry&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageTableEntry&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;In Rust wird damit nur ein Typenalias geschaffen, für den Typencheck
+sind es also immer noch ein &lt;code class=&quot;highlighter-rouge&quot;&gt;u32&lt;/code&gt;. Funktionen zum Manipulieren könnten
+also nicht unterscheiden, ob sie ein Eintrag in eine Seitentabelle
+oder in das Seitenverzeichnis bearbeiten, man hat also keine
+Typensicherheit.
+Andererseits können die skalaren Grundtypen von Rust nicht einfach so
+erweitert werden, wir können also keine zusätzlichen &lt;em&gt;Methoden&lt;/em&gt; für
+&lt;code class=&quot;highlighter-rouge&quot;&gt;u32&lt;/code&gt; schreiben.&lt;/p&gt;
+
+&lt;p&gt;Um trotzdem etwas Abstraktion und Typensicherheit zu erhalten, habe
+ich für die Generierung der Tabelleneinträge das
+&lt;a href=&quot;https://doc.rust-lang.org/book/first-edition/method-syntax.html#builder-pattern&quot;&gt;&lt;em&gt;Builder&lt;/em&gt;-Muster&lt;/a&gt;
+ausgewählt, also eine &lt;code class=&quot;highlighter-rouge&quot;&gt;struc&lt;/code&gt;, deren Methoden
+verkettet werden können und die die gewünschte Datenstruktur erzeugt.&lt;/p&gt;
+
+&lt;p&gt;Die Einträge in das Seitenverzeichnis und in eine Seitentabelle haben
+ähnliche Funktionen. In einer objektorientierten Sprache würde man
+dies über ein Klassenkonzept oder ein Interface abbilden. In Rust
+nimmt man zur Beschreibung gemeinsamen Verhaltens einen &lt;em&gt;Trait&lt;/em&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;/// `MemoryBuilder` ist eine Builder-Struct für zur Erstellung von Einträgen&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;///  in das Seitenverzeichnis oder in Seitentabellen&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PhantomData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;impl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DirectoryEntry&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DirectoryEntry&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;impl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TableEntry&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;      &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TableEntry&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;/// Einträge in das Seitenverzeichnis (_page directory_) und die Seitentabellen&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;/// (_page table_) haben ähnliche Funktionalität. Daher haben sie einen Trait als&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;/// gemeinsames Interface.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;trait&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EntryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;c&quot;&gt;/// Erzeugt einen neuen Eintrag &lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;new_entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/// Gibt die Art des Eintrags&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;c&quot;&gt;/// Setzt die Basisadresse&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;base_addr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        
+    &lt;span class=&quot;c&quot;&gt;/// Legt die Art des Speichers (Caching) fest&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///  * Vorgabe: `StronglyOrdered`  (_stikt geordnet_), siehe ARM DDI 6-15&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mem_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MemType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;c&quot;&gt;/// Setzt die Zugriffsrechte&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///  * Vorgabe: Kein Zugriff&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MemoryAccessRight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/// Legt fest, zu welcher Domain der Speicherbereich gehört&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///   * Für Supersections und Seiten wird die Domain ignoriert&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///   * Vorgabe: 0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/// Legt Speicherbereich als gemeinsam (_shared_) fest&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///  * Vorgabe: `false` (nicht gemeinsam)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shared&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/// Legt fest, ob ein Speicherbereich global (`false`) oder prozessspezifisch&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;/// ist. Bei prozessspezifischen Speicherbereichen wird die ASID aus dem&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;/// ContextID-Register (CP15c13) genutzt.&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///  * Vorgabe: `false` (global)&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///  * Anmerkung: aihPOS nutzt *keine* prozessspezifischen Speicherbereich&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;process_specific&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/// Legt fest, ob Speicherinhalt als Code ausgeführt werden darf&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;///  * Vorgabe: `false` (ausführbar)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;no_execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/// Gibt den Eintrag zurück&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Für die Implementierung des Traits müssen jetzt nur die Bits nach
+Handbuch gesetzt werden. Ich habe für die Bitmanipulation wieder
+die &lt;code class=&quot;highlighter-rouge&quot;&gt;Bitfield&lt;/code&gt;-Crate genutzt. Folgender Codeausschnitt zeigt
+exemplarische die Implementation der Methode, die für einen
+Seitentabelleneitrag festlegt, ob die entsprechende Speicherseite
+ausführbaren Code enthalten darf:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;no_execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TableEntry&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.kind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nn&quot;&gt;TableEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LargePage&lt;/span&gt; 
+                &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.set_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nn&quot;&gt;TableEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SmallPage&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.set_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;   &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Wenn dann ein Mapping – also eine Abbildung zwischen logischen und
+physischen Adressen – festgelegt wird, werden einfach die Methoden
+der Builder-struct verkettet, bis der gewünschte Eintrag
+entstanden ist, wie folgdendes Beispiel aus dem Initalisierungscode
+zeigt:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        &lt;span class=&quot;n&quot;&gt;kpage_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frm&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.rel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TableEntry&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new_entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;TableEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SmallPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;.base_addr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frm&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;.rights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;MemoryAccessRight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SysRwUsrNone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;.mem_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;MemType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NormalWT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;.domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;.entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;tabellen-1&quot;&gt;Tabellen&lt;/h4&gt;
+&lt;p&gt;Die Tabellen (Seitentabellen und Seitenverzeichnis) sind im
+Endergebnis einfache Arrays. Um aber auch hier Typensicherheit zu
+erhalten und das richtige Alignment zu erzwingen, werden diese Arrays
+jeweils Elemente eines Verbundstyps (&lt;code class=&quot;highlighter-rouge&quot;&gt;struct&lt;/code&gt;).
+Damit man trotzdem wie auf ein Array zugreifen kann, also der
+&lt;code class=&quot;highlighter-rouge&quot;&gt;[ ]&lt;/code&gt;-Operator funktioniert, muss der &lt;code class=&quot;highlighter-rouge&quot;&gt;Index&lt;/code&gt;- und der
+&lt;code class=&quot;highlighter-rouge&quot;&gt;IndexMut&lt;/code&gt;-Trait implementiert werden:&lt;/p&gt;
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;ops&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IndexMut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PageTableEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TableEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EntryBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#[repr(C)]&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#[repr(align(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;))]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PageTableEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;impl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;/// Erzeugt eine neue Tabelle&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;PageTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;PageTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/// Füllt die Tabelle mit Seitenfehlern&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;invalidate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ndx&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ndx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;MemoryBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new_entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;TableEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Fault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/// Addresse der Tabelle&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Address&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;impl&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageTableEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PageTableEntry&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;impl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IndexMut&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index_mut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;usize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageTableEntry&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/06/07/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/07/18/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;Umgangssprachlich wird mit &lt;em&gt;Paging&lt;/em&gt; fast immer &lt;em&gt;Demand Paging&lt;/em&gt;,
+    also die virtuelle Speicherverwaltung mit Auslagerung auf die
+    Festplatte gemeint. Jedoch lässt sich eine seitenbasierte gestreute
+    Adressierung auch sinnvoll ohne Auslagerung einsetzen.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Das hier beschriebene Paging-Schema entspricht ARMv6. Der
+    Prozessor ist in einigen Aspekten der Sepiecherverwaltung
+    rückwärtskompatible zu ARMv5 (z.B. Supbages), die wir nicht
+    benutzen werden.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;Es gibt auch ein Schema mit zwei Seitenverzeichnissen, das hier
+    aber nicht betrachtet wird.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+				<guid isPermaLink="true">http://localhost:4000/LINK</guid>
 			</item>
 		
 			<item>
 				<title>Wir machen einen Haufen</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/</link>
+				<link>http://localhost:4000/aihpos/2017/06/07/aihpos-heap/</link>
 				<pubDate>Wed, 07 Jun 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -533,9 +923,9 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
   &lt;li&gt;&lt;a href=&quot;#vektoren-hashes--co&quot; id=&quot;markdown-toc-vektoren-hashes--co&quot;&gt;Vektoren, Hashes &amp;amp; Co&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/LINK&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1032,9 +1422,9 @@ im Wurzelverzeichnis anlegen: &lt;kbd&gt;Xargo.toml&lt;/kbd&gt;. Dort können zu
 implementieren müssten. Allerdings ist das Thema Speicher noch nicht erledigt: Speicher ist auch Betriebsmittel für die Prozesse. Hier kommt die logische
 Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des nächsten Beitrags in der SOPHIA-Reihe.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/LINK&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1066,12 +1456,12 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/</guid>
+				<guid isPermaLink="true">http://localhost:4000/aihpos/2017/06/07/aihpos-heap/</guid>
 			</item>
 		
 			<item>
 				<title>Computer Science</title>
-				<link>https://werner-matthias.github.io/SysOp/quotes/2017/05/21/computer-science/</link>
+				<link>http://localhost:4000/quotes/2017/05/21/computer-science/</link>
 				<pubDate>Sun, 21 May 2017 12:05:22 +0000</pubDate>
 				<description>&lt;blockquote&gt;
   &lt;p&gt;In science, we reserve our highest honors for those who prove we were wrong. But in computer science…
@@ -1084,12 +1474,12 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
 &lt;cite&gt;Fred Brooks&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/quotes/2017/05/21/computer-science/</guid>
+				<guid isPermaLink="true">http://localhost:4000/quotes/2017/05/21/computer-science/</guid>
 			</item>
 		
 			<item>
 				<title>Um-Rust-ung</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/</link>
+				<link>http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/</link>
 				<pubDate>Sun, 14 May 2017 00:00:00 +0200</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -1102,9 +1492,9 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
   &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/04/26/aihpos-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/04/26/aihpos-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/06/07/aihpos-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1269,9 +1659,9 @@ JTAG-Interface laden und testen kann.&lt;/p&gt;
 
 &lt;p&gt;Außerdem habe ich ein &lt;a href=&quot;https://github.com/werner-matthias/aihPOS&quot;&gt;GitHub-Projekt&lt;/a&gt; für SOPHIA aufgesetzt. Dort kann der komplette Quellcode abgerufen werden.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/04/26/aihpos-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/04/26/aihpos-postman/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/06/07/aihpos-heap/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1283,12 +1673,12 @@ JTAG-Interface laden und testen kann.&lt;/p&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/</guid>
+				<guid isPermaLink="true">http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/</guid>
 			</item>
 		
 			<item>
 				<title>Please Mr. Postman</title>
-				<link>https://werner-matthias.github.io/SysOp/aihpos/2017/04/26/aihpos-postman/</link>
+				<link>http://localhost:4000/aihpos/2017/04/26/aihpos-postman/</link>
 				<pubDate>Wed, 26 Apr 2017 11:04:55 +0000</pubDate>
 				<description>&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -1308,9 +1698,9 @@ JTAG-Interface laden und testen kann.&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;#der-linker-zickt-mal-wieder&quot; id=&quot;markdown-toc-der-linker-zickt-mal-wieder&quot;&gt;Der Linker zickt mal wieder&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/04/10/aihpos-lebenszeichen/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/04/10/aihpos-lebenszeichen/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2852,9 +3242,9 @@ definieren und greife auf die &lt;a href=&quot;https://github.com/rust-lang-nurs
 &lt;p&gt;Nun habe ich schon zwei Rust-Bibliotheken (core und compiler-buildins), die händisch eingepflegt werden, wenn es zu Updates bei ihnen oder dem Compiler kommt. Höchste
 Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Dies wird das Thema des nächsten Beitrags sein.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/04/10/aihpos-lebenszeichen/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://localhost:4000/aihpos/2017/04/10/aihpos-lebenszeichen/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2881,20 +3271,7 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/aihpos/2017/04/26/aihpos-postman/</guid>
-			</item>
-		
-			<item>
-				<title>March for Science</title>
-				<link>https://werner-matthias.github.io/SysOp/menschen/2017/04/20/march-for-science/</link>
-				<pubDate>Thu, 20 Apr 2017 09:04:46 +0000</pubDate>
-				<description>&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.marchforscience.com&quot;&gt;March for Science&lt;/a&gt; (International)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://marchforscience.de&quot;&gt;March for Science Deutschland&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-				<guid isPermaLink="true">https://werner-matthias.github.io/SysOp/menschen/2017/04/20/march-for-science/</guid>
+				<guid isPermaLink="true">http://localhost:4000/aihpos/2017/04/26/aihpos-postman/</guid>
 			</item>
 		
 	</channel>
