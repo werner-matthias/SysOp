@@ -58,36 +58,38 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Der Blick auf den generierten Assembler-Code (via &lt;kbd&gt;objdump&lt;/kbd&gt;) zeigt das Problem. Während die Debug-Version so aussah …&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-asm&quot;&gt; 000006b4 &amp;lt;_ZN13aihpos_kernel11init_stacks17hbe91fb6176eaf21dE&amp;gt;:
-     6b4:	e92d4800 	push	{fp, lr}
-     6b8:	e1a0b00d 	mov	fp, sp
-     6bc:	ebffffba 	bl	5ac &amp;lt;_ZN13aihpos_kernel19determine_irq_stack17h107193fbe9f3e16eE&amp;gt;
-     6c0:	f1020012 	cps	#18
-     6c4:	e1a0d000 	mov	sp, r0
-     6c8:	f1020011 	cps	#17
-     6cc:	e1a0d000 	mov	sp, r0
-     6d0:	f1020017 	cps	#23
-     6d4:	e1a0d000 	mov	sp, r0
-     6d8:	f102001b 	cps	#27
-     6dc:	e1a0d000 	mov	sp, r0
-     6e0:	f1020013 	cps	#19
-     6e4:	e8bd8800 	pop	{fp, pc}
+&lt;div class=&quot;language-slim highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nt&quot;&gt;000006b4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;_ZN13aihpos_kernel11init_stacks17hbe91fb6176eaf21dE&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;:
+     &lt;span class=&quot;nt&quot;&gt;6b4&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e92d4800&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;push&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;{fp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;lr}
+     &lt;span class=&quot;nt&quot;&gt;6b8&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e1a0b00d&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;mov&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;fp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;sp
+     &lt;span class=&quot;nt&quot;&gt;6bc&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;ebffffba&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;bl&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;5ac&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;_ZN13aihpos_kernel19determine_irq_stack17h107193fbe9f3e16eE&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;6c0&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;f1020012&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;cps&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;#18
+     &lt;span class=&quot;nt&quot;&gt;6c4&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e1a0d000&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;mov&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;sp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;r0
+     &lt;span class=&quot;nt&quot;&gt;6c8&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;f1020011&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;cps&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;#17
+     &lt;span class=&quot;nt&quot;&gt;6cc&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e1a0d000&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;mov&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;sp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;r0
+     &lt;span class=&quot;nt&quot;&gt;6d0&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;f1020017&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;cps&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;#23
+     &lt;span class=&quot;nt&quot;&gt;6d4&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e1a0d000&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;mov&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;sp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;r0
+     &lt;span class=&quot;nt&quot;&gt;6d8&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;f102001b&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;cps&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;#27
+     &lt;span class=&quot;nt&quot;&gt;6dc&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e1a0d000&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;mov&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;sp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;r0
+     &lt;span class=&quot;nt&quot;&gt;6e0&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;f1020013&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;cps&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;#19
+     &lt;span class=&quot;nt&quot;&gt;6e4&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e8bd8800&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;pop&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;{fp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;pc}
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;p&gt;… lautete die optimierte Version so;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-asm&quot;&gt;000010bc &amp;lt;_ZN13aihpos_kernel11init_stacks17h0c7ec04f5f8147a7E&amp;gt;:
-    10bc:	e92d4800 	push	{fp, lr}
-    10c0:	ebfffe4d 	bl	9fc &amp;lt;_ZN13aihpos_kernel19determine_irq_stack17hc16efbf461b228f8E&amp;gt;
-    10c4:	e1a0d000 	mov	sp, r0
-    10c8:	f1020012 	cps	#18
-    10cc:	f1020011 	cps	#17
-    10d0:	f1020017 	cps	#23
-    10d4:	f102001b 	cps	#27
-    10d8:	f1020013 	cps	#19
-    10dc:	e1a0d000 	mov	sp, r0
-    10e0:	e1a0d000 	mov	sp, r0
-    10e4:	e1a0d000 	mov	sp, r0
-    10e8:	e8bd8800 	pop	{fp, pc}
+&lt;div class=&quot;language-slim highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;000010bc&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;_ZN13aihpos_kernel11init_stacks17h0c7ec04f5f8147a7E&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;:
+    &lt;span class=&quot;nt&quot;&gt;10bc&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e92d4800&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;push&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;{fp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;lr}
+    &lt;span class=&quot;nt&quot;&gt;10c0&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;ebfffe4d&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;bl&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;9fc&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;_ZN13aihpos_kernel19determine_irq_stack17hc16efbf461b228f8E&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;10c4&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e1a0d000&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;mov&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;sp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;r0
+    &lt;span class=&quot;nt&quot;&gt;10c8&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;f1020012&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;cps&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;#18
+    &lt;span class=&quot;nt&quot;&gt;10cc&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;f1020011&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;cps&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;#17
+    &lt;span class=&quot;nt&quot;&gt;10d0&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;f1020017&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;cps&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;#23
+    &lt;span class=&quot;nt&quot;&gt;10d4&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;f102001b&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;cps&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;#27
+    &lt;span class=&quot;nt&quot;&gt;10d8&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;f1020013&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;cps&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;#19
+    &lt;span class=&quot;nt&quot;&gt;10dc&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e1a0d000&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;mov&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;sp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;r0
+    &lt;span class=&quot;nt&quot;&gt;10e0&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e1a0d000&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;mov&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;sp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;r0
+    &lt;span class=&quot;nt&quot;&gt;10e4&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e1a0d000&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;mov&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;sp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;r0
+    &lt;span class=&quot;nt&quot;&gt;10e8&lt;/span&gt;:&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;e8bd8800&lt;span class=&quot;w&quot;&gt; 	&lt;/span&gt;pop&lt;span class=&quot;w&quot;&gt;	&lt;/span&gt;{fp,&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;pc}
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Der Optimierer hatte also die Befehle umgeordnet. Warum er das für &lt;em&gt;besser&lt;/em&gt; hielt, ist mir nicht ganz klar. Dass er es allerdings glaubt zu &lt;em&gt;dürfen&lt;/em&gt;, liegt daran, dass &lt;code class=&quot;highlighter-rouge&quot;&gt;cps&lt;/code&gt; für ihn kein Lese- oder Schreibebefehl ist, so dass er keine Datenabhängigkeit sah.&lt;/p&gt;
 
