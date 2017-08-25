@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-08-25T13:33:37+02:00</updated>
+	<updated>2017-08-25T13:36:55+02:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -50,7 +50,7 @@
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/small/hacks/2017/08/23/reihenfolge/">&lt;p&gt;Bei &lt;a href=&quot;/blog/ahipos&quot;&gt;SOPHIA&lt;/a&gt; hatte ich diesr Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;– lediglich die Optimierung.&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/small/hacks/2017/08/23/reihenfolge/">&lt;p&gt;Bei &lt;a href=&quot;/blog/ahipos&quot;&gt;SOPHIA&lt;/a&gt; hatte ich dieser Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;– lediglich die Optimierung.&lt;/p&gt;
 
 &lt;p&gt;Nach längerer Fehlersuche stellte sich folgende Funktion als Verursacherin heraus:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;never&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;

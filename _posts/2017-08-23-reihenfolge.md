@@ -9,7 +9,7 @@ meta_description: Moderne Compiler sind gut in der Lage, Code zu optimieren, so 
   manchmal muss man den Compiler auch überzeugen, nicht zuviel des Guten zu tun.
 ---
 
-Bei [SOPHIA](/blog/ahipos) hatte ich diesr Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist -- da ich die Debugsymbole nicht ins Binärfile übernommen hatte[^1]-- lediglich die Optimierung. 
+Bei [SOPHIA](/blog/ahipos) hatte ich dieser Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist -- da ich die Debugsymbole nicht ins Binärfile übernommen hatte[^1]-- lediglich die Optimierung. 
 
 Nach längerer Fehlersuche stellte sich folgende Funktion als Verursacherin heraus:
 ~~~ rust

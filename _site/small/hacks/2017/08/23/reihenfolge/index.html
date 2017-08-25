@@ -282,7 +282,7 @@
 			
 
 			<span itemprop="articleSection">
-	                <p>Bei <a href="/blog/ahipos"><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"></a> hatte ich diesr Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>– lediglich die Optimierung.</p>
+	                <p>Bei <a href="/blog/ahipos"><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"></a> hatte ich dieser Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>– lediglich die Optimierung.</p>
 
 <p>Nach längerer Fehlersuche stellte sich folgende Funktion als Verursacherin heraus:</p>
 <div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="nf">inline</span><span class="p">(</span><span class="n">never</span><span class="p">)]</span>
