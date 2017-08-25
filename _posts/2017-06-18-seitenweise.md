@@ -2,7 +2,7 @@
 layout: page-fullwidth
 title: Seitenweise
 subheadline: Ein Betriebssystem für die Lehre
-meta_description: 
+meta_description: "Die Programmierung der MMU ist eine heikle Angelegenheit. Machen wir uns an die Arbeit."
 published: true
 author: mwerner
 date: 2017-06-18
