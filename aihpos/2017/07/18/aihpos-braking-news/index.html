@@ -462,18 +462,33 @@ Standardimplementationen (<em>defaults</em>).</p>
 <p>Alle anderen Dinge braucht man zunächst einmal nicht (können aber später zur besseren Effizienz genutzt werden). Es ist somit jetzt einfach, die Kompatibilität zum früheren
 Interface wieder herzustellen.</p>
 
-<p>Die Allokator-API gilt für alle Allokatoren, Rust unterstützt Hierarchien von Allokatoren. Am Ende wird irgendwann die Speicherverwaltung des Betriebssystems von die
-Standardbibliothek gerufen. Existiert kein solches (wie in unserem Fall) oder wird nur die Standardbibliothek nicht eingebunden, aber trotzdem Crates benutzt, die
-Allozierungen vornehmen wollen, muss ein globaler Allokator angegeben werden. Dies wird einfach gemacht, indem einer Instanz einer Allokator-Struktur mit dem Attribut
-<code class="highlighter-rouge">#[global_allocator]</code> dazu erklärt wird. Warum bei der Fehlermeldung oben dieses Attribut – das übrigens auch noch keinen Eintrag im
-<a href="https://doc.rust-lang.org/unstable-book/">Unstable Book</a> hat – nicht genannt wurde, sondern <code class="highlighter-rouge">#[default_lib_allocator]</code> ist mir nicht ganz klar; vermutlich ist das bloß
+<p>Die Allokator-API gilt für alle Allokatoren, Rust unterstützt
+Hierarchien von Allokatoren. Am Ende wird irgendwann die
+Speicherverwaltung des Betriebssystems von die 
+Standardbibliothek gerufen. Existiert kein solches (wie in unserem
+Fall) oder wird nur die Standardbibliothek nicht eingebunden, aber
+trotzdem Crates benutzt, die Allozierungen vornehmen wollen, muss ein
+globaler Allokator angegeben werden. Dies wird einfach gemacht, indem
+einer Instanz einer Allokator-Struktur mit dem Attribut
+<code class="highlighter-rouge">#[global_allocator]</code> dazu erklärt wird. Warum bei der Fehlermeldung
+oben dieses Attribut – das übrigens auch noch keinen Eintrag im 
+<a href="https://doc.rust-lang.org/unstable-book/">Unstable Book</a> hat – nicht
+genannt wurde, sondern <code class="highlighter-rouge">#[default_lib_allocator]</code> ist mir nicht ganz
+klar; vermutlich ist das bloß 
 noch nicht stabilisiert.</p>
 
 <h3 id="am-rande-des-speichers">Am Rande des Speichers</h3>
-<p>Ich nutze die Gelegenheit und implementiere eine eigene Heapverwaltung. Dazu nutze ich das <em>Boundary-Tag-Verfahren</em> <sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>. Das hat den Vorteil, dass die Wiedereingliederung
-von zurückgegebenen Speicher eine konstante Komplexität \(\mathcal{O}(1)\) hat, jedoch auf Kosten des Speicherverbrauchs: Jeder belegte Speicherabschnitt hat zwei Tags
-Verwaltungsinformation, in denen die Größe des Abschnitts und Statusflags stehen. In meiner Implementation ist ein Tag ein <code class="highlighter-rouge">usize</code> (genauer: eine <code class="highlighter-rouge">struct</code> mit einem
-<code class="highlighter-rouge">usize</code>), so dass jeweils pro Block 8 Bytes Overhead entstehen. Da es durch die Alignmentanforderungen ohnehin zu Verschnitt kommt, halte ich dies für vertretbar.</p>
+<p>Ich nutze die Gelegenheit und implementiere eine eigene
+Heapverwaltung. Dazu nutze ich das <em>Boundary-Tag-Verfahren</em> <sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>. Das
+hat den Vorteil, dass die Wiedereingliederung von zurückgegebenen
+Speicher eine konstante Komplexität \(\mathcal{O}(1)\) hat, jedoch
+auf Kosten des Speicherverbrauchs: Jeder belegte Speicherabschnitt hat
+zwei Tags Verwaltungsinformation, in denen die Größe des Abschnitts
+und Statusflags stehen. In meiner Implementation ist ein Tag ein
+<code class="highlighter-rouge">usize</code> (genauer: eine <code class="highlighter-rouge">struct</code> mit einem <code class="highlighter-rouge">usize</code>), so dass jeweils
+pro Block 8 Bytes Overhead entstehen. Da es durch die
+Alignmentanforderungen ohnehin zu Verschnitt kommt, halte ich dies für
+vertretbar.</p>
 
 <p><img src="https://werner-matthias.github.io/SysOp/images/boundary.png" alt="" class="img-responsive" /></p>
 
@@ -490,8 +505,11 @@ Verwaltungsinformation, in denen die Größe des Abschnitts und Statusflags steh
 
 </code></pre>
 </div>
-<p>Die eigentliche „Arbeit“ liegt bei der <code class="highlighter-rouge">allocate</code>-Methode des Speicherabschnitts: Hier wir überprüft, ob der Abschnitt als Ganzes belegt werden soll, oder ob er
-aufgeteilt wird. Im letzteren Fall wird die Teilung durchgeführt; der abgetrennte Bereich nimmt den Platz des ursprünglichen Abschnittes in der Liste ein.</p>
+<p>Die eigentliche „Arbeit“ liegt bei der <code class="highlighter-rouge">allocate</code>-Methode des
+Speicherabschnitts: Hier wir überprüft, ob der Abschnitt als Ganzes
+belegt werden soll, oder ob er aufgeteilt wird. Im letzteren Fall wird
+die Teilung durchgeführt; der abgetrennte Bereich nimmt den Platz des
+ursprünglichen Abschnittes in der Liste ein.</p>
 <div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">allocate</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="k">-&gt;</span>  <span class="n">Result</span><span class="o">&lt;*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">AllocErr</span><span class="o">&gt;</span>  <span class="p">{</span>
     <span class="k">let</span> <span class="n">dest_addr</span> <span class="o">=</span> <span class="nf">align_up</span><span class="p">(</span><span class="k">self</span><span class="nf">.client_addr</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">(),</span><span class="n">layout</span><span class="nf">.align</span><span class="p">());</span>
     <span class="k">let</span> <span class="n">front_padding</span> <span class="o">=</span> <span class="n">dest_addr</span> <span class="o">-</span> <span class="k">self</span><span class="nf">.client_addr</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">();</span>
@@ -533,7 +551,8 @@ aufgeteilt wird. Im letzteren Fall wird die Teilung durchgeführt; der abgetrenn
 </code></pre>
 </div>
 <p>Die Komplexität der Reservierung ist immer noch \(\mathcal{O}(n)\), wobei \(n\) die Anzahl der freien Speicherblöcke ist.
-Im Unterschied zur vorherigen Lösung muss bei der Wiedereingliederung die Liste <em>nicht</em> durchsucht werden:</p>
+Im Unterschied zur vorherigen Lösung muss bei der Wiedereingliederung
+die Liste <em>nicht</em> durchsucht werden:</p>
 <div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">dealloc</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">end_tag_addr</span> <span class="o">=</span> <span class="nn">memory_region</span><span class="p">::</span><span class="nf">align_up</span><span class="p">(</span><span class="n">ptr</span> <span class="k">as</span> <span class="nb">usize</span> <span class="o">+</span> <span class="nn">cmp</span><span class="p">::</span><span class="nf">max</span><span class="p">(</span><span class="n">layout</span><span class="nf">.size</span><span class="p">(),</span><span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">min_size</span><span class="p">()),</span>
                                                <span class="nn">mem</span><span class="p">::</span><span class="nn">align_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">());</span>
@@ -560,7 +579,7 @@ Im Unterschied zur vorherigen Lösung muss bei der Wiedereingliederung die Liste
 
 </code></pre>
 </div>
-<p>Das ist natürlich nur ein des Gesamtcodes, der vollständige Code ist wieder
+<p>Das ist natürlich nur ein Teil des Gesamtcodes, der vollständige Code ist wieder
 auf <a href="https://github.com/werner-matthias/aihPOS/tree/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap">GibHub</a> zu finden.</p>
 
 <h2 id="blick-zurück-in-freude">Blick zurück in Freude</h2>

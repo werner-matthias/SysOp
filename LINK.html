@@ -296,10 +296,14 @@
       <li><a href="#datenstrukturen" id="markdown-toc-datenstrukturen">Datenstrukturen</a>        <ul>
           <li><a href="#tabelleneinträge" id="markdown-toc-tabelleneinträge">Tabelleneinträge</a></li>
           <li><a href="#tabellen-1" id="markdown-toc-tabellen-1">Tabellen</a></li>
+          <li><a href="#frames" id="markdown-toc-frames">Frames</a></li>
+          <li><a href="#frame-manager" id="markdown-toc-frame-manager">Frame-Manager</a></li>
         </ul>
       </li>
+      <li><a href="#in-die-niederungen" id="markdown-toc-in-die-niederungen">In die Niederungen</a></li>
     </ul>
   </li>
+  <li><a href="#schlussbemerkung" id="markdown-toc-schlussbemerkung">Schlussbemerkung</a></li>
 </ul>
 
 <p><a class="left button tiny radius" href="https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
@@ -317,7 +321,7 @@ häufig noch zwei zusätzliche Aufgaben jenseits der reinen Zuteilung:</p>
   <li>Prozesse sollen davor geschützt werden, dass sie sich gegenseitig in
 den Speicher schreiben können;</li>
   <li>Es soll mehr Speicher genutzt werden können, als real zur Verfügung
- steht.</li>
+steht.</li>
 </ul>
 
 <p>Beides wird in der Regel mit dem gleichen Ansatz realisiert: <em>gestreute
@@ -459,6 +463,38 @@ natürlich gestatten.</p>
 
 <p><img src="https://werner-matthias.github.io/SysOp/images/pmemory-layout.png" alt="" class="img-responsive" /></p>
 
+<p>Natürlich liegen die Prozesse nicht wirklich im gleichen (physischen)
+Speicherbereichen. Vielmehr sind ihre Speicherseiten auf verschiedene
+Platzhalter (<em>Frames</em>) im Speicher verteilt. Dies Frames, die ein
+Prozess benutzt, müssen (mit Ausnahme von Speichersharing) in der Tat
+verschieen sein. Daher besteht eine weitere Aufgabe neben der
+Verwaltung der Abbildung (<em>mapping</em>) in der Buchhaltung über die
+Framevergabe. Auch hier steht eine Designentscheidung über die Art und
+Weise der Frameverwaltung an.</p>
+
+<p>Solange wir noch kein Demand Paging haben, ist eine Buchführung
+theoretisch redundant: Man kann die belegten Frames ermitteln, indem
+man das Seitenverzeichnis und alle existierenden Seitentabellen
+betrachtet und alle Frames in nichtaufgeführten Adressbereichen als
+leer betrachtet. Aber das ist erstens ein enormer Aufwand, und
+zweitens nicht sehr zukunftsträchtig, da <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> vielleicht tatsächlich
+mal einen virtuellen Speicher erhalten soll.</p>
+
+<p>Es stellt sich also die Frage, wie die Frameverwaltung organisiert
+werden soll. Möglich wären – wie beim Heap – Listen mit leeren
+Frame-Bereichen. Ich habe mich aber für eine andere Lösung
+entschieden, die etwas unkomplizierter ist: In einem großen Bit-Array
+werden alle belegten Frames markiert. Bei einem (beim Pi 1B) maximalen
+RAM vom 512 MiB und einer Seitengröße von 4 kiB gibt es maximal</p>
+
+<p>\[ \frac{512\cdot 2^{20}}{4096} = 131072\]
+Frames. Wenn für jedes Frame ein Bit die Belegung anzeigt, hat das
+Bit-Array eine Größe von
+\[\frac{131072}{8} = 16384\;\mathsf{Byte,}\] also 16 kiB. Das ist zwar (vermutlich)
+größer eine Freiframetabelle oder ein ähnliches Konstrukt im Mittel
+benötigen würde, aber der <em>Worst Case</em> ist bei der Freispeichertabelle
+wesentlich schlechter.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
 <h3 id="datenstrukturen">Datenstrukturen</h3>
 <p>Nachdem wir die Designentscheidungen getroffen haben, können die
 Datenstrukturen festgelegt werden.</p>
@@ -571,7 +607,7 @@ ausführbaren Code enthalten darf:</p>
 <p>Wenn dann ein Mapping – also eine Abbildung zwischen logischen und
 physischen Adressen – festgelegt wird, werden einfach die Methoden
 der Builder-struct verkettet, bis der gewünschte Eintrag
-entstanden ist, wie folgdendes Beispiel aus dem Initalisierungscode
+entstanden ist, wie folgendes Beispiel aus dem Initalisierungscode
 zeigt:</p>
 <div class="language-rust highlighter-rouge"><pre class="highlight"><code>        <span class="n">kpage_table</span><span class="p">[</span><span class="n">frm</span><span class="nf">.rel</span><span class="p">()]</span> <span class="o">=</span> <span class="nn">MemoryBuilder</span><span class="p">::</span><span class="o">&lt;</span><span class="n">TableEntry</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">new_entry</span><span class="p">(</span><span class="nn">TableEntry</span><span class="p">::</span><span class="n">SmallPage</span><span class="p">)</span>
             <span class="nf">.base_addr</span><span class="p">(</span><span class="n">frm</span><span class="nf">.start</span><span class="p">())</span>
@@ -638,6 +674,237 @@ Damit man trotzdem wie auf ein Array zugreifen kann, also der
 </code></pre>
 </div>
 
+<h4 id="frames">Frames</h4>
+<p>Ein Frame ist ein Bereich von Adressen, der genau eine Speicherseite
+groß ist. Wir könnten also <code class="highlighter-rouge">Range&lt;usize&gt;</code> als Typ nutzen. Allerdings
+werden wir auch mit anderen Adressbereichen umgehen, und so hätten wir
+wieder keine Typensicherheit. Da aber Frames Gegensatz zu
+Tabelleneinträgen evtl. nicht nur konstruiert und zugewiesen werden
+(wir werden später einen Frame-Iterator brauchen), nehmen wir diesmal
+ein anderes Muster, um <code class="highlighter-rouge">Range</code> zu erweitern: Wir schaffen einen neuen
+Typ:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">type</span> <span class="n">Address</span>      <span class="o">=</span> <span class="nb">usize</span><span class="p">;</span>
+<span class="k">pub</span> <span class="k">type</span> <span class="n">AddressRange</span> <span class="o">=</span> <span class="n">Range</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="cp">#[derive(Debug)]</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="nf">Frame</span><span class="p">(</span><span class="n">AddressRange</span><span class="p">);</span>
+</code></pre>
+</div>
+<p>Dafür implementieren wir eine Handvoll von Methoden:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">impl</span> <span class="n">Frame</span> <span class="p">{</span>
+    <span class="c">/// Frame aus absoluter Framenummer</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">from_nr</span><span class="p">(</span><span class="n">nr</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Self</span> <span class="p">{</span>
+        <span class="nf">Frame</span> <span class="p">(</span>
+            <span class="n">AddressRange</span> <span class="p">{</span>
+                <span class="n">start</span><span class="p">:</span> <span class="n">nr</span> <span class="o">*</span> <span class="n">PAGE_SIZE</span><span class="p">,</span>
+                <span class="n">end</span><span class="p">:</span> <span class="p">(</span><span class="n">nr</span> <span class="o">*</span> <span class="n">PAGE_SIZE</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="c">/// Frame mit einer gegebenen Startadresse</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">from_start</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="n">Address</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Self</span> <span class="p">{</span>
+        <span class="nd">assert_eq!</span><span class="p">(</span><span class="n">start</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="nf">Frame</span> <span class="p">(</span><span class="n">AddressRange</span> <span class="p">{</span>
+            <span class="n">start</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+            <span class="n">end</span><span class="p">:</span> <span class="n">start</span> <span class="o">+</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="c">/// Frame, der gegebene Adresse enthält</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">from_addr</span><span class="p">(</span><span class="n">addr</span><span class="p">:</span> <span class="n">Address</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Self</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">start</span> <span class="o">=</span> <span class="n">addr</span> <span class="o">&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="nn">Frame</span><span class="p">::</span><span class="nf">from_start</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+    <span class="p">}</span>
+
+	<span class="c">/// Start des Frames</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">start</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Address</span> <span class="p">{</span>
+        <span class="k">self</span><span class="err">.</span><span class="mi">0</span><span class="py">.start</span>
+    <span class="p">}</span>
+
+    <span class="c">/// Ende (inklusiv) des Frames</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">end</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Address</span> <span class="p">{</span>
+        <span class="k">self</span><span class="err">.</span><span class="mi">0</span><span class="py">.end</span>
+    <span class="p">}</span>
+    
+    <span class="c">/// Absolute Nummer des Frames</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">abs</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
+        <span class="k">self</span><span class="err">.</span><span class="mi">0</span><span class="py">.start</span> <span class="err">/</span> <span class="n">PAGE_SIZE</span>
+    <span class="p">}</span>
+
+    <span class="c">/// Nummer der Section, zu dem der Frame gehört</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">section</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
+        <span class="k">self</span><span class="err">.</span><span class="mi">0</span><span class="py">.start</span> <span class="err">/</span> <span class="n">SECTION_SIZE</span>
+    <span class="p">}</span>
+
+    <span class="c">/// Nummer des Frames innerhalb der Section / Seitentabelle</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">rel</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
+        <span class="p">(</span><span class="k">self</span><span class="err">.</span><span class="mi">0</span><span class="py">.start</span> <span class="o">%</span> <span class="n">SECTION_SIZE</span><span class="p">)</span> <span class="err">/</span> <span class="n">PAGE_SIZE</span>
+    <span class="p">}</span>
+
+    <span class="c">/// Iterator über Frames eines Adressbereiches</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">iter</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="n">AddressRange</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">FrameIterator</span> <span class="p">{</span>
+        <span class="n">FrameIterator</span> <span class="p">{</span>
+            <span class="n">range</span><span class="p">:</span> <span class="n">AddressRange</span><span class="p">{</span> <span class="n">start</span><span class="p">:</span> <span class="n">r</span><span class="py">.start</span><span class="p">,</span>
+                                 <span class="n">end</span><span class="p">:</span>   <span class="n">r</span><span class="py">.end</span> <span class="o">-</span> <span class="mi">1</span><span class="p">},</span>
+            <span class="n">current</span><span class="p">:</span> <span class="nf">Some</span><span class="p">(</span><span class="nn">Frame</span><span class="p">::</span><span class="nf">from_addr</span><span class="p">(</span><span class="n">r</span><span class="py">.start</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>Die <code class="highlighter-rouge">iter()</code>-Methode gibt einen Iterator zurück, der natürlich auch
+implementiert werden muss. Die Idee dabei ist, dass für einen
+beliebigen gegebenen Adressbereich alle darin (ggf. teilweise)
+enthaltenen Frames iteriert wird.</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">struct</span> <span class="n">FrameIterator</span> <span class="p">{</span>
+    <span class="n">range</span><span class="p">:</span>   <span class="n">AddressRange</span><span class="p">,</span>
+    <span class="n">current</span><span class="p">:</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">Frame</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">Iterator</span> <span class="k">for</span> <span class="n">FrameIterator</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Item</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">;</span>
+
+    <span class="k">fn</span> <span class="nf">next</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="nn">Self</span><span class="p">::</span><span class="n">Item</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">self</span><span class="py">.current</span><span class="nf">.is_some</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">tmp</span> <span class="o">=</span> <span class="nn">Frame</span><span class="p">::</span><span class="nf">from_start</span><span class="p">(</span><span class="k">self</span><span class="py">.current</span><span class="nf">.as_ref</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">()</span><span class="nf">.start</span><span class="p">());</span>
+            <span class="k">self</span><span class="py">.current</span> <span class="o">=</span>
+                <span class="k">if</span> <span class="n">tmp</span><span class="nf">.end</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="k">self</span><span class="py">.range.end</span> <span class="p">{</span>
+                    <span class="nb">None</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nf">Some</span><span class="p">(</span><span class="nn">Frame</span><span class="p">::</span><span class="nf">from_start</span><span class="p">(</span><span class="n">tmp</span><span class="nf">.start</span><span class="p">()</span> <span class="o">+</span> <span class="n">PAGE_SIZE</span><span class="p">))</span>
+                <span class="p">};</span>
+            <span class="nf">Some</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">None</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="frame-manager">Frame-Manager</h4>
+<p>Der Frame-Manager verwaltet – wie oben diskutiert – ein Bitarray. Er
+enthält zusätzlich eine Indexvariable, die auf den ersten freien Frame
+zeigt. Da Reservierung nicht zusammenhängend sein müssen und
+es eine feste Stückelung gibt, ist Verschnitt kein Problem.</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">const</span> <span class="n">BITVECTOR_SIZE</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="p">(</span><span class="n">MEM_SIZE</span> <span class="err">/</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">*</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">u64</span><span class="o">&gt;</span><span class="p">()</span> <span class="o">*</span> <span class="mi">8</span><span class="p">))</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">;</span>
+
+<span class="c">/// FrameManager verwaltet die Allozierung von Frames.</span>
+<span class="c">/// Jedes Bit in `bits` steht für einen Frame.</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">FrameManager</span> <span class="p">{</span>
+    <span class="n">bits</span><span class="p">:</span> <span class="p">[</span><span class="nb">u64</span><span class="p">;</span> <span class="n">BITVECTOR_SIZE</span><span class="p">],</span>
+    <span class="n">first_free</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Die Suche nach einem freien Frame ist linear und hat somit eine
+Komplexität von \(\mathcal{O}(n)\).</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="c">/// Sucht den nächsten freien Frame und gibt die Nummer zurück</span>
+    <span class="k">fn</span> <span class="nf">find_next_free</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="n">Address</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">ndx</span> <span class="o">=</span> <span class="n">start</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="k">self</span><span class="nf">.get_bit</span><span class="p">(</span><span class="n">ndx</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">ndx</span> <span class="o">&lt;</span> <span class="k">self</span><span class="nf">.bit_length</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">ndx</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">ndx</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>Ansonsten ist der Frame-Manager ziemlich unkomplizert
+implementiert. Einzig bemerkenswert ist vielleicht, dass wir bei ihm das
+<a href="https://en.wikipedia.org/wiki/Singleton_pattern">Singleton-Muster</a>
+implementieren (schließlich wollen wir nicht Gefahr laufen, mehrere
+Instanzen einer so großen Datenstruktur im Speicher und wohlmöglich
+auf dem Stack zu haben.)<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> Daher ist der Konstruktor und die
+statische Variable, die wieder <code class="highlighter-rouge">NoConcurrency</code> nutzt, privat:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="c">/// Erzeugt einen neuen Framemanager</span>
+    <span class="c">///</span>
+    <span class="c">/// # Anmerkung</span>
+    <span class="c">/// Der Framemanager ist ein Singleton, daher ist `new()` nicht öffentlich</span>
+    <span class="c">/// Zugriff erhält man über die assoziierte Methode `get()`.</span>
+    <span class="k">const</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="n">FrameManager</span> <span class="p">{</span>
+        <span class="n">FrameManager</span> <span class="p">{</span>
+            <span class="n">bits</span><span class="p">:</span> <span class="p">[</span><span class="mi">0u64</span><span class="p">;</span> <span class="n">BITVECTOR_SIZE</span><span class="p">],</span>
+            <span class="n">first_free</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+		
+<span class="c">// ...</span>
+
+<span class="c">/// Das Singleton für den Framemanager, nicht geschützt vor nebenläufigen Zugriff</span>
+<span class="k">static</span> <span class="n">FRAME_MANAGER</span><span class="p">:</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="n">FrameManager</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">NoConcurrency</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="nn">FrameManager</span><span class="p">::</span><span class="nf">new</span><span class="p">());</span>
+</code></pre>
+</div>
+<p>Zugriff erhält man über eine assoziierte Methode der <code class="highlighter-rouge">struct
+FrameManager</code>:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="c">/// Gibt eine Referenz auf Framemanager-Singleton zurück</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">get</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="err">'</span><span class="k">static</span> <span class="k">mut</span> <span class="n">FrameManager</span> <span class="p">{</span>
+        <span class="n">FRAME_MANAGER</span><span class="nf">.get</span><span class="p">()</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>Und da wir gerade dabei sind, machen wir auch das Seitenverzeichnis
+auf die gleiche Weise zum Singleton.</p>
+
+<h3 id="in-die-niederungen">In die Niederungen</h3>
+<p>Bisher konnten wir mit den Abstaktionen, die uns Rust zur Verfügung
+gestellt hat, gut auskommen. Das ist nun vorbei: Die eigentliche
+Aktivierung des Pagings verlangt Assembler-Code. Glücklicherweise kann
+dieser ja gut in Rust eingebettet werden mit Hilfe des
+(selbstverständlich unsicheren) Macros <code class="highlighter-rouge">asm!()</code>.</p>
+
+<p>Die Aktivierung erfolgt durch setzen eines bstimmten Bits in einem
+bestimmten Register des CP15-Koprozessors. Dieser Koprozessor ist nur
+konzeptionell ein eigener Prozessor und auf einem Chip zusammen mit
+dem „Rest-ARM“.
+Das Technischen Manual des ARM1176JZF-S schreibt folgende Schritte bei
+der MMU-Aktivierung vor, (vgl. Abschnitt 6.4.1, S. 6-9):</p>
+
+<ol>
+  <li>Programmiere alle relevanten CP15-Registers.</li>
+  <li>Programmere Seitenverzeichnis und Seitentabellen wie benötigt.</li>
+  <li>Schalte den Instruktionscache ab und mache seine Einträge
+     ungültig. Er kann nach dem Start der MMU wieder aktiviert
+     werden.</li>
+  <li>Setze das Bit 0 im CP15-Steuerregister</li>
+</ol>
+
+<p>Das setzen wir so um (und legen gleichzeitig noch fest, dass wir das
+ARMv6-MMU-Protokoll ohne Subpages nutzen wollen:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="k">pub</span> <span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">start</span><span class="p">(){</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">reg</span><span class="p">:</span> <span class="nb">u32</span><span class="p">;</span>
+        <span class="nn">Cache</span><span class="p">::</span><span class="nf">clean</span><span class="p">();</span>
+        <span class="nn">Cache</span><span class="p">::</span><span class="nf">disable_instruction</span><span class="p">();</span>
+        <span class="nn">Cache</span><span class="p">::</span><span class="nf">invalidate_instruction</span><span class="p">();</span>
+        <span class="nn">Cache</span><span class="p">::</span><span class="nf">disable_data</span><span class="p">();</span>
+        <span class="nn">Tlb</span><span class="p">::</span><span class="nf">flush</span><span class="p">();</span>
+        <span class="nd">asm!</span><span class="p">(</span><span class="s">"mrc p15, 0, $0, c1, c0, 0"</span><span class="p">:</span><span class="s">"=r"</span><span class="p">(</span><span class="n">reg</span><span class="p">));</span>
+        <span class="n">reg</span><span class="nf">.set_bit</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span><span class="k">true</span><span class="p">);</span>  <span class="c">// Subpages aus, ARMv6-Erweiterungen an</span>
+        <span class="n">reg</span><span class="nf">.set_bit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="k">true</span><span class="p">);</span>   <span class="c">// MMU an</span>
+        <span class="nn">Cpu</span><span class="p">::</span><span class="nf">data_synchronization_barrier</span><span class="p">();</span>
+        <span class="nd">asm!</span><span class="p">(</span><span class="s">"mcr p15, 0, $0, c1, c0, 0"</span><span class="p">::</span><span class="s">"r"</span><span class="p">(</span><span class="n">reg</span><span class="p">)::</span><span class="s">"volatile"</span><span class="p">);</span>
+        <span class="nn">Cpu</span><span class="p">::</span><span class="nf">prefetch_flush</span><span class="p">();</span>
+        <span class="nn">Cpu</span><span class="p">::</span><span class="nf">data_synchronization_barrier</span><span class="p">();</span>
+        <span class="nn">Cache</span><span class="p">::</span><span class="nf">enable_instruction</span><span class="p">();</span>
+        <span class="nn">Cache</span><span class="p">::</span><span class="nf">enable_data</span><span class="p">();</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>Die anderen <code class="highlighter-rouge">Cpu</code>- und <code class="highlighter-rouge">Cache</code>-Methoden sind ebenfalls Methoden, wo
+die eigentliche Arbeit durch Assemblercode verrichtet wird. Da es hier
+auf jedes einzelne Bit ankommt, gilt die Devise: „Genau das Handbuch
+lesen und exakt nachvollziehen“. Wie dies im einzelnen aussieht, kann
+wieder auf
+<a href="https://github.com/werner-matthias/aihPOS/tree/master/kernel/src/hal/cpu">GitHub</a>
+betrachtet werden.</p>
+<h2 id="schlussbemerkung">Schlussbemerkung</h2>
+<p>Die Implementation einer MMU-Steuerung ist eine heikle Sache. Ich war
+froh, als der Code zum ersten Mal ohne einen „Abort“ aus der
+MMU-Aktivierungsmethode zurückgekehrt ist.</p>
+
+<p>Natürlich kann ein solcher Abort auch abgefangen und eine schöne
+Meldung ausgegenen werden. Und natürlich habe ich das auch gemacht,
+aber davon berichte ich in einer der nächsten Folgen dieses Blogs.</p>
+
 <p><a class="left button tiny radius" href="https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
 
 <p><a class="right button tiny radius r15" href="https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/">Nächster Beitrag in AIHPOS<span class="icon-chevron-right"></span></a></p>
@@ -654,13 +921,24 @@ Damit man trotzdem wie auf ein Array zugreifen kann, also der
     </li>
     <li id="fn:2">
       <p>Das hier beschriebene Paging-Schema entspricht ARMv6. Der
-    Prozessor ist in einigen Aspekten der Sepiecherverwaltung
-    rückwärtskompatible zu ARMv5 (z.B. Supbages), die wir nicht
-    benutzen werden.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    Prozessor ist in einigen Aspekten der Speicherverwaltung
+    rückwärtskompatibel zu ARMv5 (z.B. Supbages). Dies werden wir nicht
+    benutzen.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
       <p>Es gibt auch ein Schema mit zwei Seitenverzeichnissen, das hier
     aber nicht betrachtet wird.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Im pathologischen Fall würde jeder zweite Frame frei sein. Eine
+    Speicherstruktur, die die Adressen (4 Byte) und die Länge
+    (4 Byte) der Leer-Frame-Bereiche speichert, bräuchte dann
+    mindestens \(\frac{131072}{2}\cdot(4 + 4) = 524288\) Byte,
+    also ein halbes MiB!&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>Genau genommen haben wir das Muster bereits beim Framebuffer
+    benutzt.&nbsp;<a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
