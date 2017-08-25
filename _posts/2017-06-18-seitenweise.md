@@ -26,10 +26,10 @@ Wie wir im [vorherigen Beitrag]({% post_url 2017-06-07-aihpos-heap %})
 diskutiert haben, hat die Speicherverwaltung in einem Betriebssystem
 häufig noch zwei zusätzliche Aufgaben jenseits der reinen Zuteilung:
 
- * Prozesse sollen davor geschützt werden, dass sie sich gegenseitig in
-   den Speicher schreiben können;
- * Es soll mehr Speicher genutzt werden können, als real zur Verfügung
- steht.
+* Prozesse sollen davor geschützt werden, dass sie sich gegenseitig in
+  den Speicher schreiben können;
+* Es soll mehr Speicher genutzt werden können, als real zur Verfügung
+steht.
 
 Beides wird in der Regel mit dem gleichen Ansatz realisiert: *gestreute
 Adressierung mit Paging*[^1]. Wir wollen zunächst in SOPHIA nur die
@@ -161,6 +161,39 @@ natürlich gestatten.
 
 ![]({{site.urlimg}}/pmemory-layout.png){:class="img-responsive"}
 
+Natürlich liegen die Prozesse nicht wirklich im gleichen (physischen)
+Speicherbereichen. Vielmehr sind ihre Speicherseiten auf verschiedene
+Platzhalter (_Frames_) im Speicher verteilt. Dies Frames, die ein
+Prozess benutzt, müssen (mit Ausnahme von Speichersharing) in der Tat
+verschieen sein. Daher besteht eine weitere Aufgabe neben der
+Verwaltung der Abbildung (_mapping_) in der Buchhaltung über die
+Framevergabe. Auch hier steht eine Designentscheidung über die Art und
+Weise der Frameverwaltung an.
+
+Solange wir noch kein Demand Paging haben, ist eine Buchführung
+theoretisch redundant: Man kann die belegten Frames ermitteln, indem
+man das Seitenverzeichnis und alle existierenden Seitentabellen
+betrachtet und alle Frames in nichtaufgeführten Adressbereichen als
+leer betrachtet. Aber das ist erstens ein enormer Aufwand, und
+zweitens nicht sehr zukunftsträchtig, da SOPHIA vielleicht tatsächlich
+mal einen virtuellen Speicher erhalten soll. 
+
+Es stellt sich also die Frage, wie die Frameverwaltung organisiert
+werden soll. Möglich wären -- wie beim Heap -- Listen mit leeren
+Frame-Bereichen. Ich habe mich aber für eine andere Lösung
+entschieden, die etwas unkomplizierter ist: In einem großen Bit-Array
+werden alle belegten Frames markiert. Bei einem (beim Pi 1B) maximalen
+RAM vom 512 MiB und einer Seitengröße von 4 kiB gibt es maximal
+
+\\[ \frac{512\cdot 2^{20}}{4096} = 131072\\]
+Frames. Wenn für jedes Frame ein Bit die Belegung anzeigt, hat das
+Bit-Array eine Größe von
+\\[\frac{131072}{8} = 16384\;\mathsf{Byte,}\\] also 16 kiB. Das ist zwar (vermutlich)
+größer eine Freiframetabelle oder ein ähnliches Konstrukt im Mittel
+benötigen würde, aber der _Worst Case_ ist bei der Freispeichertabelle
+wesentlich schlechter.[^4] 
+
+
 ### Datenstrukturen
 Nachdem wir die Designentscheidungen getroffen haben, können die
 Datenstrukturen festgelegt werden.
@@ -273,7 +306,7 @@ ausführbaren Code enthalten darf:
 Wenn dann ein Mapping -- also eine Abbildung zwischen logischen und
 physischen Adressen -- festgelegt wird, werden einfach die Methoden
 der Builder-struct verkettet, bis der gewünschte Eintrag
-entstanden ist, wie folgdendes Beispiel aus dem Initalisierungscode
+entstanden ist, wie folgendes Beispiel aus dem Initalisierungscode
 zeigt:
 ~~~ rust
         kpage_table[frm.rel()] = MemoryBuilder::<TableEntry>::new_entry(TableEntry::SmallPage)
@@ -340,17 +373,255 @@ impl IndexMut<usize> for PageTable {
 }
 ~~~
 
+#### Frames
+Ein Frame ist ein Bereich von Adressen, der genau eine Speicherseite
+groß ist. Wir könnten also `Range<usize>` als Typ nutzen. Allerdings
+werden wir auch mit anderen Adressbereichen umgehen, und so hätten wir
+wieder keine Typensicherheit. Da aber Frames Gegensatz zu
+Tabelleneinträgen evtl. nicht nur konstruiert und zugewiesen werden
+(wir werden später einen Frame-Iterator brauchen), nehmen wir diesmal
+ein anderes Muster, um `Range` zu erweitern: Wir schaffen einen neuen
+Typ:
+~~~ rust
+pub type Address      = usize;
+pub type AddressRange = Range<Address>;
+
+#[derive(Debug)]
+pub struct Frame(AddressRange);
+~~~
+Dafür implementieren wir eine Handvoll von Methoden:
+~~~ rust
+impl Frame {
+    /// Frame aus absoluter Framenummer
+    pub fn from_nr(nr: usize) -> Self {
+        Frame (
+            AddressRange {
+                start: nr * PAGE_SIZE,
+                end: (nr * PAGE_SIZE) + (PAGE_SIZE - 1),
+            })
+    }
+
+    /// Frame mit einer gegebenen Startadresse
+    pub fn from_start(start: Address) -> Self {
+        assert_eq!(start & (PAGE_SIZE - 1), 0);
+        Frame (AddressRange {
+            start: start,
+            end: start + (PAGE_SIZE - 1),
+        })
+    }
+
+    /// Frame, der gegebene Adresse enthält
+    pub fn from_addr(addr: Address) -> Self {
+        let start = addr & !(PAGE_SIZE - 1);
+        Frame::from_start(start)
+    }
+
+	/// Start des Frames
+    pub fn start(&self) -> Address {
+        self.0.start
+    }
+
+    /// Ende (inklusiv) des Frames
+    pub fn end(&self) -> Address {
+        self.0.end
+    }
+    
+    /// Absolute Nummer des Frames
+    pub fn abs(&self) -> usize {
+        self.0.start / PAGE_SIZE
+    }
+
+    /// Nummer der Section, zu dem der Frame gehört
+    pub fn section(&self) -> usize {
+        self.0.start / SECTION_SIZE
+    }
+
+    /// Nummer des Frames innerhalb der Section / Seitentabelle
+    pub fn rel(&self) -> usize {
+        (self.0.start % SECTION_SIZE) / PAGE_SIZE
+    }
+
+    /// Iterator über Frames eines Adressbereiches
+    pub fn iter(r: AddressRange) -> FrameIterator {
+        FrameIterator {
+            range: AddressRange{ start: r.start,
+                                 end:   r.end - 1},
+            current: Some(Frame::from_addr(r.start))
+        }
+    }
+}
+~~~
+Die `iter()`-Methode gibt einen Iterator zurück, der natürlich auch
+implementiert werden muss. Die Idee dabei ist, dass für einen
+beliebigen gegebenen Adressbereich alle darin (ggf. teilweise)
+enthaltenen Frames iteriert wird.
+~~~ rust
+pub struct FrameIterator {
+    range:   AddressRange,
+    current: Option<Frame>,
+}
+
+impl Iterator for FrameIterator {
+    type Item = Frame;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.current.is_some() {
+            let tmp = Frame::from_start(self.current.as_ref().unwrap().start());
+            self.current =
+                if tmp.end() >= self.range.end {
+                    None
+                } else {
+                    Some(Frame::from_start(tmp.start() + PAGE_SIZE))
+                };
+            Some(tmp)
+        } else {
+            None
+        }
+    }
+}
+~~~
+#### Frame-Manager
+Der Frame-Manager verwaltet -- wie oben diskutiert -- ein Bitarray. Er
+enthält zusätzlich eine Indexvariable, die auf den ersten freien Frame
+zeigt. Da Reservierung nicht zusammenhängend sein müssen und
+es eine feste Stückelung gibt, ist Verschnitt kein Problem.
+~~~ rust
+const BITVECTOR_SIZE: usize = (MEM_SIZE / (PAGE_SIZE * mem::size_of::<u64>() * 8)) as usize;
+
+/// FrameManager verwaltet die Allozierung von Frames.
+/// Jedes Bit in `bits` steht für einen Frame.
+pub struct FrameManager {
+    bits: [u64; BITVECTOR_SIZE],
+    first_free: usize,
+}
+~~~
+
+Die Suche nach einem freien Frame ist linear und hat somit eine
+Komplexität von \\(\mathcal{O}(n)\\).
+~~~ rust
+    /// Sucht den nächsten freien Frame und gibt die Nummer zurück
+    fn find_next_free(&self, start: Address) -> usize {
+        let mut ndx = start;
+        while (self.get_bit(ndx)) && (ndx < self.bit_length()) {
+            ndx += 1;
+        }
+        ndx
+    }
+~~~
+Ansonsten ist der Frame-Manager ziemlich unkomplizert
+implementiert. Einzig bemerkenswert ist vielleicht, dass wir bei ihm das
+[Singleton-Muster](https://en.wikipedia.org/wiki/Singleton_pattern)
+implementieren (schließlich wollen wir nicht Gefahr laufen, mehrere
+Instanzen einer so großen Datenstruktur im Speicher und wohlmöglich
+auf dem Stack zu haben.)[^5] Daher ist der Konstruktor und die
+statische Variable, die wieder `NoConcurrency` nutzt, privat: 
+~~~ rust
+    /// Erzeugt einen neuen Framemanager
+    ///
+    /// # Anmerkung
+    /// Der Framemanager ist ein Singleton, daher ist `new()` nicht öffentlich
+    /// Zugriff erhält man über die assoziierte Methode `get()`.
+    const fn new() -> FrameManager {
+        FrameManager {
+            bits: [0u64; BITVECTOR_SIZE],
+            first_free: 0,
+        }
+    }
+		
+// ...
+
+/// Das Singleton für den Framemanager, nicht geschützt vor nebenläufigen Zugriff
+static FRAME_MANAGER: NoConcurrency<FrameManager> = NoConcurrency::new(FrameManager::new());
+~~~
+Zugriff erhält man über eine assoziierte Methode der `struct
+FrameManager`:
+~~~ rust
+    /// Gibt eine Referenz auf Framemanager-Singleton zurück
+    pub fn get() -> &'static mut FrameManager {
+        FRAME_MANAGER.get()
+    }
+~~~
+Und da wir gerade dabei sind, machen wir auch das Seitenverzeichnis
+auf die gleiche Weise zum Singleton.
+
+### In die Niederungen
+Bisher konnten wir mit den Abstaktionen, die uns Rust zur Verfügung
+gestellt hat, gut auskommen. Das ist nun vorbei: Die eigentliche
+Aktivierung des Pagings verlangt Assembler-Code. Glücklicherweise kann
+dieser ja gut in Rust eingebettet werden mit Hilfe des
+(selbstverständlich unsicheren) Macros `asm!()`.
+
+Die Aktivierung erfolgt durch setzen eines bstimmten Bits in einem
+bestimmten Register des CP15-Koprozessors. Dieser Koprozessor ist nur
+konzeptionell ein eigener Prozessor und auf einem Chip zusammen mit
+dem "Rest-ARM".
+Das Technischen Manual des ARM1176JZF-S schreibt folgende Schritte bei
+der MMU-Aktivierung vor, (vgl. Abschnitt 6.4.1, S. 6-9):
+
+1. Programmiere alle relevanten CP15-Registers.
+2. Programmere Seitenverzeichnis und Seitentabellen wie benötigt.
+3. Schalte den Instruktionscache ab und mache seine Einträge
+        ungültig. Er kann nach dem Start der MMU wieder aktiviert
+        werden.
+4. Setze das Bit 0 im CP15-Steuerregister 		
+
+Das setzen wir so um (und legen gleichzeitig noch fest, dass wir das
+ARMv6-MMU-Protokoll ohne Subpages nutzen wollen:
+~~~ rust
+    pub unsafe fn start(){
+        let mut reg: u32;
+        Cache::clean();
+        Cache::disable_instruction();
+        Cache::invalidate_instruction();
+        Cache::disable_data();
+        Tlb::flush();
+        asm!("mrc p15, 0, $0, c1, c0, 0":"=r"(reg));
+        reg.set_bit(23,true);  // Subpages aus, ARMv6-Erweiterungen an
+        reg.set_bit(0,true);   // MMU an
+        Cpu::data_synchronization_barrier();
+        asm!("mcr p15, 0, $0, c1, c0, 0"::"r"(reg)::"volatile");
+        Cpu::prefetch_flush();
+        Cpu::data_synchronization_barrier();
+        Cache::enable_instruction();
+        Cache::enable_data();
+    }
+~~~
+Die anderen `Cpu`- und `Cache`-Methoden sind ebenfalls Methoden, wo
+die eigentliche Arbeit durch Assemblercode verrichtet wird. Da es hier
+auf jedes einzelne Bit ankommt, gilt die Devise: "Genau das Handbuch
+lesen und exakt nachvollziehen". Wie dies im einzelnen aussieht, kann
+wieder auf
+[GitHub](https://github.com/werner-matthias/aihPOS/tree/master/kernel/src/hal/cpu)
+betrachtet werden. 
+## Schlussbemerkung
+Die Implementation einer MMU-Steuerung ist eine heikle Sache. Ich war
+froh, als der Code zum ersten Mal ohne einen "Abort" aus der
+MMU-Aktivierungsmethode zurückgekehrt ist.
+
+Natürlich kann ein solcher Abort auch abgefangen und eine schöne
+Meldung ausgegenen werden. Und natürlich habe ich das auch gemacht,
+aber davon berichte ich in einer der nächsten Folgen dieses Blogs.
+
 [^1]: Umgangssprachlich wird mit *Paging* fast immer *Demand Paging*,
         also die virtuelle Speicherverwaltung mit Auslagerung auf die
         Festplatte gemeint. Jedoch lässt sich eine seitenbasierte gestreute
         Adressierung auch sinnvoll ohne Auslagerung einsetzen.
 
 [^2]: Das hier beschriebene Paging-Schema entspricht ARMv6. Der
-        Prozessor ist in einigen Aspekten der Sepiecherverwaltung
-        rückwärtskompatible zu ARMv5 (z.B. Supbages), die wir nicht
-        benutzen werden.
+        Prozessor ist in einigen Aspekten der Speicherverwaltung
+        rückwärtskompatibel zu ARMv5 (z.B. Supbages). Dies werden wir nicht
+        benutzen.
 
 [^3]: Es gibt auch ein Schema mit zwei Seitenverzeichnissen, das hier
         aber nicht betrachtet wird.
-{% include next-previous-post-in-category %}
 
+[^4]: Im pathologischen Fall würde jeder zweite Frame frei sein. Eine
+        Speicherstruktur, die die Adressen (4&nbsp;Byte) und die Länge
+        (4&nbsp;Byte) der Leer-Frame-Bereiche speichert, bräuchte dann
+        mindestens \\(\frac{131072}{2}\cdot(4 + 4) = 524288\\) Byte,
+        also ein halbes MiB!
+		
+[^5]: Genau genommen haben wir das Muster bereits beim Framebuffer
+        benutzt.
+
+{% include next-previous-post-in-category %}

@@ -335,24 +335,25 @@ dafür sorgen, dass unser „Kernel“ von der Adresse 0x08000 lauffähig ist, u
 „normalen“ Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte
 Anforderungen haben, müssen wir es ihm mit einem <a href="https://sourceware.org/binutils/docs/ld/Scripts.html">Linker-Skript</a> mitteilen. Unser Linker-Skript ist (noch) sehr einfach:</p>
 
-<pre><code class="language-ld">ENTRY(kernel_main)
-SECTIONS
-{
-    /* Starts at LOADER_ADDR. */
-    . = 0x8000;
-    .text :
-    {
-        KEEP(*(.text.kernel_main))
-        *(.text)
-    }	
-    .bss :
-    {
-        bss = .;
-        *(.bss)
-    }
-}
+<div class="language-cfscript highlighter-rouge"><pre class="highlight"><code><span class="nf">ENTRY</span><span class="p">(</span><span class="nx">kernel_main</span><span class="p">)</span>
+<span class="nx">SECTIONS</span>
+<span class="p">{</span>
+    <span class="cm">/* Starts at LOADER_ADDR. */</span>
+    <span class="p">.</span> <span class="o">=</span> <span class="mh">0x8000</span><span class="p">;</span>
+    <span class="p">.</span><span class="n">text</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="nf">KEEP</span><span class="p">(</span><span class="o">*</span><span class="p">(.</span><span class="nx">text.kernel_main</span><span class="p">))</span>
+        <span class="o">*</span><span class="p">(.</span><span class="nx">text</span><span class="p">)</span>
+    <span class="p">}</span>	
+    <span class="p">.</span><span class="nx">bss</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="nx">bss</span> <span class="o">=</span> <span class="p">.;</span>
+        <span class="o">*</span><span class="p">(.</span><span class="nx">bss</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
-<p>Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code kernel_main heißt,<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> und dass der Code an Adresse 0x0800 beginnt und zwar mit <code class="highlighter-rouge">kernel_main</code>.</p>
+</div>
+<p>Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code <code class="highlighter-rouge">kernel_main</code> heißt,<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> und dass der Code an Adresse 0x0800 beginnt und zwar mit <code class="highlighter-rouge">kernel_main</code>.</p>
 
 <h3 id="binärfile">Binärfile</h3>
 

@@ -153,18 +153,33 @@ pub enum AllocErr {
 Alle anderen Dinge braucht man zunächst einmal nicht (können aber später zur besseren Effizienz genutzt werden). Es ist somit jetzt einfach, die Kompatibilität zum früheren
 Interface wieder herzustellen.
 
-Die Allokator-API gilt für alle Allokatoren, Rust unterstützt Hierarchien von Allokatoren. Am Ende wird irgendwann die Speicherverwaltung des Betriebssystems von die
-Standardbibliothek gerufen. Existiert kein solches (wie in unserem Fall) oder wird nur die Standardbibliothek nicht eingebunden, aber trotzdem Crates benutzt, die
-Allozierungen vornehmen wollen, muss ein globaler Allokator angegeben werden. Dies wird einfach gemacht, indem einer Instanz einer Allokator-Struktur mit dem Attribut
-`#[global_allocator]` dazu erklärt wird. Warum bei der Fehlermeldung oben dieses Attribut -- das übrigens auch noch keinen Eintrag im
-[Unstable Book](https://doc.rust-lang.org/unstable-book/) hat -- nicht genannt wurde, sondern `#[default_lib_allocator]` ist mir nicht ganz klar; vermutlich ist das bloß
+Die Allokator-API gilt für alle Allokatoren, Rust unterstützt
+Hierarchien von Allokatoren. Am Ende wird irgendwann die
+Speicherverwaltung des Betriebssystems von die 
+Standardbibliothek gerufen. Existiert kein solches (wie in unserem
+Fall) oder wird nur die Standardbibliothek nicht eingebunden, aber
+trotzdem Crates benutzt, die Allozierungen vornehmen wollen, muss ein
+globaler Allokator angegeben werden. Dies wird einfach gemacht, indem
+einer Instanz einer Allokator-Struktur mit dem Attribut
+`#[global_allocator]` dazu erklärt wird. Warum bei der Fehlermeldung
+oben dieses Attribut -- das übrigens auch noch keinen Eintrag im 
+[Unstable Book](https://doc.rust-lang.org/unstable-book/) hat -- nicht
+genannt wurde, sondern `#[default_lib_allocator]` ist mir nicht ganz
+klar; vermutlich ist das bloß 
 noch nicht stabilisiert.
 
 ### Am Rande des Speichers
-Ich nutze die Gelegenheit und implementiere eine eigene Heapverwaltung. Dazu nutze ich das *Boundary-Tag-Verfahren* [^3]. Das hat den Vorteil, dass die Wiedereingliederung
-von zurückgegebenen Speicher eine konstante Komplexität \\(\mathcal{O}(1)\\) hat, jedoch auf Kosten des Speicherverbrauchs: Jeder belegte Speicherabschnitt hat zwei Tags
-Verwaltungsinformation, in denen die Größe des Abschnitts und Statusflags stehen. In meiner Implementation ist ein Tag ein `usize` (genauer: eine `struct` mit einem
-`usize`), so dass jeweils pro Block 8 Bytes Overhead entstehen. Da es durch die Alignmentanforderungen ohnehin zu Verschnitt kommt, halte ich dies für vertretbar.
+Ich nutze die Gelegenheit und implementiere eine eigene
+Heapverwaltung. Dazu nutze ich das *Boundary-Tag-Verfahren* [^3]. Das
+hat den Vorteil, dass die Wiedereingliederung von zurückgegebenen
+Speicher eine konstante Komplexität \\(\mathcal{O}(1)\\) hat, jedoch
+auf Kosten des Speicherverbrauchs: Jeder belegte Speicherabschnitt hat
+zwei Tags Verwaltungsinformation, in denen die Größe des Abschnitts
+und Statusflags stehen. In meiner Implementation ist ein Tag ein
+`usize` (genauer: eine `struct` mit einem `usize`), so dass jeweils
+pro Block 8 Bytes Overhead entstehen. Da es durch die
+Alignmentanforderungen ohnehin zu Verschnitt kommt, halte ich dies für
+vertretbar. 
 
 ![]({{site.urlimg}}/boundary.png){:class="img-responsive"}
 
@@ -172,17 +187,21 @@ Um einen Speicherbereich zu belegen, wird einfach die Freispeicherliste durchsuc
 ~~~ rust
 {% github_sample werner-matthias/aihPOS/blob/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap/mod.rs 72 80 %}
 ~~~
-Die eigentliche "Arbeit" liegt bei der `allocate`-Methode des Speicherabschnitts: Hier wir überprüft, ob der Abschnitt als Ganzes belegt werden soll, oder ob er
-aufgeteilt wird. Im letzteren Fall wird die Teilung durchgeführt; der abgetrennte Bereich nimmt den Platz des ursprünglichen Abschnittes in der Liste ein.
+Die eigentliche "Arbeit" liegt bei der `allocate`-Methode des
+Speicherabschnitts: Hier wir überprüft, ob der Abschnitt als Ganzes
+belegt werden soll, oder ob er aufgeteilt wird. Im letzteren Fall wird
+die Teilung durchgeführt; der abgetrennte Bereich nimmt den Platz des
+ursprünglichen Abschnittes in der Liste ein. 
 ~~~ rust
 {% github_sample werner-matthias/aihPOS/blob/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap/memory_region.rs 224 260 %}
 ~~~
 Die Komplexität der Reservierung ist immer noch \\(\mathcal{O}(n)\\), wobei \\(n\\) die Anzahl der freien Speicherblöcke ist.
-Im Unterschied zur vorherigen Lösung muss bei der Wiedereingliederung die Liste *nicht* durchsucht werden:
+Im Unterschied zur vorherigen Lösung muss bei der Wiedereingliederung
+die Liste *nicht* durchsucht werden: 
 ~~~ rust
 {% github_sample werner-matthias/aihPOS/blob/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap/mod.rs 82 104 %}
 ~~~
-Das ist natürlich nur ein des Gesamtcodes, der vollständige Code ist wieder
+Das ist natürlich nur ein Teil des Gesamtcodes, der vollständige Code ist wieder
 auf [GibHub](https://github.com/werner-matthias/aihPOS/tree/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap) zu finden.
 
 ## Blick zurück in Freude 

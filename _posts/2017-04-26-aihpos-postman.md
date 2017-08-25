@@ -104,14 +104,14 @@ positioniert werden kann.
 
 Zunächst definieren wir eine Struktur:
 {% highlight rust linenos %}
-{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 12 29 %}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 12 30 %}
 {% endhighlight %}
 
 `screen` ist dabei die Referenz auf den eigentlichen Framebuffer-Speicherbereich, die anderen Felder sollten selbsterklärend sein. `screen` und die resultierende
 Speicherzeilenlänge (`pitch`) werden bei der Initialisierung abgefragt, nachdem die Grundparameter vorgegeben werden:
 
 {% highlight rust linenos %}
-{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 33 87 %}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 33 93 %}
 {% endhighlight %}
 
 Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,[^5] indem wir
@@ -127,7 +127,7 @@ Wenn jetzt ein Pixel in einer bestimmten Farbe dargestellt werden soll, muss ent
 |            | Transparenz  | Rotanteil         | Grünanteil  | Blauanteil   |
 |            | (nicht genutzt) | (0--255) | (0--255) | (0--255) |
 {% highlight rust linenos %}
-{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 88 90 %}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/debug/framebuffer.rs 95 99 %}
 {% endhighlight %}
 
 Jetzt zeigt es sich von Vorteil, dass wir eine Farbtiefe gewählt haben, die der Wortbreite entspricht: Dadurch wird die Indexierung sehr einfach. Bei 24 Bit Farbtiefe,
@@ -306,9 +306,13 @@ nutzlos. Rust kennt aber das Konzept der internen Veränderbarkeit (_Interior mu
 haben. Damit brauchen wir erst mal kein veränderbares `static` mehr. Allerdings muss Rust immer noch überzeugt werden, dass der Zugriff auf den veränderbaren Wert bei
 Nebenläufigkeit sicher ist.
 
-Um mit Nebenläufigkeit umzugehen, kennt Rust zwei Traits: Send und `Sync`. Es sind sogenannte Marker-Traits, die selbst keine Methoden verlangen. `Send` sagt aus, dass es
-bei nebenläufiger Nutzung eines Wertes keine _race condition_ gibt, während `Sync` dies für die nebenläufige Nutzung seiner Referenz zusichert. Beide Traits sind selbst
-wieder unsicher, was heißt, dass der Compiler die Einhaltung der Garantien nicht überprüfen kann. 
+Um mit Nebenläufigkeit umzugehen, kennt Rust zwei Traits: `Send` und
+`Sync`. Es sind sogenannte Marker-Traits, die selbst keine Methoden
+verlangen. `Send` sagt aus, dass es bei nebenläufiger Nutzung eines
+Wertes keine _race condition_ gibt, während `Sync` dies für die
+nebenläufige Nutzung seiner Referenz zusichert. Beide Traits sind
+selbst wieder unsicher, was heißt, dass der Compiler die Einhaltung
+der Garantien nicht überprüfen kann.  
 
 {% highlight rust linenos %}
 use core::cell::UnsafeCell;
@@ -338,6 +342,70 @@ impl<'b, T> NoConcurrency<T>{
     }
 }
 {% endhighlight %}
+Jetzt können wir uns den Framebuffer anlegen:
+~~~ rust
+static _KPRINT_FB: NoConcurrency<Option<Framebuffer<'static>>> = NoConcurrency::new(None);
+~~~
+Er ist in einer `Option` verpackt, damit er beim ersten Aufruf
+initialisert wird. Dies kann nicht direkt geschehen, da die
+Initialisierung *keine* konstante Funktion ist, also eine, die schon
+zur Übersetzungszeit vollständig berechnet werden kann.
+Ist also der interne Wert von `_KPRINT_FB` `None`, muss die
+Initialisierung gerufen werden. Die beiden Funktionen, die den
+Framebuffer nutzen, erledigen dies:
+~~~ rust
+#[doc(hidden)]
+pub fn fkprintc(arg: Arguments,color: u32) {
+    let fbo = _KPRINT_FB.get();
+    match *fbo {
+        Some(ref mut fb) => {
+            let c_old = fb.get_color();
+            fb.set_color(color);
+            write(fb,arg).expect("");
+            fb.set_color(c_old);
+        },
+        None => {
+            kprint_init();
+            fkprintc(arg, color);
+        }
+    }
+}
+
+#[doc(hidden)]
+pub fn fkprint(arg: Arguments) {
+    let fbo = _KPRINT_FB.get();
+    match *fbo {
+        Some(ref mut fb) => {
+            write(fb,arg).expect("");
+        },
+        None => {
+            kprint_init();
+            fkprint(arg);
+        }
+    }
+}
+
+#[doc(hidden)]
+pub fn kprint_init() {
+    _KPRINT_FB.set(Some(::framebuffer::Framebuffer::new()));
+    kprint_clear()
+}
+~~~
+Zur Erleichterung habe ich noch ein Macro geschrieben, dass ich zum
+Debuggen einsetzen werde. Ich möchte nämlich nicht zwischen meinen
+Aufrufen wechseln, je nachdem, ob ich eine die Schrift in einer
+anderen Farbe ausgeben will oder nicht. Leider kennt Rust ja keine
+Default-Argumente, aber auf Macroebene ist dies kein Problem:
+~~~ rust
+#[macro_export]
+/// Consolenausgabe vom Kernel aus (_kernel print_).
+/// Dient im Wesentlichen für Debugging-Zwecke während der Kernel-Entwicklung
+macro_rules! kprint {
+    ($($a: expr),*) => { $crate::kprint::fkprint(format_args!($($a),*)); };
+    ($($a: expr),* ; $c: ident) => { $crate::kprint::fkprintc(format_args!($($a),*),$crate::kprint::$c); };
+    ($($a: expr),* ; $c: expr) => { $crate::kprint::fkprintc(format_args!($($a),*),$c); }
+}
+~~~
 
 ## Der Linker zickt mal wieder
 

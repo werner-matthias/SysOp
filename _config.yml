@@ -61,7 +61,6 @@ exclude:
     - .sass-cache
     - Gemfile
     - Gemfile.lock
-    - LICENSE
     - README.md
     - INSTALL.md
 
@@ -105,6 +104,26 @@ defaults:
       comments: false           # change if staticman is stable
       author: mwerner           # Default author for pages
       show_meta: true 	        # Show metadata for all pages
+
+############################################
+# Octopress
+############################################
+# Default extension for new posts and pages
+post_ext: md
+page_ext: md
+
+# Default templates for posts and pages
+# Found in _templates/
+post_layout: post
+page_layout: page
+
+# Format titles with titlecase?
+titlecase: true
+
+# Change default template file (in _templates/)
+post_template: page-fullwidth
+page_template: page-fullwidth
+draft_template: default
 
 ############################################
 # SEO

@@ -42,7 +42,7 @@ dafür sorgen, dass unser "Kernel" von der Adresse 0x08000 lauffähig ist, und z
 "normalen" Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte
 Anforderungen haben, müssen wir es ihm mit einem [Linker-Skript][4] mitteilen. Unser Linker-Skript ist (noch) sehr einfach: 
 
-~~~ ld
+~~~ cfscript
 ENTRY(kernel_main)
 SECTIONS
 {
@@ -60,7 +60,7 @@ SECTIONS
     }
 }
 ~~~
-Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code kernel_main heißt,[^2] und dass der Code an Adresse 0x0800 beginnt und zwar mit `kernel_main`.
+Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code `kernel_main` heißt,[^2] und dass der Code an Adresse 0x0800 beginnt und zwar mit `kernel_main`.
 
 ### Binärfile
 

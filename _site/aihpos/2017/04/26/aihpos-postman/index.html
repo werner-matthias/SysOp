@@ -1294,7 +1294,8 @@ positioniert werden kann.</p>
 15
 16
 17
-18</pre></td><td class="code"><pre><span class="k">const</span> <span class="n">DEF_BG_COLOR</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">0x7f7f7f7f</span><span class="p">;</span>
+18
+19</pre></td><td class="code"><pre><span class="k">const</span> <span class="n">DEF_BG_COLOR</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">0x7f7f7f7f</span><span class="p">;</span>
 
 <span class="cp">#[allow(dead_code)]</span>
 <span class="k">pub</span> <span class="k">struct</span> <span class="n">Framebuffer</span><span class="o">&lt;</span><span class="err">'</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">{</span>
@@ -1311,7 +1312,8 @@ positioniert werden kann.</p>
     <span class="n">virtual_height</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
     <span class="n">x_offset</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
     <span class="n">y_offset</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
-    <span class="n">size</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span><span class="w">
+    <span class="n">size</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
+<span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><code class="highlighter-rouge">screen</code> ist dabei die Referenz auf den eigentlichen Framebuffer-Speicherbereich, die anderen Felder sollten selbsterklärend sein. <code class="highlighter-rouge">screen</code> und die resultierende
@@ -1370,7 +1372,13 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
 51
 52
 53
-54</pre></td><td class="code"><pre><span class="c">/// Legt einen neuen Framebuffer an und setzt die Parameter.</span>
+54
+55
+56
+57
+58
+59
+60</pre></td><td class="code"><pre><span class="c">/// Legt einen neuen Framebuffer an und setzt die Parameter.</span>
 <span class="c">/// Die Voreinstellung des Bootloaders wird ignoriert.</span>
 <span class="c">///  *Todo*:  Gegebenenfalls sollten die Einstellungen abgefragt und verwendet werden. Allerdings erfordert dies mindestens</span>
 <span class="c">///   bei der Farbtiefe größere Änderungen.</span>
@@ -1423,7 +1431,13 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
         <span class="n">pitch</span><span class="p">:</span> <span class="n">pitch</span><span class="p">,</span>
         <span class="n">fg_color</span><span class="p">:</span> <span class="n">DEF_COLOR</span><span class="p">,</span> <span class="n">bg_color</span><span class="p">:</span> <span class="n">DEF_BG_COLOR</span><span class="p">,</span>
         <span class="n">virtual_width</span><span class="p">:</span> <span class="n">FB_WIDTH</span><span class="p">,</span>
-        <span class="n">virtual_height</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">FB_HEIGHT</span><span class="p">,</span><span class="w">
+        <span class="n">virtual_height</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">FB_HEIGHT</span><span class="p">,</span>
+        <span class="n">x_offset</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">y_offset</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">size</span><span class="p">:</span> <span class="n">size</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">,</span>
+    <span class="p">};</span>
+    <span class="n">fb</span>
+<span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> indem wir
@@ -1464,9 +1478,13 @@ einen virtuellen Ringpuffer aufbauen, siehe Abschnitt „<a href="#scrollen">Scr
 
 <figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre><span class="n">x_offset</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-<span class="n">y_offset</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-<span class="n">size</span><span class="p">:</span> <span class="n">size</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">,</span><span class="w">
+3
+4
+5</pre></td><td class="code"><pre><span class="c">/// Zeichnet einen einzelnen Pixel in der gegeben Farbe an die</span>
+<span class="c">/// gegebene Position</span>
+<span class="k">fn</span> <span class="nf">draw_pixel</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span>  <span class="n">color</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Jetzt zeigt es sich von Vorteil, dass wir eine Farbtiefe gewählt haben, die der Wortbreite entspricht: Dadurch wird die Indexierung sehr einfach. Bei 24 Bit Farbtiefe,
@@ -1762,9 +1780,13 @@ nutzlos. Rust kennt aber das Konzept der internen Veränderbarkeit (<em>Interior
 haben. Damit brauchen wir erst mal kein veränderbares <code class="highlighter-rouge">static</code> mehr. Allerdings muss Rust immer noch überzeugt werden, dass der Zugriff auf den veränderbaren Wert bei
 Nebenläufigkeit sicher ist.</p>
 
-<p>Um mit Nebenläufigkeit umzugehen, kennt Rust zwei Traits: Send und <code class="highlighter-rouge">Sync</code>. Es sind sogenannte Marker-Traits, die selbst keine Methoden verlangen. <code class="highlighter-rouge">Send</code> sagt aus, dass es
-bei nebenläufiger Nutzung eines Wertes keine <em>race condition</em> gibt, während <code class="highlighter-rouge">Sync</code> dies für die nebenläufige Nutzung seiner Referenz zusichert. Beide Traits sind selbst
-wieder unsicher, was heißt, dass der Compiler die Einhaltung der Garantien nicht überprüfen kann.</p>
+<p>Um mit Nebenläufigkeit umzugehen, kennt Rust zwei Traits: <code class="highlighter-rouge">Send</code> und
+<code class="highlighter-rouge">Sync</code>. Es sind sogenannte Marker-Traits, die selbst keine Methoden
+verlangen. <code class="highlighter-rouge">Send</code> sagt aus, dass es bei nebenläufiger Nutzung eines
+Wertes keine <em>race condition</em> gibt, während <code class="highlighter-rouge">Sync</code> dies für die
+nebenläufige Nutzung seiner Referenz zusichert. Beide Traits sind
+selbst wieder unsicher, was heißt, dass der Compiler die Einhaltung
+der Garantien nicht überprüfen kann.</p>
 
 <figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -1818,6 +1840,71 @@ wieder unsicher, was heißt, dass der Compiler die Einhaltung der Garantien nich
     <span class="p">}</span>
 <span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Jetzt können wir uns den Framebuffer anlegen:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">_KPRINT_FB</span><span class="p">:</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Framebuffer</span><span class="o">&lt;</span><span class="err">'</span><span class="k">static</span><span class="o">&gt;&gt;&gt;</span> <span class="o">=</span> <span class="nn">NoConcurrency</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="nb">None</span><span class="p">);</span>
+</code></pre>
+</div>
+<p>Er ist in einer <code class="highlighter-rouge">Option</code> verpackt, damit er beim ersten Aufruf
+initialisert wird. Dies kann nicht direkt geschehen, da die
+Initialisierung <em>keine</em> konstante Funktion ist, also eine, die schon
+zur Übersetzungszeit vollständig berechnet werden kann.
+Ist also der interne Wert von <code class="highlighter-rouge">_KPRINT_FB</code> <code class="highlighter-rouge">None</code>, muss die
+Initialisierung gerufen werden. Die beiden Funktionen, die den
+Framebuffer nutzen, erledigen dies:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="nf">doc</span><span class="p">(</span><span class="n">hidden</span><span class="p">)]</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">fkprintc</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span> <span class="n">Arguments</span><span class="p">,</span><span class="n">color</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">fbo</span> <span class="o">=</span> <span class="n">_KPRINT_FB</span><span class="nf">.get</span><span class="p">();</span>
+    <span class="k">match</span> <span class="o">*</span><span class="n">fbo</span> <span class="p">{</span>
+        <span class="nf">Some</span><span class="p">(</span><span class="k">ref</span> <span class="k">mut</span> <span class="n">fb</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">c_old</span> <span class="o">=</span> <span class="n">fb</span><span class="nf">.get_color</span><span class="p">();</span>
+            <span class="n">fb</span><span class="nf">.set_color</span><span class="p">(</span><span class="n">color</span><span class="p">);</span>
+            <span class="nf">write</span><span class="p">(</span><span class="n">fb</span><span class="p">,</span><span class="n">arg</span><span class="p">)</span><span class="nf">.expect</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+            <span class="n">fb</span><span class="nf">.set_color</span><span class="p">(</span><span class="n">c_old</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="nb">None</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="nf">kprint_init</span><span class="p">();</span>
+            <span class="nf">fkprintc</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">color</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#[doc(hidden)]</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">fkprint</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span> <span class="n">Arguments</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">fbo</span> <span class="o">=</span> <span class="n">_KPRINT_FB</span><span class="nf">.get</span><span class="p">();</span>
+    <span class="k">match</span> <span class="o">*</span><span class="n">fbo</span> <span class="p">{</span>
+        <span class="nf">Some</span><span class="p">(</span><span class="k">ref</span> <span class="k">mut</span> <span class="n">fb</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="nf">write</span><span class="p">(</span><span class="n">fb</span><span class="p">,</span><span class="n">arg</span><span class="p">)</span><span class="nf">.expect</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="nb">None</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="nf">kprint_init</span><span class="p">();</span>
+            <span class="nf">fkprint</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#[doc(hidden)]</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">kprint_init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_KPRINT_FB</span><span class="nf">.set</span><span class="p">(</span><span class="nf">Some</span><span class="p">(::</span><span class="nn">framebuffer</span><span class="p">::</span><span class="nn">Framebuffer</span><span class="p">::</span><span class="nf">new</span><span class="p">()));</span>
+    <span class="nf">kprint_clear</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>Zur Erleichterung habe ich noch ein Macro geschrieben, dass ich zum
+Debuggen einsetzen werde. Ich möchte nämlich nicht zwischen meinen
+Aufrufen wechseln, je nachdem, ob ich eine die Schrift in einer
+anderen Farbe ausgeben will oder nicht. Leider kennt Rust ja keine
+Default-Argumente, aber auf Macroebene ist dies kein Problem:</p>
+<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="n">macro_export</span><span class="p">]</span>
+<span class="c">/// Consolenausgabe vom Kernel aus (_kernel print_).</span>
+<span class="c">/// Dient im Wesentlichen für Debugging-Zwecke während der Kernel-Entwicklung</span>
+<span class="nd">macro_rules!</span> <span class="n">kprint</span> <span class="p">{</span>
+    <span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$a</span><span class="p">:</span> <span class="n">expr</span><span class="p">),</span><span class="o">*</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span> <span class="nv">$crate</span><span class="p">::</span><span class="nn">kprint</span><span class="p">::</span><span class="nf">fkprint</span><span class="p">(</span><span class="nd">format_args!</span><span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$a</span><span class="p">),</span><span class="o">*</span><span class="p">));</span> <span class="p">};</span>
+    <span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$a</span><span class="p">:</span> <span class="n">expr</span><span class="p">),</span><span class="o">*</span> <span class="p">;</span> <span class="nv">$c</span><span class="p">:</span> <span class="n">ident</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span> <span class="nv">$crate</span><span class="p">::</span><span class="nn">kprint</span><span class="p">::</span><span class="nf">fkprintc</span><span class="p">(</span><span class="nd">format_args!</span><span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$a</span><span class="p">),</span><span class="o">*</span><span class="p">),</span><span class="nv">$crate</span><span class="p">::</span><span class="nn">kprint</span><span class="p">::</span><span class="nv">$c</span><span class="p">);</span> <span class="p">};</span>
+    <span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$a</span><span class="p">:</span> <span class="n">expr</span><span class="p">),</span><span class="o">*</span> <span class="p">;</span> <span class="nv">$c</span><span class="p">:</span> <span class="n">expr</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span> <span class="nv">$crate</span><span class="p">::</span><span class="nn">kprint</span><span class="p">::</span><span class="nf">fkprintc</span><span class="p">(</span><span class="nd">format_args!</span><span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$a</span><span class="p">),</span><span class="o">*</span><span class="p">),</span><span class="nv">$c</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 <h2 id="der-linker-zickt-mal-wieder">Der Linker zickt mal wieder</h2>
 
