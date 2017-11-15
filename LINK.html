@@ -503,10 +503,9 @@ Datenstrukturen festgelegt werden.</p>
 <p>Die einfachsten Datenstrukturen sind die Einträge in den
 Seitentabellen bzw. dem Seitenvereichnis: Das in eigentlich nur
 32-Bit-Worte, in Rust also <code class="highlighter-rouge">u32</code> (oder <code class="highlighter-rouge">usize</code>):</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">type</span> <span class="n">PageDirectoryEntry</span> <span class="o">=</span> <span class="nb">u32</span><span class="p">;</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">type</span> <span class="n">PageDirectoryEntry</span> <span class="o">=</span> <span class="nb">u32</span><span class="p">;</span>
 <span class="k">pub</span> <span class="k">type</span> <span class="n">PageTableEntry</span>     <span class="o">=</span> <span class="nb">u32</span><span class="p">;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>In Rust wird damit nur ein Typenalias geschaffen, für den Typencheck
 sind es also immer noch ein <code class="highlighter-rouge">u32</code>. Funktionen zum Manipulieren könnten
 also nicht unterscheiden, ob sie ein Eintrag in eine Seitentabelle
@@ -526,7 +525,7 @@ verkettet werden können und die die gewünschte Datenstruktur erzeugt.</p>
 ähnliche Funktionen. In einer objektorientierten Sprache würde man
 dies über ein Klassenkonzept oder ein Interface abbilden. In Rust
 nimmt man zur Beschreibung gemeinsamen Verhaltens einen <em>Trait</em>:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="c">/// `MemoryBuilder` ist eine Builder-Struct für zur Erstellung von Einträgen</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/// `MemoryBuilder` ist eine Builder-Struct für zur Erstellung von Einträgen</span>
 <span class="c">///  in das Seitenverzeichnis oder in Seitentabellen</span>
 <span class="k">pub</span> <span class="k">struct</span> <span class="n">MemoryBuilder</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">u32</span><span class="p">,</span><span class="n">PhantomData</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">);</span>
 
@@ -584,15 +583,14 @@ nimmt man zur Beschreibung gemeinsamen Verhaltens einen <em>Trait</em>:</p>
     <span class="c">/// Gibt den Eintrag zurück</span>
     <span class="k">fn</span> <span class="nf">entry</span><span class="p">(</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">u32</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Für die Implementierung des Traits müssen jetzt nur die Bits nach
 Handbuch gesetzt werden. Ich habe für die Bitmanipulation wieder
 die <code class="highlighter-rouge">Bitfield</code>-Crate genutzt. Folgender Codeausschnitt zeigt
 exemplarische die Implementation der Methode, die für einen
 Seitentabelleneitrag festlegt, ob die entsprechende Speicherseite
 ausführbaren Code enthalten darf:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="k">fn</span> <span class="nf">no_execute</span><span class="p">(</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">ne</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="k">-&gt;</span>  <span class="n">MemoryBuilder</span><span class="o">&lt;</span><span class="n">TableEntry</span><span class="o">&gt;</span> <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">fn</span> <span class="nf">no_execute</span><span class="p">(</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">ne</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="k">-&gt;</span>  <span class="n">MemoryBuilder</span><span class="o">&lt;</span><span class="n">TableEntry</span><span class="o">&gt;</span> <span class="p">{</span>
         <span class="k">match</span> <span class="k">self</span><span class="nf">.kind</span><span class="p">()</span> <span class="p">{</span>
             <span class="nn">TableEntry</span><span class="p">::</span><span class="n">LargePage</span> 
                 <span class="k">=&gt;</span> <span class="p">{</span> <span class="k">self</span><span class="err">.</span><span class="mi">0</span><span class="nf">.set_bit</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="n">ne</span><span class="p">);</span> <span class="p">},</span>
@@ -602,21 +600,19 @@ ausführbaren Code enthalten darf:</p>
         <span class="p">}</span>
         <span class="k">self</span>
     <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Wenn dann ein Mapping – also eine Abbildung zwischen logischen und
 physischen Adressen – festgelegt wird, werden einfach die Methoden
 der Builder-struct verkettet, bis der gewünschte Eintrag
 entstanden ist, wie folgendes Beispiel aus dem Initalisierungscode
 zeigt:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code>        <span class="n">kpage_table</span><span class="p">[</span><span class="n">frm</span><span class="nf">.rel</span><span class="p">()]</span> <span class="o">=</span> <span class="nn">MemoryBuilder</span><span class="p">::</span><span class="o">&lt;</span><span class="n">TableEntry</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">new_entry</span><span class="p">(</span><span class="nn">TableEntry</span><span class="p">::</span><span class="n">SmallPage</span><span class="p">)</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">kpage_table</span><span class="p">[</span><span class="n">frm</span><span class="nf">.rel</span><span class="p">()]</span> <span class="o">=</span> <span class="nn">MemoryBuilder</span><span class="p">::</span><span class="o">&lt;</span><span class="n">TableEntry</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">new_entry</span><span class="p">(</span><span class="nn">TableEntry</span><span class="p">::</span><span class="n">SmallPage</span><span class="p">)</span>
             <span class="nf">.base_addr</span><span class="p">(</span><span class="n">frm</span><span class="nf">.start</span><span class="p">())</span>
             <span class="nf">.rights</span><span class="p">(</span><span class="nn">MemoryAccessRight</span><span class="p">::</span><span class="n">SysRwUsrNone</span><span class="p">)</span>
             <span class="nf">.mem_type</span><span class="p">(</span><span class="nn">MemType</span><span class="p">::</span><span class="n">NormalWT</span><span class="p">)</span>
             <span class="nf">.domain</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="nf">.entry</span><span class="p">();</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="tabellen-1">Tabellen</h4>
 <p>Die Tabellen (Seitentabellen und Seitenverzeichnis) sind im
@@ -626,13 +622,13 @@ jeweils Elemente eines Verbundstyps (<code class="highlighter-rouge">struct</cod
 Damit man trotzdem wie auf ein Array zugreifen kann, also der
 <code class="highlighter-rouge">[ ]</code>-Operator funktioniert, muss der <code class="highlighter-rouge">Index</code>- und der
 <code class="highlighter-rouge">IndexMut</code>-Trait implementiert werden:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="nn">ops</span><span class="p">::{</span><span class="nb">Index</span><span class="p">,</span> <span class="n">IndexMut</span><span class="p">};</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="nn">ops</span><span class="p">::{</span><span class="nb">Index</span><span class="p">,</span> <span class="n">IndexMut</span><span class="p">};</span>
 
 <span class="k">use</span> <span class="nn">super</span><span class="p">::</span><span class="nn">builder</span><span class="p">::{</span><span class="n">PageTableEntry</span><span class="p">,</span><span class="n">TableEntry</span><span class="p">,</span><span class="n">MemoryBuilder</span><span class="p">,</span><span class="n">EntryBuilder</span><span class="p">};</span>
 <span class="k">use</span> <span class="nn">super</span><span class="p">::</span><span class="n">Address</span><span class="p">;</span>
 
-<span class="cp">#[repr(C)]</span>
-<span class="cp">#[repr(align(</span><span class="mi">1024</span><span class="cp">))]</span>
+<span class="nd">#[repr(C)]</span>
+<span class="nd">#[repr(align(</span><span class="mi">1024</span><span class="nd">))]</span>
 <span class="k">pub</span> <span class="k">struct</span> <span class="n">PageTable</span> <span class="p">{</span>
     <span class="n">table</span><span class="p">:</span> <span class="p">[</span><span class="n">PageTableEntry</span><span class="p">;</span><span class="mi">256</span><span class="p">]</span>
 <span class="p">}</span>
@@ -647,7 +643,7 @@ Damit man trotzdem wie auf ein Array zugreifen kann, also der
 
     <span class="c">/// Füllt die Tabelle mit Seitenfehlern</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">invalidate</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="n">ndx</span> <span class="n">in</span> <span class="mi">0</span><span class="err">..</span><span class="mi">256</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">ndx</span> <span class="n">in</span> <span class="mi">0</span><span class="o">..</span><span class="mi">256</span> <span class="p">{</span>
             <span class="k">self</span><span class="py">.table</span><span class="p">[</span><span class="n">ndx</span><span class="p">]</span> <span class="o">=</span> <span class="nn">MemoryBuilder</span><span class="p">::</span><span class="nf">new_entry</span><span class="p">(</span><span class="nn">TableEntry</span><span class="p">::</span><span class="n">Fault</span><span class="p">)</span><span class="nf">.entry</span><span class="p">();</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -671,8 +667,7 @@ Damit man trotzdem wie auf ein Array zugreifen kann, also der
         <span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="py">.table</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="frames">Frames</h4>
 <p>Ein Frame ist ein Bereich von Adressen, der genau eine Speicherseite
@@ -683,36 +678,35 @@ Tabelleneinträgen evtl. nicht nur konstruiert und zugewiesen werden
 (wir werden später einen Frame-Iterator brauchen), nehmen wir diesmal
 ein anderes Muster, um <code class="highlighter-rouge">Range</code> zu erweitern: Wir schaffen einen neuen
 Typ:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">type</span> <span class="n">Address</span>      <span class="o">=</span> <span class="nb">usize</span><span class="p">;</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">type</span> <span class="n">Address</span>      <span class="o">=</span> <span class="nb">usize</span><span class="p">;</span>
 <span class="k">pub</span> <span class="k">type</span> <span class="n">AddressRange</span> <span class="o">=</span> <span class="n">Range</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="cp">#[derive(Debug)]</span>
+<span class="nd">#[derive(Debug)]</span>
 <span class="k">pub</span> <span class="k">struct</span> <span class="nf">Frame</span><span class="p">(</span><span class="n">AddressRange</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Dafür implementieren wir eine Handvoll von Methoden:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">impl</span> <span class="n">Frame</span> <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">impl</span> <span class="n">Frame</span> <span class="p">{</span>
     <span class="c">/// Frame aus absoluter Framenummer</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">from_nr</span><span class="p">(</span><span class="n">nr</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Self</span> <span class="p">{</span>
         <span class="nf">Frame</span> <span class="p">(</span>
             <span class="n">AddressRange</span> <span class="p">{</span>
                 <span class="n">start</span><span class="p">:</span> <span class="n">nr</span> <span class="o">*</span> <span class="n">PAGE_SIZE</span><span class="p">,</span>
-                <span class="n">end</span><span class="p">:</span> <span class="p">(</span><span class="n">nr</span> <span class="o">*</span> <span class="n">PAGE_SIZE</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="n">end</span><span class="p">:</span> <span class="p">(</span><span class="n">nr</span> <span class="o">*</span> <span class="n">PAGE_SIZE</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="err">-</span> <span class="mi">1</span><span class="p">),</span>
             <span class="p">})</span>
     <span class="p">}</span>
 
     <span class="c">/// Frame mit einer gegebenen Startadresse</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">from_start</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="n">Address</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Self</span> <span class="p">{</span>
-        <span class="nd">assert_eq!</span><span class="p">(</span><span class="n">start</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="nd">assert_eq!</span><span class="p">(</span><span class="n">start</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> - <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
         <span class="nf">Frame</span> <span class="p">(</span><span class="n">AddressRange</span> <span class="p">{</span>
             <span class="n">start</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
-            <span class="n">end</span><span class="p">:</span> <span class="n">start</span> <span class="o">+</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">end</span><span class="p">:</span> <span class="n">start</span> <span class="o">+</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="err">-</span> <span class="mi">1</span><span class="p">),</span>
         <span class="p">})</span>
     <span class="p">}</span>
 
     <span class="c">/// Frame, der gegebene Adresse enthält</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">from_addr</span><span class="p">(</span><span class="n">addr</span><span class="p">:</span> <span class="n">Address</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Self</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="n">start</span> <span class="o">=</span> <span class="n">addr</span> <span class="o">&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">let</span> <span class="n">start</span> <span class="o">=</span> <span class="n">addr</span> <span class="o">&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="err">-</span> <span class="mi">1</span><span class="p">);</span>
         <span class="nn">Frame</span><span class="p">::</span><span class="nf">from_start</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
     <span class="p">}</span>
 
@@ -745,18 +739,17 @@ Typ:</p>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">iter</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="n">AddressRange</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">FrameIterator</span> <span class="p">{</span>
         <span class="n">FrameIterator</span> <span class="p">{</span>
             <span class="n">range</span><span class="p">:</span> <span class="n">AddressRange</span><span class="p">{</span> <span class="n">start</span><span class="p">:</span> <span class="n">r</span><span class="py">.start</span><span class="p">,</span>
-                                 <span class="n">end</span><span class="p">:</span>   <span class="n">r</span><span class="py">.end</span> <span class="o">-</span> <span class="mi">1</span><span class="p">},</span>
+                                 <span class="n">end</span><span class="p">:</span>   <span class="n">r</span><span class="py">.end</span> <span class="err">-</span> <span class="mi">1</span><span class="p">},</span>
             <span class="n">current</span><span class="p">:</span> <span class="nf">Some</span><span class="p">(</span><span class="nn">Frame</span><span class="p">::</span><span class="nf">from_addr</span><span class="p">(</span><span class="n">r</span><span class="py">.start</span><span class="p">))</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Die <code class="highlighter-rouge">iter()</code>-Methode gibt einen Iterator zurück, der natürlich auch
 implementiert werden muss. Die Idee dabei ist, dass für einen
 beliebigen gegebenen Adressbereich alle darin (ggf. teilweise)
 enthaltenen Frames iteriert wird.</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">struct</span> <span class="n">FrameIterator</span> <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">struct</span> <span class="n">FrameIterator</span> <span class="p">{</span>
     <span class="n">range</span><span class="p">:</span>   <span class="n">AddressRange</span><span class="p">,</span>
     <span class="n">current</span><span class="p">:</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">Frame</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="p">}</span>
@@ -779,14 +772,13 @@ enthaltenen Frames iteriert wird.</p>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <h4 id="frame-manager">Frame-Manager</h4>
 <p>Der Frame-Manager verwaltet – wie oben diskutiert – ein Bitarray. Er
 enthält zusätzlich eine Indexvariable, die auf den ersten freien Frame
 zeigt. Da Reservierung nicht zusammenhängend sein müssen und
 es eine feste Stückelung gibt, ist Verschnitt kein Problem.</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">const</span> <span class="n">BITVECTOR_SIZE</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="p">(</span><span class="n">MEM_SIZE</span> <span class="err">/</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">*</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">u64</span><span class="o">&gt;</span><span class="p">()</span> <span class="o">*</span> <span class="mi">8</span><span class="p">))</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">;</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="n">BITVECTOR_SIZE</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="p">(</span><span class="n">MEM_SIZE</span> <span class="err">/</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">*</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">u64</span><span class="o">&gt;</span><span class="p">()</span> <span class="o">*</span> <span class="mi">8</span><span class="p">))</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">;</span>
 
 <span class="c">/// FrameManager verwaltet die Allozierung von Frames.</span>
 <span class="c">/// Jedes Bit in `bits` steht für einen Frame.</span>
@@ -794,12 +786,11 @@ es eine feste Stückelung gibt, ist Verschnitt kein Problem.</p>
     <span class="n">bits</span><span class="p">:</span> <span class="p">[</span><span class="nb">u64</span><span class="p">;</span> <span class="n">BITVECTOR_SIZE</span><span class="p">],</span>
     <span class="n">first_free</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Die Suche nach einem freien Frame ist linear und hat somit eine
 Komplexität von \(\mathcal{O}(n)\).</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="c">/// Sucht den nächsten freien Frame und gibt die Nummer zurück</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c">/// Sucht den nächsten freien Frame und gibt die Nummer zurück</span>
     <span class="k">fn</span> <span class="nf">find_next_free</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="n">Address</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
         <span class="k">let</span> <span class="k">mut</span> <span class="n">ndx</span> <span class="o">=</span> <span class="n">start</span><span class="p">;</span>
         <span class="k">while</span> <span class="p">(</span><span class="k">self</span><span class="nf">.get_bit</span><span class="p">(</span><span class="n">ndx</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">ndx</span> <span class="o">&lt;</span> <span class="k">self</span><span class="nf">.bit_length</span><span class="p">())</span> <span class="p">{</span>
@@ -807,8 +798,7 @@ Komplexität von \(\mathcal{O}(n)\).</p>
         <span class="p">}</span>
         <span class="n">ndx</span>
     <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Ansonsten ist der Frame-Manager ziemlich unkomplizert
 implementiert. Einzig bemerkenswert ist vielleicht, dass wir bei ihm das
 <a href="https://en.wikipedia.org/wiki/Singleton_pattern">Singleton-Muster</a>
@@ -816,7 +806,7 @@ implementieren (schließlich wollen wir nicht Gefahr laufen, mehrere
 Instanzen einer so großen Datenstruktur im Speicher und wohlmöglich
 auf dem Stack zu haben.)<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> Daher ist der Konstruktor und die
 statische Variable, die wieder <code class="highlighter-rouge">NoConcurrency</code> nutzt, privat:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="c">/// Erzeugt einen neuen Framemanager</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c">/// Erzeugt einen neuen Framemanager</span>
     <span class="c">///</span>
     <span class="c">/// # Anmerkung</span>
     <span class="c">/// Der Framemanager ist ein Singleton, daher ist `new()` nicht öffentlich</span>
@@ -832,16 +822,14 @@ statische Variable, die wieder <code class="highlighter-rouge">NoConcurrency</co
 
 <span class="c">/// Das Singleton für den Framemanager, nicht geschützt vor nebenläufigen Zugriff</span>
 <span class="k">static</span> <span class="n">FRAME_MANAGER</span><span class="p">:</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="n">FrameManager</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">NoConcurrency</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="nn">FrameManager</span><span class="p">::</span><span class="nf">new</span><span class="p">());</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Zugriff erhält man über eine assoziierte Methode der <code class="highlighter-rouge">struct
 FrameManager</code>:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="c">/// Gibt eine Referenz auf Framemanager-Singleton zurück</span>
-    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">get</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="err">'</span><span class="k">static</span> <span class="k">mut</span> <span class="n">FrameManager</span> <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c">/// Gibt eine Referenz auf Framemanager-Singleton zurück</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">get</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="nv">'static</span> <span class="k">mut</span> <span class="n">FrameManager</span> <span class="p">{</span>
         <span class="n">FRAME_MANAGER</span><span class="nf">.get</span><span class="p">()</span>
     <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Und da wir gerade dabei sind, machen wir auch das Seitenverzeichnis
 auf die gleiche Weise zum Singleton.</p>
 
@@ -870,7 +858,7 @@ der MMU-Aktivierung vor, (vgl. Abschnitt 6.4.1, S. 6-9):</p>
 
 <p>Das setzen wir so um (und legen gleichzeitig noch fest, dass wir das
 ARMv6-MMU-Protokoll ohne Subpages nutzen wollen:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code>    <span class="k">pub</span> <span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">start</span><span class="p">(){</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">pub</span> <span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">start</span><span class="p">(){</span>
         <span class="k">let</span> <span class="k">mut</span> <span class="n">reg</span><span class="p">:</span> <span class="nb">u32</span><span class="p">;</span>
         <span class="nn">Cache</span><span class="p">::</span><span class="nf">clean</span><span class="p">();</span>
         <span class="nn">Cache</span><span class="p">::</span><span class="nf">disable_instruction</span><span class="p">();</span>
@@ -887,8 +875,7 @@ ARMv6-MMU-Protokoll ohne Subpages nutzen wollen:</p>
         <span class="nn">Cache</span><span class="p">::</span><span class="nf">enable_instruction</span><span class="p">();</span>
         <span class="nn">Cache</span><span class="p">::</span><span class="nf">enable_data</span><span class="p">();</span>
     <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Die anderen <code class="highlighter-rouge">Cpu</code>- und <code class="highlighter-rouge">Cache</code>-Methoden sind ebenfalls Methoden, wo
 die eigentliche Arbeit durch Assemblercode verrichtet wird. Da es hier
 auf jedes einzelne Bit ankommt, gilt die Devise: „Genau das Handbuch
@@ -917,28 +904,28 @@ aber davon berichte ich in einer der nächsten Folgen dieses Blogs.</p>
       <p>Umgangssprachlich wird mit <em>Paging</em> fast immer <em>Demand Paging</em>,
     also die virtuelle Speicherverwaltung mit Auslagerung auf die
     Festplatte gemeint. Jedoch lässt sich eine seitenbasierte gestreute
-    Adressierung auch sinnvoll ohne Auslagerung einsetzen.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    Adressierung auch sinnvoll ohne Auslagerung einsetzen. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
       <p>Das hier beschriebene Paging-Schema entspricht ARMv6. Der
     Prozessor ist in einigen Aspekten der Speicherverwaltung
     rückwärtskompatibel zu ARMv5 (z.B. Supbages). Dies werden wir nicht
-    benutzen.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    benutzen. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
       <p>Es gibt auch ein Schema mit zwei Seitenverzeichnissen, das hier
-    aber nicht betrachtet wird.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    aber nicht betrachtet wird. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
       <p>Im pathologischen Fall würde jeder zweite Frame frei sein. Eine
     Speicherstruktur, die die Adressen (4 Byte) und die Länge
     (4 Byte) der Leer-Frame-Bereiche speichert, bräuchte dann
     mindestens \(\frac{131072}{2}\cdot(4 + 4) = 524288\) Byte,
-    also ein halbes MiB!&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    also ein halbes MiB! <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:5">
       <p>Genau genommen haben wir das Muster bereits beim Framebuffer
-    benutzt.&nbsp;<a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    benutzt. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

@@ -290,14 +290,14 @@
 
 <p>Es ist auch nicht schwierig, eigene Erweiterungen zu schreiben. So habe ich in meinen Directory-Baum ein Verzeichnis, die ich häufig als Ausgangspunkt zur Dateisuche nutze, als eine Art alternatives Home-Verzeichnis (konkret ist dies ein Link auf ein aktuelles Projektverzeichnis). Dafür habe ich in meiner <kbd>.bash_profile</kbd> die Zeile</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">function </span>cdc <span class="o">()</span> <span class="o">{</span> <span class="nb">cd</span> ~/Doc/current/<span class="nv">$*</span>; <span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="k">function </span>cdc <span class="o">()</span> <span class="o">{</span> <span class="nb">cd</span> ~/Doc/current/<span class="nv">$*</span><span class="p">;</span> <span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>die als ein spezieller Change-Directory-Befehl mit relativen Bezug zu dem current-Directory arbeitet.</p>
 
 <p>Durch folgenden (nicht ganz optimierten) Code funktioniert die Bash-Vervollständigung auch für <code class="highlighter-rouge">cdc</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -319,21 +319,22 @@
 20
 21
 22
-23</pre></td><td class="code"><pre><span class="c"># Completation</span>
+23
+</pre></td><td class="code"><pre><span class="c"># Completation</span>
 <span class="k">function </span>cmpl_path<span class="o">(){</span> 
 <span class="nb">local </span>cur pre ctest
 
 <span class="nv">pre</span><span class="o">=</span><span class="nv">$1</span>
 <span class="nv">cur</span><span class="o">=</span><span class="nv">$pre</span><span class="k">${</span><span class="nv">COMP_WORDS</span><span class="p">[COMP_CWORD]</span><span class="k">:-</span><span class="p">*</span><span class="k">}</span>
-<span class="nv">ctest</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$cur</span><span class="k">*</span>/ | cut -f 1 -d<span class="s1">' '</span> <span class="sb">`</span>
+<span class="nv">ctest</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$cur</span><span class="k">*</span>/ | cut <span class="nt">-f</span> 1 <span class="nt">-d</span><span class="s1">' '</span> <span class="sb">`</span>
 
-<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="k">${</span><span class="nv">COMP_WORDS</span><span class="p">[COMP_CWORD]</span><span class="k">}</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
-  </span><span class="nv">COMPREPLY</span><span class="o">=(</span> <span class="sb">`</span>ls -d -R <span class="nv">$cur</span><span class="k">*</span> | sed -e <span class="s2">"s#</span><span class="k">${</span><span class="nv">pre</span><span class="k">}</span><span class="s2">##g"</span> <span class="sb">`</span> <span class="o">)</span>;
-<span class="k">elif</span> <span class="o">[</span> -d <span class="nv">$ctest</span> <span class="o">]</span>; <span class="k">then
-  </span><span class="nv">COMPREPLY</span><span class="o">=(</span> <span class="sb">`</span>ls -d -R <span class="nv">$cur</span><span class="k">*</span>/ 2&amp;gt; /dev/null | sed -e <span class="s2">"s#</span><span class="k">${</span><span class="nv">pre</span><span class="k">}</span><span class="s2">##g"</span> <span class="sb">`</span> <span class="o">)</span>;
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="k">${</span><span class="nv">COMP_WORDS</span><span class="p">[COMP_CWORD]</span><span class="k">}</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+  </span><span class="nv">COMPREPLY</span><span class="o">=(</span> <span class="sb">`</span><span class="nb">ls</span> <span class="nt">-d</span> <span class="nt">-R</span> <span class="nv">$cur</span><span class="k">*</span> | sed <span class="nt">-e</span> <span class="s2">"s#</span><span class="k">${</span><span class="nv">pre</span><span class="k">}</span><span class="s2">##g"</span> <span class="sb">`</span> <span class="o">)</span><span class="p">;</span>
+<span class="k">elif</span> <span class="o">[</span> <span class="nt">-d</span> <span class="nv">$ctest</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+  </span><span class="nv">COMPREPLY</span><span class="o">=(</span> <span class="sb">`</span><span class="nb">ls</span> <span class="nt">-d</span> <span class="nt">-R</span> <span class="nv">$cur</span><span class="k">*</span>/ 2&amp;gt<span class="p">;</span> /dev/null | sed <span class="nt">-e</span> <span class="s2">"s#</span><span class="k">${</span><span class="nv">pre</span><span class="k">}</span><span class="s2">##g"</span> <span class="sb">`</span> <span class="o">)</span><span class="p">;</span>
 <span class="k">else
-  </span><span class="nv">COMPREPLY</span><span class="o">=</span><span class="s1">''</span>;
-<span class="nb">echo</span> -n <span class="s1">'\a'</span> 
+  </span><span class="nv">COMPREPLY</span><span class="o">=</span><span class="s1">''</span><span class="p">;</span>
+<span class="nb">echo</span> <span class="nt">-n</span> <span class="s1">'\a'</span> 
 <span class="k">fi</span>
 <span class="o">}</span>
 
@@ -341,8 +342,7 @@
 cmpl_path <span class="s2">"/Users/mwerner/Doc/current/"</span>
 <span class="o">}</span>
 
-<span class="nb">complete</span> -o nospace -F cmpl_current cdc<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="nb">complete</span> <span class="nt">-o</span> nospace <span class="nt">-F</span> cmpl_current cdc</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Die Bedeutung der Variablen <code class="highlighter-rouge">COMP_WORDS</code> und <code class="highlighter-rouge">COMPREPLY</code> kann in der Bash-Manualseite nachgeschlagen werden.</p>
 

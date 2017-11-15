@@ -335,7 +335,7 @@ dafür sorgen, dass unser „Kernel“ von der Adresse 0x08000 lauffähig ist, u
 „normalen“ Softwareentwicklung bekommt man vom Linker nicht viel mit, er macht ohne viel Aufsehen das, was man von ihm erwartet. Da wir hier aber ganz bestimmte
 Anforderungen haben, müssen wir es ihm mit einem <a href="https://sourceware.org/binutils/docs/ld/Scripts.html">Linker-Skript</a> mitteilen. Unser Linker-Skript ist (noch) sehr einfach:</p>
 
-<div class="language-cfscript highlighter-rouge"><pre class="highlight"><code><span class="nf">ENTRY</span><span class="p">(</span><span class="nx">kernel_main</span><span class="p">)</span>
+<div class="language-cfscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">ENTRY</span><span class="p">(</span><span class="nx">kernel_main</span><span class="p">)</span>
 <span class="nx">SECTIONS</span>
 <span class="p">{</span>
     <span class="cm">/* Starts at LOADER_ADDR. */</span>
@@ -351,8 +351,7 @@ Anforderungen haben, müssen wir es ihm mit einem <a href="https://sourceware.or
         <span class="o">*</span><span class="p">(.</span><span class="nx">bss</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Es sagt im Wesentlichen, dass unsere Einsprungstelle in den Code <code class="highlighter-rouge">kernel_main</code> heißt,<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> und dass der Code an Adresse 0x0800 beginnt und zwar mit <code class="highlighter-rouge">kernel_main</code>.</p>
 
 <h3 id="binärfile">Binärfile</h3>
@@ -368,7 +367,7 @@ Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurü
 
 <p>Unser Makefile geht davon aus, dass wir folgendes Verzeichnis-Layout haben:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>aihpos
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aihpos
   |
   +- rust-corelib
   |
@@ -377,11 +376,10 @@ Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurü
       +-- src
       +-- obj
       +-- build
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In <kbd>src</kbd> sind alle Quelldateien. Die Objektdateien liegen in <kbd>obj</kbd> und alle anderen generierten Dateien in <kbd>build</kbd>. Das Makefile selbst befindet sich in <kbd>jtag</kbd> und sieht so aus:</p>
-<div class="language-make highlighter-rouge"><pre class="highlight"><code><span class="nv">BUILDDIR</span><span class="o">=</span>build
+<div class="language-make highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">BUILDDIR</span><span class="o">=</span>build
 <span class="nv">SRCDIR</span><span class="o">=</span>src
 <span class="nv">OBJDIR</span><span class="o">=</span>obj
 <span class="nv">BUILDDIR</span><span class="o">=</span>build
@@ -389,8 +387,8 @@ Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurü
 <span class="nv">OBJDUMP</span><span class="o">=</span>arm-none-eabi-objdump
 <span class="nv">RUSTC</span><span class="o">=</span>rustc
 <span class="nv">LIBCORE</span><span class="o">=</span>../rust-libcore/target/arm-none-eabihf/release/libcore.rlib
-<span class="nv">RUSTFLAGS</span><span class="o">=</span> --target <span class="nv">$(TARGET)</span> -C <span class="nv">panic</span><span class="o">=</span>abort -g --crate-type staticlib --extern <span class="nv">core</span><span class="o">=</span><span class="nv">$(LIBCORE)</span>
-<span class="nv">LINKFLAGS</span><span class="o">=</span> -O0 -g -Wl,-gc-sections -mfpu<span class="o">=</span>vfp -mfloat-abi<span class="o">=</span>hard -march<span class="o">=</span>armv6zk -mtune<span class="o">=</span>arm1176jzf-s -nostdlib
+<span class="nv">RUSTFLAGS</span><span class="o">=</span> <span class="nt">--target</span> <span class="nv">$(TARGET)</span> <span class="nt">-C</span> <span class="nv">panic</span><span class="o">=</span>abort <span class="nt">-g</span> <span class="nt">--crate-type</span> staticlib <span class="nt">--extern</span> <span class="nv">core</span><span class="o">=</span><span class="nv">$(LIBCORE)</span>
+<span class="nv">LINKFLAGS</span><span class="o">=</span> <span class="nt">-O0</span> <span class="nt">-g</span> <span class="nt">-Wl</span>,-gc-sections <span class="nt">-mfpu</span><span class="o">=</span>vfp <span class="nt">-mfloat-abi</span><span class="o">=</span>hard <span class="nt">-march</span><span class="o">=</span>armv6zk <span class="nt">-mtune</span><span class="o">=</span>arm1176jzf-s <span class="nt">-nostdlib</span>
 
 <span class="nv">TARGET</span><span class="o">=</span>arm-none-eabihf
 <span class="nv">MAIN</span><span class="o">=</span>kernel
@@ -412,22 +410,21 @@ Programme geeignet. Daher werden wir auf die klassische Form des Makefiles zurü
 <span class="nl">main.o</span><span class="o">:</span>	<span class="nf">main.rs panic.rs</span>
 
 <span class="nl">$(IMAGE)</span><span class="o">:</span> <span class="nf">$(ELF)</span>
-	<span class="nv">$(OBJCOPY)</span> <span class="nv">$(ELF)</span> -O binary <span class="nv">$(IMAGE)</span>
+	<span class="nv">$(OBJCOPY)</span> <span class="nv">$(ELF)</span> <span class="nt">-O</span> binary <span class="nv">$(IMAGE)</span>
 
 <span class="nl">$(LIST)</span><span class="o">:</span> <span class="nf">$(IMAGE)</span>
-	<span class="nv">$(OBJDUMP)</span> -d <span class="nv">$(ELF)</span> &gt; <span class="nv">$@</span>
+	<span class="nv">$(OBJDUMP)</span> <span class="nt">-d</span> <span class="nv">$(ELF)</span> <span class="o">&gt;</span> <span class="nv">$@</span>
 
 <span class="nl">$(ELF)</span><span class="o">:</span> <span class="nf">$(OBJ) </span>
-	arm-none-eabi-gcc <span class="nv">$(LINKFLAGS)</span> -Tsrc/layout.ld  <span class="err">$</span><span class="o">(</span>addprefix <span class="nv">$(OBJDIR)</span>/, <span class="nv">$(OBJ)</span><span class="o">)</span> -o <span class="nv">$@</span>
+	arm-none-eabi-gcc <span class="nv">$(LINKFLAGS)</span> <span class="nt">-Tsrc</span>/layout.ld  <span class="err">$</span><span class="o">(</span>addprefix <span class="nv">$(OBJDIR)</span>/, <span class="nv">$(OBJ)</span><span class="o">)</span> <span class="nt">-o</span> <span class="nv">$@</span>
 
 <span class="nl">%.o</span><span class="o">:</span> <span class="nf">%.rs </span>
-	<span class="nv">$(RUSTC)</span> <span class="nv">$(RUSTFLAGS)</span> <span class="nv">$&lt;</span> -o <span class="nv">$(OBJDIR)</span>/<span class="nv">$@</span>
+	<span class="nv">$(RUSTC)</span> <span class="nv">$(RUSTFLAGS)</span> <span class="nv">$&lt;</span> <span class="nt">-o</span> <span class="nv">$(OBJDIR)</span>/<span class="nv">$@</span>
 
 <span class="nl">clean</span><span class="o">:</span>
-	rm -f <span class="nv">$(OBJDIR)</span>/<span class="k">*</span>
-	rm -f <span class="nv">$(BUILDDIR)</span>/<span class="k">*</span>
-</code></pre>
-</div>
+	rm <span class="nt">-f</span> <span class="nv">$(OBJDIR)</span>/<span class="k">*</span>
+	rm <span class="nt">-f</span> <span class="nv">$(BUILDDIR)</span>/<span class="k">*</span>
+</code></pre></div></div>
 
 <p>Nach der Diskussion dürfte es nicht weiter überraschend sein. Einzig das Ziel „LIST“ haben wir noch nicht besprochen. Dies ist der mit Hilfe von <code class="highlighter-rouge">objdump</code> disassemblierte
 Code des erzeugten ELF-Files. Er kann manchmal bei der Fehlersuche nützlich sein.</p>
@@ -466,7 +463,7 @@ höheren Programmiersprache geschriebenen Code ruft.</p>
 <p>Allerdings ist ein solches Assembler-Modul in unserem Fall nicht nötig: Einerseits können wir Assembler-Befehle direkt in den Rust-Code einbetten, andererseits können wir
 unsere Startfunktion mit dem Attribute <code class="highlighter-rouge">#[naked]</code> versehen, so dass der Compiler keinen Prolog oder Epilog anlegt.</p>
 
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="nf">feature</span><span class="p">(</span><span class="n">asm</span><span class="p">,</span><span class="n">lang_items</span><span class="p">,</span><span class="n">core_intrinsics</span><span class="p">,</span><span class="n">naked_functions</span><span class="p">)]</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="nf">feature</span><span class="p">(</span><span class="n">asm</span><span class="p">,</span><span class="n">lang_items</span><span class="p">,</span><span class="n">core_intrinsics</span><span class="p">,</span><span class="n">naked_functions</span><span class="p">)]</span>
 <span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="n">no_std</span><span class="p">]</span>
 
 <span class="c">// Hardware-Adressen</span>
@@ -478,7 +475,7 @@ unsere Startfunktion mit dem Attribute <code class="highlighter-rouge">#[naked]<
 <span class="k">const</span> <span class="n">GPPUDCLK0</span><span class="p">:</span>  <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span> <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x98</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
 
 <span class="k">fn</span> <span class="nf">sleep</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>  
-    <span class="k">for</span> <span class="n">_</span> <span class="n">in</span> <span class="mi">1</span><span class="err">.</span><span class="py">.value</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="n">in</span> <span class="mi">1</span><span class="o">..</span><span class="n">value</span> <span class="p">{</span>
         <span class="k">unsafe</span> <span class="p">{</span> <span class="nd">asm!</span><span class="p">(</span><span class="s">""</span><span class="p">:::</span><span class="s">"memory"</span><span class="p">:</span><span class="s">"volatile"</span><span class="p">);</span> <span class="p">}</span> 
     <span class="p">}</span>
 <span class="p">}</span> 
@@ -489,8 +486,8 @@ unsere Startfunktion mit dem Attribute <code class="highlighter-rouge">#[naked]<
 <span class="c">// in config.txt). Für den letzteren Fall ist dieser Kernel klein</span>
 <span class="c">// genug, um nicht mit dem Stack zu kollidieren.</span>
 
-<span class="cp">#[no_mangle]</span>   <span class="c">// Name wird für den Export nicht verändert</span>
-<span class="cp">#[naked]</span>       <span class="c">// keinen Prolog</span>
+<span class="nd">#[no_mangle]</span>   <span class="c">// Name wird für den Export nicht verändert</span>
+<span class="nd">#[naked]</span>       <span class="c">// keinen Prolog</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">kernel_main</span><span class="p">()</span> <span class="p">{</span>
     <span class="c">// Setze den Stackpointer</span>
     <span class="k">unsafe</span><span class="p">{</span> <span class="nd">asm!</span><span class="p">(</span><span class="s">"mov sp, #0x8000"</span><span class="p">);</span>  <span class="p">}</span>
@@ -522,8 +519,7 @@ unsere Startfunktion mit dem Attribute <code class="highlighter-rouge">#[naked]<
 <span class="p">}</span>
 
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="panik">Panik!</h3>
 
@@ -549,43 +545,41 @@ unsere Startfunktion mit dem Attribute <code class="highlighter-rouge">#[naked]<
  in einem Ausnahmefall (Exception) verhalten soll, um evtl. sogar eine Recovery zu ermöglichen, und das ist plattform-spezifisch. Wenn allerdings wie in unserem Fall der
  der „Kernel“ selbst crashed, ist eine Recovery hoffnungslos. Es ist daher hinreichend, die undefinierten Symbole (es sind nämlich noch ein paar) einfach durch
  Dummy-Funktionen zu definieren. Dazu legen wir noch eine Datei <kbd>panic.rs</kbd> an:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="n">intrinsics</span><span class="p">;</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="n">intrinsics</span><span class="p">;</span>
 
-<span class="cp">#[lang</span> <span class="cp">=</span> <span class="s">"eh_personality"</span><span class="cp">]</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">eh_personality</span><span class="p">()</span> <span class="p">{}</span>
+<span class="nd">#[lang</span> <span class="nd">=</span> <span class="s">"eh_personality"</span><span class="nd">]</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">eh_personality</span><span class="p">()</span> <span class="p">{}</span>
 
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">__aeabi_unwind_cpp_pr0</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="p">()</span>
 <span class="p">{</span>
     <span class="k">loop</span> <span class="p">{}</span>
 <span class="p">}</span>
 
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">__aeabi_unwind_cpp_pr1</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="p">()</span>
 <span class="p">{</span>
     <span class="k">loop</span> <span class="p">{}</span>
 <span class="p">}</span>
 
-<span class="cp">#[allow(non_snake_case)]</span> <span class="cp">#[no_mangle]</span>
+<span class="nd">#[allow(non_snake_case)]</span> <span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="s">"C"</span> <span class="k">fn</span> <span class="nf">_Unwind_Resume</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">!</span> <span class="p">{</span>
     <span class="k">loop</span> <span class="p">{}</span>
 <span class="p">}</span>
 
-<span class="cp">#[lang</span> <span class="cp">=</span> <span class="s">"panic_fmt"</span><span class="cp">]</span>
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[lang</span> <span class="nd">=</span> <span class="s">"panic_fmt"</span><span class="nd">]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">rust_begin_panic</span><span class="p">(</span><span class="n">_msg</span><span class="p">:</span> <span class="nn">core</span><span class="p">::</span><span class="nn">fmt</span><span class="p">::</span><span class="n">Arguments</span><span class="p">,</span>
-                               <span class="n">_file</span><span class="p">:</span> <span class="o">&amp;</span><span class="err">'</span><span class="k">static</span> <span class="nb">str</span><span class="p">,</span>
+                               <span class="n">_file</span><span class="p">:</span> <span class="o">&amp;</span><span class="nv">'static</span> <span class="nb">str</span><span class="p">,</span>
                                <span class="n">_line</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">!</span> <span class="p">{</span>
     <span class="k">unsafe</span> <span class="p">{</span> <span class="nn">intrinsics</span><span class="p">::</span><span class="nf">abort</span><span class="p">()</span> <span class="p">}</span>
 <span class="p">}</span>
 
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Außerdem fügen wir <kbd>main.rs</kbd> noch eine Zeile hinzu:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="nd">include!</span><span class="p">(</span><span class="s">"panic.rs"</span><span class="p">);</span>
-</code></pre>
-</div>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">include!</span><span class="p">(</span><span class="s">"panic.rs"</span><span class="p">);</span>
+</code></pre></div></div>
 <p>Dieses Macro funktioniert ähnlich wie das <code class="highlighter-rouge">#include</code> in C und macht die Datei <kbd>panic.rs</kbd> logisch zu einem Bestandteil von <kbd>main.rs</kbd>. Dieses Vorgehen ist
 ein bisschen „unrustig“, da eigentlich in Rust kein Modul in mehr als einer Datei sein soll (dafür ruhig mehrere Module in einer Datei), aber ich habe diese Variante
 gewählt, um den eigentlichen Funktionscode halbwegs „rein“ zu halten ohne extra ein neues Modul anlegen zu müssen. Nun läuft die Übersetzung durch. Anschließend kopieren
@@ -615,10 +609,9 @@ wir da Binär-Image auf die SD-Karte,</p>
 <h2 id="mit-dem-pireden">Mit dem Pi reden</h2>
 
 <p>Jetzt soll die JTAG-Lommunikation getestet werden. Dazu schreiben wir zwei openocd-Konfigurationsdateien<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>interface jlink
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code>## Broadcom 2835 on Raspberry Pi
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>interface jlink
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Broadcom 2835 on Raspberry Pi
 telnet_port 4444
 gdb_port 3333
 adapter_khz 0
@@ -640,8 +633,7 @@ jtag newtap $_CHIPNAME arm -irlen 5 -expected-id $_CPU_TAPID
 
 set _TARGETNAME $_CHIPNAME.arm
 target create $_TARGETNAME arm11 -chain-position $_TARGETNAME
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In einem Terminal kann jetzt der OpenOCD-Server gestartet werden:</p>
 
@@ -761,18 +753,18 @@ JTAG-Interface etwas langsam, aber immer noch viel schneller als wenn man ständ
 <p>Manchmal will man eine schnelle Rückmeldung haben, ob eine bestimmte Stelle im Programm erreicht wurde oder ob ein Fehler aufgetreten ist. Solange wir keine Konsole
 haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein eigenes Modul ausgelagert und parameterisiert:</p>
 
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="nf">allow</span><span class="p">(</span><span class="n">dead_code</span><span class="p">)]</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="nf">allow</span><span class="p">(</span><span class="n">dead_code</span><span class="p">)]</span>
 <span class="c">//! Der Raspberry hat zwei LEDs. Dieses Modul nutzt die grüne LED,</span>
 <span class="c">//! um Signal zu generieren. Dies kann z.B. als Low-Level-Debugging-Interface</span>
 <span class="c">//! genutzt werden,</span>
-
+<span class="k">use</span> <span class="nn">hal</span><span class="p">::</span><span class="nn">bmc2835</span><span class="p">::{</span><span class="n">Led</span><span class="p">,</span><span class="n">LedType</span><span class="p">};</span>
 <span class="c">// Hardware-Adressen</span>
-<span class="k">const</span> <span class="n">GPIO_BASE</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">0x20200000</span><span class="p">;</span>
-<span class="k">const</span> <span class="n">GPSET1</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span> <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x20</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
-<span class="k">const</span> <span class="n">GPCLR1</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span> <span class="o">=</span> <span class="p">(</span><span class="n">GPIO_BASE</span><span class="o">+</span><span class="mi">0x2C</span><span class="p">)</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u32</span><span class="p">;</span>
+<span class="c">//const GPIO_BASE: u32 = 0x20200000;</span>
+<span class="c">//const GPSET1: *mut u32 = (GPIO_BASE+0x20) as *mut u32;</span>
+<span class="c">//const GPCLR1: *mut u32 = (GPIO_BASE+0x2C) as *mut u32;</span>
 
-<span class="cp">#[derive(Clone,Copy)]</span>
-<span class="cp">#[repr(u32)]</span>
+<span class="nd">#[derive(Clone,Copy)]</span>
+<span class="nd">#[repr(u32)]</span>
 <span class="c">/// Blinkzeichen</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">Bc</span> <span class="p">{</span>
     <span class="c">/// langes Zeichen</span>
@@ -783,7 +775,7 @@ haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein e
     <span class="n">Pause</span> <span class="o">=</span> <span class="mi">250000</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="k">type</span> <span class="n">BlinkSeq</span> <span class="o">=</span> <span class="o">&amp;</span><span class="err">'</span><span class="k">static</span> <span class="p">[</span><span class="n">Bc</span><span class="p">];</span>
+<span class="k">type</span> <span class="n">BlinkSeq</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">'static</span> <span class="p">[</span><span class="n">Bc</span><span class="p">];</span>
 
 <span class="c">// Blinksequenzen </span>
 <span class="c">/// einmal blinken</span>
@@ -799,30 +791,34 @@ haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein e
 <span class="c">/// "Hi" in Morsecode:  `•••• ••` </span>
 <span class="k">pub</span> <span class="k">const</span> <span class="n">BS_HI</span><span class="p">:</span> <span class="n">BlinkSeq</span>    <span class="o">=</span>   <span class="o">&amp;</span><span class="p">[</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">,</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span><span class="p">];</span>
 
-<span class="cp">#[inline(never)]</span>
+<span class="nd">#[inline(never)]</span>
 <span class="k">fn</span> <span class="nf">sleep</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>  
-    <span class="k">for</span> <span class="n">_</span> <span class="n">in</span> <span class="mi">1</span><span class="err">.</span><span class="py">.value</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="n">in</span> <span class="mi">1</span><span class="o">..</span><span class="n">value</span> <span class="p">{</span>
         <span class="k">unsafe</span> <span class="p">{</span> <span class="nd">asm!</span><span class="p">(</span><span class="s">""</span><span class="p">:::</span><span class="s">"memory"</span><span class="p">:</span><span class="s">"volatile"</span><span class="p">);</span> <span class="p">}</span> 
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c">/// Gibt eine Blinksequenz am LED aus</span>
 <span class="k">pub</span> <span class="k">fn</span> <span class="nf">blink_once</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">BlinkSeq</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">led_on</span>  <span class="o">=</span> <span class="n">GPSET1</span><span class="p">;</span>
-    <span class="k">let</span> <span class="n">led_off</span> <span class="o">=</span> <span class="n">GPCLR1</span><span class="p">;</span> 
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">led</span> <span class="o">=</span> <span class="nn">Led</span><span class="p">::</span><span class="nf">init</span><span class="p">(</span><span class="nn">LedType</span><span class="p">::</span><span class="n">Green</span><span class="p">);</span>
+    <span class="c">//let led_on  = GPSET1;</span>
+    <span class="c">//let led_off = GPCLR1; </span>
 
-    <span class="k">for</span> <span class="n">c</span> <span class="n">in</span> <span class="n">s</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="n">sym</span><span class="p">:</span> <span class="n">Bc</span> <span class="o">=</span> <span class="n">c</span><span class="nf">.clone</span><span class="p">();</span>
-        <span class="k">match</span> <span class="n">sym</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="o">&amp;</span><span class="n">c</span> <span class="n">in</span> <span class="n">s</span> <span class="p">{</span>
+        <span class="k">match</span> <span class="n">c</span> <span class="p">{</span>
             <span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span> <span class="k">=&gt;</span> <span class="p">{</span>
-                <span class="k">unsafe</span> <span class="p">{</span> <span class="o">*</span><span class="p">(</span><span class="n">led_on</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="p">}</span>
+                <span class="n">led</span><span class="nf">.switch</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+                <span class="c">//unsafe { *(led_on) = 1 &lt;&lt; 15; }</span>
                 <span class="nf">sleep</span><span class="p">(</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Long</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
-                <span class="k">unsafe</span> <span class="p">{</span> <span class="o">*</span><span class="p">(</span><span class="n">led_off</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="p">}</span>
+                <span class="c">//unsafe { *(led_off) = 1 &lt;&lt; 15; }</span>
+                <span class="n">led</span><span class="nf">.switch</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
             <span class="p">},</span>
             <span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span> <span class="k">=&gt;</span> <span class="p">{</span>
-                <span class="k">unsafe</span> <span class="p">{</span> <span class="o">*</span><span class="p">(</span><span class="n">led_on</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="p">}</span>
+                <span class="n">led</span><span class="nf">.switch</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+                <span class="c">//unsafe { *(led_on) = 1 &lt;&lt; 15; }</span>
                 <span class="nf">sleep</span><span class="p">(</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Short</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
-                <span class="k">unsafe</span> <span class="p">{</span> <span class="o">*</span><span class="p">(</span><span class="n">led_off</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="p">}</span>
+                <span class="c">//unsafe { *(led_off) = 1 &lt;&lt; 15; }</span>
+                <span class="n">led</span><span class="nf">.switch</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span> <span class="k">=&gt;</span> <span class="p">{</span>
                 <span class="nf">sleep</span><span class="p">(</span><span class="nn">Bc</span><span class="p">::</span><span class="n">Pause</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
@@ -842,8 +838,7 @@ haben, können wir die LED dafür nutzen. Dazu wird unser Blinkprogramm in ein e
 <span class="p">}</span>
 
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Man beachte, dass die auch hier benutzte Verzögerung durch „<em>busy idling</em>“ so nicht funktioniert, wenn wir die Codeoptimierung einschalten: Dann wird die
 Schleife zwar nicht vollständig wegoptimiert (das verhindert die Assembler-Anweisung), aber die Zeiten sind doch vollständig andere.
@@ -858,19 +853,19 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund – die Ausführ
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Diese Darstellung des Boot-Prozesses ist etwas vereinfacht.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>Diese Darstellung des Boot-Prozesses ist etwas vereinfacht. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p>Diese Information ist eigentlich überflüssig, da sie sich später im Binärfile nicht mehr wiederfindet. Der Linker braucht sie aber, er würde sonst das Fehlen monieren.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+      <p>Diese Information ist eigentlich überflüssig, da sie sich später im Binärfile nicht mehr wiederfindet. Der Linker braucht sie aber, er würde sonst das Fehlen monieren. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>Vielleicht werde ich in späteren Folgen nochmal cargo oder die Cross-Compile-Variante xargo einsetzen.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>Vielleicht werde ich in späteren Folgen nochmal cargo oder die Cross-Compile-Variante xargo einsetzen. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
-      <p>Vergleiche https://github.com/dwelch67/raspberrypi/tree/master/armjtag.&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+      <p>Vergleiche https://github.com/dwelch67/raspberrypi/tree/master/armjtag. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:5">
-      <p>Schon garn nicht in meiner Arbeitsumgebung auf dem Mac, da der Debugger hier auf MachO ausgelegt ist&nbsp;<a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+      <p>Schon garn nicht in meiner Arbeitsumgebung auf dem Mac, da der Debugger hier auf MachO ausgelegt ist <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

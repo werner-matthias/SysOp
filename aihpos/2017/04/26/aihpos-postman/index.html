@@ -319,7 +319,7 @@ Mailbox maximal 16 Kanäle geben. Daten und Kanalinformationen werden mit einem 
 (bzw. Mailbox 1 für die Rückantwort). Mailbox 0 hat 9 Kanäle. Für die Datenübertragung muss jeweils auf den passenden Status gewartet werden. Wir machen das im
 Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgehen und einen Interrupt auslösen lassen, wenn Daten bereit stehen.</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -400,18 +400,19 @@ Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgeh
 79
 80
 81
-82</pre></td><td class="code"><pre><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="nn">intrinsics</span><span class="p">::{</span><span class="n">volatile_load</span><span class="p">,</span><span class="n">volatile_store</span><span class="p">};</span>
+82
+</pre></td><td class="code"><pre><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="nn">intrinsics</span><span class="p">::{</span><span class="n">volatile_load</span><span class="p">,</span><span class="n">volatile_store</span><span class="p">};</span>
 <span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="nn">mem</span><span class="p">::</span><span class="n">transmute</span><span class="p">;</span>
-<span class="k">use</span> <span class="nn">cpu</span><span class="p">::</span><span class="n">Cpu</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">hal</span><span class="p">::</span><span class="nn">cpu</span><span class="p">::</span><span class="n">Cpu</span><span class="p">;</span>
 
 <span class="c">// Basisadresse des Mailregisters</span>
 <span class="k">const</span> <span class="n">MAILBOX_BASE</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">0x2000B880</span><span class="p">;</span>
 
 <span class="c">/// Kanäle des Mailbox-Interfaces</span>
-<span class="cp">#[allow(dead_code)]</span>
-<span class="cp">#[derive(Clone,Copy)]</span>
-<span class="cp">#[repr(u32)]</span>
-<span class="cp">#[allow(missing_docs)]</span>
+<span class="nd">#[allow(dead_code)]</span>
+<span class="nd">#[derive(Clone,Copy)]</span>
+<span class="nd">#[repr(u32)]</span>
+<span class="nd">#[allow(missing_docs)]</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">Channel</span> <span class="p">{</span>
     <span class="n">PowerManagement</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">Framebuffer</span><span class="p">,</span>
@@ -428,8 +429,8 @@ Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgeh
 <span class="k">const</span> <span class="n">MAILBOX_FULL</span><span class="p">:</span>  <span class="nb">u32</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">;</span>
 <span class="k">const</span> <span class="n">MAILBOX_EMPTY</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">30</span><span class="p">;</span>
 
-<span class="cp">#[allow(dead_code)]</span>
-<span class="cp">#[repr(C)]</span>
+<span class="nd">#[allow(dead_code)]</span>
+<span class="nd">#[repr(C)]</span>
 <span class="k">pub</span> <span class="k">struct</span> <span class="n">Mailbox</span> <span class="p">{</span>
     <span class="n">read</span><span class="p">:</span>    <span class="nb">u32</span><span class="p">,</span>      <span class="c">// 0x00</span>
     <span class="n">_unused</span><span class="p">:</span> <span class="p">[</span><span class="nb">u32</span><span class="p">;</span> <span class="mi">3</span><span class="p">],</span>     <span class="c">// 0x04 0x08 0x0C</span>
@@ -443,7 +444,7 @@ Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgeh
 <span class="k">impl</span> <span class="n">Mailbox</span> <span class="p">{</span>
     <span class="c">/// Liest die Antwort aus Kanal `channel`</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">read</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="k">mut</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">!</span><span class="mi">0</span><span class="p">;</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">ret</span> <span class="p">;</span>
         <span class="k">loop</span><span class="p">{</span>
             <span class="k">while</span> <span class="p">(</span><span class="k">unsafe</span><span class="p">{</span><span class="nn">volatile_load</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">u32</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="py">.status</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="n">_</span> <span class="p">)}</span> <span class="o">&amp;</span> <span class="n">MAILBOX_EMPTY</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
                 <span class="c">// DMB: Das ist evtl. redundant zum "volatile", aber empfohlen im Firmware-Wiki:</span>
@@ -476,13 +477,12 @@ Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgeh
 <span class="c">///</span>
 <span class="c">/// # Anmerkung</span>
 <span class="c">/// Es ist nur Mailbox 0 implementiert, alle anderen Nummern erzeugen eine Panik.</span>
-<span class="k">pub</span> <span class="k">fn</span> <span class="nf">mailbox</span><span class="p">(</span><span class="n">nr</span><span class="p">:</span> <span class="nb">u8</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="err">'</span><span class="k">static</span> <span class="k">mut</span> <span class="n">Mailbox</span> <span class="p">{</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">mailbox</span><span class="p">(</span><span class="n">nr</span><span class="p">:</span> <span class="nb">u8</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="nv">'static</span> <span class="k">mut</span> <span class="n">Mailbox</span> <span class="p">{</span>
     <span class="k">match</span> <span class="n">nr</span><span class="p">{</span>
         <span class="mi">0</span> <span class="k">=&gt;</span> <span class="k">unsafe</span><span class="p">{</span> <span class="nf">transmute</span><span class="p">(</span><span class="n">MAILBOX_BASE</span><span class="p">)},</span>
         <span class="n">_</span> <span class="k">=&gt;</span> <span class="nd">panic!</span><span class="p">()</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h2 id="property-tags">Property Tags</h2>
 
@@ -493,7 +493,7 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
 
 <p>Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags „auf Vorrat“in einem enum:</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -577,9 +577,10 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
 82
 83
 84
-85</pre></td><td class="code"><pre><span class="err">#</span><span class="p">[</span><span class="nf">derive</span><span class="p">(</span><span class="n">Clone</span><span class="p">,</span><span class="nb">Copy</span><span class="p">)]</span>
-<span class="cp">#[repr(u32)]</span>
-<span class="cp">#[allow(missing_docs)]</span>
+85
+</pre></td><td class="code"><pre><span class="err">#</span><span class="p">[</span><span class="nf">derive</span><span class="p">(</span><span class="n">Clone</span><span class="p">,</span><span class="nb">Copy</span><span class="p">)]</span>
+<span class="nd">#[repr(u32)]</span>
+<span class="nd">#[allow(missing_docs)]</span>
 <span class="c">/// Tags des Mailbox-Interface. Für die Bedeutungen der einzelnen Tags</span>
 <span class="c">/// siehe [Raspberry Firmware</span>
 <span class="c">/// Wiki](https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface)</span>
@@ -661,13 +662,12 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
     <span class="n">SetOverscan</span> <span class="o">=</span> <span class="mi">0x4800A</span><span class="p">,</span>
     <span class="n">GetPalette</span> <span class="o">=</span> <span class="mi">0x4000B</span><span class="p">,</span>
     <span class="n">TestPalette</span> <span class="o">=</span> <span class="mi">0x4400B</span><span class="p">,</span>
-    <span class="n">SetPalette</span> <span class="o">=</span> <span class="mi">0x4800B</span><span class="p">,</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+    <span class="n">SetPalette</span> <span class="o">=</span> <span class="mi">0x4800B</span><span class="p">,</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Bei der Antwort auf einen Request wird der Frage-Puffer überschrieben. Es muss also dafür gesorgt werden, dass genügend Platz für die Antwort zur Verfügung steht. Je nach
 <a href="https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface">Tag-Typ</a> ist das unterschiedlich:</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -762,7 +762,8 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
 93
 94
 95
-96</pre></td><td class="code"><pre>    <span class="n">SetCursorState</span> <span class="o">=</span> <span class="mi">0x8010</span>
+96
+</pre></td><td class="code"><pre>    <span class="n">SetCursorState</span> <span class="o">=</span> <span class="mi">0x8010</span>
 <span class="p">}</span>
 
 <span class="k">struct</span> <span class="n">ReqProperty</span> <span class="p">{</span>
@@ -857,8 +858,7 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
                 <span class="nn">Tag</span><span class="p">::</span><span class="n">SetCursorState</span>
                 <span class="k">=&gt;</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
                 <span class="nn">Tag</span><span class="p">::</span><span class="nb">None</span> <span class="k">=&gt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-        <span class="p">};</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+        <span class="p">};</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Da für die über den Kanal ausgetauschte Information wenige Bytes mitunter nicht ausreichen, werden über die Mailbox Adressen eine Puffers kommuniziert, die die
 eigentliche Information enthalten. Selbst eine solche Adresse kann mit 28 Bit nicht vollständig dargestellt werden: Es werden nur die obersten 28 Bit der Adresse werden
@@ -878,7 +878,7 @@ vorgenommen wird. Seit neuesten<sup id="fnref:2"><a href="#fn:2" class="footnote
 <p>Die Implementation des Tag-Puffers ist unkompliziert. Man muss lediglich darauf achten, dass die Daten <code class="highlighter-rouge">u32</code>-Wörter sind, aber die Größen stets in Byte gemessen
 werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwendig, die durch die Shift-Operatoren <code class="highlighter-rouge">&lt;&lt;</code> realisiert werden.</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -990,10 +990,11 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
 110
 111
 112
-113</pre></td><td class="code"><pre>    <span class="p">}</span>
+113
+</pre></td><td class="code"><pre>    <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cp">#[repr(u32)]</span>
+<span class="nd">#[repr(u32)]</span>
 <span class="k">enum</span> <span class="n">ReqResCode</span> <span class="p">{</span>
     <span class="n">Request</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nb">Success</span> <span class="o">=</span> <span class="mi">0x80000000</span><span class="p">,</span>
@@ -1017,8 +1018,8 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
     <span class="n">StartVal</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="cp">#[repr(C)]</span>
-<span class="cp">#[repr(align(</span><span class="mi">16</span><span class="cp">))]</span>
+<span class="nd">#[repr(C)]</span>
+<span class="nd">#[repr(align(</span><span class="mi">16</span><span class="nd">))]</span>
 <span class="c">/// Pufferspeicher für Property-Tag-Nachrichten</span>
 <span class="k">pub</span> <span class="k">struct</span> <span class="n">PropertyTagBuffer</span> <span class="p">{</span>
     <span class="n">data</span><span class="p">:</span> <span class="p">[</span><span class="nb">u32</span><span class="p">;</span> <span class="n">BUFFER_SIZE</span><span class="p">],</span>
@@ -1074,7 +1075,7 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
     <span class="c">/// Liest ein einzelnes Wort aus dem Puffer</span>
     <span class="k">fn</span> <span class="nf">read</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>
         <span class="k">self</span><span class="py">.index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="k">self</span><span class="py">.index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="k">self</span><span class="py">.index</span> <span class="err">-</span> <span class="mi">1</span><span class="p">]</span>
     <span class="p">}</span>
 
     <span class="c">/// Liest die Antwort auf eine Tag-Nachricht</span>
@@ -1090,7 +1091,7 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
                 <span class="p">(</span><span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="nn">TagOffset</span><span class="p">::</span><span class="n">ReqResp</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nn">TagReqResp</span><span class="p">::</span><span class="n">Response</span> <span class="k">as</span> <span class="nb">u32</span> <span class="o">==</span> <span class="nn">TagReqResp</span><span class="p">::</span><span class="n">Response</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">let</span> <span class="n">to</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="nn">TagOffset</span><span class="p">::</span><span class="n">StartVal</span> <span class="k">as</span> <span class="nb">usize</span> <span class="o">+</span>
                     <span class="p">((</span><span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="nn">TagOffset</span><span class="p">::</span><span class="n">Size</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">&amp;</span> <span class="o">!</span><span class="p">(</span><span class="nn">TagReqResp</span><span class="p">::</span><span class="n">Response</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">;</span>
-                <span class="k">let</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">self</span><span class="py">.data</span><span class="nf">.get</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="nn">TagOffset</span><span class="p">::</span><span class="n">StartVal</span> <span class="k">as</span> <span class="nb">usize</span> <span class="err">.</span><span class="py">. to</span><span class="p">);</span>
+                <span class="k">let</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">self</span><span class="py">.data</span><span class="nf">.get</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="nn">TagOffset</span><span class="p">::</span><span class="n">StartVal</span> <span class="k">as</span> <span class="nb">usize</span> <span class="o">..</span> <span class="n">to</span><span class="p">);</span>
                 <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
             <span class="p">}</span>
             <span class="n">index</span> <span class="o">+=</span> <span class="p">(</span><span class="k">self</span><span class="py">.data</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="nn">TagOffset</span><span class="p">::</span><span class="n">Size</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
@@ -1102,15 +1103,14 @@ werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwe
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">data_addr</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
         <span class="o">&amp;</span><span class="k">self</span><span class="py">.data</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="n">_</span> <span class="k">as</span> <span class="nb">usize</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="zuwenig-speicher">Zuwenig Speicher?</h3>
 
 <p>Mit Hilfe der Property-Tags können jetzt gewünschte Informationen erlangt werden. Um nicht mit den „rohen“ Puffer-Daten umgehen zu müssen, habe ich
 Schnittstellenfunktionen geschrieben:</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1181,8 +1181,107 @@ Schnittstellenfunktionen geschrieben:</p>
 69
 70
 71
-72</pre></td><td class="code"><pre><span class="k">mod</span> <span class="n">mailbox</span><span class="p">;</span>
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+</pre></td><td class="code"><pre><span class="k">mod</span> <span class="n">uart</span><span class="p">;</span>
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">uart</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="k">mod</span> <span class="n">aux</span><span class="p">;</span>
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">aux</span><span class="p">::{</span><span class="n">MiniUart</span><span class="p">};</span>
+<span class="k">mod</span> <span class="n">pl011</span><span class="p">;</span>
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">pl011</span><span class="p">::{</span><span class="n">Pl011</span><span class="p">,</span><span class="n">Pl011Interrupt</span><span class="p">,</span><span class="n">Pl011Flag</span><span class="p">,</span><span class="n">Pl011Error</span><span class="p">,</span><span class="n">Pl011FillLevel</span><span class="p">};</span>
+<span class="k">mod</span> <span class="n">gpio</span><span class="p">;</span>
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">gpio</span><span class="p">::{</span><span class="n">Gpio</span><span class="p">,</span><span class="n">GpioPinFunctions</span><span class="p">,</span><span class="n">GpioPull</span><span class="p">,</span><span class="n">GpioEvent</span><span class="p">,</span><span class="n">gpio_config</span><span class="p">};</span>
+<span class="k">mod</span> <span class="n">system_timer</span><span class="p">;</span>
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">system_timer</span><span class="p">::</span><span class="n">SystemTimer</span><span class="p">;</span>
+    
+<span class="k">mod</span> <span class="n">arm_timer</span><span class="p">;</span>
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">arm_timer</span><span class="p">::{</span><span class="n">ArmTimer</span><span class="p">,</span><span class="n">ArmTimerResolution</span><span class="p">};</span>
+<span class="k">mod</span> <span class="n">interrupts</span><span class="p">;</span>
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">interrupts</span><span class="p">::{</span><span class="n">Interrupt</span><span class="p">,</span><span class="n">BasicInterrupt</span><span class="p">,</span><span class="n">GeneralInterrupt</span><span class="p">,</span><span class="n">NUM_INTERRUPTS</span><span class="p">,</span><span class="n">FIRST_BASIC_INTERRUPT</span><span class="p">};</span>
+<span class="k">mod</span> <span class="n">irq_controller</span><span class="p">;</span>
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">irq_controller</span><span class="p">::</span><span class="n">IrqController</span><span class="p">;</span>
+<span class="k">mod</span> <span class="n">led</span><span class="p">;</span>
+<span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">led</span><span class="p">::{</span><span class="n">Led</span><span class="p">,</span><span class="n">LedType</span><span class="p">};</span>
+
+<span class="k">mod</span> <span class="n">mailbox</span><span class="p">;</span>
 <span class="k">mod</span> <span class="n">propertytags</span><span class="p">;</span>
+
+<span class="k">pub</span> <span class="k">trait</span> <span class="n">Bmc2835</span> <span class="p">{</span>
+
+    <span class="c">/// Basisadresse der Hardwaregeräte.</span>
+    <span class="k">fn</span> <span class="nf">device_base</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
+        <span class="c">// Für den RPi 1 reicht eine Konstante.</span>
+        <span class="c">// Später sollte hier eine Fallunterscheidung entweder zur Compile-Zeit</span>
+        <span class="c">// oder zur Laufzeit gemacht werden.</span>
+        <span class="mi">0x20000000</span>
+    <span class="p">}</span>
+
+    <span class="c">/// Gerätetypischer Offset der I/O-Adressen.</span>
+    <span class="k">fn</span> <span class="nf">base_offset</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">usize</span><span class="p">;</span>
+
+    <span class="c">/// Anfang der I/O-Adressen des Gerätes.</span>
+    <span class="k">fn</span> <span class="nf">base</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
+        <span class="nn">Self</span><span class="p">::</span><span class="nf">device_base</span><span class="p">()</span> <span class="o">+</span> <span class="nn">Self</span><span class="p">::</span><span class="nf">base_offset</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="c">/// Gibt den statischen Zeiger auf den I/O-Adressbereichs des Gerätes.</span>
+    <span class="k">fn</span> <span class="nf">get</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="nv">'static</span> <span class="k">mut</span> <span class="n">Self</span>
+        <span class="n">where</span> <span class="n">Self</span><span class="p">:</span> <span class="n">Sized</span> <span class="p">{</span>
+        <span class="k">unsafe</span> <span class="p">{</span>
+            <span class="o">&amp;</span><span class="k">mut</span> <span class="o">*</span><span class="p">(</span><span class="nn">Self</span><span class="p">::</span><span class="nf">base</span><span class="p">()</span> <span class="k">as</span> <span class="o">*</span> <span class="k">mut</span> <span class="n">Self</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
 
 <span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">propertytags</span><span class="p">::{</span><span class="n">Tag</span><span class="p">,</span><span class="n">PropertyTagBuffer</span><span class="p">,</span><span class="n">BUFFER_SIZE</span><span class="p">};</span>
 <span class="k">pub</span> <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">mailbox</span><span class="p">::{</span><span class="n">mailbox</span><span class="p">,</span> <span class="n">Channel</span><span class="p">};</span>
@@ -1220,7 +1319,7 @@ Schnittstellenfunktionen geschrieben:</p>
 <span class="p">}</span>
 
 <span class="c">/// </span>
-<span class="cp">#[allow(dead_code)]</span>
+<span class="nd">#[allow(dead_code)]</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">MemReport</span> <span class="p">{</span>
     <span class="c">/// Beginn des ARM-Speicherbereiches</span>
     <span class="n">ArmStart</span><span class="p">,</span>
@@ -1252,8 +1351,7 @@ Schnittstellenfunktionen geschrieben:</p>
         <span class="p">},</span>
         <span class="nb">None</span> <span class="k">=&gt;</span> <span class="mi">0</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Die Nutzung dieser Funktionen gab für mich zwei Überraschungen:</p>
 
@@ -1277,7 +1375,7 @@ positioniert werden kann.</p>
 
 <p>Zunächst definieren wir eine Struktur:</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1294,12 +1392,9 @@ positioniert werden kann.</p>
 15
 16
 17
-18
-19</pre></td><td class="code"><pre><span class="k">const</span> <span class="n">DEF_BG_COLOR</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="mi">0x7f7f7f7f</span><span class="p">;</span>
-
-<span class="cp">#[allow(dead_code)]</span>
-<span class="k">pub</span> <span class="k">struct</span> <span class="n">Framebuffer</span><span class="o">&lt;</span><span class="err">'</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="n">screen</span><span class="p">:</span> <span class="o">&amp;</span><span class="err">'</span><span class="n">a</span> <span class="k">mut</span><span class="p">[</span><span class="nb">u32</span><span class="p">],</span>
+</pre></td><td class="code"><pre><span class="err">#</span><span class="p">[</span><span class="nf">allow</span><span class="p">(</span><span class="n">dead_code</span><span class="p">)]</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">Framebuffer</span><span class="o">&lt;</span><span class="nv">'a</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="n">screen</span><span class="p">:</span> <span class="o">&amp;</span><span class="nv">'a</span> <span class="k">mut</span><span class="p">[</span><span class="nb">u32</span><span class="p">],</span>
     <span class="n">width</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
     <span class="n">height</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
     <span class="n">depth</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
@@ -1313,13 +1408,12 @@ positioniert werden kann.</p>
     <span class="n">x_offset</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
     <span class="n">y_offset</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
     <span class="n">size</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><code class="highlighter-rouge">screen</code> ist dabei die Referenz auf den eigentlichen Framebuffer-Speicherbereich, die anderen Felder sollten selbsterklärend sein. <code class="highlighter-rouge">screen</code> und die resultierende
 Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei der Initialisierung abgefragt, nachdem die Grundparameter vorgegeben werden:</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1378,11 +1472,12 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
 57
 58
 59
-60</pre></td><td class="code"><pre><span class="c">/// Legt einen neuen Framebuffer an und setzt die Parameter.</span>
+60
+</pre></td><td class="code"><pre><span class="c">/// Legt einen neuen Framebuffer an und setzt die Parameter.</span>
 <span class="c">/// Die Voreinstellung des Bootloaders wird ignoriert.</span>
 <span class="c">///  *Todo*:  Gegebenenfalls sollten die Einstellungen abgefragt und verwendet werden. Allerdings erfordert dies mindestens</span>
 <span class="c">///   bei der Farbtiefe größere Änderungen.</span>
-<span class="k">pub</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">()</span> <span class="k">-&gt;</span>  <span class="n">Framebuffer</span><span class="o">&lt;</span><span class="err">'</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">()</span> <span class="k">-&gt;</span>  <span class="n">Framebuffer</span><span class="o">&lt;</span><span class="nv">'a</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="c">// Mit der GPU wird über die Mailbox kommuniziert.</span>
     <span class="c">// Es wird das Property-Tag-Interface genutzt, nicht das Framebuffer-Interface.</span>
     <span class="k">let</span> <span class="k">mut</span> <span class="n">prob_tag_buf</span><span class="p">:</span> <span class="n">PropertyTagBuffer</span> <span class="o">=</span> <span class="nn">PropertyTagBuffer</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
@@ -1398,7 +1493,7 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
     <span class="n">mb</span><span class="nf">.read</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">);</span>
     <span class="c">// Die Antwort enthält die Speicheradresse des Framebuffers</span>
     <span class="k">let</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">prob_tag_buf</span><span class="nf">.get_answer</span><span class="p">(</span><span class="nn">Tag</span><span class="p">::</span><span class="n">AllocateFrameBuffer</span><span class="p">);</span>
-    <span class="k">let</span> <span class="n">adr</span><span class="p">:</span> <span class="o">&amp;</span><span class="err">'</span><span class="n">a</span> <span class="k">mut</span><span class="p">[</span><span class="nb">u32</span><span class="p">];</span>
+    <span class="k">let</span> <span class="n">adr</span><span class="p">:</span> <span class="o">&amp;</span><span class="nv">'a</span> <span class="k">mut</span><span class="p">[</span><span class="nb">u32</span><span class="p">];</span>
     <span class="k">let</span> <span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">;</span>
     <span class="k">match</span> <span class="n">ret</span> <span class="p">{</span>
         <span class="nf">Some</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
@@ -1437,8 +1532,7 @@ Speicherzeilenlänge (<code class="highlighter-rouge">pitch</code>) werden bei 
         <span class="n">size</span><span class="p">:</span> <span class="n">size</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">,</span>
     <span class="p">};</span>
     <span class="n">fb</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Wir wählen einen virtuellen Puffer, der doppelt so hoch ist wie die vertikale Bildschirmauflösung. Damit können wir ein kontinuierliches Scrollen erreichen,<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> indem wir
 einen virtuellen Ringpuffer aufbauen, siehe Abschnitt „<a href="#scrollen">Scrollen</a>“.</p>
@@ -1476,22 +1570,20 @@ einen virtuellen Ringpuffer aufbauen, siehe Abschnitt „<a href="#scrollen">Scr
   </tbody>
 </table>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
-5</pre></td><td class="code"><pre><span class="c">/// Zeichnet einen einzelnen Pixel in der gegeben Farbe an die</span>
-<span class="c">/// gegebene Position</span>
+</pre></td><td class="code"><pre><span class="c">/// gegebene Position</span>
 <span class="k">fn</span> <span class="nf">draw_pixel</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span>  <span class="n">color</span><span class="p">;</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Jetzt zeigt es sich von Vorteil, dass wir eine Farbtiefe gewählt haben, die der Wortbreite entspricht: Dadurch wird die Indexierung sehr einfach. Bei 24 Bit Farbtiefe,
 die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>  Damit wir auch Text ausgeben können, brauchen wir einen Font. Freundlicherweise hat auf
 <a href="http://stackoverflow.com/a/23130671">Stackoverflow</a> jemand einen kompletten ASCII-Font für C bereit gestellt, der für <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> einfach an Rust angepasst und um die deutschen Umlaute erweitert wurde:</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1511,7 +1603,8 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"
 18
 19
 20
-21</pre></td><td class="code"><pre><span class="c">// Die Daten für diesen Font stammen von http://stackoverflow.com/a/23130671, mit kleinen Modifikationen</span>
+21
+</pre></td><td class="code"><pre><span class="c">// Die Daten für diesen Font stammen von http://stackoverflow.com/a/23130671, mit kleinen Modifikationen</span>
 <span class="k">pub</span> <span class="k">trait</span> <span class="n">Font</span> <span class="p">{</span>
     <span class="k">fn</span> <span class="nf">glyph_width</span><span class="p">()</span>  <span class="k">-&gt;</span> <span class="nb">u32</span><span class="p">;</span>
     <span class="k">fn</span> <span class="nf">glyph_height</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">u32</span><span class="p">;</span>
@@ -1531,12 +1624,11 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"
             <span class="mi">33</span> <span class="k">=&gt;</span> <span class="p">[</span><span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">],</span><span class="c">// ! </span>
             <span class="mi">34</span> <span class="k">=&gt;</span> <span class="p">[</span><span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x36u8</span><span class="p">,</span> <span class="mi">0x36u8</span><span class="p">,</span> <span class="mi">0x36u8</span><span class="p">,</span> <span class="mi">0x36u8</span><span class="p">],</span><span class="c">// "</span>
             <span class="mi">35</span> <span class="k">=&gt;</span> <span class="p">[</span><span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x66u8</span><span class="p">,</span> <span class="mi">0x66u8</span><span class="p">,</span> <span class="mi">0xffu8</span><span class="p">,</span> <span class="mi">0x66u8</span><span class="p">,</span> <span class="mi">0x66u8</span><span class="p">,</span> <span class="mi">0xffu8</span><span class="p">,</span> <span class="mi">0x66u8</span><span class="p">,</span> <span class="mi">0x66u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">],</span><span class="c">// #</span>
-            <span class="mi">36</span> <span class="k">=&gt;</span> <span class="p">[</span><span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x7eu8</span><span class="p">,</span> <span class="mi">0xffu8</span><span class="p">,</span> <span class="mi">0x1bu8</span><span class="p">,</span> <span class="mi">0x1fu8</span><span class="p">,</span> <span class="mi">0x7eu8</span><span class="p">,</span> <span class="mi">0xf8u8</span><span class="p">,</span> <span class="mi">0xd8u8</span><span class="p">,</span> <span class="mi">0xffu8</span><span class="p">,</span> <span class="mi">0x7eu8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">],</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+            <span class="mi">36</span> <span class="k">=&gt;</span> <span class="p">[</span><span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x7eu8</span><span class="p">,</span> <span class="mi">0xffu8</span><span class="p">,</span> <span class="mi">0x1bu8</span><span class="p">,</span> <span class="mi">0x1fu8</span><span class="p">,</span> <span class="mi">0x7eu8</span><span class="p">,</span> <span class="mi">0xf8u8</span><span class="p">,</span> <span class="mi">0xd8u8</span><span class="p">,</span> <span class="mi">0xffu8</span><span class="p">,</span> <span class="mi">0x7eu8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">],</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>…</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1553,7 +1645,8 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"
 15
 16
 17
-18</pre></td><td class="code"><pre><span class="mi">124</span> <span class="k">=&gt;</span> <span class="p">[</span><span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">],</span><span class="c">// |</span>
+18
+</pre></td><td class="code"><pre><span class="mi">124</span> <span class="k">=&gt;</span> <span class="p">[</span><span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">],</span><span class="c">// |</span>
             <span class="mi">125</span> <span class="k">=&gt;</span> <span class="p">[</span><span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0xf0u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x1cu8</span><span class="p">,</span> <span class="mi">0x0fu8</span><span class="p">,</span> <span class="mi">0x1cu8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0x18u8</span><span class="p">,</span> <span class="mi">0xf0u8</span><span class="p">],</span><span class="c">// }</span>
             <span class="c">// Umlaute</span>
             <span class="mi">228</span> <span class="k">=&gt;</span> <span class="p">[</span><span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x7fu8</span><span class="p">,</span> <span class="mi">0xc3u8</span><span class="p">,</span> <span class="mi">0xc3u8</span><span class="p">,</span> <span class="mi">0x7fu8</span><span class="p">,</span> <span class="mi">0x03u8</span><span class="p">,</span> <span class="mi">0xc3u8</span><span class="p">,</span> <span class="mi">0x7eu8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">,</span> <span class="mi">0xc6u8</span><span class="p">,</span> <span class="mi">0x00u8</span><span class="p">],</span><span class="c">// ä</span>
@@ -1570,14 +1663,13 @@ die z.B. auch möglich ist, wäre es etwas aufwendiger gewesen.<sup id="fnref:6"
         <span class="k">let</span> <span class="n">val</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="p">(</span><span class="n">glyph_row</span> <span class="o">&gt;&gt;</span> <span class="n">col</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">0x1</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="nf">Some</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Ein Textstring kann jetzt im Framebuffer Zeichen für Zeichen, ein Zeichen ggf. interpretiert und dann pixelweise ausgegeben werden. Dabei wird immer Buch über die
 aktuelle Zeichenposition – d.h. Spalte und Zeile – geführt und entsprechend angepasst. Bei der Interpretation beschränken wir uns erst einmal auf die
 Steuerzeichen für „neue Zeile“und „Tabulator“.</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1621,14 +1713,15 @@ Steuerzeichen für „neue Zeile“und „Tabulator“.</p>
 42
 43
 44
-45</pre></td><td class="code"><pre><span class="k">pub</span> <span class="k">fn</span> <span class="nf">print</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="p">{</span>
+45
+</pre></td><td class="code"><pre><span class="k">pub</span> <span class="k">fn</span> <span class="nf">print</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="n">c</span> <span class="n">in</span> <span class="n">s</span><span class="nf">.chars</span><span class="p">()</span> <span class="p">{</span>
                 <span class="k">self</span><span class="nf">.putchar</span><span class="p">(</span><span class="n">c</span> <span class="k">as</span> <span class="nb">u8</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">putchar</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">u8</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">self</span><span class="py">.row</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="o">-</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">&gt;</span> <span class="k">self</span><span class="py">.height</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">self</span><span class="py">.row</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="err">-</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">&gt;</span> <span class="k">self</span><span class="py">.height</span> <span class="p">{</span>
             <span class="k">self</span><span class="nf">.scroll</span><span class="p">();</span>
         <span class="p">}</span>
         <span class="k">match</span> <span class="n">c</span> <span class="k">as</span> <span class="nb">char</span> <span class="p">{</span>
@@ -1637,7 +1730,7 @@ Steuerzeichen für „neue Zeile“und „Tabulator“.</p>
                 <span class="k">self</span><span class="py">.col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
             <span class="p">},</span>
             <span class="sc">'\t'</span>  <span class="k">=&gt;</span> <span class="p">{</span>
-                <span class="k">for</span> <span class="n">_</span> <span class="n">in</span> <span class="mi">0</span><span class="err">..</span><span class="mi">4</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="n">in</span> <span class="mi">0</span><span class="o">..</span><span class="mi">4</span> <span class="p">{</span>
                     <span class="k">self</span><span class="nf">.putchar</span><span class="p">(</span><span class="sc">' '</span> <span class="k">as</span> <span class="nb">u8</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">},</span>
@@ -1655,33 +1748,32 @@ Steuerzeichen für „neue Zeile“und „Tabulator“.</p>
     <span class="p">}</span>
 
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">draw_glyph</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="nb">char</span><span class="p">:</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="n">row</span> <span class="n">in</span> <span class="mi">0</span><span class="err">.</span><span class="py">.SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">for</span> <span class="n">col</span> <span class="n">in</span> <span class="mi">0</span><span class="err">.</span><span class="py">.SystemFont</span><span class="p">::</span><span class="nf">glyph_width</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="n">in</span> <span class="mi">0</span><span class="o">..</span><span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="n">in</span> <span class="mi">0</span><span class="o">..</span><span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_width</span><span class="p">()</span> <span class="p">{</span>
                 <span class="k">let</span> <span class="n">p</span> <span class="o">=</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_pixel</span><span class="p">(</span><span class="nb">char</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="p">)</span> <span class="p">;</span>
                 <span class="k">let</span> <span class="n">color</span> <span class="o">=</span> <span class="k">match</span> <span class="n">p</span> <span class="p">{</span>
                     <span class="nf">Some</span><span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="k">self</span><span class="py">.fg_color</span><span class="p">,</span>
                     <span class="n">_</span> <span class="k">=&gt;</span> <span class="k">self</span><span class="py">.bg_color</span>
                 <span class="p">};</span>
-                <span class="k">self</span><span class="nf">.draw_pixel</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_width</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">col</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">row</span><span class="p">)</span>
+                <span class="k">self</span><span class="nf">.draw_pixel</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_width</span><span class="p">()</span> <span class="err">-</span> <span class="mi">1</span> <span class="err">-</span> <span class="n">col</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="err">-</span> <span class="mi">1</span> <span class="err">-</span> <span class="n">row</span><span class="p">)</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+    <span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Für die formatierte Ausgabe von Werten kann bequemerweise die Rust-Core-Bibliothek genutzt werden. Dazu muss unser Framebuffer den Trait <code class="highlighter-rouge">fmt::Write</code> implementieren:</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre><span class="k">impl</span><span class="o">&lt;</span><span class="err">'</span><span class="n">a</span><span class="o">&gt;</span> <span class="nn">fmt</span><span class="p">::</span><span class="n">Write</span> <span class="k">for</span> <span class="n">Framebuffer</span><span class="o">&lt;</span><span class="err">'</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">{</span> 
+6
+</pre></td><td class="code"><pre><span class="k">impl</span><span class="o">&lt;</span><span class="nv">'a</span><span class="o">&gt;</span> <span class="nn">fmt</span><span class="p">::</span><span class="n">Write</span> <span class="k">for</span> <span class="n">Framebuffer</span><span class="o">&lt;</span><span class="nv">'a</span><span class="o">&gt;</span> <span class="p">{</span> 
     <span class="k">fn</span> <span class="nf">write_str</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">fmt</span><span class="p">::</span><span class="n">Result</span> <span class="p">{</span>
         <span class="k">self</span><span class="nf">.print</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
          <span class="nf">Ok</span><span class="p">(())</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="scrollen">Scrollen</h3>
 
@@ -1690,7 +1782,7 @@ Mailbox benutzt wird. Sobald das sichtbare Fenster nach unten geschoben wurde, w
 sichtbare Bereich unten wird von evtl. vorhandenen alten Daten bereinigt. Wenn die maximale Verschiebung erreicht ist, springt der sichtbare Ausschnitt wieder nach oben,
 was durch das vorherige Kopieren aber wie ein einfaches Scrollen aussieht.</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1725,19 +1817,20 @@ was durch das vorherige Kopieren aber wie ein einfaches Scrollen aussieht.</p>
 33
 34
 35
-36</pre></td><td class="code"><pre><span class="k">pub</span> <span class="k">fn</span> <span class="nf">scroll</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span>
+36
+</pre></td><td class="code"><pre><span class="k">pub</span> <span class="k">fn</span> <span class="nf">scroll</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span>
         <span class="c">// kopiere letzte Zeile</span>
         <span class="k">if</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">&gt;</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">for</span> <span class="n">y</span> <span class="n">in</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span><span class="err">.</span><span class="py">.self.y_offset</span> <span class="o">-</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="p">{</span>
-                <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">0</span><span class="err">.</span><span class="py">.self.width</span> <span class="p">{</span>
-                    <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span><span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span> <span class="k">self</span><span class="py">.screen</span><span class="p">[((</span><span class="n">y</span><span class="o">+</span><span class="k">self</span><span class="py">.height</span><span class="o">+</span><span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span><span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">];</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="n">in</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="err">-</span><span class="mi">2</span><span class="o">*</span><span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span><span class="o">..</span><span class="k">self</span><span class="py">.y_offset</span> <span class="err">-</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">0</span><span class="o">..</span><span class="k">self</span><span class="py">.width</span> <span class="p">{</span>
+                    <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span><span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span> <span class="k">self</span><span class="py">.screen</span><span class="p">[((</span><span class="n">y</span><span class="o">+</span><span class="k">self</span><span class="py">.height</span><span class="o">+</span><span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span><span class="err">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span><span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">];</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">+</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">()</span> <span class="o">&lt;</span> <span class="k">self</span><span class="py">.height</span> <span class="p">{</span> <span class="c">// solange das Fenster noch nicht das Ende des Puffers erreicht hat...</span>
             <span class="c">// lösche ggf. alten Inhalt</span>
-            <span class="k">for</span> <span class="n">y</span> <span class="nf">in</span> <span class="p">(</span><span class="k">self</span><span class="py">.height</span><span class="o">+</span><span class="k">self</span><span class="py">.y_offset</span><span class="p">)</span><span class="err">.</span><span class="py">.cmp</span><span class="p">::</span><span class="nf">min</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="k">self</span><span class="py">.height</span><span class="p">,</span><span class="k">self</span><span class="py">.height</span><span class="o">+</span><span class="k">self</span><span class="py">.y_offset</span><span class="o">+</span> <span class="mi">2</span><span class="o">*</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">())</span> <span class="p">{</span>
-                <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">0</span><span class="err">.</span><span class="py">.self.width</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="nf">in</span> <span class="p">(</span><span class="k">self</span><span class="py">.height</span><span class="o">+</span><span class="k">self</span><span class="py">.y_offset</span><span class="p">)</span><span class="o">..</span><span class="nn">cmp</span><span class="p">::</span><span class="nf">min</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="k">self</span><span class="py">.height</span><span class="p">,</span><span class="k">self</span><span class="py">.height</span><span class="o">+</span><span class="k">self</span><span class="py">.y_offset</span><span class="o">+</span> <span class="mi">2</span><span class="o">*</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">())</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">0</span><span class="o">..</span><span class="k">self</span><span class="py">.width</span> <span class="p">{</span>
                     <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span><span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span> <span class="k">self</span><span class="py">.bg_color</span><span class="p">;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
@@ -1745,11 +1838,11 @@ was durch das vorherige Kopieren aber wie ein einfaches Scrollen aussieht.</p>
             <span class="k">self</span><span class="py">.y_offset</span> <span class="o">=</span> <span class="k">self</span><span class="py">.y_offset</span> <span class="o">+</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">();</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="c">// sonst gehe zum Pufferbeginn</span>
-            <span class="k">self</span><span class="py">.row</span> <span class="o">=</span> <span class="k">self</span><span class="py">.row</span> <span class="o">-</span> <span class="p">(</span><span class="k">self</span><span class="py">.height</span> <span class="err">/</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">())</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">self</span><span class="py">.row</span> <span class="o">=</span> <span class="k">self</span><span class="py">.row</span> <span class="err">-</span> <span class="p">(</span><span class="k">self</span><span class="py">.height</span> <span class="err">/</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">())</span> <span class="err">-</span> <span class="mi">1</span><span class="p">;</span>
             <span class="k">self</span><span class="py">.y_offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
             <span class="c">// lösche letzte Zeile</span>
-            <span class="k">for</span> <span class="n">y</span> <span class="n">in</span> <span class="k">self</span><span class="py">.height</span> <span class="o">-</span> <span class="p">(</span><span class="k">self</span><span class="py">.height</span> <span class="o">%</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">())</span><span class="err">.</span><span class="py">.self.height</span> <span class="p">{</span>
-                <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">0</span><span class="err">.</span><span class="py">.self.width</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="n">in</span> <span class="k">self</span><span class="py">.height</span> <span class="err">-</span> <span class="p">(</span><span class="k">self</span><span class="py">.height</span> <span class="o">%</span> <span class="nn">SystemFont</span><span class="p">::</span><span class="nf">glyph_height</span><span class="p">())</span><span class="o">..</span><span class="k">self</span><span class="py">.height</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">0</span><span class="o">..</span><span class="k">self</span><span class="py">.width</span> <span class="p">{</span>
                     <span class="k">self</span><span class="py">.screen</span><span class="p">[(</span><span class="n">y</span><span class="o">*</span><span class="k">self</span><span class="py">.width</span> <span class="o">+</span><span class="n">x</span><span class="p">)</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">]</span> <span class="o">=</span> <span class="k">self</span><span class="py">.bg_color</span><span class="p">;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
@@ -1760,8 +1853,7 @@ was durch das vorherige Kopieren aber wie ein einfaches Scrollen aussieht.</p>
         <span class="n">prob_tag_buf</span><span class="nf">.add_tag_with_param</span><span class="p">(</span><span class="nn">Tag</span><span class="p">::</span><span class="n">SetVirtualOffset</span><span class="p">,</span><span class="nf">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="k">self</span><span class="py">.y_offset</span><span class="p">]));</span>
         <span class="n">mb</span><span class="nf">.write</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prob_tag_buf</span><span class="py">.data</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="p">[</span><span class="nb">u32</span><span class="p">;</span> <span class="n">BUFFER_SIZE</span><span class="p">]</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">);</span>
         <span class="n">mb</span><span class="nf">.read</span><span class="p">(</span><span class="nn">Channel</span><span class="p">::</span><span class="n">ATags</span><span class="p">);</span>
-    <span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+    <span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="no-race-codition">(No) Race Codition</h3>
 
@@ -1788,7 +1880,7 @@ nebenläufige Nutzung seiner Referenz zusichert. Beide Traits sind
 selbst wieder unsicher, was heißt, dass der Compiler die Einhaltung
 der Garantien nicht überprüfen kann.</p>
 
-<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1813,7 +1905,8 @@ der Garantien nicht überprüfen kann.</p>
 23
 24
 25
-26</pre></td><td class="code"><pre><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="nn">cell</span><span class="p">::</span><span class="n">UnsafeCell</span><span class="p">;</span>
+26
+</pre></td><td class="code"><pre><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="nn">cell</span><span class="p">::</span><span class="n">UnsafeCell</span><span class="p">;</span>
 
 <span class="k">pub</span> <span class="k">struct</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">Sized</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">UnsafeCell</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span>
@@ -1822,7 +1915,7 @@ der Garantien nicht überprüfen kann.</p>
 <span class="k">unsafe</span> <span class="k">impl</span><span class="o">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">Sized</span> <span class="o">+</span> <span class="nb">Send</span><span class="o">&gt;</span> <span class="n">Sync</span> <span class="k">for</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{}</span>
 <span class="k">unsafe</span> <span class="k">impl</span><span class="o">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">Sized</span> <span class="o">+</span> <span class="nb">Send</span><span class="o">&gt;</span> <span class="nb">Send</span> <span class="k">for</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{}</span>
 
-<span class="k">impl</span><span class="o">&lt;</span><span class="err">'</span><span class="n">b</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">{</span>
+<span class="k">impl</span><span class="o">&lt;</span><span class="nv">'b</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">{</span>
     <span class="k">pub</span> <span class="k">const</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
         <span class="n">NoConcurrency</span><span class="p">{</span>
             <span class="n">data</span><span class="p">:</span> <span class="nn">UnsafeCell</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -1838,13 +1931,11 @@ der Garantien nicht überprüfen kann.</p>
         <span class="k">let</span> <span class="n">r</span> <span class="o">=</span><span class="k">self</span><span class="py">.data</span><span class="nf">.get</span><span class="p">();</span>
         <span class="k">unsafe</span> <span class="p">{</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="p">(</span><span class="o">*</span><span class="n">r</span><span class="p">)}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Jetzt können wir uns den Framebuffer anlegen:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">_KPRINT_FB</span><span class="p">:</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Framebuffer</span><span class="o">&lt;</span><span class="err">'</span><span class="k">static</span><span class="o">&gt;&gt;&gt;</span> <span class="o">=</span> <span class="nn">NoConcurrency</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="nb">None</span><span class="p">);</span>
-</code></pre>
-</div>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="n">_KPRINT_FB</span><span class="p">:</span> <span class="n">NoConcurrency</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Framebuffer</span><span class="o">&lt;</span><span class="nv">'static</span><span class="o">&gt;&gt;&gt;</span> <span class="o">=</span> <span class="nn">NoConcurrency</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="nb">None</span><span class="p">);</span>
+</code></pre></div></div>
 <p>Er ist in einer <code class="highlighter-rouge">Option</code> verpackt, damit er beim ersten Aufruf
 initialisert wird. Dies kann nicht direkt geschehen, da die
 Initialisierung <em>keine</em> konstante Funktion ist, also eine, die schon
@@ -1852,7 +1943,7 @@ zur Übersetzungszeit vollständig berechnet werden kann.
 Ist also der interne Wert von <code class="highlighter-rouge">_KPRINT_FB</code> <code class="highlighter-rouge">None</code>, muss die
 Initialisierung gerufen werden. Die beiden Funktionen, die den
 Framebuffer nutzen, erledigen dies:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="nf">doc</span><span class="p">(</span><span class="n">hidden</span><span class="p">)]</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="nf">doc</span><span class="p">(</span><span class="n">hidden</span><span class="p">)]</span>
 <span class="k">pub</span> <span class="k">fn</span> <span class="nf">fkprintc</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span> <span class="n">Arguments</span><span class="p">,</span><span class="n">color</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">fbo</span> <span class="o">=</span> <span class="n">_KPRINT_FB</span><span class="nf">.get</span><span class="p">();</span>
     <span class="k">match</span> <span class="o">*</span><span class="n">fbo</span> <span class="p">{</span>
@@ -1869,7 +1960,7 @@ Framebuffer nutzen, erledigen dies:</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cp">#[doc(hidden)]</span>
+<span class="nd">#[doc(hidden)]</span>
 <span class="k">pub</span> <span class="k">fn</span> <span class="nf">fkprint</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span> <span class="n">Arguments</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">fbo</span> <span class="o">=</span> <span class="n">_KPRINT_FB</span><span class="nf">.get</span><span class="p">();</span>
     <span class="k">match</span> <span class="o">*</span><span class="n">fbo</span> <span class="p">{</span>
@@ -1883,19 +1974,18 @@ Framebuffer nutzen, erledigen dies:</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cp">#[doc(hidden)]</span>
+<span class="nd">#[doc(hidden)]</span>
 <span class="k">pub</span> <span class="k">fn</span> <span class="nf">kprint_init</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">_KPRINT_FB</span><span class="nf">.set</span><span class="p">(</span><span class="nf">Some</span><span class="p">(::</span><span class="nn">framebuffer</span><span class="p">::</span><span class="nn">Framebuffer</span><span class="p">::</span><span class="nf">new</span><span class="p">()));</span>
     <span class="nf">kprint_clear</span><span class="p">()</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Zur Erleichterung habe ich noch ein Macro geschrieben, dass ich zum
 Debuggen einsetzen werde. Ich möchte nämlich nicht zwischen meinen
 Aufrufen wechseln, je nachdem, ob ich eine die Schrift in einer
 anderen Farbe ausgeben will oder nicht. Leider kennt Rust ja keine
 Default-Argumente, aber auf Macroebene ist dies kein Problem:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="n">macro_export</span><span class="p">]</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="n">macro_export</span><span class="p">]</span>
 <span class="c">/// Consolenausgabe vom Kernel aus (_kernel print_).</span>
 <span class="c">/// Dient im Wesentlichen für Debugging-Zwecke während der Kernel-Entwicklung</span>
 <span class="nd">macro_rules!</span> <span class="n">kprint</span> <span class="p">{</span>
@@ -1903,8 +1993,7 @@ Default-Argumente, aber auf Macroebene ist dies kein Problem:</p>
     <span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$a</span><span class="p">:</span> <span class="n">expr</span><span class="p">),</span><span class="o">*</span> <span class="p">;</span> <span class="nv">$c</span><span class="p">:</span> <span class="n">ident</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span> <span class="nv">$crate</span><span class="p">::</span><span class="nn">kprint</span><span class="p">::</span><span class="nf">fkprintc</span><span class="p">(</span><span class="nd">format_args!</span><span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$a</span><span class="p">),</span><span class="o">*</span><span class="p">),</span><span class="nv">$crate</span><span class="p">::</span><span class="nn">kprint</span><span class="p">::</span><span class="nv">$c</span><span class="p">);</span> <span class="p">};</span>
     <span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$a</span><span class="p">:</span> <span class="n">expr</span><span class="p">),</span><span class="o">*</span> <span class="p">;</span> <span class="nv">$c</span><span class="p">:</span> <span class="n">expr</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span> <span class="nv">$crate</span><span class="p">::</span><span class="nn">kprint</span><span class="p">::</span><span class="nf">fkprintc</span><span class="p">(</span><span class="nd">format_args!</span><span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$a</span><span class="p">),</span><span class="o">*</span><span class="p">),</span><span class="nv">$c</span><span class="p">);</span> <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="der-linker-zickt-mal-wieder">Der Linker zickt mal wieder</h2>
 
@@ -1940,22 +2029,22 @@ Zeit, das Projekt auf Rust-Tools umzustellen, die dies automatisch erledigen. Di
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Das ist nicht ganz präzise: Rust hält das „natürliche“ Alignment ein, das ggf. durch <code class="highlighter-rouge">#[repr(packed)]</code> unterlaufen werden kann.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>Das ist nicht ganz präzise: Rust hält das „natürliche“ Alignment ein, das ggf. durch <code class="highlighter-rouge">#[repr(packed)]</code> unterlaufen werden kann. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p>Version 6d841da vom 22. April 2017&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+      <p>Version 6d841da vom 22. April 2017 <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>Eine weitere Alternative für das Debuggen wäre auch noch die Nutzung der UART.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>Eine weitere Alternative für das Debuggen wäre auch noch die Nutzung der UART. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
-      <p>Diese Darstellung ist etwas vereinfacht.&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+      <p>Diese Darstellung ist etwas vereinfacht. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:5">
-      <p>Genau genommen bräuchte man dafür nur ein oder zwei „Reservezeilen“, aber so sind wir etwas flexibler.&nbsp;<a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+      <p>Genau genommen bräuchte man dafür nur ein oder zwei „Reservezeilen“, aber so sind wir etwas flexibler. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:6">
-      <p>Es wäre dann vermutlich besser, wenn ein <code class="highlighter-rouge">u8</code>-Array genutzt würde.&nbsp;<a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+      <p>Es wäre dann vermutlich besser, wenn ein <code class="highlighter-rouge">u8</code>-Array genutzt würde. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
