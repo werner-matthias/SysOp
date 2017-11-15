@@ -385,7 +385,7 @@ Reihe sind als überholt zu betrachten.</p>
 noch nicht in der offiziellen <a href="https://doc.rust-lang.org/alloc/index.html">Dokumentation</a>. Die Quellfiles sind aber ausführlich kommentiert.</p>
 
 <p>Der Trait besteht aus folgenden Funktionen:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">unsafe</span> <span class="k">trait</span> <span class="n">Allocator</span> <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">unsafe</span> <span class="k">trait</span> <span class="n">Allocator</span> <span class="p">{</span>
     <span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Result</span><span class="o">&lt;*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">AllocErr</span><span class="o">&gt;</span><span class="p">;</span>
 
     <span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">dealloc</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">);</span>
@@ -436,29 +436,25 @@ noch nicht in der offiziellen <a href="https://doc.rust-lang.org/alloc/index.htm
     <span class="k">unsafe</span> <span class="k">fn</span> <span class="n">dealloc_array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">:</span> <span class="n">Unique</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Result</span><span class="o">&lt;</span><span class="p">(),</span> <span class="n">AllocErr</span><span class="o">&gt;</span>
         <span class="n">where</span> <span class="n">Self</span><span class="p">:</span> <span class="n">Sized</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Müssen jetzt wirklich fünfzehn Funktionen implementiert werden? Und die neuen Typen, <code class="highlighter-rouge">Layout</code>, <code class="highlighter-rouge">AllocErr</code>, <code class="highlighter-rouge">Excess</code>, <code class="highlighter-rouge">CannotReallocInPlace</code>?
 Tatsächlich sieht die Sache viel freundlicher aus: Nur zwei der Funktionen sind obligatorisch, nämlich <code class="highlighter-rouge">alloc()</code> und <code class="highlighter-rouge">dealloc()</code>. Alle anderen haben sinnvolle
 Standardimplementationen (<em>defaults</em>).</p>
 
 <p><code class="highlighter-rouge">Layout</code> ist eine Struktur, die einen Speicherrequest beschreibt. Sie hat u.a. die beiden Methoden:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">fn</span> <span class="nf">size</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span><span class="p">;</span>
-</code></pre>
-</div>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">fn</span> <span class="nf">size</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span><span class="p">;</span>
+</code></pre></div></div>
 <p>und</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">fn</span> <span class="nf">align</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span><span class="p">;</span>
-</code></pre>
-</div>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">fn</span> <span class="nf">align</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span><span class="p">;</span>
+</code></pre></div></div>
 
 <p>Der Summentyp<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> <code class="highlighter-rouge">AllocErr</code> ist – wie der Name vorschlägt – für den Fehlerbericht bei der Allozierung zuständig. Er ist wie folgt definiert:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="nf">derive</span><span class="p">(</span><span class="n">Clone</span><span class="p">,</span> <span class="n">PartialEq</span><span class="p">,</span> <span class="nb">Eq</span><span class="p">,</span> <span class="n">Debug</span><span class="p">)]</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="nf">derive</span><span class="p">(</span><span class="n">Clone</span><span class="p">,</span> <span class="n">PartialEq</span><span class="p">,</span> <span class="nb">Eq</span><span class="p">,</span> <span class="n">Debug</span><span class="p">)]</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">AllocErr</span> <span class="p">{</span>
     <span class="n">Exhausted</span> <span class="p">{</span> <span class="n">request</span><span class="p">:</span> <span class="n">Layout</span> <span class="p">},</span>
-    <span class="n">Unsupported</span> <span class="p">{</span> <span class="n">details</span><span class="p">:</span> <span class="o">&amp;</span><span class="err">'</span><span class="k">static</span> <span class="nb">str</span> <span class="p">},</span>
+    <span class="n">Unsupported</span> <span class="p">{</span> <span class="n">details</span><span class="p">:</span> <span class="o">&amp;</span><span class="nv">'static</span> <span class="nb">str</span> <span class="p">},</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Alle anderen Dinge braucht man zunächst einmal nicht (können aber später zur besseren Effizienz genutzt werden). Es ist somit jetzt einfach, die Kompatibilität zum früheren
 Interface wieder herzustellen.</p>
 
@@ -493,7 +489,7 @@ vertretbar.</p>
 <p><img src="https://werner-matthias.github.io/SysOp/images/boundary.png" alt="" class="img-responsive" /></p>
 
 <p>Um einen Speicherbereich zu belegen, wird einfach die Freispeicherliste durchsucht:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Result</span><span class="o">&lt;*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">AllocErr</span><span class="o">&gt;</span> <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Result</span><span class="o">&lt;*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">AllocErr</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">start</span> <span class="o">=</span> <span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="k">self</span><span class="py">.first</span><span class="nf">.as_ptr</span><span class="p">()</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">);</span>
     <span class="k">for</span> <span class="k">mut</span> <span class="n">mr</span> <span class="n">in</span> <span class="n">start</span> <span class="p">{</span>
         <span class="k">if</span> <span class="n">mr</span><span class="nf">.is_sufficient</span><span class="p">(</span><span class="o">&amp;</span><span class="n">layout</span><span class="p">)</span> <span class="p">{</span>
@@ -503,30 +499,29 @@ vertretbar.</p>
     <span class="nf">Err</span><span class="p">(</span><span class="nn">AllocErr</span><span class="p">::</span><span class="n">Exhausted</span><span class="p">{</span><span class="n">request</span><span class="p">:</span> <span class="n">layout</span><span class="p">})</span>
 <span class="p">}</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Die eigentliche „Arbeit“ liegt bei der <code class="highlighter-rouge">allocate</code>-Methode des
 Speicherabschnitts: Hier wir überprüft, ob der Abschnitt als Ganzes
 belegt werden soll, oder ob er aufgeteilt wird. Im letzteren Fall wird
 die Teilung durchgeführt; der abgetrennte Bereich nimmt den Platz des
 ursprünglichen Abschnittes in der Liste ein.</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span> <span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">allocate</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="k">-&gt;</span>  <span class="n">Result</span><span class="o">&lt;*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">AllocErr</span><span class="o">&gt;</span>  <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">allocate</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="k">-&gt;</span>  <span class="n">Result</span><span class="o">&lt;*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">AllocErr</span><span class="o">&gt;</span>  <span class="p">{</span>
     <span class="k">let</span> <span class="n">dest_addr</span> <span class="o">=</span> <span class="nf">align_up</span><span class="p">(</span><span class="k">self</span><span class="nf">.client_addr</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">(),</span><span class="n">layout</span><span class="nf">.align</span><span class="p">());</span>
-    <span class="k">let</span> <span class="n">front_padding</span> <span class="o">=</span> <span class="n">dest_addr</span> <span class="o">-</span> <span class="k">self</span><span class="nf">.client_addr</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">front_padding</span> <span class="o">=</span> <span class="n">dest_addr</span> <span class="err">-</span> <span class="k">self</span><span class="nf">.client_addr</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">();</span>
     <span class="k">let</span> <span class="n">needed_size</span> <span class="o">=</span> <span class="nn">cmp</span><span class="p">::</span><span class="nf">max</span><span class="p">(</span><span class="nf">align_up</span><span class="p">(</span><span class="n">front_padding</span> <span class="o">+</span> <span class="n">layout</span><span class="nf">.size</span><span class="p">(),</span><span class="nn">mem</span><span class="p">::</span><span class="nn">align_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">()),</span>
                                <span class="nn">Self</span><span class="p">::</span><span class="nf">min_size</span><span class="p">());</span>
     <span class="c">// Vorgänger und Nachfolger in der Liste (so vorhanden)</span>
     <span class="k">let</span> <span class="k">mut</span> <span class="n">prev</span> <span class="o">=</span> <span class="k">self</span><span class="py">.prev</span><span class="nf">.map_or</span><span class="p">(</span><span class="nb">None</span><span class="p">,|</span> <span class="n">a</span> <span class="p">|</span> <span class="nf">Some</span><span class="p">(</span><span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="p">);</span>
     <span class="k">let</span> <span class="k">mut</span> <span class="n">next</span> <span class="o">=</span> <span class="k">self</span><span class="py">.next</span><span class="nf">.map_or</span><span class="p">(</span><span class="nb">None</span><span class="p">,|</span> <span class="n">a</span> <span class="p">|</span> <span class="nf">Some</span><span class="p">(</span><span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="p">);</span>
     <span class="c">// Lohnt es sich, den Bereich zu teilen?</span>
-    <span class="k">if</span> <span class="k">self</span><span class="py">.size</span> <span class="o">-</span> <span class="n">needed_size</span> <span class="o">&gt;</span> <span class="nn">Self</span><span class="p">::</span><span class="nf">min_size</span><span class="p">()</span>  <span class="p">{</span> <span class="c">// Teile den Bereich</span>
+    <span class="k">if</span> <span class="k">self</span><span class="py">.size</span> <span class="err">-</span> <span class="n">needed_size</span> <span class="o">&gt;</span> <span class="nn">Self</span><span class="p">::</span><span class="nf">min_size</span><span class="p">()</span>  <span class="p">{</span> <span class="c">// Teile den Bereich</span>
         <span class="c">// Initialisere den neuen Bereich.</span>
         <span class="k">let</span> <span class="n">old_size</span> <span class="o">=</span> <span class="k">self</span><span class="py">.size</span><span class="p">;</span>
         <span class="k">self</span><span class="nf">.set_size</span><span class="p">(</span><span class="n">needed_size</span><span class="p">);</span>
         <span class="k">let</span> <span class="k">mut</span> <span class="n">new_mr</span> <span class="o">=</span> <span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
         <span class="c">// Da der neue Bereich hinten abgetrennt wird, gibt es stets einen Vorgänger</span>
         <span class="n">new_mr</span><span class="nf">.init</span><span class="p">(</span><span class="nf">Some</span><span class="p">(</span><span class="k">self</span><span class="py">.end_addr</span><span class="nf">.unwrap</span><span class="p">()</span> <span class="o">+</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">()),</span>
-                    <span class="n">old_size</span> <span class="o">-</span> <span class="k">self</span><span class="py">.size</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">(),</span>
+                    <span class="n">old_size</span> <span class="err">-</span> <span class="k">self</span><span class="py">.size</span> <span class="err">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">(),</span>
                     <span class="k">self</span><span class="py">.next</span><span class="p">,</span> <span class="k">self</span><span class="py">.prev</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">self</span><span class="py">.upper_guard</span><span class="p">);</span>
         <span class="nd">assert_eq!</span><span class="p">(</span><span class="n">old_size</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">(),</span> <span class="k">self</span><span class="py">.size</span> <span class="o">+</span> <span class="n">new_mr</span><span class="py">.size</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">());</span>
         <span class="k">self</span><span class="py">.upper_guard</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
@@ -548,16 +543,15 @@ ursprünglichen Abschnittes in der Liste ein.</p>
     <span class="nf">Ok</span><span class="p">(</span><span class="n">dest_addr</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">)</span> 
 <span class="p">}</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Die Komplexität der Reservierung ist immer noch \(\mathcal{O}(n)\), wobei \(n\) die Anzahl der freien Speicherblöcke ist.
 Im Unterschied zur vorherigen Lösung muss bei der Wiedereingliederung
 die Liste <em>nicht</em> durchsucht werden:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">dealloc</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">unsafe</span> <span class="k">fn</span> <span class="nf">dealloc</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">end_tag_addr</span> <span class="o">=</span> <span class="nn">memory_region</span><span class="p">::</span><span class="nf">align_up</span><span class="p">(</span><span class="n">ptr</span> <span class="k">as</span> <span class="nb">usize</span> <span class="o">+</span> <span class="nn">cmp</span><span class="p">::</span><span class="nf">max</span><span class="p">(</span><span class="n">layout</span><span class="nf">.size</span><span class="p">(),</span><span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">min_size</span><span class="p">()),</span>
                                                <span class="nn">mem</span><span class="p">::</span><span class="nn">align_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">());</span>
     <span class="k">let</span> <span class="n">end_tag</span> <span class="o">=</span> <span class="nn">EndBoundaryTag</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="n">end_tag_addr</span><span class="p">);</span>
-    <span class="k">let</span> <span class="k">mut</span> <span class="n">mr</span> <span class="o">=</span> <span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="n">end_tag_addr</span> <span class="o">-</span> <span class="n">end_tag</span><span class="nf">.size</span><span class="p">()</span> <span class="o">-</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">());</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">mr</span> <span class="o">=</span> <span class="nn">MemoryRegion</span><span class="p">::</span><span class="nf">new_from_memory</span><span class="p">(</span><span class="n">end_tag_addr</span> <span class="err">-</span> <span class="n">end_tag</span><span class="nf">.size</span><span class="p">()</span> <span class="err">-</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">size_of</span><span class="p">::</span><span class="o">&lt;</span><span class="n">EndBoundaryTag</span><span class="o">&gt;</span><span class="p">());</span>
     <span class="n">mr</span><span class="nf">.set_free</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
     <span class="c">// Prüft, ob Bereiche zusammen gelegt werden können.</span>
     <span class="k">if</span> <span class="o">!</span><span class="n">mr</span><span class="nf">.coalesce_with_neighbors</span><span class="p">()</span>  <span class="p">{</span>
@@ -577,8 +571,7 @@ die Liste <em>nicht</em> durchsucht werden:</p>
         <span class="n">mr</span><span class="nf">.write_to_memory</span><span class="p">();</span>
     <span class="p">}</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Das ist natürlich nur ein Teil des Gesamtcodes, der vollständige Code ist wieder
 auf <a href="https://github.com/werner-matthias/aihPOS/tree/5fbe76b768b21e2b28277a212a8f898bbfb94f74/kernel/src/mem/heap">GibHub</a> zu finden.</p>
 
@@ -595,14 +588,14 @@ und dass die Community so schnell reagiert.</p>
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p> 18. Juli 2017&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p> 18. Juli 2017 <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
       <p>Ich bin mir nicht sicher, was die beste Bezeichnung im Deutschen für <code class="highlighter-rouge">enum</code> ist. Als C-Programmierer denkt man da an „Aufzählungstyp“, was aber in Rust in die Irre
-    führt. „Summentyp“ ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    führt. „Summentyp“ ist typentheoretisch korrekt, klingt aber in meinen Ohren trotzdem eigenartig. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>D. Knuth, „The Art of Computer Programming“, 2nd Auflage, Addison Wesley, 1973, Seiten 441f.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>D. Knuth, „The Art of Computer Programming“, 2nd Auflage, Addison Wesley, 1973, Seiten 441f. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -634,7 +627,7 @@ und dass die Community so schnell reagiert.</p>
 				
 				<div class="small-2 columns text-center"><a class="radius button small" href="https://werner-matthias.github.io/SysOp/blog/archive/" title="Blog Archiv">Archiv</a></div><!-- /.small-4.columns -->
 				
-				<div class="small-5 columns text-right"><a class="button small radius next" href="https://werner-matthias.github.io/SysOp/small/hacks/2017/08/23/reihenfolge/">Reihenfolge &raquo;</a></div><!-- /.small-4.columns -->
+				<div class="small-5 columns text-right"><a class="button small radius next" href="https://werner-matthias.github.io/SysOp/small%20hacks/2017/08/23/reihenfolge/">Reihenfolge &raquo;</a></div><!-- /.small-4.columns -->
 				
 			</div>
 			</div><!--  /.page-meta -->

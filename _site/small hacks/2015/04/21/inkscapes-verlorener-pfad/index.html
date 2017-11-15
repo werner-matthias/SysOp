@@ -288,18 +288,16 @@
 
 <p>Natürlich könnte beim Aufruf von</p>
 
-<div class="language-latex highlighter-rouge"><pre class="highlight"><code><span class="k">\includesvg</span><span class="p">{</span>myfile<span class="p">}</span>
-</code></pre>
-</div>
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">\includesvg</span><span class="p">{</span>myfile<span class="p">}</span>
+</code></pre></div></div>
 
 <p>der Pfad mit angegeben werden, ich wollte aber lieber eine generische Lösung, bei der ich mich nicht darum kümmern muss, wo ich mich gerade befinde.</p>
 
 <p>Das konnte mit Hilfe des Pakets <code class="highlighter-rouge">currfile</code> gelöst werden. In meiner generischen Präamble steht jetzt:</p>
-<div class="language-latex highlighter-rouge"><pre class="highlight"><code><span class="k">\usepackage</span><span class="p">{</span>svg<span class="p">}</span>
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">\usepackage</span><span class="p">{</span>svg<span class="p">}</span>
 <span class="k">\usepackage</span><span class="p">{</span>currfile<span class="p">}</span> <span class="c">% Wird für einen Workaround für das Inkscape-Pfadproblem gebraucht</span>
 <span class="k">\setsvg</span><span class="p">{</span>inkscape=inkscape -z -D,svgpath=<span class="k">\currfiledir</span><span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>…und die svg-Einbindung funktioniert wieder.</p>
 
 	                </span>

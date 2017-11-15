@@ -12,4 +12,5 @@ group :jekyll_plugins do
   gem 'emoji_for_jekyll'
   gem 'jekyll-typogrify'
   gem 'rouge'
+  gem 'jekyll-admin'
 end

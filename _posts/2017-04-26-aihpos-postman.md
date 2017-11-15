@@ -31,7 +31,7 @@ Mailbox maximal 16 Kanäle geben. Daten und Kanalinformationen werden mit einem 
 Moment mit einem Busy Wait. Allerdings kann man auch wesentlich eleganter vorgehen und einen Interrupt auslösen lassen, wenn Daten bereit stehen. 
 
 {% highlight rust linenos %}
-{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/mailbox.rs 0 -1 %}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/bmc2835/mailbox.rs 0 -1 %}
 {% endhighlight %}
 
 ## Property Tags
@@ -44,13 +44,13 @@ dem Kernel beim Start zur Verfügung gestellt, aber der Kanal 8 bietet mehr. Die
 Die Tag-ID bestimmt, welche Art von Information übertragen wird. Und auch wenn im Moment noch nicht alle Informationen wichtig sind, definieren wir schon mal alle Tags "auf Vorrat"in einem enum:
 
 {% highlight rust linenos %}
-{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/propertytags.rs 8 93 %}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/bmc2835/propertytags.rs 8 93 %}
 {% endhighlight %}
 
 Bei der Antwort auf einen Request wird der Frage-Puffer überschrieben. Es muss also dafür gesorgt werden, dass genügend Platz für die Antwort zur Verfügung steht. Je nach
 [Tag-Typ][4] ist das unterschiedlich:
 {% highlight rust linenos %}
-{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/propertytags.rs 95 190 %}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/bmc2835/propertytags.rs 95 190 %}
 {% endhighlight %}
 
 Da für die über den Kanal ausgetauschte Information wenige Bytes mitunter nicht ausreichen, werden über die Mailbox Adressen eine Puffers kommuniziert, die die
@@ -72,7 +72,7 @@ Die Implementation des Tag-Puffers ist unkompliziert. Man muss lediglich darauf 
 werden. Entsprechend ist ab und zu eine Multiplikation oder Division mit 4 notwendig, die durch die Shift-Operatoren `<<` realisiert werden. 
 
 {% highlight rust linenos %}
-{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/propertytags.rs 192 -1 %}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/bmc2835/propertytags.rs 192 -1 %}
 {% endhighlight %}
 
 ### Zuwenig Speicher?
@@ -81,7 +81,7 @@ Mit Hilfe der Property-Tags können jetzt gewünschte Informationen erlangt werd
 Schnittstellenfunktionen geschrieben:
 
 {% highlight rust linenos %}
-{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/board/mod.rs 0 -1 %}
+{%  github_sample   werner-matthias/aihPOS/blob/master/kernel/src/hal/bmc2835/mod.rs 0 -1 %}
 {% endhighlight %}
 
 Die Nutzung dieser Funktionen gab für mich zwei Überraschungen:

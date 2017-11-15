@@ -3,7 +3,8 @@ title: Reihenfolge
 layout: page-fullwidth
 author: mwerner
 show_meta: true
-categories: small hacks
+categories:
+- small hacks
 meta_description: Moderne Compiler sind gut in der Lage, Code zu optimieren, so dass
   viele Performance-Tricks auf der Hochsprachenebene hinfällig geworden sind. Aber
   manchmal muss man den Compiler auch überzeugen, nicht zuviel des Guten zu tun.

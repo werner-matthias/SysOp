@@ -508,27 +508,26 @@ dagegen mitunter in Thumb geschrieben werden.</p>
 <strong>thumpv6-aihpos-eabihf</strong>). Leider gibt es dieses Triple (noch) nicht. Deshalb müssen wir eine Beschreibung dafür anlegen.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> Die Beschreibung ist eine JSON-Datei, und
 würde in unserem Fall etwa so aussehen:</p>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"llvm-target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arm-none-eabihf"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"target-endian"</span><span class="p">:</span><span class="w"> </span><span class="s2">"little"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"target-pointer-width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"os"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eabihf"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"arch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arm"</span><span class="p">,</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"llvm-target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arm-none-eabihf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"target-endian"</span><span class="p">:</span><span class="w"> </span><span class="s2">"little"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"target-pointer-width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"os"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eabihf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arm"</span><span class="p">,</span><span class="w">
 
-    </span><span class="nt">"linker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arm-none-eabi-gcc"</span><span class="p">,</span><span class="w">
-	</span><span class="nt">"linker-flavor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcc"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data-layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e-m:e-p:32:32-i64:64-v128:64:128-a:0:32-n32-S64"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"executables"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"relocation-model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"no-compiler-rt"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"no_default_libraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"disable-redzone"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"linker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arm-none-eabi-gcc"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"linker-flavor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data-layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e-m:e-p:32:32-i64:64-v128:64:128-a:0:32-n32-S64"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"executables"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relocation-model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"no-compiler-rt"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"no_default_libraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"disable-redzone"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <p>Die meisten Punkte sollten selbsterklärend sein, außer wahrscheinlich „data-layout“. Hier werden Eigenschaften des Datenlayouts<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>, insbesondere Alignment in kompakter Form dargestellt, wobei einiges redundant zu den anderen Punkten ist:</p>
 <ul>
@@ -628,25 +627,25 @@ Raspberry-Pi2-Praktikum einsetzt. Jedoch weisen der Raspberry 1B+ und der 2 bzgl
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Die Entwickler-Tools, die wir gleich besprechen, sind i.d.R. eher auf unixoide Systeme ausgerichtet, so dass es bei Windows meist etwas Mehraufwand gibt.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>Die Entwickler-Tools, die wir gleich besprechen, sind i.d.R. eher auf unixoide Systeme ausgerichtet, so dass es bei Windows meist etwas Mehraufwand gibt. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p>Damit können Funktionen zur Verfügung gestellt werden, die sonst die in der Standardbibliothek sind, aber refactor zur Rust-Runtime gehören.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+      <p>Damit können Funktionen zur Verfügung gestellt werden, die sonst die in der Standardbibliothek sind, aber refactor zur Rust-Runtime gehören. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>Zum Vergleich: Ich war in meiner Jugend sehr stolz, dass ich den Speicher meines ersten Computers – einen ZX 81 – mit 64 kB(!) sehr weit ausgebaut hatte.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>Zum Vergleich: Ich war in meiner Jugend sehr stolz, dass ich den Speicher meines ersten Computers – einen ZX 81 – mit 64 kB(!) sehr weit ausgebaut hatte. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
-      <p>Genau genommen nur die meisten, da es seit Thumb2 einige 32-Bit-Ausnahmen gibt.&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+      <p>Genau genommen nur die meisten, da es seit Thumb2 einige 32-Bit-Ausnahmen gibt. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:5">
-      <p>Der Raspberry 3 hat mit einem ARMv8-Prozessor, der eine 64-Bit-Architektur hat und im 64-Bit-Modus einen völlig anderen Befehlssatz (A64), der hier aber nicht weiter betrachtet wird.&nbsp;<a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+      <p>Der Raspberry 3 hat mit einem ARMv8-Prozessor, der eine 64-Bit-Architektur hat und im 64-Bit-Modus einen völlig anderen Befehlssatz (A64), der hier aber nicht weiter betrachtet wird. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:6">
-      <p>Eine häufig genutzte Alternative wäre, „arm-unknown-linux-gnueabihf“ oder „arm-unknown-linux-musleabihf“ zu nehmen und ein paar Basisfunktionen der C-Bibliothek wie z.B. memcpy nachzuimplementieren.&nbsp;<a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+      <p>Eine häufig genutzte Alternative wäre, „arm-unknown-linux-gnueabihf“ oder „arm-unknown-linux-musleabihf“ zu nehmen und ein paar Basisfunktionen der C-Bibliothek wie z.B. memcpy nachzuimplementieren. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:7">
-      <p>Eine genauere Beschreibung von möglichen Layout-Eigenschaften findet sich in der LLVM-Dokumentation&nbsp;<a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+      <p>Eine genauere Beschreibung von möglichen Layout-Eigenschaften findet sich in der LLVM-Dokumentation <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

@@ -374,9 +374,9 @@ Mailbox-System implementiert, mit dem wir ja das Ende des Speichers herausfinden
 
 <p>Allerdings geschieht dies zur Laufzeit – d.h., wir brauchen bereits einen Stack. Wir müssen also mit einem provisorischen Stack beginnen um später zu wechseln.
 Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="n">no_mangle</span><span class="p">]</span>      <span class="c">// Name wird für den Export nicht verändert</span>
-<span class="cp">#[naked]</span>          <span class="c">// Kein Prolog, da dieser den Stack nutzen würde, den wir noch nicht gesetzt haben</span>
-<span class="cp">#[allow(unreachable_code)]</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="n">no_mangle</span><span class="p">]</span>      <span class="c">// Name wird für den Export nicht verändert</span>
+<span class="nd">#[naked]</span>          <span class="c">// Kein Prolog, da dieser den Stack nutzen würde, den wir noch nicht gesetzt haben</span>
+<span class="nd">#[allow(unreachable_code)]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">kernel_start</span><span class="p">()</span> <span class="p">{</span>
     <span class="c">// Zum Start existiert noch kein Stack. Daher setzen wir einen temporären Stack, der nach dem Textsegment liegt.</span>
     <span class="c">// Das Symbol ist in "layout.ld" definiert.</span>
@@ -387,9 +387,9 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:</p>
     <span class="nd">unreachable!</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="cp">#[inline(never)]</span> <span class="c">// Verbietet dem Optimizer, kernel_init() und darin aufgerufene Funktionen mit kernel_start()</span>
+<span class="nd">#[inline(never)]</span> <span class="c">// Verbietet dem Optimizer, kernel_init() und darin aufgerufene Funktionen mit kernel_start()</span>
                  <span class="c">// zu verschmelzen. Dies würde wegen #[naked]/keinen Stack schief gehen</span>
-<span class="cp">#[allow(unreachable_code)]</span>
+<span class="nd">#[allow(unreachable_code)]</span>
 <span class="k">fn</span> <span class="nf">kernel_init</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">!</span> <span class="p">{</span>
     <span class="nf">report</span><span class="p">();</span>
     <span class="nf">init_mem</span><span class="p">();</span>
@@ -399,13 +399,13 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:</p>
 <span class="p">}</span>
 
 <span class="k">fn</span> <span class="nf">determine_irq_stack</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="nf">report_memory</span><span class="p">(</span><span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmSize</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">0xFFFFFFFC</span><span class="p">;</span>
+    <span class="k">let</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="nf">report_memory</span><span class="p">(</span><span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmSize</span><span class="p">)</span> <span class="err">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">0xFFFFFFFC</span><span class="p">;</span>
     <span class="n">addr</span>
 <span class="p">}</span>
 
-<span class="cp">#[inline(never)]</span>
+<span class="nd">#[inline(never)]</span>
 <span class="k">fn</span> <span class="nf">determine_svc_stack</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">((</span><span class="nf">report_memory</span><span class="p">(</span><span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmSize</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">0xFFFFFFFC</span><span class="p">)</span> <span class="o">-</span> <span class="n">IRQ_STACK_SIZE</span><span class="p">;</span>
+    <span class="k">let</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">((</span><span class="nf">report_memory</span><span class="p">(</span><span class="nn">MemReport</span><span class="p">::</span><span class="n">ArmSize</span><span class="p">)</span> <span class="err">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">0xFFFFFFFC</span><span class="p">)</span> <span class="err">-</span> <span class="n">IRQ_STACK_SIZE</span><span class="p">;</span>
     <span class="n">addr</span>
 <span class="p">}</span>
 
@@ -438,14 +438,13 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:</p>
 <span class="k">fn</span> <span class="nf">init_paging</span><span class="p">()</span> <span class="p">{</span>
     <span class="nd">unimplemented!</span><span class="p">();</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="hal">HAL</h3>
 <p><code class="highlighter-rouge">Cpu::set_mode()</code> und <code class="highlighter-rouge">Cpu::set_stack()</code> sind natürlich keine Funktionen, die Rust bekannt sind. Der Übersichtlichkeit halber habe ich allen Assembler-Code in ein eigenes
 Modul gepackt, das „HAL“ heißt. HAL steht klassischerweise für „<em>Hardware Abstraction Layer</em>“. Allerdings ist die Abstraktion in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> sehr dünn, ein Port über die
 ARM-Architektur hinaus bedürfte etwas mehr Aufwand. Der Code für <code class="highlighter-rouge">Cpu::set_mode()</code> und <code class="highlighter-rouge">Cpu::set_stack()</code> sieht derzeit so aus:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="c">// Siehe ARM Architectur Reference Manual A2-3</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Siehe ARM Architectur Reference Manual A2-3</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">ProcessorMode</span> <span class="p">{</span>
     <span class="n">User</span>   <span class="o">=</span> <span class="mi">0x10</span><span class="p">,</span>
     <span class="n">Fiq</span>    <span class="o">=</span> <span class="mi">0x11</span><span class="p">,</span>
@@ -459,7 +458,7 @@ ARM-Architektur hinaus bedürfte etwas mehr Aufwand. Der Code für <code class="
 <span class="k">pub</span> <span class="k">struct</span> <span class="n">Cpu</span> <span class="p">{}</span>
 
 <span class="k">impl</span> <span class="n">Cpu</span> <span class="p">{</span>
-    <span class="cp">#[inline(always)]</span>
+    <span class="nd">#[inline(always)]</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">set_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">ProcessorMode</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">unsafe</span><span class="p">{</span>
             <span class="k">match</span> <span class="n">mode</span> <span class="p">{</span>
@@ -474,15 +473,14 @@ ARM-Architektur hinaus bedürfte etwas mehr Aufwand. Der Code für <code class="
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="cp">#[inline(always)]</span>
+    <span class="nd">#[inline(always)]</span>
     <span class="k">pub</span> <span class="k">fn</span> <span class="nf">set_stack</span><span class="p">(</span><span class="n">adr</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">unsafe</span><span class="p">{</span>
             <span class="nd">asm!</span><span class="p">(</span><span class="s">"mov sp, $0"</span><span class="p">::</span><span class="s">"r"</span><span class="p">(</span><span class="n">adr</span><span class="p">)::</span><span class="s">"volatile"</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>    
-</code></pre>
-</div>
+</code></pre></div></div>
 <h2 id="heap">Heap</h2>
 <p>Nachdem die Stacks initialisiert sind, kümmern wir und um den Kernel-Heap. Es stellt sich die Frage, wie groß der Heap sein soll.
 Das ist schlecht beantwortbar, da wir viele Aspekte von <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> noch nicht kennen. Natürlich können wir versuchen, ihn auf den <em>worst case</em> auszulegen,
@@ -538,7 +536,7 @@ Dazu legen wir ein Verzeichnis <strong>libs</strong> an, und darin eine Untercra
 </span><span class="line command">ls kalloc</span><span class="line output">Cargo.toml	  src</span></code></pre></td></tr></table></div></div>
         </div>
 <p>Die Datei <kbd>lib.rs</kbd> in <kbd>src</kbd> ist daher recht schlicht:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="nf">feature</span><span class="p">(</span><span class="n">allocator</span><span class="p">)]</span> 
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="nf">feature</span><span class="p">(</span><span class="n">allocator</span><span class="p">)]</span> 
 <span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="n">allocator</span><span class="p">]</span>
 <span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="n">no_std</span><span class="p">]</span>
 
@@ -558,28 +556,28 @@ Dazu legen wir ein Verzeichnis <strong>libs</strong> an, und darin eine Untercra
 
 <span class="c">// Die offizielle Schnittstelle zu Rust sieht für einen Allocator so aus,</span>
 <span class="c">// vgl. Rust - The Unstable Book: https://doc.rust-lang.org/nightly/unstable-book/language-features/allocator.html</span>
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">__rust_allocate</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span> <span class="p">{</span>
     <span class="k">unsafe</span><span class="p">{</span>
         <span class="nf">aihpos_allocate</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">align</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">__rust_deallocate</span><span class="p">(</span><span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">unsafe</span><span class="p">{</span>
         <span class="nf">aihpos_deallocate</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">align</span><span class="p">)</span> 
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">__rust_usable_size</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
     <span class="k">unsafe</span><span class="p">{</span>
         <span class="nf">aihpos_usable_size</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">align</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">__rust_reallocate_inplace</span><span class="p">(</span><span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span>
     <span class="n">new_size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span>
 <span class="p">{</span>
@@ -588,7 +586,7 @@ Dazu legen wir ein Verzeichnis <strong>libs</strong> an, und darin eine Untercra
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">__rust_reallocate</span><span class="p">(</span><span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">new_size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span>
                                 <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span> <span class="p">{</span>
     <span class="k">unsafe</span><span class="p">{</span>
@@ -596,17 +594,15 @@ Dazu legen wir ein Verzeichnis <strong>libs</strong> an, und darin eine Untercra
     <span class="p">}</span>
 <span class="p">}</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Dies gibt uns die Chance, das eigentliche Heap-Management direkt im Kernel zu implementieren. Dazu muss im Haupt-Cargo-File noch die entsprechende Abhängigkeit deklariert
 werden:</p>
-<div class="language-toml highlighter-rouge"><pre class="highlight"><code><span class="nn">[dependencies]</span>
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[dependencies]</span>
 <span class="py">bit_field</span> <span class="p">=</span> <span class="s">"0.7.0"</span>
 <span class="py">compiler_builtins</span> <span class="p">=</span> <span class="err">{</span> <span class="err">git</span> <span class="err">=</span> <span class="s">"https://github.com/rust-lang-nursery/compiler-builtins"</span><span class="p">,</span> <span class="err">features</span> <span class="err">=</span> <span class="nn">["mem"]</span> <span class="err">}</span>
 <span class="py">compiler_error</span> <span class="p">=</span> <span class="s">"0.1.1"</span>
 <span class="py">kalloc</span> <span class="p">=</span>  <span class="err">{</span> <span class="err">version</span> <span class="err">=</span> <span class="s">"0.1.0"</span><span class="p">,</span> <span class="err">path</span> <span class="err">=</span> <span class="s">"libs/kalloc"</span> <span class="err">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="algorithmus">Algorithmus</h3>
 <p>Zur Verwaltung von gibt es eine ganze Reihe von Ansätzen. Prinzipiell gibt es mehrere Designziele:</p>
@@ -633,7 +629,7 @@ Vielleicht werden ich ihn später ein zu einem
 Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Eingliederung hat (mit einem leicht erhöhten Overhead).</p>
 
 <p>Meine <kbd>heap.rs</kbd> sieht jetzt so aus:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">extern</span> <span class="n">crate</span> <span class="n">linked_list_allocator</span><span class="p">;</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">extern</span> <span class="n">crate</span> <span class="n">linked_list_allocator</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">core</span><span class="p">::{</span><span class="n">ptr</span><span class="p">,</span> <span class="n">cmp</span><span class="p">};</span>
 <span class="k">use</span> <span class="k">self</span><span class="p">::</span><span class="nn">linked_list_allocator</span><span class="p">::</span><span class="n">Heap</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">sync</span><span class="p">::</span><span class="nn">no_concurrency</span><span class="p">::</span><span class="n">NoConcurrency</span><span class="p">;</span>
@@ -644,7 +640,7 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
     <span class="k">unsafe</span><span class="p">{</span><span class="n">HEAP</span><span class="nf">.set</span><span class="p">(</span><span class="nf">Some</span><span class="p">(</span><span class="nn">Heap</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">size</span><span class="p">)))};</span>
 <span class="p">}</span>
 
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">aihpos_allocate</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">hpo</span> <span class="o">=</span> <span class="n">HEAP</span><span class="nf">.get</span><span class="p">();</span>
     <span class="k">match</span> <span class="o">*</span><span class="n">hpo</span> <span class="p">{</span>
@@ -664,7 +660,7 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">aihpos_deallocate</span><span class="p">(</span><span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">hpo</span> <span class="o">=</span> <span class="n">HEAP</span><span class="nf">.get</span><span class="p">();</span>
     <span class="k">match</span> <span class="o">*</span><span class="n">hpo</span> <span class="p">{</span>
@@ -677,20 +673,20 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cp">#[no_mangle]</span>
-<span class="cp">#[allow(unused_variables)]</span>
+<span class="nd">#[no_mangle]</span>
+<span class="nd">#[allow(unused_variables)]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">aihpos_usable_size</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
    <span class="n">size</span>
 <span class="p">}</span>
 
-<span class="cp">#[no_mangle]</span>
-<span class="cp">#[allow(unused_variables)]</span>
+<span class="nd">#[no_mangle]</span>
+<span class="nd">#[allow(unused_variables)]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">aihpos_reallocate_inplace</span><span class="p">(</span><span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span>
                                         <span class="n">new_size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
    <span class="n">size</span>
 <span class="p">}</span>
 
-<span class="cp">#[no_mangle]</span>
+<span class="nd">#[no_mangle]</span>
 <span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">aihpos_reallocate</span><span class="p">(</span><span class="n">ptr</span><span class="p">:</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">new_size</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span>
                             <span class="n">align</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">new_ptr</span> <span class="o">=</span> <span class="nf">aihpos_allocate</span><span class="p">(</span><span class="n">new_size</span><span class="p">,</span> <span class="n">align</span><span class="p">);</span>
@@ -700,37 +696,31 @@ Boundary-Tag-Allokator überarbeiten, der ein besseres Zeitverhalten bei der Ein
 <span class="p">}</span>
 
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Im Quelltext sind die Stellen im Kommentar markiert, an denen später mit der Seitenverwaltung zusammengearbeitet werden soll.
 Die Initialisierung erfolgt von <kbd>main.rs</kbd> aus. Dafür wird dort noch die initiale Heap-Größe festgelegt…</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">pub</span>  <span class="k">const</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">4096</span><span class="p">;</span> <span class="c">// 25 Seiten = 100 kB</span>
-</code></pre>
-</div>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span>  <span class="k">const</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">4096</span><span class="p">;</span> <span class="c">// 25 Seiten = 100 kB</span>
+</code></pre></div></div>
 <p>…und die Heap-Initialisierung gerufen</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">init_heap</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">init_heap</span><span class="p">()</span> <span class="p">{</span>
     <span class="nn">mem</span><span class="p">::</span><span class="nf">init_heap</span><span class="p">(</span><span class="n">__bss_start</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">);</span>
 <span class="p">}</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Das Symbol <code class="highlighter-rouge">__bss_start</code> kommt aus <kbd>layout.ld</kbd>, die entsprechend überarbeitet werden muss. Es solle den Beginn des freien, also zu verwaltenden Speichers markieren.
 Dann kann in <kbd>main.rs</kbd> das entsprechende externe Symbol deklarieren.
 Hierbei nutze ich einen Trick: Da die externen Symbole ungetypt sind, erkläre ich es einfach zu einer Funktion:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">extern</span> <span class="s">"C"</span> <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">extern</span> <span class="s">"C"</span> <span class="p">{</span>
     <span class="k">fn</span> <span class="nf">__bss_start</span><span class="p">();</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Damit kann die Funktionsadresse einfach in einen <code class="highlighter-rouge">usize</code> gewandelt werden. Wenn man statt dessen als Deklaration z.B.</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">extern</span> <span class="p">{</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">extern</span> <span class="p">{</span>
    <span class="k">static</span> <span class="n">__bss_start</span><span class="p">:</span> <span class="nb">u32</span><span class="p">;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>nehmen würde, wäre der Umwandlung komplexer und außerdem unsicher:</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code>  <span class="nn">mem</span><span class="p">::</span><span class="nf">init_heap</span><span class="p">(</span><span class="o">&amp;</span><span class="k">unsafe</span><span class="p">{</span><span class="n">__bss_start</span><span class="p">}</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="nb">u32</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">);</span>
-</code></pre>
-</div>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nn">mem</span><span class="p">::</span><span class="nf">init_heap</span><span class="p">(</span><span class="o">&amp;</span><span class="k">unsafe</span><span class="p">{</span><span class="n">__bss_start</span><span class="p">}</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="nb">u32</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">);</span>
+</code></pre></div></div>
 <p>Allerdings kann die Deklaration so Verwirrung stiften; ich sollte vermutlich ein Makro als syntaktischen Zucker schreiben, dass einen aussagekräftigen Namen hat.
 Schließlich ist gute Lesbarkeit ein Ziel in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png">.</p>
 
@@ -747,10 +737,9 @@ Schließlich ist gute Lesbarkeit ein Ziel in <img alt="aihPOS" style="height:.78
 Um dies alles Nutzen zu können, müssen die beiden Crates <code class="highlighter-rouge">alloc</code> und <code class="highlighter-rouge">collections</code><sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> eingebunden werden.</p>
 
 <p>Allerdings ergibt die Einbindung der Crates mit</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">extern</span> <span class="n">crate</span> <span class="n">alloc</span><span class="p">;</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">extern</span> <span class="n">crate</span> <span class="n">alloc</span><span class="p">;</span>
 <span class="k">extern</span> <span class="n">crate</span> <span class="n">collctions</span><span class="p">;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>einen Compilerfehler:</p>
 <div class="window">
           <nav class="control-window">
@@ -782,16 +771,14 @@ Um dies alles Nutzen zu können, müssen die beiden Crates <code class="highligh
         </div>
 <p>Ursache ist diesmal <code class="highlighter-rouge">xargo</code>. Es übersetzt standardmäßig nur <code class="highlighter-rouge">core</code>, aber nicht die anderen Bibliotheken. Um dies zur erreichen, muss man eine weitere Konfigurationsdatei
 im Wurzelverzeichnis anlegen: <kbd>Xargo.toml</kbd>. Dort können zusätzliche Crates der Standard-Bibliothek angegeben werden:</p>
-<div class="language-toml highlighter-rouge"><pre class="highlight"><code><span class="nn">[dependencies]</span>
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[dependencies]</span>
 <span class="py">alloc</span> <span class="p">=</span> <span class="err">{}</span>
 <span class="py">collections</span> <span class="p">=</span> <span class="err">{}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Nun funktioniert die Übersetzung reibungslos. Auch Codezeilen wie</p>
-<div class="language-rust highlighter-rouge"><pre class="highlight"><code><span class="k">use</span> <span class="nn">collections</span><span class="p">::</span><span class="nn">vec</span><span class="p">::</span><span class="nb">Vec</span><span class="p">;</span>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">collections</span><span class="p">::</span><span class="nn">vec</span><span class="p">::</span><span class="nb">Vec</span><span class="p">;</span>
 <span class="k">let</span> <span class="n">v</span> <span class="o">=</span> <span class="nd">vec!</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>sind jetzt möglich.</p>
 
 <p>Damit haben wir eine vorläufige Lösung für die unterste Kernel-Schicht. Nebenbei werden uns auch viele Datenstrukturen geschenkt, die wir sonst in Schicht 2
@@ -807,27 +794,27 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Das Verb heißt tatsächlich „allozieren“, siehe auch <a href="http://faql.de/fremdwort.html#allocate">hier</a>.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>Das Verb heißt tatsächlich „allozieren“, siehe auch <a href="http://faql.de/fremdwort.html#allocate">hier</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
       <p>Achtung: Mitunter (auch in der ARM-Dokumentation) wird schon von „virtueller Speicherverwaltung“ gesprochen, wenn eine streuende Adressabbildung erfolgt. Hier wird
    „Virtualisierung“ aber im engeren Sinne verstanden, also so, dass mehr Ressourcen simuliert werden als vorhanden sind. Damit ist die Unterstützung der streuenden
-   Adressierung nur ein Teil der Speichervirtualisierung.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+   Adressierung nur ein Teil der Speichervirtualisierung. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>Es gibt noch mehr Möglichkeiten; hier werden nur die beiden wichtigsten Arten besprochen.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>Es gibt noch mehr Möglichkeiten; hier werden nur die beiden wichtigsten Arten besprochen. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
-      <p>Für den ARM ist das lediglich eine Konvention, die Hardware unterstützt auch Stacks, die nach oben wachsen.&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+      <p>Für den ARM ist das lediglich eine Konvention, die Hardware unterstützt auch Stacks, die nach oben wachsen. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:5">
-      <p>Es gibt zwar auch das Konzept eines fragmentierten Heaps, aber das ist relativ kompliziert zu implementieren und <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> soll ja einfach werden. :-)&nbsp;<a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+      <p>Es gibt zwar auch das Konzept eines fragmentierten Heaps, aber das ist relativ kompliziert zu implementieren und <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> soll ja einfach werden. :-) <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:6">
-      <p>Freigabe und Wiedereingliedern wird häufig zusammen erledigt.&nbsp;<a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+      <p>Freigabe und Wiedereingliedern wird häufig zusammen erledigt. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:7">
-      <p>Es gibt Bestrebungen, diese beiden Crates <a href="https://github.com/rust-lang/rust/issues/40475">zusammenzulegen</a>, derzeit sind sie aber noch getrennt.&nbsp;<a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+      <p>Es gibt Bestrebungen, diese beiden Crates <a href="https://github.com/rust-lang/rust/issues/40475">zusammenzulegen</a>, derzeit sind sie aber noch getrennt. <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

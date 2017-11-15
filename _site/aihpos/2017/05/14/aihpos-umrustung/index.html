@@ -397,23 +397,23 @@ würde aber  dazu führen, dass Abhängigkeiten z.T. doppelt gepflegt werden mü
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">shift
 </span><span class="nv">PROFILE</span><span class="o">=</span>debug
 <span class="nv">TARGET</span><span class="o">=</span>
-<span class="k">for </span>opt <span class="k">in</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>; <span class="k">do
+<span class="k">for </span>opt <span class="k">in</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="p">;</span> <span class="k">do
     case</span> <span class="nv">$opt</span> <span class="k">in</span>
-        --release<span class="p">)</span>
+        <span class="nt">--release</span><span class="p">)</span>
 		<span class="nv">PROFILE</span><span class="o">=</span>release
      		<span class="p">;;</span>
-	--target<span class="o">=</span><span class="k">*</span><span class="p">)</span>
-		<span class="nv">TARGET</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$opt</span> | cut -f2 -d<span class="s1">'='</span><span class="sb">`</span> 
+	<span class="nt">--target</span><span class="o">=</span><span class="k">*</span><span class="p">)</span>
+		<span class="nv">TARGET</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$opt</span> | cut <span class="nt">-f2</span> <span class="nt">-d</span><span class="s1">'='</span><span class="sb">`</span> 
     <span class="k">esac
 done
 </span><span class="nv">BINPATH</span><span class="o">=</span>./target/<span class="nv">$TARGET</span>/<span class="nv">$PROFILE</span>
 xargo build <span class="nv">$@</span>
-<span class="nv">PKG</span><span class="o">=</span><span class="sb">`</span>xargo pkgid -q | cut -d# -f2 | cut -d: -f1<span class="sb">`</span>
-<span class="k">if</span> <span class="o">[</span> -f <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> <span class="o">]</span>; <span class="k">then
+<span class="nv">PKG</span><span class="o">=</span><span class="sb">`</span>xargo pkgid <span class="nt">-q</span> | cut <span class="nt">-d</span><span class="c"># -f2 | cut -d: -f1`</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
    </span><span class="nb">echo</span> <span class="s2">"Building kernel"</span>
-   arm-none-eabi-objcopy <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> -O binary  <span class="nv">$BINPATH</span>/kernel.img
+   arm-none-eabi-objcopy <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> <span class="nt">-O</span> binary  <span class="nv">$BINPATH</span>/kernel.img
    <span class="nb">echo</span> <span class="s2">"Generate assembler dump"</span>
-   arm-none-eabi-objdump -D <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> &gt; <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span>.list
+   arm-none-eabi-objdump <span class="nt">-D</span> <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span> <span class="o">&gt;</span> <span class="nv">$BINPATH</span>/<span class="nv">$PKG</span>.list
 <span class="k">fi</span></code></pre></figure>
 
 <p>Diese Skript muss irgendwo im Ausführungsfad abgelegt werden. Dann kann man die Übersetzung im Rust-Stil anstoßen:</p>
@@ -469,7 +469,7 @@ JTAG-Interface laden und testen kann.</p>
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Die cargo-Entwickler betonen immer wieder, dass cargo kein komplettes Build-Management-Tool ist und auch nicht sein will.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>Die cargo-Entwickler betonen immer wieder, dass cargo kein komplettes Build-Management-Tool ist und auch nicht sein will. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
