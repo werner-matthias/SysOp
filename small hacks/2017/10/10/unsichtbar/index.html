@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Blog</title>
+	<title>(Un)sichtbar</title>
 	<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/styles_feeling_responsive.css" />
 	<script src="http://localhost:4000/assets/js/modernizr.min.js"></script>
 
@@ -22,7 +22,7 @@
 
   
 	
-	<meta name="description" content="?" />
+	<meta name="description" content="Sichtbarmachen versteckter Dateien auf die einfache Art."/>
 
 	
 
@@ -104,9 +104,9 @@
 	<!-- Facebook Optimization -->
 	<meta property="og:locale" content="en_EN" />
 	
-	<meta property="og:title" content="Blog" />
-	<meta property="og:description" content="Matthias Werners Blog. " />
-	<meta property="og:url" content="http://localhost:4000//blog/page3/" />
+	<meta property="og:title" content="(Un)sichtbar" />
+	<meta property="og:description" content="Sichtbarmachen versteckter Dateien auf die einfache Art." />
+	<meta property="og:url" content="http://localhost:4000//small%20hacks/2017/10/10/unsichtbar/" />
 	<meta property="og:site_name" content="Systems Operational" />
 	
 
@@ -125,7 +125,7 @@
       src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
    </script>
 </head>
-<body id="top-of-page" class="blog-index">
+<body id="top-of-page" class="page-fullwidth">
 	
 	
 <div id="navigation" class="sticky">
@@ -268,103 +268,86 @@
 
 
 
-	<div class="row">
-	<div class="medium-8 columns t30">
-		
+	
 
 
+<div class="row t30">
+	<div class="medium-12 columns">
+		<article>
+			<header>
+				
+				<h1>(Un)sichtbar</h1>
+			</header>
 
-  <div class="row">
-    <div class="small-12 columns b60">
-      <p class="subheadline"><span class="subheader">aihpos</span> – aihPOS - Ein Betriebsystem für die Lehre</p>
-      <h2><a href="http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/">Um-Rust-ung</a></h2>
-      <p>
-        
+			
 
-        Das Build-System wird auf Rust-Tools umgestellt - make hat ausgedient.
+			<span itemprop="articleSection">
+	                <p>MacOS bevormundet seine Nutzer manchmal ganz schön. So werden standardmäßig keine „versteckten“ Dateien im Finder dargestellt, also auch sogenannte Dot-Dateien, deren Name mit einem Punkt beginnt.
+Bisher habe ich immer, um diese sichtbar zu machen, an den <i>defaults</i> herumgebastelt:</p>
 
-        <a href="http://localhost:4000/aihpos/2017/05/14/aihpos-umrustung/" title="Lesen Um-Rust-ung"><strong>Mehr lesen&nbsp;›</strong></a>
-      </p>
-    </div><!-- /.small-12.columns -->
-  </div><!-- /.row -->
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">$</span></pre></td><td class="code"><pre><code><span class="line command">defaults write com.apple.Finder AppleShowAllFiles true</span><span class="line command">killall Finder</span></code></pre></td></tr></table></div></div>
+        </div>
+<p>Wenn ich die versteckten Dateien nicht mehr brauchte, musste ich Entsprechendes mit <code class="highlighter-rouge">false</code> eingeben.</p>
 
-  <div class="row">
-    <div class="small-12 columns b60">
-      <p class="subheadline"><span class="subheader">aihpos</span> – Ein Betriebsystem für die Lehre</p>
-      <h2><a href="http://localhost:4000/aihpos/2017/04/26/aihpos-postman/">Please Mr. Postman</a></h2>
-      <p>
-        
+<p>Jetzt habe ich gelernt, dass man die Umschaltung einfach auf Tastendruck haben kann. <kbd>SHIFT</kbd>+<kbd>CMD</kbd>+<kbd>.</kbd> macht den Job.</p>
 
-        Bevor wir uns dem Design des Kernels widmen, wollen wir Informationen über das System einsammeln:  welchen Raspberry-Typ haben wir, wieviel Speicher steht zur Verfügung, etc.. Außerdem nutzen wir die Gelegenheit, das Debugging nochmal zu verbessern.
+	                </span>
+			
+						<div id="page-meta" class="t30">
+				<p>
+					<!-- Look the author details up from the site config. -->
+					
+					<!-- Output author details if some exist. -->
+					
+					<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name" class="pr20 icon-edit"><a href="http://osg.informatik.tu-chemnitz.de/Staff/M_Werner/index.php?lang=en" target="_blank"> Matthias Werner</a></span>
+				</span>
+				
 
-        <a href="http://localhost:4000/aihpos/2017/04/26/aihpos-postman/" title="Lesen Please Mr. Postman"><strong>Mehr lesen&nbsp;›</strong></a>
-      </p>
-    </div><!-- /.small-12.columns -->
-  </div><!-- /.row -->
+				
+				<time class="icon-calendar pr20" datetime="2017-10-10" itemprop="datePublished"> 2017-10-10</time>
+				
 
-  <div class="row">
-    <div class="small-12 columns b60">
-      <p class="subheadline"><span class="subheader">menschen</span> </p>
-      <h2><a href="http://localhost:4000/menschen/2017/04/20/march-for-science/">March for Science</a></h2>
-      <p>
-        
+				<span class="icon-archive pr20"> SMALL HACKS</span>
+				<br />
+				<span class="pr20"><span class="icon-price-tag pr10"> MacOS</span> <span class="icon-price-tag pr10"> OSX</span> </span>
+			</p>
 
-        
+			<div id="post-nav" class="row">
+				
+				<div class="small-5 columns"><a class="button small radius prev" href="http://localhost:4000/quotes/2017/09/17/spachwahl/">&laquo; Wahl der Sprache</a></div><!-- /.small-4.columns -->
+				
+				<div class="small-2 columns text-center"><a class="radius button small" href="http://localhost:4000/blog/archive/" title="Blog Archiv">Archiv</a></div><!-- /.small-4.columns -->
+				
+			</div>
+			</div><!--  /.page-meta -->
+			
 
-        <a href="http://localhost:4000/menschen/2017/04/20/march-for-science/" title="Lesen March for Science"><strong>Mehr lesen&nbsp;›</strong></a>
-      </p>
-    </div><!-- /.small-12.columns -->
-  </div><!-- /.row -->
-
-  <div class="row">
-    <div class="small-12 columns b60">
-      <p class="subheadline"><span class="subheader">aihpos</span> – Ein Betriebsystem für die Lehre</p>
-      <h2><a href="http://localhost:4000/aihpos/2017/04/10/aihpos-lebenszeichen/">Lebenszeichen</a></h2>
-      <p>
-        
-
-        Wir bauen den ersten &quot;Kernel&quot; und holen (nahezu) die Bequemlichkeit des Desktop-Debuggers in die Embedded-Welt.
-
-        <a href="http://localhost:4000/aihpos/2017/04/10/aihpos-lebenszeichen/" title="Lesen Lebenszeichen"><strong>Mehr lesen&nbsp;›</strong></a>
-      </p>
-    </div><!-- /.small-12.columns -->
-  </div><!-- /.row -->
-
-  <div class="row">
-    <div class="small-12 columns b60">
-      <p class="subheadline"><span class="subheader">quotes</span> – Zitate des Tages</p>
-      <h2><a href="http://localhost:4000/quotes/2017/04/07/pointer/">Pointer</a></h2>
-      <p>
-        
-
-        
-
-        <a href="http://localhost:4000/quotes/2017/04/07/pointer/" title="Lesen Pointer"><strong>Mehr lesen&nbsp;›</strong></a>
-      </p>
-    </div><!-- /.small-12.columns -->
-  </div><!-- /.row -->
-
-
-
-<nav id="pagination">
-    
-      
-      <a class="radius button small" href="http://localhost:4000/blog/page2/" title="Vorheriger Beitrag">&laquo; Vorherige</a>
-      
-    
-
-    <a class="radius button small" href="http://localhost:4000/blog/archive/" title="Blog Archiv">Blog Archiv</a>
-
-    
-    <a class="radius button small" href="http://localhost:4000/blog/page4/" title="Nächster Beitrag">Nächste &raquo;</a>
-    
-  </nav>
-
-
-	</div><!-- /.medium-7.columns -->
-
-
+	                
+                                <hr><h4>Hinterlasse einen Kommentar</h4>
+<form method="POST" action="https://api.staticman.net/v2/entry/werner-matthias/SysOp/master">
+  <input name="options[redirect]" type="hidden" value="sysop.matthias-werner.net">
+  <input name="options[slug]" type="hidden" value="unsichtbar">
+  <label><i>Name</i><input name="fields[name]" type="text"></label>
+  <label><i>E-mail</i><input name="fields[email]" type="email"></label>
+  <label><i>Kommentar</i><textarea rows="8" name="fields[message]"></textarea></label>
+  
+  <button type="submit">Senden</button>
+</form> 
+			
+		</article>
+	</div><!-- /.medium-12.columns -->
 </div><!-- /.row -->
+
+
+
 
 	
 	    <div id="up-to-top" class="row">
