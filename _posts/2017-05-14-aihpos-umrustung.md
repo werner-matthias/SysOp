@@ -1,17 +1,20 @@
 ---
 title: Um-Rust-ung
-subheadline: aihPOS - Ein Betriebsystem für die Lehre
-published: true
-meta_description: "Das Build-System wird auf Rust-Tools umgestellt - make hat ausgedient."
+layout: page-fullwidth
 author: mwerner
-date: 2017-05-14 
+show_meta: true
+subheadline: Ein Betriebsystem für die Lehre
+published: true
+meta_description: Das Build-System wird auf Rust-Tools umgestellt - make hat ausgedient.
+date: '2017-05-14'
 tags:
-    - aihPOS
-    - cargo
-    - xargo
+- aihPOS
+- cargo
+- xargo
 categories:
-    - aihpos
+- aihpos
 ---
+
 **Inhalt**
 - TOC
 {:toc}
@@ -135,4 +138,3 @@ Außerdem habe ich ein [GitHub-Projekt](https://github.com/werner-matthias/aihPO
     
  [2]: https://github.com/japaric/xargo
  [3]: http://doc.crates.io/manifest.html
-
