@@ -15,7 +15,7 @@ description: "Matthias Werners Blog. "
 author: mwerner
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
-url: 'https://werner-matthias.github.io'
+url: 'https://werner-matthias.github.io/SysOp'
 baseurl: '/SysOp'
 
 # This URL points directly to the images directory making
