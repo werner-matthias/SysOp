@@ -1,24 +1,27 @@
 ---
 title: Ausr(ü/u)stung
-subheadline: Ein Betriebsystem für die Lehre
-meta_description: "Bevor wir mit dem Code-Schreiben beginnen, brauchen wir die Entwickler-Werkzeuge."
-published: true
+layout: page-fullwidth
 author: mwerner
-date: 2017-03-31 
+show_meta: true
+subheadline: Ein Betriebsystem für die Lehre
+meta_description: Bevor wir mit dem Code-Schreiben beginnen, brauchen wir die Entwickler-Werkzeuge.
+published: true
+date: '2017-03-31'
 tags:
-    - aihPOS
-    - Rust
-    - JTAG
-    - EABI
-    - Debugger
+- aihPOS
+- Rust
+- JTAG
+- EABI
+- Debugger
 categories:
-    - aihpos
+- aihpos
 ---
+
 **Inhalt**
 - TOC
 {:toc}
 {% include next-previous-post-in-category %}
- Nachdem im [letzten Teil](/2017/03/19/aihpos-1) die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.
+ Nachdem im [letzten Teil]({% post_url 2017-03-19-aihpos-1 %}) die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.
 
 ## Setup Rust
 
