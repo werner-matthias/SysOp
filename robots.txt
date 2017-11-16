@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://werner-matthias.github.io/SysOp/SysOp/sitemap.xml
+Sitemap: https://werner-matthias.github.io/SysOp//sitemap.xml
