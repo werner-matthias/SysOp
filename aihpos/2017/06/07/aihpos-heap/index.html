@@ -305,7 +305,7 @@
 
 <div class="row"></div>
 
-<p><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> soll ein dynamisches Betriebssystem werden, also eines, bei denen die Anzahl der Prozesse sich zur Laufzeit ändern kann. Unser Mikrokernel hat eine klassische Architektur, die aus vier Schichten besteht:</p>
+<p><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> soll ein dynamisches Betriebssystem werden, also eines, bei denen die Anzahl der Prozesse sich zur Laufzeit ändern kann. Unser Mikrokernel hat eine klassische Architektur, die aus vier Schichten besteht:</p>
 
 <ul>
   <li>Schicht 4: der Kernoperation, der wie Prozessverwaltung, Prozessinteraktion oder Prozessspeichermanagement</li>
@@ -331,7 +331,7 @@
   <li>Häufig  sollen die vorhandenen Speicherreserven durch Nutzung einer Speicherhierachie virtuell vergrößert werden.</li>
 </ul>
 
-<p><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> soll (zunächst) die ersten drei Aspekte unterstützen; eine virtuelle<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  Speicherverwaltung kann erst in Angriff genommen werden, wenn es Treiber für
+<p><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> soll (zunächst) die ersten drei Aspekte unterstützen; eine virtuelle<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  Speicherverwaltung kann erst in Angriff genommen werden, wenn es Treiber für
 Speichermedien wie die SD-Karte oder externe USB-Laufwerke gibt.</p>
 
 <p>Dabei muss erst einmal der Kernel selbst seinen Speicher verwalten. Dabei stellt sich natürlich die Frage: wie hat er das in unseren bisherigen Programmen gemacht? Da
@@ -442,7 +442,7 @@ Damit sieht unsere Einsprungssequenz in den Kernel jetzt so aus:</p>
 
 <h3 id="hal">HAL</h3>
 <p><code class="highlighter-rouge">Cpu::set_mode()</code> und <code class="highlighter-rouge">Cpu::set_stack()</code> sind natürlich keine Funktionen, die Rust bekannt sind. Der Übersichtlichkeit halber habe ich allen Assembler-Code in ein eigenes
-Modul gepackt, das „HAL“ heißt. HAL steht klassischerweise für „<em>Hardware Abstraction Layer</em>“. Allerdings ist die Abstraktion in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> sehr dünn, ein Port über die
+Modul gepackt, das „HAL“ heißt. HAL steht klassischerweise für „<em>Hardware Abstraction Layer</em>“. Allerdings ist die Abstraktion in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> sehr dünn, ein Port über die
 ARM-Architektur hinaus bedürfte etwas mehr Aufwand. Der Code für <code class="highlighter-rouge">Cpu::set_mode()</code> und <code class="highlighter-rouge">Cpu::set_stack()</code> sieht derzeit so aus:</p>
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Siehe ARM Architectur Reference Manual A2-3</span>
 <span class="k">pub</span> <span class="k">enum</span> <span class="n">ProcessorMode</span> <span class="p">{</span>
@@ -483,7 +483,7 @@ ARM-Architektur hinaus bedürfte etwas mehr Aufwand. Der Code für <code class="
 </code></pre></div></div>
 <h2 id="heap">Heap</h2>
 <p>Nachdem die Stacks initialisiert sind, kümmern wir und um den Kernel-Heap. Es stellt sich die Frage, wie groß der Heap sein soll.
-Das ist schlecht beantwortbar, da wir viele Aspekte von <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> noch nicht kennen. Natürlich können wir versuchen, ihn auf den <em>worst case</em> auszulegen,
+Das ist schlecht beantwortbar, da wir viele Aspekte von <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> noch nicht kennen. Natürlich können wir versuchen, ihn auf den <em>worst case</em> auszulegen,
 aber das würde für den Großteil der Fälle eine Verschwendung bedeuten. Am besten wäre es, wenn der Heap erst mal eher klein ist und später wächst.
 Allerdings ist das problematisch: der Heap ist ein zusammenhängender Adressraum. Wenn in der Zwischenzeit eine bestimmte Adresse anderweitig vergeben ist (sagen wir mal
 an einen Prozess), kann der Heap nicht weiter wachsen.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> An dieser Stelle kommt zum ersten Mal die gestreute Adressierung ins Spiel, die dafür sorgen, dass physisch
@@ -492,7 +492,7 @@ Erst einmal ist es nur wichtig zu vermerken, dass es einen Zusammenhang gib, den
 
 <h3 id="rust-allocator">Rust Allocator</h3>
 <p>Die Module, die den Heap verwalten, heißen in Rust „<em>Allokatoren</em>“. Rust wird mit zwei verschiedenen Allokatoren ausgeliefert, <code class="highlighter-rouge">malloc</code>(wohlbekannt aus der
-C-Standardbibliothek) und <code class="highlighter-rouge">jemalloc</code>. Beide nutzen jedoch Betriebssystemrufe, die unter <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> erstens nocht gar nicht existieren, und zweitens im Kernel schlecht genutzt
+C-Standardbibliothek) und <code class="highlighter-rouge">jemalloc</code>. Beide nutzen jedoch Betriebssystemrufe, die unter <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> erstens nocht gar nicht existieren, und zweitens im Kernel schlecht genutzt
 werden könnten – also fallen beide aus.</p>
 
 <p>Glücklicherweise kennt Rust das Konzept von maßgeschneiderten Allokatoren (<em>custom allocators</em>). Für einen solchen Allokator gibt es einige Spielregeln:</p>
@@ -722,7 +722,7 @@ Hierbei nutze ich einen Trick: Da die externen Symbole ungetypt sind, erkläre i
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nn">mem</span><span class="p">::</span><span class="nf">init_heap</span><span class="p">(</span><span class="o">&amp;</span><span class="k">unsafe</span><span class="p">{</span><span class="n">__bss_start</span><span class="p">}</span> <span class="k">as</span> <span class="o">*</span><span class="k">const</span> <span class="nb">u32</span> <span class="k">as</span> <span class="nb">usize</span><span class="p">,</span> <span class="n">INIT_HEAP_SIZE</span><span class="p">);</span>
 </code></pre></div></div>
 <p>Allerdings kann die Deklaration so Verwirrung stiften; ich sollte vermutlich ein Makro als syntaktischen Zucker schreiben, dass einen aussagekräftigen Namen hat.
-Schließlich ist gute Lesbarkeit ein Ziel in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png">.</p>
+Schließlich ist gute Lesbarkeit ein Ziel in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png">.</p>
 
 <h2 id="vektoren-hashes--co">Vektoren, Hashes &amp; Co</h2>
 <p>Und was hat man nun davon? Viel! Jetzt können einige Standardtypen von Rust genutzt werden, die uns bisher verschlossen waren. Dazu gehören:</p>
@@ -783,7 +783,7 @@ im Wurzelverzeichnis anlegen: <kbd>Xargo.toml</kbd>. Dort können zusätzliche C
 
 <p>Damit haben wir eine vorläufige Lösung für die unterste Kernel-Schicht. Nebenbei werden uns auch viele Datenstrukturen geschenkt, die wir sonst in Schicht 2
 implementieren müssten. Allerdings ist das Thema Speicher noch nicht erledigt: Speicher ist auch Betriebsmittel für die Prozesse. Hier kommt die logische
-Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des nächsten Beitrags in der <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png">-Reihe.</p>
+Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des nächsten Beitrags in der <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png">-Reihe.</p>
 
 <p><a class="left button tiny radius" href="https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/"><span class="icon-chevron-left"></span>Vorheriger Beitrag in AIHPOS</a></p>
 
@@ -808,7 +808,7 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
       <p>Für den ARM ist das lediglich eine Konvention, die Hardware unterstützt auch Stacks, die nach oben wachsen. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:5">
-      <p>Es gibt zwar auch das Konzept eines fragmentierten Heaps, aber das ist relativ kompliziert zu implementieren und <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> soll ja einfach werden. :-) <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+      <p>Es gibt zwar auch das Konzept eines fragmentierten Heaps, aber das ist relativ kompliziert zu implementieren und <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> soll ja einfach werden. :-) <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:6">
       <p>Freigabe und Wiedereingliedern wird häufig zusammen erledigt. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>

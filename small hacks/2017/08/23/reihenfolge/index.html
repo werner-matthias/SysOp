@@ -282,7 +282,7 @@
 			
 
 			<span itemprop="articleSection">
-	                <p>Bei <a href="/blog/ahipos"><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"></a> hatte ich dieser Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>– lediglich die Optimierung.</p>
+	                <p>Bei <a href="/blog/ahipos"><img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"></a> hatte ich dieser Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>– lediglich die Optimierung.</p>
 
 <p>Nach längerer Fehlersuche stellte sich folgende Funktion als Verursacherin heraus:</p>
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="nf">inline</span><span class="p">(</span><span class="n">never</span><span class="p">)]</span>
@@ -376,7 +376,7 @@
         <span class="p">}</span>
     <span class="p">}</span>
 </code></pre></div></div>
-<p>Der vierte Parameter im <code class="highlighter-rouge">asm!()</code>-Macro sagt normalerweise, welche Register „verschmutzt“ werden, so dass der Compiler sich nicht darauf verlassen darf, dass deren Inhalte gleich bleiben. Man kann dort aber auch „memory“ hinschreiben, was behauptet, dass der Assember-Code Nebeneffekte hat. Damit darf der Compiler die Reihenfolge nicht mehr ändern, und <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> funktioniert auch mit <code class="highlighter-rouge">--opt-level=3</code>.</p>
+<p>Der vierte Parameter im <code class="highlighter-rouge">asm!()</code>-Macro sagt normalerweise, welche Register „verschmutzt“ werden, so dass der Compiler sich nicht darauf verlassen darf, dass deren Inhalte gleich bleiben. Man kann dort aber auch „memory“ hinschreiben, was behauptet, dass der Assember-Code Nebeneffekte hat. Damit darf der Compiler die Reihenfolge nicht mehr ändern, und <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> funktioniert auch mit <code class="highlighter-rouge">--opt-level=3</code>.</p>
 
 <div class="footnotes">
   <ol>
