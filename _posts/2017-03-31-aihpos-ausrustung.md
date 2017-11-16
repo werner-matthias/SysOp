@@ -21,7 +21,7 @@ categories:
 - TOC
 {:toc}
 {% include next-previous-post-in-category %}
- Nachdem im [letzten Teil]({% post_url 2017-03-19-aihpos-1 %}) die Design-Ziel von SOPHIA kurz diskutiert wurden, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.
+ Nachdem ich im [letzten Teil]({% post_url 2017-03-19-aihpos-1 %}) die Design-Ziel von SOPHIA kurz diskutiert habe, erläutert dieser Teil die Bereitstellung der Entwicklungswerkzeuge.
 
 ## Setup Rust
 
