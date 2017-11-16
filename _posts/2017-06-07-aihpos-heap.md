@@ -1,23 +1,26 @@
 ---
-layout: page-fullwidth
 title: Wir machen einen Haufen
-subheadline: Ein Betriebsystem für die Lehre
-meta_description: "Die unterste Schicht im Mikrokernel ist die Kernel-Speicherverwaltung. In diesem Beitrag werden die Stacks und der Heap des Kernels implementiert."
-published: true
+layout: page-fullwidth
 author: mwerner
-date: 2017-06-07
+show_meta: true
+subheadline: Ein Betriebsystem für die Lehre
+meta_description: Die unterste Schicht im Mikrokernel ist die Kernel-Speicherverwaltung.
+  In diesem Beitrag werden die Stacks und der Heap des Kernels implementiert.
+published: true
+date: '2017-06-07'
 tags:
-    - aihPOS
-    - Rust
-    - Microkernel
-    - Heap
-    - Stack
+- aihPOS
+- Rust
+- Microkernel
+- Heap
+- Stack
 categories:
-    - aihpos
+- aihpos
 ---
+
 **Inhalt**
 - TOC
-{:toc}
+{:toc} 
 {% include next-previous-post-in-category %}
 SOPHIA soll ein dynamisches Betriebssystem werden, also eines, bei denen die Anzahl der Prozesse sich zur Laufzeit ändern kann. Unser Mikrokernel hat eine klassische Architektur, die aus vier Schichten besteht:
 
