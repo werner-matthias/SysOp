@@ -9,8 +9,8 @@
 			<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Atom Feed (Styled)</title>
-	<link rel="stylesheet" type="text/css" href="https://werner-matthias.github.io/SysOp/SysOp/assets/css/styles_feeling_responsive.css" />
-	<script src="https://werner-matthias.github.io/SysOp/SysOp/assets/js/modernizr.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://werner-matthias.github.io/SysOp//assets/css/styles_feeling_responsive.css" />
+	<script src="https://werner-matthias.github.io/SysOp//assets/js/modernizr.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
   <script>
@@ -111,7 +111,7 @@
 	
 	<meta property="og:title" content="Atom Feed (Styled)" />
 	<meta property="og:description" content="Matthias Werners Blog. " />
-	<meta property="og:url" content="https://werner-matthias.github.io/SysOp/SysOp//assets/xslt/atom.xslt" />
+	<meta property="og:url" content="https://werner-matthias.github.io/SysOp///assets/xslt/atom.xslt" />
 	<meta property="og:site_name" content="Systems Operational" />
 	
 
@@ -120,7 +120,7 @@
 	<!-- Search Engine Optimization -->
 	
 
-	<link type="text/plain" rel="author" href="https://werner-matthias.github.io/SysOp/SysOp/humans.txt" />
+	<link type="text/plain" rel="author" href="https://werner-matthias.github.io/SysOp//humans.txt" />
 
 	
 
@@ -135,7 +135,7 @@
   <nav class="top-bar" role="navigation" data-topbar>
     <ul class="title-area">
       <li class="name">
-      <h1 class="show-for-small-only"><a href="https://werner-matthias.github.io/SysOp/SysOp" class="icon-tree"> Systems Operational</a></h1>
+      <h1 class="show-for-small-only"><a href="https://werner-matthias.github.io/SysOp/" class="icon-tree"> Systems Operational</a></h1>
     </li>
        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Navigation</span></a></li>
@@ -170,7 +170,7 @@
             
             
               <li class="divider"></li>
-              <li><a href="https://werner-matthias.github.io/SysOp/SysOp/about/">Über mich</a></li>
+              <li><a href="https://werner-matthias.github.io/SysOp//about/">Über mich</a></li>
 
             
             
@@ -189,7 +189,7 @@
 
             
             
-              <li><a href="https://werner-matthias.github.io/SysOp/SysOp/">Start</a></li>
+              <li><a href="https://werner-matthias.github.io/SysOp//">Start</a></li>
               <li class="divider"></li>
 
             
@@ -206,14 +206,14 @@
             
 
               <li class="has-dropdown">
-                <a href="https://werner-matthias.github.io/SysOp/SysOp/blog/">Blog</a>
+                <a href="https://werner-matthias.github.io/SysOp//blog/">Blog</a>
 
                   <ul class="dropdown">
                     
 
                       
 
-                      <li><a href="https://werner-matthias.github.io/SysOp/SysOp/blog/archive/">Archive</a></li>
+                      <li><a href="https://werner-matthias.github.io/SysOp//blog/archive/">Archive</a></li>
                     
                   </ul>
                   
@@ -230,7 +230,7 @@
 
             
             
-              <li><a href="https://werner-matthias.github.io/SysOp/SysOp/blog/aihpos/">aihPos</a></li>
+              <li><a href="https://werner-matthias.github.io/SysOp//blog/aihpos/">aihPos</a></li>
               <li class="divider"></li>
 
             
@@ -255,7 +255,7 @@
 	<div class="row">
 		<div class="small-12 columns">
 			<a id="logo" href="https://werner-matthias.github.io/SysOp" title="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
-				<img src="https://werner-matthias.github.io/SysOp/SysOp/assets/img/logo.png" alt="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
+				<img src="https://werner-matthias.github.io/SysOp//assets/img/logo.png" alt="Systems Operational – Matthias Werners selten gepflegtes Blog über Computer und Menschen">
 			</a>
 		</div><!-- /.small-12.columns -->
 	</div><!-- /.row -->
@@ -333,7 +333,7 @@
 
             <p class="shadow-black">
               Matthias Werners Blog. 
-              <a href="https://werner-matthias.github.io/SysOp/SysOp/info/">Mehr ›</a>
+              <a href="https://werner-matthias.github.io/SysOp//info/">Mehr ›</a>
             </p>
           </div><!-- /.large-6.columns -->
 
@@ -363,7 +363,7 @@
 		
 
 
-<script src="https://werner-matthias.github.io/SysOp/SysOp/assets/js/javascript.min.js"></script>
+<script src="https://werner-matthias.github.io/SysOp//assets/js/javascript.min.js"></script>
 
 
 
