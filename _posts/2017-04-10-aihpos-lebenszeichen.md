@@ -1,26 +1,29 @@
 ---
 title: Lebenszeichen
+layout: page-fullwidth
+author: mwerner
+show_meta: true
 subheadline: Ein Betriebsystem für die Lehre
 published: true
-author: mwerner
-#comments: 
-meta_description: 'Wir bauen den ersten "Kernel" und holen (nahezu) die Bequemlichkeit des Desktop-Debuggers in die Embedded-Welt.'
-date: 2017-04-10 09:04:10
+meta_description: Wir bauen den ersten "Kernel" und holen (nahezu) die Bequemlichkeit
+  des Desktop-Debuggers in die Embedded-Welt.
+date: '2017-04-10 11:04:10 +0200'
 tags:
-    - aihPOS
-    - Rust
-    - Linker
-    - make
-    - openocd
+- aihPOS
+- Rust
+- Linker
+- make
+- openocd
 categories:
-    - aihpos
+- aihpos
 ---
+
 **Inhalt**
 - TOC
 {:toc}
 {% include next-previous-post-in-category %}
 
-Nachdem wir unsere [Toolchain][1] installiert haben, wollen wir den ersten "Kernel" bauen. Er soll nichts anderes machen, als den Pi für JTAG
+Nachdem wir unsere [Toolchain]({% post_url 2017-03-31-aihpos-ausrustung %}) installiert haben, wollen wir den ersten "Kernel" bauen. Er soll nichts anderes machen, als den Pi für JTAG
 vorbereiten. Dafür müssen wir uns mit Details unserer Plattform herumschlagen, insbesondere mit der Beschreibung der [I/O-Hardware][2], dem Speicher-Layout und dem
 Boot-Prozess. 
 
@@ -330,7 +333,7 @@ Allerdings besteht bisher für eine Optimierung noch kein Grund -- die Ausführu
 [^5]: Schon garn nicht in meiner Arbeitsumgebung auf dem Mac, da der Debugger hier auf MachO ausgelegt ist 
     
 
- [1]: http://sysop.matthias-werner.net/ein-betriebssystem-fuer-die-lehre-teil-2/
+
  [2]: https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
  [3]: https://docs.broadcom.com/docs/12358545
  [4]: https://sourceware.org/binutils/docs/ld/Scripts.html
