@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://werner-matthias.github.io/SysOp/</id>
 	<title>Systems Operational</title>
-	<updated>2017-11-16T14:15:39+01:00</updated>
+	<updated>2017-11-16T14:16:50+01:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -292,7 +292,7 @@ And the quality of your hackers probably matters more than the language you choo
   &lt;li&gt;&lt;a href=&quot;#blick-zurück-in-freude&quot; id=&quot;markdown-toc-blick-zurück-in-freude&quot;&gt;Blick zurück in Freude&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/LINK&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -576,7 +576,7 @@ derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständ
 „&lt;a href=&quot;https://os.phil-opp.com&quot;&gt;Writing an OS in Rust&lt;/a&gt;“ stammt. Ich werde zwar in SOPHIA bei meinem Boundary-Tag-Allokator bleiben, es ist aber gut zu wissen, dass es eine Alternative gibt
 und dass die Community so schnell reagiert.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/LINK&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -764,9 +764,9 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/LINK</id>
+			<id>https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/</id>
 			<title>Seitenweise</title>
-			<link href="https://werner-matthias.github.io/SysOp/LINK" rel="alternate" type="text/html" title="Seitenweise" />
+			<link href="https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/" rel="alternate" type="text/html" title="Seitenweise" />
 			<updated>2017-06-18T00:00:00+02:00</updated>
 
 			
@@ -784,7 +784,7 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/LINK">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#nach-mehr-aufgaben&quot; id=&quot;markdown-toc-nach-mehr-aufgaben&quot;&gt;Nach mehr Aufgaben&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#paging-auf-dem-arm&quot; id=&quot;markdown-toc-paging-auf-dem-arm&quot;&gt;Paging auf dem ARM&lt;/a&gt;    &lt;ul&gt;
@@ -1489,7 +1489,7 @@ aber davon berichte ich in einer der nächsten Folgen dieses Blogs.&lt;/p&gt;
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/LINK&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1975,7 +1975,7 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
 
 &lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/LINK&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
