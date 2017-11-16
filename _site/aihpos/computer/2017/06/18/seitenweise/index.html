@@ -325,7 +325,7 @@ steht.</li>
 </ul>
 
 <p>Beides wird in der Regel mit dem gleichen Ansatz realisiert: <em>gestreute
-Adressierung mit Paging</em><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. Wir wollen zunächst in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> nur die
+Adressierung mit Paging</em><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. Wir wollen zunächst in <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> nur die
 erste Aufgabe erfüllen.</p>
 
 <h2 id="paging-auf-dem-arm">Paging auf dem ARM</h2>
@@ -351,7 +351,7 @@ zu einer Ausnahme (<em>abort</em>);</li>
 Speicherbereich von 16 MiB Größe. Wer jetzt aber glaubt, damit könnte
 man das Top-Level-Verzeichnis kleiner machen, irrt sich: wenn
 Supersections genutzt werden, muss jeder entsprechende Eintrag 16 mal
-im Verzeichnis vorhanden sein. In <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> werden wir Supersections
+im Verzeichnis vorhanden sein. In <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> werden wir Supersections
 nicht nutzen.</p>
 
 <p>Um eine Verwechslung auszuschließen, wird im Folgenden das
@@ -373,7 +373,7 @@ Einträge kann wieder von unterschiedlicher Art sein:</p>
 <p>Wieder gilt, dass eine goße Speicherseite 16 gleichlautende Einträge
 in der Seitentabelle braucht. Durch Nutzung von großen Speicherseiten
 kann also nicht an Platz für die Seitentabelle gespart werden.
-In <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> werden wir vorerst kleine Speicherseiten nutzen.</p>
+In <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> werden wir vorerst kleine Speicherseiten nutzen.</p>
 
 <h3 id="zugriff">Zugriff</h3>
 <p>Bei einem Speicherzugriff auf die (gültige) logische Speicheradresse
@@ -477,7 +477,7 @@ theoretisch redundant: Man kann die belegten Frames ermitteln, indem
 man das Seitenverzeichnis und alle existierenden Seitentabellen
 betrachtet und alle Frames in nichtaufgeführten Adressbereichen als
 leer betrachtet. Aber das ist erstens ein enormer Aufwand, und
-zweitens nicht sehr zukunftsträchtig, da <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/SysOp/assets/img/sophia.png"> vielleicht tatsächlich
+zweitens nicht sehr zukunftsträchtig, da <img alt="aihPOS" style="height:.78em; vertical-align:baseline" src="/assets/img/sophia.png"> vielleicht tatsächlich
 mal einen virtuellen Speicher erhalten soll.</p>
 
 <p>Es stellt sich also die Frage, wie die Frameverwaltung organisiert
