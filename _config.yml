@@ -15,7 +15,8 @@ description: "Matthias Werners Blog. "
 author: mwerner
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
-url: 'https://werner-matthias.github.io/SysOp'
+#url: 'https://werner-matthias.github.io/SysOp'
+url: 'http://sysop.matthias-werner.net'
 baseurl: ''
 
 # This URL points directly to the images directory making
@@ -24,7 +25,7 @@ baseurl: ''
 # Example: <img src="{{ site.urlimg }}{{ post.image.title }}" />
 # Markdown-Example for posts ![Image Text]({{ site.urlimg }}image.jpg)
 #
-urlimg: 'https://werner-matthias.github.io/SysOp/images'
+urlimg: 'http://sysop.matthias-werner.net/images'
 
 # Logo size is 600x80 pixels
 logo: "logo.png"

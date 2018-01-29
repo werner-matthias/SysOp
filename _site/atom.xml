@@ -2,9 +2,9 @@
 <?xml-stylesheet type="text/xsl" href="/assets/xslt/atom.xslt" ?>
 <?xml-stylesheet type="text/css" href="/assets/css/atom.css" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<id>https://werner-matthias.github.io/SysOp/</id>
+	<id>http://sysop.matthias-werner.net/</id>
 	<title>Systems Operational</title>
-	<updated>2018-01-29T17:04:59+01:00</updated>
+	<updated>2018-01-29T17:09:52+01:00</updated>
 
 	<subtitle>Matthias Werners Blog. </subtitle>
 
@@ -23,16 +23,16 @@
 		</author>
 	
 
-	<link href="https://werner-matthias.github.io/SysOp/atom.xml" rel="self" type="application/rss+xml" />
-	<link href="https://werner-matthias.github.io/SysOp/" rel="alternate" type="text/html" />
+	<link href="http://sysop.matthias-werner.net/atom.xml" rel="self" type="application/rss+xml" />
+	<link href="http://sysop.matthias-werner.net/" rel="alternate" type="text/html" />
 
 	<generator uri="http://jekyllrb.com" version="3.6.2">Jekyll</generator>
 
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/small%20hacks/2017/10/10/unsichtbar/</id>
+			<id>http://sysop.matthias-werner.net/small%20hacks/2017/10/10/unsichtbar/</id>
 			<title>(Un)sichtbar</title>
-			<link href="https://werner-matthias.github.io/SysOp/small%20hacks/2017/10/10/unsichtbar/" rel="alternate" type="text/html" title="(Un)sichtbar" />
+			<link href="http://sysop.matthias-werner.net/small%20hacks/2017/10/10/unsichtbar/" rel="alternate" type="text/html" title="(Un)sichtbar" />
 			<updated>2017-10-10T00:00:00+02:00</updated>
 
 			
@@ -50,7 +50,7 @@
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/small%20hacks/2017/10/10/unsichtbar/">&lt;p&gt;MacOS bevormundet seine Nutzer manchmal ganz schön. So werden standardmäßig keine „versteckten“ Dateien im Finder dargestellt, also auch sogenannte Dot-Dateien, deren Name mit einem Punkt beginnt.
+			<content type="html" xml:base="http://sysop.matthias-werner.net/small%20hacks/2017/10/10/unsichtbar/">&lt;p&gt;MacOS bevormundet seine Nutzer manchmal ganz schön. So werden standardmäßig keine „versteckten“ Dateien im Finder dargestellt, also auch sogenannte Dot-Dateien, deren Name mit einem Punkt beginnt.
 Bisher habe ich immer, um diese sichtbar zu machen, an den &lt;i&gt;defaults&lt;/i&gt; herumgebastelt:&lt;/p&gt;
 
 &lt;div class=&quot;window&quot;&gt;
@@ -81,9 +81,9 @@ Bisher habe ich immer, um diese sichtbar zu machen, an den &lt;i&gt;defaults&lt;
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/quotes/2017/09/17/spachwahl/</id>
+			<id>http://sysop.matthias-werner.net/quotes/2017/09/17/spachwahl/</id>
 			<title>Wahl der Sprache</title>
-			<link href="https://werner-matthias.github.io/SysOp/quotes/2017/09/17/spachwahl/" rel="alternate" type="text/html" title="Wahl der Sprache" />
+			<link href="http://sysop.matthias-werner.net/quotes/2017/09/17/spachwahl/" rel="alternate" type="text/html" title="Wahl der Sprache" />
 			<updated>2017-09-17T00:00:00+02:00</updated>
 
 			
@@ -101,7 +101,7 @@ Bisher habe ich immer, um diese sichtbar zu machen, an den &lt;i&gt;defaults&lt;
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/quotes/2017/09/17/spachwahl/">&lt;blockquote&gt;
+			<content type="html" xml:base="http://sysop.matthias-werner.net/quotes/2017/09/17/spachwahl/">&lt;blockquote&gt;
   &lt;p&gt;Whatever the chosen language, the essence of programming is abstraction.
 &lt;cite&gt;Niklaus Wirth&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -123,9 +123,9 @@ And the quality of your hackers probably matters more than the language you choo
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/small%20hacks/2017/08/23/reihenfolge/</id>
+			<id>http://sysop.matthias-werner.net/small%20hacks/2017/08/23/reihenfolge/</id>
 			<title>Reihenfolge</title>
-			<link href="https://werner-matthias.github.io/SysOp/small%20hacks/2017/08/23/reihenfolge/" rel="alternate" type="text/html" title="Reihenfolge" />
+			<link href="http://sysop.matthias-werner.net/small%20hacks/2017/08/23/reihenfolge/" rel="alternate" type="text/html" title="Reihenfolge" />
 			<updated>2017-08-23T00:00:00+02:00</updated>
 
 			
@@ -143,7 +143,7 @@ And the quality of your hackers probably matters more than the language you choo
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/small%20hacks/2017/08/23/reihenfolge/">&lt;p&gt;Bei &lt;a href=&quot;/blog/ahipos&quot;&gt;SOPHIA&lt;/a&gt; hatte ich dieser Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;– lediglich die Optimierung.&lt;/p&gt;
+			<content type="html" xml:base="http://sysop.matthias-werner.net/small%20hacks/2017/08/23/reihenfolge/">&lt;p&gt;Bei &lt;a href=&quot;/blog/ahipos&quot;&gt;SOPHIA&lt;/a&gt; hatte ich dieser Tage das Phänomen, dass Code, der in der Debugging-Version tadellos lief, in der Release-Version abstürzte. Der Unterschied zwischen beiden Versionen ist – da ich die Debugsymbole nicht ins Binärfile übernommen hatte&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;– lediglich die Optimierung.&lt;/p&gt;
 
 &lt;p&gt;Nach längerer Fehlersuche stellte sich folgende Funktion als Verursacherin heraus:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;never&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
@@ -257,9 +257,9 @@ And the quality of your hackers probably matters more than the language you choo
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/</id>
+			<id>http://sysop.matthias-werner.net/aihpos/2017/07/18/aihpos-braking-news/</id>
 			<title>Breaking News</title>
-			<link href="https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/" rel="alternate" type="text/html" title="Breaking News" />
+			<link href="http://sysop.matthias-werner.net/aihpos/2017/07/18/aihpos-braking-news/" rel="alternate" type="text/html" title="Breaking News" />
 			<updated>2017-07-18T00:00:00+02:00</updated>
 
 			
@@ -277,7 +277,7 @@ And the quality of your hackers probably matters more than the language you choo
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="http://sysop.matthias-werner.net/aihpos/2017/07/18/aihpos-braking-news/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#sophia-wir-haben-ein-problem&quot; id=&quot;markdown-toc-sophia-wir-haben-ein-problem&quot;&gt;SOPHIA, wir haben ein Problem&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#missing-feature&quot; id=&quot;markdown-toc-missing-feature&quot;&gt;Missing Feature&lt;/a&gt;&lt;/li&gt;
@@ -292,7 +292,7 @@ And the quality of your hackers probably matters more than the language you choo
   &lt;li&gt;&lt;a href=&quot;#blick-zurück-in-freude&quot; id=&quot;markdown-toc-blick-zurück-in-freude&quot;&gt;Blick zurück in Freude&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://sysop.matthias-werner.net/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -481,7 +481,7 @@ pro Block 8 Bytes Overhead entstehen. Da es durch die
 Alignmentanforderungen ohnehin zu Verschnitt kommt, halte ich dies für
 vertretbar.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/boundary.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://sysop.matthias-werner.net/images/boundary.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Um einen Speicherbereich zu belegen, wird einfach die Freispeicherliste durchsucht:&lt;/p&gt;
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;unsafe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AllocErr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -576,7 +576,7 @@ derzeit neuste Version ist 0.4.1 und hat die neue Allokator-API schon vollständ
 „&lt;a href=&quot;https://os.phil-opp.com&quot;&gt;Writing an OS in Rust&lt;/a&gt;“ stammt. Ich werde zwar in SOPHIA bei meinem Boundary-Tag-Allokator bleiben, es ist aber gut zu wissen, dass es eine Alternative gibt
 und dass die Community so schnell reagiert.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://sysop.matthias-werner.net/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -613,9 +613,9 @@ und dass die Community so schnell reagiert.&lt;/p&gt;
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/quotes/2017/06/30/concurrency/</id>
+			<id>http://sysop.matthias-werner.net/quotes/2017/06/30/concurrency/</id>
 			<title>Nebenläufigkeit</title>
-			<link href="https://werner-matthias.github.io/SysOp/quotes/2017/06/30/concurrency/" rel="alternate" type="text/html" title="Nebenläufigkeit" />
+			<link href="http://sysop.matthias-werner.net/quotes/2017/06/30/concurrency/" rel="alternate" type="text/html" title="Nebenläufigkeit" />
 			<updated>2017-06-30T00:00:00+02:00</updated>
 
 			
@@ -633,7 +633,7 @@ und dass die Community so schnell reagiert.&lt;/p&gt;
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/quotes/2017/06/30/concurrency/">&lt;blockquote&gt;
+			<content type="html" xml:base="http://sysop.matthias-werner.net/quotes/2017/06/30/concurrency/">&lt;blockquote&gt;
   &lt;p&gt;Concurrent programs are inherently more complex than sequential programs. In many respects, 
    they are to sequential programs what chess is to checkers or bridge is to pinochle: 
    Each is interesting, but the former is more intellectually intriguing than the latter.;
@@ -655,9 +655,9 @@ und dass die Community so schnell reagiert.&lt;/p&gt;
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/small%20hacks/2017/06/22/angefuehrt/</id>
+			<id>http://sysop.matthias-werner.net/small%20hacks/2017/06/22/angefuehrt/</id>
 			<title>Angeführt</title>
-			<link href="https://werner-matthias.github.io/SysOp/small%20hacks/2017/06/22/angefuehrt/" rel="alternate" type="text/html" title="Angeführt" />
+			<link href="http://sysop.matthias-werner.net/small%20hacks/2017/06/22/angefuehrt/" rel="alternate" type="text/html" title="Angeführt" />
 			<updated>2017-06-22T00:00:00+02:00</updated>
 
 			
@@ -675,7 +675,7 @@ und dass die Community so schnell reagiert.&lt;/p&gt;
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/small%20hacks/2017/06/22/angefuehrt/">&lt;p&gt;Jekyll – oder genauer der dort genutzte Markdown-Prozessor Kramdown – kann typographische Anführungszeichen.
+			<content type="html" xml:base="http://sysop.matthias-werner.net/small%20hacks/2017/06/22/angefuehrt/">&lt;p&gt;Jekyll – oder genauer der dort genutzte Markdown-Prozessor Kramdown – kann typographische Anführungszeichen.
 Wenn man also ein Zitat in Anführungszeichen (&quot;) setzt stehen nach der Verarbeitung vor und nach dem Zitat typographische
 Anführungszeichen:&lt;/p&gt;
 
@@ -709,9 +709,9 @@ Durch eine zusätzliche Konfiguration kann man auf deutsche Typographie umschalt
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/meta/2017/06/19/hello-jekyll/</id>
+			<id>http://sysop.matthias-werner.net/meta/2017/06/19/hello-jekyll/</id>
 			<title>Hello Jekyll</title>
-			<link href="https://werner-matthias.github.io/SysOp/meta/2017/06/19/hello-jekyll/" rel="alternate" type="text/html" title="Hello Jekyll" />
+			<link href="http://sysop.matthias-werner.net/meta/2017/06/19/hello-jekyll/" rel="alternate" type="text/html" title="Hello Jekyll" />
 			<updated>2017-06-19T14:16:41+02:00</updated>
 
 			
@@ -729,7 +729,7 @@ Durch eine zusätzliche Konfiguration kann man auf deutsche Typographie umschalt
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/meta/2017/06/19/hello-jekyll/">&lt;p&gt;Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
+			<content type="html" xml:base="http://sysop.matthias-werner.net/meta/2017/06/19/hello-jekyll/">&lt;p&gt;Wer dieses Blog regelmäßig liest (was bisher nicht viele sein dürften), dem ist vermutlich eine Veränderung aufgefallen. Die Ursache dafür ist,
 dass ich mein Blog-System umgestellt habe: Ich bin von Wordpress auf &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; umgestiegen. Jekyll ist ein Generator für statische Webseiten.&lt;/p&gt;
 
 &lt;p&gt;Es gibt einige Gründe, die für den Wechsel sprechen:&lt;/p&gt;
@@ -764,9 +764,9 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/</id>
+			<id>http://sysop.matthias-werner.net/aihpos/computer/2017/06/18/seitenweise/</id>
 			<title>Seitenweise</title>
-			<link href="https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/" rel="alternate" type="text/html" title="Seitenweise" />
+			<link href="http://sysop.matthias-werner.net/aihpos/computer/2017/06/18/seitenweise/" rel="alternate" type="text/html" title="Seitenweise" />
 			<updated>2017-06-18T00:00:00+02:00</updated>
 
 			
@@ -784,7 +784,7 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="http://sysop.matthias-werner.net/aihpos/computer/2017/06/18/seitenweise/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#nach-mehr-aufgaben&quot; id=&quot;markdown-toc-nach-mehr-aufgaben&quot;&gt;Nach mehr Aufgaben&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#paging-auf-dem-arm&quot; id=&quot;markdown-toc-paging-auf-dem-arm&quot;&gt;Paging auf dem ARM&lt;/a&gt;    &lt;ul&gt;
@@ -808,9 +808,9 @@ Bis ich eine andere Lösung gefunden habe, können Kommentare nur über Mail an 
   &lt;li&gt;&lt;a href=&quot;#schlussbemerkung&quot; id=&quot;markdown-toc-schlussbemerkung&quot;&gt;Schlussbemerkung&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://sysop.matthias-werner.net/aihpos/2017/06/07/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://sysop.matthias-werner.net/aihpos/2017/07/18/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -899,7 +899,7 @@ oberen 12 Bits der Adresse der Seitentabelle, die unteren sind 0.&lt;/li&gt;
 &lt;p&gt;Die Abbildung zeigt diesen „Tabellenlauf“ (&lt;em&gt;table walk&lt;/em&gt;) noch einmal
 im Zusammenhang.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/paging.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://sysop.matthias-werner.net/images/paging.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Damit nicht durch die ständigen Speicherzugriffe viel Zeit verloren
 geht, hat der ARM mehrere Caches, darunter einen
@@ -950,7 +950,7 @@ brauchen wir jedem Prozess später nur eine Seitentabelle zuordnen.
 zu legen, ergibt sich aus Kernel-Sicht folgendes Speicherlayout:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/memory-layout.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://sysop.matthias-werner.net/images/memory-layout.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Alle Prozesse sollen logisch den gleichen Adressbereich haben. Wir legen
 fest, dass der maximal 1 MiB große Adressbereich von 0x02000000 bis
@@ -963,7 +963,7 @@ Adressbereich mit den Geräten zugreifen darf, hängt von seinen Rechten
 ab; bei Treiberprozessen sollte man einen entsprechenden Zugriff
 natürlich gestatten.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/pmemory-layout.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://sysop.matthias-werner.net/images/pmemory-layout.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Natürlich liegen die Prozesse nicht wirklich im gleichen (physischen)
 Speicherbereichen. Vielmehr sind ihre Speicherseiten auf verschiedene
@@ -1394,9 +1394,9 @@ MMU-Aktivierungsmethode zurückgekehrt ist.&lt;/p&gt;
 Meldung ausgegenen werden. Und natürlich habe ich das auch gemacht,
 aber davon berichte ich in einer der nächsten Folgen dieses Blogs.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://sysop.matthias-werner.net/aihpos/2017/06/07/aihpos-heap/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/07/18/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://sysop.matthias-werner.net/aihpos/2017/07/18/aihpos-braking-news/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1450,9 +1450,9 @@ aber davon berichte ich in einer der nächsten Folgen dieses Blogs.&lt;/p&gt;
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/</id>
+			<id>http://sysop.matthias-werner.net/aihpos/2017/06/07/aihpos-heap/</id>
 			<title>Wir machen einen Haufen</title>
-			<link href="https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/" rel="alternate" type="text/html" title="Wir machen einen Haufen" />
+			<link href="http://sysop.matthias-werner.net/aihpos/2017/06/07/aihpos-heap/" rel="alternate" type="text/html" title="Wir machen einen Haufen" />
 			<updated>2017-06-07T00:00:00+02:00</updated>
 
 			
@@ -1470,7 +1470,7 @@ aber davon berichte ich in einer der nächsten Folgen dieses Blogs.&lt;/p&gt;
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/aihpos/2017/06/07/aihpos-heap/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
+			<content type="html" xml:base="http://sysop.matthias-werner.net/aihpos/2017/06/07/aihpos-heap/">&lt;p&gt;&lt;strong&gt;Inhalt&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#speicher-in-verschiedenen-geschmacksrichtungen&quot; id=&quot;markdown-toc-speicher-in-verschiedenen-geschmacksrichtungen&quot;&gt;Speicher in verschiedenen Geschmacksrichtungen&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#stack&quot; id=&quot;markdown-toc-stack&quot;&gt;Stack&lt;/a&gt;    &lt;ul&gt;
@@ -1487,9 +1487,9 @@ aber davon berichte ich in einer der nächsten Folgen dieses Blogs.&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;#vektoren-hashes--co&quot; id=&quot;markdown-toc-vektoren-hashes--co&quot;&gt;Vektoren, Hashes &amp;amp; Co&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://sysop.matthias-werner.net/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://sysop.matthias-werner.net/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -1502,7 +1502,7 @@ aber davon berichte ich in einer der nächsten Folgen dieses Blogs.&lt;/p&gt;
   &lt;li&gt;Schicht 1: Kernel-Speicherverwaltung&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://werner-matthias.github.io/SysOp/images/mk-architektur.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://sysop.matthias-werner.net/images/mk-architektur.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Damit wäre eine der ersten Aufgaben, sich um den Speicher kümmern.&lt;/p&gt;
 
@@ -1973,9 +1973,9 @@ im Wurzelverzeichnis anlegen: &lt;kbd&gt;Xargo.toml&lt;/kbd&gt;. Dort können zu
 implementieren müssten. Allerdings ist das Thema Speicher noch nicht erledigt: Speicher ist auch Betriebsmittel für die Prozesse. Hier kommt die logische
 Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des nächsten Beitrags in der SOPHIA-Reihe.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;left button tiny radius&quot; href=&quot;http://sysop.matthias-werner.net/aihpos/2017/05/14/aihpos-umrustung/&quot;&gt;&lt;span class=&quot;icon-chevron-left&quot;&gt;&lt;/span&gt;Vorheriger Beitrag in AIHPOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;https://werner-matthias.github.io/SysOp/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;right button tiny radius r15&quot; href=&quot;http://sysop.matthias-werner.net/aihpos/computer/2017/06/18/seitenweise/&quot;&gt;Nächster Beitrag in AIHPOS&lt;span class=&quot;icon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
 
@@ -2027,9 +2027,9 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
 		</entry>
 	
 		<entry>
-			<id>https://werner-matthias.github.io/SysOp/quotes/2017/05/21/computer-science/</id>
+			<id>http://sysop.matthias-werner.net/quotes/2017/05/21/computer-science/</id>
 			<title>Computer Science</title>
-			<link href="https://werner-matthias.github.io/SysOp/quotes/2017/05/21/computer-science/" rel="alternate" type="text/html" title="Computer Science" />
+			<link href="http://sysop.matthias-werner.net/quotes/2017/05/21/computer-science/" rel="alternate" type="text/html" title="Computer Science" />
 			<updated>2017-05-21T14:05:22+02:00</updated>
 
 			
@@ -2047,7 +2047,7 @@ Speicherverwaltung ins Spiel, siehe die Diskussion oben. Aber das ist Thema des 
 				</author>
 			
 			<summary></summary>
-			<content type="html" xml:base="https://werner-matthias.github.io/SysOp/quotes/2017/05/21/computer-science/">&lt;blockquote&gt;
+			<content type="html" xml:base="http://sysop.matthias-werner.net/quotes/2017/05/21/computer-science/">&lt;blockquote&gt;
   &lt;p&gt;In science, we reserve our highest honors for those who prove we were wrong. But in computer science…
 &lt;cite&gt;Rob Pike&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
