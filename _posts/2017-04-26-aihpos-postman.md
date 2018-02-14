@@ -292,7 +292,7 @@ pub fn scroll(&mut self) {
 ### (No) Race Codition
 
 Um den Framebuffer zum Debuggen zu nutzen, muss er initialisiert werden. Wo und wann soll das geschehen? Offensichtlich soll er überall zur Verfügung stehen. Da es nicht
-sinnvoll ist, eine entsprechende Variable als Funktionsparameter an sämtliche Funktionen weiterzureichen, muss dies Variable global sein, in Rust seit das statisch
+sinnvoll ist, eine entsprechende Variable als Funktionsparameter an sämtliche Funktionen weiterzureichen, muss dies Variable global sein, in Rust heißt das statisch
 (Schlüsselwort `static`). Da aber nicht nur lesend auf den Framebuffer zugegriffen wird, muss sie auch veränderbar (_mutable_) sein. In Rust gilt aber jeder Zugriff auf
 eine veränderbare statische Variable als unsicher! Durch einen nebenläufigen Zugriff kann es bei einer solchen Variable nämlich zu Wettlaufsituationen (_race conditions_)
 kommen, die dann zu Inkonsistenzen führen. 
