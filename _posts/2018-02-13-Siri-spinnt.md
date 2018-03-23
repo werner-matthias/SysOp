@@ -8,7 +8,7 @@ categories:
 date: 2018-02-13
 tags:
 - Siri
-meta_description: Siri will mich immer nach ans Nordcap schicken.
+meta_description: Siri will mich ans Nordcap schicken.
 ---
 Eigentlich kenne ich mich mittlerweile ganz gut aus in Chemnitz.
 Aber als ich neulich -- nachdem ich die Kinder zur Schule gebracht
