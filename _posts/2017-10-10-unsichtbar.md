@@ -1,7 +1,6 @@
 ---
 title: "(Un)sichtbar"
 layout: page-fullwidth
-comments: true
 author: mwerner
 show_meta: true
 categories:
