@@ -1,7 +1,6 @@
 ---
 title: Siri spinnt
 layout: page-fullwidth
-comments: true
 author: mwerner
 show_meta: true
 categories:
@@ -9,7 +8,6 @@ categories:
 date: 2018-02-13
 tags:
 - Siri
-comment: no
 meta_description: Siri will mich immer nach ans Nordcap schicken.
 ---
 Eigentlich kenne ich mich mittlerweile ganz gut aus in Chemnitz.
@@ -27,7 +25,7 @@ Des Rätsels (teilweise) Lösung: Statt zur Universität wollte mich Siri
 nach Karigambukta in Norwegen schicken. Ich bin dann doch auf meiner
 gewohnten Strecke gefahren, und sogar noch halbwegs pünktlich
 angekommen.
-![]({{site.urlimg}}/siri-norway.png){:class="img-responsive"}
+![]({{site.urlimg}}/siri-norway.png | width=200){:class="img-responsive"}
 
 Später habe ich es wiederholt probiert: Stets will mich Siri nach
 Norwegen navigieren. Da hilft es auch nichts, noch einmal meine
