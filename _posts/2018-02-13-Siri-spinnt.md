@@ -25,12 +25,13 @@ Des Rätsels (teilweise) Lösung: Statt zur Universität wollte mich Siri
 nach Karigambukta in Norwegen schicken. Ich bin dann doch auf meiner
 gewohnten Strecke gefahren, und sogar noch halbwegs pünktlich
 angekommen.
-![]({{site.urlimg}}/siri-norway.png){:class="img-responsive" width="200px"}
 
 Später habe ich es wiederholt probiert: Stets will mich Siri nach
 Norwegen navigieren. Da hilft es auch nichts, noch einmal meine
 Kontaktdaten zu überarbeiten, oder statt nach der Arbeit nach dem
 "Büro" zu fragen.
+
+![]({{site.urlimg}}/siri-norway.png){:class="img-responsive" width="200px"}
 
 Falls jemand weiß, was hier die Ursache sein kann und wie man Apple
 dazu bringen kann, die Adresse meiner Arbeitsstelle korrekt aus meinen
